@@ -3,14 +3,14 @@ const mongoose = require("mongoose");
 const articleSchema = new mongoose.Schema({
     title: {
         type: String,
-        require: [true, "title is required"],
-        minLength: [7, "title must be more than 6 chars"],
-        maxLength: [60, "title must be lest than 61 chars"] 
+        require: [true, "required"],
+        minLength: [7, "must be more than 6 chars"],
+        maxLength: [60, "must be lest than 61 chars"]
     },
     body: {
         type: String,
-        require: [true, "article body is required"],
-        minLength: [200, "title must be more than 199 chars"]
+        require: [true, "required"],
+        minLength: [200, "must be more than 199 chars"]
     },
     date: {
         type: Date,
@@ -18,11 +18,11 @@ const articleSchema = new mongoose.Schema({
     },
     author: {
         type: String,
-        require: [true, "article must have author"]
+        require: [true, "required"]
     },
     authorId: {
         type: mongoose.Types.ObjectId,
-        require: [true, "article must have authorId"]
+        require: [true, "required"]
     },
     cover: {
         type: String,
@@ -30,6 +30,7 @@ const articleSchema = new mongoose.Schema({
     },
     category: {
         type: String,
+        minLength: [3, "name must be more than 2 chars"],
         default: "general"
     },
     liked: {
