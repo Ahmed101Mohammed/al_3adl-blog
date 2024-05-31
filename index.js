@@ -2,7 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const logger = require("./middlewares/logger");
-
+const connectToDB = require("./data/dbConnection");
 // app
 const app = express();
 
@@ -19,4 +19,5 @@ app.use(logger);
 app.listen(process.env.PORT, ()=>
 {
     console.log(`Server runing at port ${process.env.PORT}`);
+    connectToDB();
 })
