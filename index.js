@@ -1,9 +1,12 @@
 require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
-const logger = require("./middlewares/logger");
-const connectToDB = require("./data/dbConnection");
-const errorHandler = require("./middlewares/errorHandler");
+const { join } = require("path");
+const logger = require(join(__dirname, "middlewares", "logger"));
+const connectToDB = require(join(__dirname, "data", "dbConnection"));
+const errorHandler = require(join(__dirname, "middlewares", "errorHandler"));
+const articleRouter = require(join(__dirname, "routes", "article.route.js"));
+
 // app
 const app = express();
 
@@ -12,7 +15,11 @@ app.use(cors());
 app.use(express.json());
 app.use(logger);
 
+// static roats:
+app.use("/uploads", express.static(join(__dirname, "uploads")));
+
 // routes
+app.use("/api/articles", articleRouter);
 
 // error handler middleware
 app.use(errorHandler)
