@@ -6,7 +6,7 @@ const logger = require(join(__dirname, "middlewares", "logger"));
 const connectToDB = require(join(__dirname, "data", "dbConnection"));
 const errorHandler = require(join(__dirname, "middlewares", "errorHandler"));
 const articleRouter = require(join(__dirname, "routes", "article.route.js"));
-
+const userRouter = require(join(__dirname, "routes", "user.route"));
 // app
 const app = express();
 
@@ -20,6 +20,7 @@ app.use("/uploads", express.static(join(__dirname, "uploads")));
 
 // routes
 app.use("/api/articles", articleRouter);
+app.use("/api/users", userRouter)
 
 // error handler middleware
 app.use(errorHandler)
