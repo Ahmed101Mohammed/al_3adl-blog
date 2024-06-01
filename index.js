@@ -7,12 +7,15 @@ const connectToDB = require(join(__dirname, "data", "dbConnection"));
 const errorHandler = require(join(__dirname, "middlewares", "errorHandler"));
 const articleRouter = require(join(__dirname, "routes", "article.route.js"));
 const userRouter = require(join(__dirname, "routes", "user.route"));
+const cookieParser = require("cookie-parser");
+
 // app
 const app = express();
 
 // middlewares:
 app.use(cors());
 app.use(express.json());
+app.use(cookieParser());
 app.use(logger);
 
 // static roats:
