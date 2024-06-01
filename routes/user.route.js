@@ -10,7 +10,6 @@ router
 
 router.route("/")
     .get(getUsers)
-    .post(postUser);
 
 router.route("/:id")
     .get(getUser)
