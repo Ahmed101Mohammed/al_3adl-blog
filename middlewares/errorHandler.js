@@ -1,6 +1,6 @@
 const { join } = require("node:path");
 const { ERROR, FAIL } = require(join(__dirname, "..", "utils", "httpRespondStatus"));
-
+const { UNAUTHORIZED, DUBLICATED_DATA, NOT_FOUNDED_DATA, VALIDATION_ERROR } = require(join("..", "utils", "errorsConstants"))
 const errorHandler = (err, req, res, next)=>
 {
     console.log(`Error Logger: name:${err.name} message:${err.message}`);
@@ -9,10 +9,16 @@ const errorHandler = (err, req, res, next)=>
 
     switch(errName)
     {
-        case "NotFoundedData":
+        case UNAUTHORIZED:
+            res.status(401).json({status: FAIL, message: errMessage}).end();
+            break;
+        case DUBLICATED_DATA:
+            res.status(409).json({status: FAIL, message: errMessage}).end();
+            break;
+        case NOT_FOUNDED_DATA:
             res.status(404).json({status: FAIL, message: errMessage}).end();
             break;
-        case "ValidationError":
+        case VALIDATION_ERROR:
             res.status(400).json({status: FAIL, message: errMessage}).end();
             break;
         default:
