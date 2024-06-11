@@ -29,7 +29,7 @@ const userSchema = new mongoose.Schema({
             message: "not valid"
         }
     },
-    passwor: {
+    password: {
         type: String,
         require: [true, "is required"],
         validate: {
@@ -58,3 +58,5 @@ const userSchema = new mongoose.Schema({
 })
 
 const User = mongoose.model("User", userSchema);
+
+module.exports = User;

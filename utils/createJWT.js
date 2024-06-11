@@ -7,4 +7,4 @@ const createJWT = (secretKey ,data, expPeriod)=>
     return token;
 }
 
-mdoule.exports = createJWT;
+module.exports = createJWT;
