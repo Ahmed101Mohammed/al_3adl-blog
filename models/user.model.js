@@ -49,8 +49,6 @@ const userSchema = new mongoose.Schema({
         type: String,
         default: "person.png"
     },
-    likedArticles: [articleIdSchema],
-    disLikedArticles: [articleIdSchema],
     publishedArticles: [articleIdSchema],
     refreshToken: {
         type: String

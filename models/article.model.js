@@ -1,5 +1,11 @@
 const mongoose = require("mongoose");
 
+const userIdSchema = new mongoose.Schema({
+    articleId: {
+        type: mongoose.Types.ObjectId,
+        require: true
+    }
+})
 const articleSchema = new mongoose.Schema({
     title: {
         type: String,
@@ -34,13 +40,11 @@ const articleSchema = new mongoose.Schema({
         default: "general"
     },
     liked: {
-        type: Number,
-        default: 0
+        type: [userIdSchema]
     },
     disLiked: {
-        type: Number, 
-        default: 0
-    }
+        type: [userIdSchema]
+    },
 })
 
 const Article = mongoose.model("Article", articleSchema);

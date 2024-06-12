@@ -4,11 +4,17 @@ const Article = require(join(__dirname, "..", "models", "article.model"));
 const { SUCCESS } = require(join(__dirname, "..", "utils", "httpRespondStatus"));
 const AppError = require(join(__dirname, "..", "utils", "AppError"));
 const Joi = require('joi');
+const { UNAUTHORIZED, NOT_FOUNDED_DATA } = require("../utils/errorsConstants");
+const User = require("../models/user.model");
+const { USER } = require("../utils/rolesConstants");
 
 const getAllArticles = asyncWrapper(
     async (req, res, next)=>
     {
-        const artciles = await Article.find({}, {"__v": false});
+        const limit = req.query.limit? req.query.limit:10;
+        const page = req.query.page? req.query.page:1;
+        const skip = (page - 1) * limit;
+        const artciles = await Article.find({}, {"__v": false}).limit(limit).skip(skip);
         res.status(200,).json({status:SUCCESS, data: {articles: artciles}}).end();
     }
 )
@@ -16,8 +22,13 @@ const getAllArticles = asyncWrapper(
 const postArticle = asyncWrapper(
     async (req, res, next)=>
     {
-        const { title, body, author, authorId, category } = req.body;
-        const articleData = { title, body, author, authorId, category };
+        const userId = req.authData.id;
+        const user = await User.findById(userId, {"__v": false, "password": false});
+        const author = user.name;
+        const authorId = user._id;
+
+        const { title, body, category} = req.body;
+        const articleData = { title, body, author, authorId,category };
         const schema = Joi.object({
             title: Joi.string().min(7).max(60).required(),
             body: Joi.string().min(200).required(),
@@ -34,7 +45,9 @@ const postArticle = asyncWrapper(
         console.log({value})
 
         const newArticle = new Article(value);
+        user.publishedArticles.push({articleId: newArticle._id});
         await newArticle.save();
+        await user.save();
         res.status(201).json({status: SUCCESS, data: {article: newArticle}});
     }
 )
@@ -57,6 +70,14 @@ const getArticle = asyncWrapper(
 const updateArticle = asyncWrapper(
     async (req, res, next)=>
     {
+        const articleId = req.params.id;
+        let article = await Article.findById(articleId);
+        if(!(req.authData.id == article.authorId))
+        {
+            const unauthorized = new AppError(UNAUTHORIZED, "you don't have permission to modify this article");
+            return next(unauthorized);
+        }
+
         const schema = Joi.object({
             title: Joi.string().min(7).max(60),
             body: Joi.string().min(200),
@@ -74,12 +95,12 @@ const updateArticle = asyncWrapper(
         }
         console.log({value});
 
-        const articleId = req.params.id;
-        const article = await Article.findByIdAndUpdate(articleId, value);
+        article = await Article.findByIdAndUpdate(articleId, value);
+
         console.log({article});
         if(!article)
         {
-            const notFoundedArticle = new AppError("NotFoundedData", `there is no article with "${articleId}" id to update`);
+            const notFoundedArticle = new AppError(NOT_FOUNDED_DATA, `there is no article with "${articleId}" id to update`);
             return next(notFoundedArticle);
         }
 
@@ -87,9 +108,36 @@ const updateArticle = asyncWrapper(
     }
 )
 
+const deleteArticle = asyncWrapper(
+    async (req, res, next)=>
+    {
+        const articleId = req.params.id;
+        const article = await Article.findById(articleId);
+        if(!article)
+        {
+            const notFoundedData = new AppError(NOT_FOUNDED_DATA, `there is no article with "${articleId}" id to delete`);
+            return next(notFoundedData);
+        }
+
+        const authorId = req.authData.id;
+        if(!(article.authorId == authorId) && (req.role === USER))
+        {
+            const unauthorized = new AppError(UNAUTHORIZED, "you don't have permission to modify this article");
+            return next(unauthorized);
+        }
+
+        await Article.findByIdAndDelete(articleId);
+        const user = await User.findById(req.authData.id, {"__v":false, "password":false});
+        user.publishedArticles = user.publishedArticles.filter((e)=> !(e.articleId == articleId));
+        await user.save();
+        res.status(200).json({status: SUCCESS, data: null});
+    }
+)
+
 module.exports = {
     getAllArticles,
     postArticle,
     getArticle,
-    updateArticle
+    updateArticle,
+    deleteArticle
 }

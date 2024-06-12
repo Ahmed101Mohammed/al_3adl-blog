@@ -8,6 +8,8 @@ const errorHandler = require(join(__dirname, "middlewares", "errorHandler"));
 const articleRouter = require(join(__dirname, "routes", "article.route.js"));
 const userRouter = require(join(__dirname, "routes", "user.route"));
 const cookieParser = require("cookie-parser");
+const verifyJWT = require("./middlewares/verifyJWT");
+const setUpAdminUser = require("./utils/setUpAdminUser");
 
 // app
 const app = express();
@@ -22,8 +24,8 @@ app.use(logger);
 app.use("/uploads", express.static(join(__dirname, "uploads")));
 
 // routes
-app.use("/api/articles", articleRouter);
-app.use("/api/users", userRouter)
+app.use("/api/users", userRouter);
+app.use("/api/articles",articleRouter);
 
 // error handler middleware
 app.use(errorHandler)
@@ -33,4 +35,7 @@ app.listen(process.env.PORT, ()=>
 {
     console.log(`Server runing at port ${process.env.PORT}`);
     connectToDB();
+    setUpAdminUser()
+    .then(()=>{console.log("Success setub the admin user.")})
+    .catch((e)=>{console.error(`Failed to setub the admin user, because of ${e.message}`)});
 })
