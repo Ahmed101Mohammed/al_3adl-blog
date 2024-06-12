@@ -51,7 +51,12 @@ const updateUser = asyncWrapper(
             val.password = bcrypt.hash(password, 10);
         }
 
-        console.log({val});
+        if(req.file)
+        {
+            val.avatar = req.file.filename;
+        }
+
+        console.log({updateUser: val});
         // if(admin && // check the user role is not admin)
         // {
         //     val.admin = undefined;
