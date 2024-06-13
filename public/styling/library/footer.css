@@ -68,6 +68,7 @@ footer .contact-data p
     font-weight: 400;
     color: #3B3C4A;
     margin: 0px;
+    width: max-content;
 }
 
 footer .contact-data p span
@@ -161,7 +162,7 @@ footer .news-letter-intro p
     font-weight: 400;
     color: #696A75;
     margin: 0px;
-    width: max-content
+    width: max-content;
 }
 
 footer form

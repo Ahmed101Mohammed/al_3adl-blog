@@ -31,8 +31,21 @@ a
 }
 
 /* margin and padding zero */
-p, h1, h2, h3, h4, h5, h6, ul
+p, h1, h2, h3, h4, h5, h6, ul, blockquote
 {
     margin: 0px;
     padding: 0px;
+}
+
+/* classes library */
+.category-primary
+{
+    background-color: var(--primary-color);
+    color: var(--white);
+    text-transform: capitalize;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 4px 10px;
+    border-radius: 6px;
+    width: fit-content;
 }

@@ -1,0 +1,115 @@
+/* main */
+main
+{
+    width: 100%;
+    padding-top: 28px;
+}
+
+.main-container
+{
+    width: 800px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
+}
+
+/* article */
+article
+{
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+/* article header */
+article .article-header
+{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+article .main-info
+{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+article .main-info .title
+{
+    font-size: 36px;
+    font-weight: 600;
+    color: var(--secondary-color-800);
+    text-transform: capitalize;
+    font-family: "work sans", sans-serif;
+}
+
+article .production-details
+{
+    display: flex;
+    gap: 24px;
+    align-items: center;
+}
+
+article .production-details .author
+{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+article .production-details .name
+{
+    font-size: 14px;
+    font-weight: 500;
+    color: #696A75;
+    text-transform: capitalize;
+    font-family: "work sans", sans-serif;
+}
+
+article .production-details .date
+{
+    font-size: 14px;
+    font-weight: 400;
+    color: #696A75;
+    text-transform: capitalize;
+    font-family: "work sans", sans-serif;
+}
+
+/* article content */
+.article-part
+{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.article-part .title
+{
+    font-family: "work sans", sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--secondary-color-800);
+    text-transform: capitalize;
+}
+
+.article-paragraph
+{
+    font-size: 20px;
+    font-weight: 400;
+    color: #3B3C4A;
+    font-family: "Source Serif Pro", sans-serif;
+}
+
+.article-quote
+{
+    padding: 32px;
+    font-size: 24px;
+    color: var(--secondary-color-800);
+    font-weight: 400;
+    font-style: italic;
+    font-family: "Source Serif Pro", sans-serif;
+    border-left: 4px solid var(--secondary-color-100);
+}
