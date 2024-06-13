@@ -48,7 +48,6 @@ header nav ul
 
 header nav ul li a
 {
-    text-decoration: none;
     color: var(--secondary-color-600);
     text-transform: capitalize;
     font-size: 16px;
@@ -288,6 +287,7 @@ main
     display: flex;
     justify-content: center;
 }
+
 .all-posts button
 {
     padding: 12px 20px;
@@ -300,4 +300,323 @@ main
     cursor: pointer;
     outline: none;
     background-color: var(--white);
+}
+
+/* footer */
+footer
+{
+    margin-top: 100px;
+    background-color: #F6F6F7;
+    border: 1px solid var(--secondary-color-100);
+    padding-top: 64px;
+}
+
+footer .secondry-container
+{
+    display: flex;
+    flex-direction: column;
+    gap: 64px;
+    width: 1216px;
+    margin: auto;
+}
+
+footer .general-info
+{
+    display: flex;
+    gap: 20px;
+}
+
+footer .about
+{
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+footer .about-content
+{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+footer .about-content h2
+{
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    text-transform: capitalize;
+    margin: 0px;
+}
+
+footer .about-content p
+{
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: #696A75;
+    margin: 0px;
+}
+
+footer .contact-data
+{
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+footer .contact-data p
+{
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: #3B3C4A;
+    margin: 0px;
+}
+
+footer .contact-data p span
+{
+    color: var(--secondary-color-800);
+    font-weight: 600;
+    font-size: 18px;
+    text-transform: capitalize;
+}
+
+footer .links-and-catigories
+{
+    display: flex;
+    gap: 80px;
+    padding: 0px 118px
+}
+
+footer .quick-links, footer .catigory
+{
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+footer .links-and-catigories h2
+{
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    text-transform: capitalize;
+    margin: 0px;
+    width: max-content;
+}
+
+footer .links-and-catigories ul
+{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+footer .links-and-catigories li a
+{
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: #3B3C4A;
+    text-transform: capitalize;
+    width: max-content;
+    display: block;
+}
+
+footer .news-letter
+{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding: 32px;
+    border-radius: 12px;
+    background-color: var(--white);
+    align-items: center;
+}
+
+footer .news-letter-intro
+{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: fit-content;
+    align-items: center;
+}
+
+footer .news-letter-intro h2
+{
+    font-family: "work sans", sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    text-transform: capitalize;
+    margin: 0px;
+    width: max-content;
+    color: var(--secondary-color-800);
+}
+
+footer .news-letter-intro p
+{
+    font-family: "work sans", sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: #696A75;
+    margin: 0px;
+    width: max-content
+}
+
+footer form
+{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+footer form fieldset
+{
+    border: none;
+    padding: 12px 16px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    border-radius: 6px;
+    border: 1px solid #DCDDDF;
+}
+
+footer form input
+{
+    font-size: 16px;
+    font-family: "work sans", sans-serif;
+    font-weight: 400;
+    color: #97989F;
+    border: none;
+    outline: none;
+}
+
+footer fieldset label.email-icon
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 3.12px 1.25px;
+}
+
+footer form button
+{
+    padding: 12px 20px;
+    background-color: var(--primary-color);
+    color: var(--white);
+    font-size: 16px;
+    font-weight: 500;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+footer .references
+{
+    display: flex;
+    flex-direction: column;
+    grid: 12px;
+    border-top: 1px solid #DCDDDF;
+    padding: 32px 0px;
+}
+
+footer .references h2
+{
+    margin: 0px;
+    text-transform: capitalize;
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+footer .references ul
+{
+    list-style: none;
+    margin: 0px;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+footer .references li
+{
+    font-family: "work sans", sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: #696A75;
+}
+
+footer .references li a
+{
+    color: #414142;
+}
+
+footer .real-footer
+{
+    padding: 32px 0px;
+    display: flex;
+    gap: 64px;
+    align-items: center;
+    border-top: 1px solid #DCDDDF;
+    justify-content: space-between;
+}
+
+footer .real-footer .copywrite
+{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+footer .real-footer img
+{
+    width: 48px;
+    height: 48px;
+}
+
+footer .copywrite-text
+{
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+footer .copywrite-text h2
+{
+    margin: 0px;
+    text-transform: capitalize;
+}
+
+footer .copywrite-text h2 span
+{
+    font-weight: 400;
+}
+
+footer .copywrite-text p
+{
+    margin: 0px;
+}
+
+footer .real-footer ul
+{
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+    justify-content: flex-end;
+}
+
+footer .real-footer ul .v-line
+{
+    width: 1px;
+    height: 24px;
+    background-color: var(--secondary-color-100);
 }
