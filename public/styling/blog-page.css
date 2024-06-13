@@ -30,3 +30,80 @@
     color: #3B3C4A;
     text-transform: capitalize;
 }
+
+/* most liked article section */
+.most-liked-article
+{
+    position: relative;
+}
+
+.most-liked-article .article-info 
+{
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    position: absolute;
+    bottom: 0px;
+    padding: 40px;
+}
+
+.most-liked-article .article-info .main-info
+{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.most-liked-article .article-info .catigory
+{
+    background-color: var(--primary-color);
+    color: var(--white);
+    text-transform: capitalize;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 4px 10px;
+    border-radius: 6px;
+    width: fit-content;
+}
+
+.most-liked-article .article-info .title
+{
+    font-size: 36px;
+    color: var(--white);
+    font-family: "work sans", sans-serif;
+    font-weight: 600;
+    text-transform: capitalize;
+    width: 720px;
+}
+
+.most-liked-article .production-details
+{
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.most-liked-article .production-details .author
+{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.most-liked-article .production-details .name
+{
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--white);
+    text-transform: capitalize;
+    font-family: "work sans", sans-serif;
+} 
+
+.most-liked-article .production-details .date
+{
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--white);
+    text-transform: capitalize;
+    font-family: "work sans", sans-serif;
+}
