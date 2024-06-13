@@ -22,11 +22,17 @@ app.use(logger);
 
 // static roats:
 app.use("/uploads", express.static(join(__dirname, "uploads")));
-
+app.use("/", express.static(join(__dirname, "views")));
+app.use("/public", express.static(join(__dirname, "public")));
 // routes
 app.use("/api/users", userRouter);
 app.use("/api/articles",articleRouter);
 
+// not founded route
+app.use("*", (req, res)=>
+{
+    res.status(404).json({status: NOT_FOUNDED_DATA, message: "Not founded route"}).end();
+})
 // error handler middleware
 app.use(errorHandler)
 
