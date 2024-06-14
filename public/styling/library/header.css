@@ -113,3 +113,8 @@ button.sign
     background-color: var(--primary-color);
     color: var(--white);
 }
+
+header .sign-link, header .user-home-page-link
+{
+    display: none;
+}
