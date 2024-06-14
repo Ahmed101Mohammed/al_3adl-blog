@@ -32,6 +32,20 @@
     border: 1px solid var(--secondary-color-100);
 }
 
+.post-card .info
+{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.post-card .info .main-info
+{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
 .post-card .info .catigory
 {
     font-family: "work sans", sans-serif;
@@ -68,4 +82,32 @@
     cursor: pointer;
     outline: none;
     background-color: var(--white);
+}
+
+.production-details
+{
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.production-details .author
+{
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.production-details .author .name
+{
+    color: var(--secondary-color-400);
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.production-details .date
+{
+    color: var(--secondary-color-400);
+    font-weight: 400;
+    font-size: 16px;
 }

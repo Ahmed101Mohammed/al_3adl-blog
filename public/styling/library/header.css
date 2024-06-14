@@ -55,10 +55,11 @@ header nav ul li a
     width: max-content;
 }
 
-.search-mode
+.search-sign
 {
     display: flex;
     gap: 40px;
+    align-items: center;
 }
 
 .search
@@ -100,25 +101,15 @@ header nav ul li a
     height: 16px;
 }
 
-.mode
+button.sign
 {
-    display: flex;
-    align-items: center;
-    background-color: var(--secondary-color-100);
-    border-radius: 100px;
-    padding: 2px;
-    width: 48px;
-}
-
-.mode button
-{
-    padding: 5px;
-    border-radius: 100px;
+    font-size: 16px;
+    font-family: "Work Sans", sans-serif;
+    text-transform: capitalize;
     border: none;
-    outline: none;
-    background-color: var(--white);
+    border-radius: 6px;
     cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    padding: 5px;
+    background-color: var(--primary-color);
+    color: var(--white);
 }
