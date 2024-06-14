@@ -1,0 +1,72 @@
+/* author inroduction section */
+section.author
+{
+    display: flex;
+    border-radius: 12px;
+    padding: 48px 274px;
+    align-items: center;
+    justify-content: center;
+    background-color: #F6F6F7;
+}
+
+section.author .author-info
+{
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    align-items: center;
+}
+
+section.author .base-info
+{
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
+section.author p.name
+{
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--secondary-color-800);
+    font-family: "work sans", sans-serif;
+}
+
+section.author p.professionality
+{
+    font-size: 14px;
+    font-weight: 400;
+    color: #606A75;
+    font-family: "work sans", sans-serif;
+}
+
+section.author p.take-action
+{
+    font-size: 18px;
+    font-weight: 400;
+    font-family: "work sans", sans-serif;
+    color: #3B3C4A;
+}
+
+section.author ul.social-links
+{
+    display: flex;
+    gap: 8px;
+    list-style: none;
+}
+
+ul.social-links li
+{
+    padding: 8px;
+    border-radius: 6px;
+    background-color: #696A75;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+ul.social-links li a
+{
+    width: 16px;
+    height: 16px;
+}
