@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Sign In</title>
+
+        <!-- general styling and theme -->
+        <link rel="stylesheet" href="public\styling\general.css">
+        <link rel="stylesheet" href="public\styling\theme.css">
+
+        <!-- main style -->
+        <link rel="stylesheet" href="public\styling\sign-in.css">
+    </head>
+    <body>
+        <div class="security-img">
+            <img src="public\assets\security-log.svg" 
+            alt="security image: contain guy with purble clothes, and a phone, and bove him a lock that refere to security.">
+        </div>
+        <form action="post" class="sign">
+            <h2 class="welcome">
+                Welcome to Al-3adl Tech Blog
+            </h2>
+            <fieldset class="fast-sign">
+                    <button class="login-method">
+                        <span class="method-ui">
+                            <img src="public/assets/google-logo.png" alt="google logo" class="logo">
+                            <p class="name">Sign in with Google</p>
+                        </span>
+                    </button>
+                    <button class="login-method">
+                        <span class="method-ui">
+                            <img src="public/assets/facebook-logo.png" alt="google logo" class="logo">
+                            <p class="name">Sign in with Facebook</p>
+                        </span>
+                    </button>
+            </fieldset>
+            <div class="separation">
+                    <span>or</span>
+            </div>
+            <fieldset class="normal-lign">
+                    <div class="email">
+                        <img src="public/assets/email-log-icon.png" alt="email icon" class="email-icon">
+                        <div class="input-field">
+                            <label for="email" class="email-label">email</label>
+                            <input type="email" id="email" placeholder="example@gmail.com">
+                        </div>
+                    </div>
+                    <div class="password">
+                        <img src="public/assets/password-log-icon.png" alt="kay image" class="password-icon">
+                        <div class="input-field">
+                            <label for="password" class="password-label">password</label>
+                            <input type="password" id="password" placeholder="ahmedIls032eeFe_do0">
+                        </div>
+                    </div>
+            </fieldset>
+            <fieldset class="final-action">
+                <button>sign in</button>
+                <span>Don't you have an account? <a href="sign-up.html">Sign up</a></span>
+            </fieldset>
+        </form>
+    </body>
+</html>
