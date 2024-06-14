@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Sign In</title>
+
+        <!-- google fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+        <!-- general styling and theme -->
+        <link rel="stylesheet" href="public\styling\general.css">
+        <link rel="stylesheet" href="public\styling\theme.css">
+
+        <!-- main style -->
+        <link rel="stylesheet" href="public\styling\sign-in.css">
+    </head>
+    <body>
+        <div class="security-img">
+            <img src="public\assets\security-log.svg" 
+            alt="security image: contain guy with purble clothes, and a phone, and bove him a lock that refere to security.">
+        </div>
+        <form action="post" class="sign">
+            <h2 class="welcome">
+                Welcome to <span>Al-3adl Tech</span>
+            </h2>
+            <fieldset class="fast-sign">
+                    <button class="login-method">
+                        <span class="method-ui">
+                            <img src="public/assets/google-logo.png" alt="google logo" class="logo">
+                            <p class="name">Sign up with Google</p>
+                        </span>
+                    </button>
+            </fieldset>
+            <div class="separation">
+                    <span>or</span>
+            </div>
+            <fieldset class="normal-log">
+                    <div class="full-name input">
+                        <img src="public/assets/user.svg" alt="user icon" class="user-icon">
+                        <div class="input-field">
+                            <label for="full-name" class="field-label">full name</label>
+                            <input type="full-name" id="full-name" placeholder="Ahmed M Al-3adl">
+                        </div>
+                    </div>
+                    <div class="email input">
+                        <img src="public/assets/email-log-icon.png" alt="email icon" class="email-icon">
+                        <div class="input-field">
+                            <label for="email" class="field-label">email</label>
+                            <input type="email" id="email" placeholder="example@gmail.com">
+                        </div>
+                    </div>
+                    <div class="password input">
+                        <img src="public/assets/password-log-icon.png" alt="kay image" class="password-icon">
+                        <div class="input-field">
+                            <label for="password" class="field-label">password</label>
+                            <input type="password" id="password" placeholder="************">
+                        </div>
+                    </div>
+                    <fieldset class="final-action">
+                        <button>sign in</button>
+                        <span>Do you have account? <a href="sign-in.html">Sign in</a></span>
+                    </fieldset>
+            </fieldset>
+        </form>
+    </body>
+</html>

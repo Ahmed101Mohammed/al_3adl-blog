@@ -97,6 +97,11 @@ fieldset.fast-sign
     gap: 15px;
 }
 
+.normal-log .full-name img
+{
+    width: 30px;
+    height: 30px;
+}
 .normal-log .input
 {
     width: 100%;
