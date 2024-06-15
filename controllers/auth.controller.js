@@ -62,7 +62,8 @@ const sign = asyncWrapper(
             return next(notFounded);
         }
 
-        const isRightPassword = bcrypt.compare(password, val.password);
+        const isRightPassword = await bcrypt.compare(val.password, user.password);
+        console.log({isRightPassword});
         if(!isRightPassword)
         {
             const unauthorized = new AppError("Unauthorized", "password is wrong");
@@ -75,8 +76,9 @@ const sign = asyncWrapper(
         user.refreshToken = refreshToken;
         await user.save();
 
-        res.cookie("jwt", refreshToken, {httpOnly: true, sameSite:"None", /*secure: true,*/ maxAge: 24 * 60 * 60 * 1000});
-        res.status(200).json({status: SUCCESS, data: {accessToken}}).end();
+        res.cookie("jwt", refreshToken, {httpOnly: true, sameSite:"None", secure: true, maxAge: 24 * 60 * 60 * 1000});
+        console.log({cookies: JSON.stringify(req.cookies) });
+        res.status(200).json({status: SUCCESS, data: {accessToken, userId: user._id}}).end();
     }
 );
 
@@ -115,6 +117,7 @@ const refreshTokenHandler = asyncWrapper(
     async (req, res, next)=>
     {
         const cookies = req.cookies;
+        console.log({cookies: JSON.stringify(cookies) });
         if(!cookies?.jwt)
         {
             const unauthorized = new AppError(UNAUTHORIZED, "missed data: refresh jwt");

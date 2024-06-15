@@ -21,7 +21,7 @@
             <img src="public\assets\security-log.svg" 
             alt="security image: contain guy with purble clothes, and a phone, and bove him a lock that refere to security.">
         </div>
-        <form action="post" class="sign">
+        <form action="http://localhost:3000/api/users/sign" method="POST" class="sign">
             <h2 class="welcome">
                 Welcome to <span>Al-3adl Tech</span>
             </h2>
@@ -41,21 +41,29 @@
                         <img src="public/assets/email-log-icon.png" alt="email icon" class="email-icon">
                         <div class="input-field">
                             <label for="email" class="field-label">email</label>
-                            <input type="email" id="email" placeholder="example@gmail.com">
+                            <input type="email" id="email" name="email" placeholder="example@gmail.com">
                         </div>
                     </div>
                     <div class="password input">
                         <img src="public/assets/password-log-icon.png" alt="kay image" class="password-icon">
                         <div class="input-field">
                             <label for="password" class="field-label">password</label>
-                            <input type="password" id="password" placeholder="************">
+                            <input type="password" id="password" name="password" placeholder="************">
                         </div>
                     </div>
                     <fieldset class="final-action">
-                        <button>sign in</button>
+                        <button type="submit">sign in</button>
                         <span>Don't you have an account? <a href="sign-up.html">Sign up</a></span>
+                    </fieldset>
+                    <fieldset class="error">
+                        <p class="error-message">
+                            
+                        </p>
                     </fieldset>
             </fieldset>
         </form>
+        <script src="public/scripts/library/globalConstants.js"></script>
+        <script src="public/scripts/library/httpRespondsStatuses.js"></script>
+        <script src="public/scripts/sign-in.js"></script>
     </body>
 </html>
