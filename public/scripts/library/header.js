@@ -49,4 +49,10 @@ const userAvatarOrSignInWillAppear = async()=>
     }
 }
 
-userAvatarOrSignInWillAppear();
+// event for user avatar: open new page for user profile
+const userAvatar = document.querySelector("header nav a.user-home-page-link");
+userAvatar.addEventListener("click", (event)=>
+{
+    event.preventDefault();
+    window.location.href = `author-page.html`;
+})
