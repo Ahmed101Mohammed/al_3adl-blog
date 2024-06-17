@@ -46,3 +46,41 @@ aside h2
     font-weight: 500;
     color: #9197B3;
 }
+
+/* pages container */
+.secondery-container
+{
+    display: flex;
+    justify-content: center;
+    padding: 24px;
+    align-items: self-start;
+}
+
+.secondery-container .intro
+{
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    gap: 64px;
+    background-color: var(--primary-color);
+    border-radius: 10px;
+    max-height: 190px;
+    padding: 16px;
+}
+
+.secondery-container .intro h2
+{
+    text-transform: capitalize;
+    font-family: "Outfit", sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    color: #FFFFFF;
+}
+
+.page-container
+{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    gap: 24px;
+}
