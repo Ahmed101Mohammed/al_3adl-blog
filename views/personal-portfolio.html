@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Personal Portfolio</title>
+
+        <!-- google fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+        
+        <!-- general styling and theme -->
+        <link rel="stylesheet" href="public\styling\general.css">
+        <link rel="stylesheet" href="public\styling\theme.css">
+
+        <!-- library styling -->
+        <link rel="stylesheet" href="public\styling\library\header.css">
+        <link rel="stylesheet" href="public\styling\library\footer.css">
+
+        <!-- main style -->
+        <link rel="stylesheet" href="public\styling\personal-portfolio.css">
+
+    </head>
+    <body>
+        <header>
+            <nav>
+                <div class="logo">
+                    <img src="public/assets/blog-logo.svg" alt="blog logo">
+                    <h1><span>al-3adl</span> tech</h1>
+                </div>
+                <ul class="navbar-items">
+                    <li class="navbar-item">
+                        <a href="index.html" class="navbar-lin">home</a>
+                    </li>
+                    <li class="navbar-item">
+                        <a href="blog-page.html" class="navbar-lin">blog</a>
+                    </li>
+                    <li class="navbar-item">
+                        <a href="article.html" class="navbar-lin">single post</a>
+                    </li>
+                    <li class="navbar-item">
+                        <a href="author-page.html" class="navbar-lin">paeges</a>
+                    </li>
+                </ul>
+                <div class="search-sign">
+                    <form action="post" class="search">
+                            <input type="text" placeholder="search">
+                            <button type="submit">
+                                <img src="public/assets/search-icon.svg" alt="search icon">
+                            </button>
+                    </form>
+                    <a href="sign-in.html" class="sign-link">
+                        <button class="sign">sign in</button>
+                    </a>
+                    <a href="personal-portfolio.html" class="user-home-page-link">
+                        <img src="public/assets/avatar0.png" alt="user avatar">
+                    </a>
+                </div>
+            </nav>
+        </header>
+
+        <main>
+            <aside class="secondery-nav">
+                <ul class="secondery-nav-items">
+                    <li class="secondery-nav-item">
+                        <a href="" class="secondery-nav-link">
+                            <div class="link-details dashboard">
+                                <img src="public/assets/dashboard-icon.svg" alt="dashboard icon">
+                                <h2>dashboard</h2>
+                            </div>
+                            <div class="link-go-img">
+                                <img src="public/assets/right-arow-icon.svg" alt="Right arow icon">
+                            </div>
+                        </a>
+                    </li>
+                    <li class="secondery-nav-item">
+                        <a href="" class="secondery-nav-link">
+                            <div class="link-details logout">
+                                <img src="public/assets/logout-icon.svg" alt="logout icon">
+                                <h2>logout</h2>
+                            </div>
+                            <div class="link-go-img">
+                                <img src="public/assets/right-arow-icon.svg" alt="Right arow icon">
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </aside>
+            <div class="secondery-container">
+                
+            </div>
+        </main>
+
+        <footer>
+            <div class="secondry-container">
+                <div class="general-info">
+                    <div class="about">
+                        <div class="about-content">
+                            <h2>about</h2>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+                        </div>
+                        <div class="contact-data">
+                            <p><span>email : </span>ahmedmohamedal3adl@gmail.com</p>
+                            <p><span>phone : </span>+201014413505</p>
+                        </div>
+                    </div>
+    
+                    <div class="links-and-catigories">
+                        <div class="quick-links">
+                            <h2>quick links</h2>
+                            <ul>
+                                <li><a href="#">home</a></li>
+                                <li><a href="#">about</a></li>
+                                <li><a href="#">blog</a></li>
+                                <li><a href="#">archived</a></li>
+                                <li><a href="#">author</a></li>
+                                <li><a href="#">contact</a></li>
+                            </ul>
+                        </div>
+                        <div class="catigory">
+                            <h2>catigory</h2>
+                            <ul>
+                                <li><a href="#">general</a></li>
+                                <li><a href="#">os</a></li>
+                                <li><a href="#">compilers</a></li>
+                                <li><a href="#">technology</a></li>
+                                <li><a href="#">architecture</a></li>
+                                <li><a href="#">tech-industry</a></li>
+                            </ul>
+                        </div>
+                    </div>
+    
+                    <div class="news-letter">
+                        <div class="news-letter-intro">
+                            <h2>weekly newsletter</h2>
+                            <p>subscribe to our weekly newsletter</p>
+                        </div>
+                        <form action="post">
+                            <fieldset>
+                                <input type="email" placeholder="Your Email">
+                                <label for="subscribe" hidden>Enter your email</label>
+                                <label for="subscribe" class="email-icon">
+                                    <img src="public/assets/email-icon.svg" alt="email icon: is a square with a reverse triangle on the top.">
+                                </label>
+                            </fieldset>
+                            <button>subscribe</button>
+                        </form>
+                    </div>
+                </div>
+    
+                <div class="references">
+                    <h2>references</h2>
+                   <ul>
+                       <li>Photo by <a href="https://unsplash.com/@nasa?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">NASA</a> on <a href="https://unsplash.com/photos/photo-of-outer-space-Q1p7bh3SHj8?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a></li>
+                       <li>Page body template by <a href="https://www.figma.com/community/file/1262016806682195017">Sid</a></li>
+                       <li>Page header and footer template by <a href="https://www.figma.com/community/file/1216616090937021365">Shakil Khan and Zelal Hossain</a></li>
+                       <li>Templates are custmized by <a href="https://github.com/Ahmed101Mohammed">Ahmed Al-3adl</a></li>
+                   </ul>
+                </div>
+    
+                <div class="real-footer">
+                    <div class="copywrite">
+                        <img src="public/assets/blog-logo.svg" alt="blog logo">
+                        <div class="copywrite-text">
+                            <h2><span>al-3adl</span> tech</h2>
+                            <p>&copy; 2024 all rights reserved</p>
+                        </div>
+                    </div>
+                        <ul>
+                            <li><a href="#">terms of use</a></li>
+                            <div class="v-line"></div>
+                            <li><a href="#">privacy policy</a></li>
+                            <div class="v-line"></div>
+                            <li><a href="#">cookie policy</a></li>
+                        </ul>
+                </div>
+            </div>
+        </footer>
+        <script src="public/scripts/library/globalConstants.js"></script>
+        <script src="public/scripts/library/httpRespondsStatuses.js"></script>
+        <script src="public/scripts/library/refreshRequest.js"></script>
+        <script src="public/scripts/library/header.js"></script>
+        <script src="public/scripts/personal-portfolio.js"></script>
+    </body>
+</html>

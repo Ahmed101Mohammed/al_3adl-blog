@@ -1,0 +1,48 @@
+/* main */
+main
+{
+    display: grid;
+    grid-template-columns: auto 1fr;
+}
+
+/* aside */
+aside
+{
+    display: flex;
+    justify-content: center;
+    padding: 37.5px;
+    height: 100%;
+}
+
+aside .secondery-nav-items
+{
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    list-style: none;
+}
+
+aside .secondery-nav-link
+{
+    display: flex;
+    width: 220px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+}
+
+aside .link-details
+{
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+aside h2
+{
+    text-transform: capitalize;
+    font-family: "Outfit", sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: #9197B3;
+}
