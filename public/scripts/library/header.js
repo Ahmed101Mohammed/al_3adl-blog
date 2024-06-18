@@ -24,15 +24,26 @@ const userAvatarApearance = (status)=>
     }
 }
 
+const setUserAvatarPhoto = (url)=>
+{
+    let userAvatar = document.querySelector("header nav a.user-home-page-link");
+    userAvatar.innerHTML = `<img src="/uploads/${url}" alt="user avatar">`;
+}
+
 const userAvatarOrSignInWillAppear = async()=>
 {
     try
     {
-        const accessToken = await getNewAccessToken();
-        if(accessToken !== false)
+        await setAccessToken();
+        if(accessToken)
         {
             signInButtonAppearance(false);
+            await setUserDataConstant(localStorage.getItem("userId"));
             userAvatarApearance(true);
+            if(userData)
+            {
+                setUserAvatarPhoto(userData.avatar36);
+            }
         }
         else
         {
