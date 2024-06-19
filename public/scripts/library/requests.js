@@ -89,6 +89,33 @@ const signUser = async (userEmail, userPassword) => {
     }
 }
 
+// sign up
+const registerUser = async (userFullName, userEmail, userPassword) => {
+    try
+    {
+        const response = await fetch(`${baseUrl}/api/users/register`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                name: userFullName,
+                email: userEmail,
+                password: userPassword
+            }),
+            credentials: 'include'
+        })
+    
+        const data = await response.json();
+        return data;
+    }
+    catch(e)
+    {
+        console.error(`Failed in sign up fetching proccess, because of ${e.message}`);
+        return false;
+    }
+}
+
 // logout
 const logout = async()=> 
 {
