@@ -101,7 +101,7 @@ const dashboardLinkItemAppearance = (status) =>
 // 7. dashboard page apparance
 const dashboardPageAppearance = (status) =>
 {
-    const dashboardPage = document.querySelector('.dashboard-item');
+    const dashboardPage = document.querySelector('.dashboard');
     if(status)
     {
         dashboardPage.style.display = "flex";
@@ -167,9 +167,17 @@ const personalProfileIntialize = async() =>
 personalProfileIntialize();
 
 // set some evenets
-// constants
 const profileItem = document.querySelector('.profile-item');
 profileItem.addEventListener('click', personalProfileIntialize);
+
+const dashboardItem = document.querySelector('.dashboard-item');
+dashboardItem.addEventListener('click', () => {
+    dashboardPageAppearance(true);
+    profilePageAppearance(false);
+    errorPageAppearance(false);
+
+    setPageTitle("Dashboard");
+});
 
 const logOutItem = document.querySelector('.logout-item');
 logOutItem.addEventListener('click', async() =>
