@@ -225,7 +225,6 @@ aside h2
 {
     display: none;
     padding: 30px;
-    display: none;
     flex-direction: column;
     gap: 24px;
     background-color: var(--white);

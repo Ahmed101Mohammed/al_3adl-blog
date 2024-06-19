@@ -1,0 +1,19 @@
+/* filter section */
+.filter
+{
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.filter select
+{
+    width: 200px;
+    height: 38px;
+    background-color: transparent;
+    border-radius: 7px;
+    border: 1px #E5E5E5 solid;
+    padding: 11px 16px;
+    cursor: pointer;
+    color: #7879F1;
+}

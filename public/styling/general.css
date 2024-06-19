@@ -54,7 +54,7 @@ p, h1, h2, h3, h4, h5, h6, ul, blockquote, fieldset
 }
 
 /* border, outline none */
-fieldset, button, input
+fieldset, button, input, select
 {
     border: none;
     outline: none;
