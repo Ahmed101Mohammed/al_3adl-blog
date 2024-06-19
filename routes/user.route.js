@@ -9,7 +9,7 @@ const {ADMIN, MANIGER} = require("../utils/rolesConstants");
 router
     .post("/register", register)
     .post("/sign", sign)
-    .post("/logout", verifyJWT, logout)
+    .get("/logout", verifyJWT, logout)
     .get("/refreshToken", refreshTokenHandler);
 
 router.route("/")

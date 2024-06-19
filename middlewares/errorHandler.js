@@ -10,19 +10,19 @@ const errorHandler = (err, req, res, next)=>
     switch(errName)
     {
         case UNAUTHORIZED:
-            res.status(401).json({status: FAIL, message: errMessage}).end();
+            res.status(401).json({status: FAIL, message: errMessage, errorType: UNAUTHORIZED}).end();
             break;
         case DUBLICATED_DATA:
-            res.status(409).json({status: FAIL, message: errMessage}).end();
+            res.status(409).json({status: FAIL, message: errMessage, errorType: DUBLICATED_DATA}).end();
             break;
         case NOT_FOUNDED_DATA:
-            res.status(404).json({status: FAIL, message: errMessage}).end();
+            res.status(404).json({status: FAIL, message: errMessage, errorType: NOT_FOUNDED_DATA}).end();
             break;
         case VALIDATION_ERROR:
-            res.status(400).json({status: FAIL, message: errMessage}).end();
+            res.status(400).json({status: FAIL, message: errMessage, errorType: VALIDATION_ERROR}).end();
             break;
         default:
-            res.status(500).json({status: ERROR, message: errMessage}).end();
+            res.status(500).json({status: ERROR, message: errMessage, errorType: "ERROR"}).end();
             break;
     }
     next();

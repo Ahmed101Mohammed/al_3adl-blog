@@ -49,6 +49,14 @@ const userSchema = new mongoose.Schema({
         type: String,
         default: "person.png"
     },
+    avatar100: {
+        type: String,
+        default: "person-100.png"
+    },
+    avatar36: {
+        type: String,
+        default: "person-36.png"
+    },
     publishedArticles: [articleIdSchema],
     refreshToken: {
         type: String

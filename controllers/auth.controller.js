@@ -96,19 +96,19 @@ const logout = asyncWrapper(
         const user = await User.findOne({refreshToken}, {"__v": false, "password": false});
         if(!user)
         {
-            res.clearCookie("jwt", {httpOnly: true, sameSite:"None", /*secure: true,*/ maxAge: 24*60*60*1000});
-            return res.status(204).end();
+            res.clearCookie("jwt", {httpOnly: true, sameSite:"None", secure: true, maxAge: 24*60*60*1000});
+            return res.status(200).json({status: SUCCESS, data: {accessToken: null} }).end();
         }
         user.refreshToken = "";
         await user.save();
-        res.clearCookie("jwt", {httpOnly: true, sameSite:"None", /*secure: true,*/ maxAge: 24*60*60*1000});
+        res.clearCookie("jwt", {httpOnly: true, sameSite:"None", secure: true, maxAge: 24*60*60*1000});
 
         // put the logout in black list:
         const authHeader = req.headers['authorization'];
         const accessToken = authHeader.split(" ")[1];
         const newBlockedAccessToken = new BlockedAccessToken({token: accessToken});
         await newBlockedAccessToken.save(); 
-        res.status(204).end();
+        res.status(200).json({status: SUCCESS, data: {accessToken: null} }).end();
     }
 
 )

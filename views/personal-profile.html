@@ -56,7 +56,7 @@
                     <a href="sign-in.html" class="sign-link">
                         <button class="sign">sign in</button>
                     </a>
-                    <a href="personal-portfolio.html" class="user-home-page-link">
+                    <a href="personal-profile.html" class="user-home-page-link">
                         <img src="public/assets/avatar0.png" alt="user avatar">
                     </a>
                 </div>
@@ -66,9 +66,20 @@
         <main>
             <aside class="secondery-nav">
                 <ul class="secondery-nav-items">
-                    <li class="secondery-nav-item">
-                        <a href="" class="secondery-nav-link">
-                            <div class="link-details dashboard">
+                    <li class="secondery-nav-item profile-item">
+                        <a class="secondery-nav-link">
+                            <div class="link-details profile-link-container">
+                                <img src="public/assets/profile-page-icon.svg" alt="profile page icon">
+                                <h2>profile</h2>
+                            </div>
+                            <div class="link-go-img">
+                                <img src="public/assets/right-arow-icon.svg" alt="Right arow icon">
+                            </div>
+                        </a>
+                    </li>
+                    <li class="secondery-nav-item dashboard-item">
+                        <a class="secondery-nav-link">
+                            <div class="link-details dashboard-link-container">
                                 <img src="public/assets/dashboard-icon.svg" alt="dashboard icon">
                                 <h2>dashboard</h2>
                             </div>
@@ -77,9 +88,9 @@
                             </div>
                         </a>
                     </li>
-                    <li class="secondery-nav-item">
-                        <a href="" class="secondery-nav-link">
-                            <div class="link-details logout">
+                    <li class="secondery-nav-item logout-item">
+                        <a class="secondery-nav-link">
+                            <div class="link-details logout-link-container">
                                 <img src="public/assets/logout-icon.svg" alt="logout icon">
                                 <h2>logout</h2>
                             </div>
@@ -92,36 +103,40 @@
             </aside>
             <div class="secondery-container">
                 <div class="intro">
-                    <h2 class="page-title">my profile</h2>
+                    <h2 class="page-title"><!--my profile/Now handled with javascript--></h2>
                     <div class="page-container">
                         <div class="profile">
-                            <div class="personal-photo">
+                            <!-- It is now handled in javascript -->
+                            <!-- <div class="personal-photo">
                                 <div class="photo">
                                     <img src="public/assets/profile-photo.png" alt="profile image">
                                 </div>
                                 <button class="upload-btn">Upload Photo</button>
                             </div>
 
-                            <div class="personal-main-info">
-                                <div class="name">
+                            <div class="personal-info">
+                                <div class="info name">
                                     <h3 class="info-title">your name</h3>
                                     <div class="info-data">
-                                        <input type="text" value="Ahmed M Al-3adl">
+                                        <input type="text" disabled value="Ahmed M Al-3adl">
                                         <button class="edit-btn">Edit</button>
                                     </div>
                                 </div>
-                                <div class="email">
+                                <div class="info email">
                                     <h3 class="info-title">email</h3>
                                     <div class="info-data">
-                                        <input type="text" value="ahmedmohamedal3adl@gmail">
+                                        <input type="text" disabled value="ahmedmohamedal3adl@gmail">
                                         <button class="edit-btn">Edit</button>
                                     </div>
-                                </div>
+                                </div> -->
 
                             </div>
                         </div>
-                        <div class="dashboard">
+                        <div class="uploads">
 
+                        </div>
+                        <div class="loading-page-error">
+                            <p class="loading-page-error-text">loading...</p>
                         </div>
                     </div>
                 </div>
@@ -213,10 +228,10 @@
                 </div>
             </div>
         </footer>
+        <script src="public/scripts/library/requests.js"></script>
         <script src="public/scripts/library/globalConstants.js"></script>
-        <script src="public/scripts/library/httpRespondsStatuses.js"></script>
-        <script src="public/scripts/library/refreshRequest.js"></script>
-        <script src="public/scripts/library/header.js"></script>
-        <script src="public/scripts/personal-portfolio.js"></script>
+        <script src="public/scripts/library/setConstants.js"></script>
+        <script src="public/scripts/library/header.js"></script>        
+        <script src="public/scripts/personalProfile.js"></script>
     </body>
 </html>

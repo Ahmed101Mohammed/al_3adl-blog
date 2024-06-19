@@ -1,30 +1,4 @@
 // Specifi behaviour for submit button on sign in page
-const signUser = async (userEmail, userPassword) => {
-    try
-    {
-        const response = await fetch(`${baseUrl}/api/users/sign`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                email: userEmail,
-                password: userPassword
-            }),
-            credentials: 'include'
-        })
-    
-        const data = await response.json();
-
-        return data;
-    }
-    catch(e)
-    {
-        console.error(`Failed in sign in fetching proccess, because of ${e.message}`);
-        return false;
-    }
-}
-
 const submitButton = document.querySelector('button[type="submit"]');
 
 submitButton.addEventListener('click', (event) => {
