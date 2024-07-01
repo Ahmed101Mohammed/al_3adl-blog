@@ -89,3 +89,29 @@ td
     text-transform: capitalize;
     border-top: 1px #E9EFF4 solid;
 }
+
+/* add new article bottun */
+.add-new-article
+{
+    width: 38px;
+    height: 38px;
+    background-color: #7879F1;
+    border-radius: 7px;
+    border: none;
+    cursor: pointer;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: white;
+    font-size: 20px;
+    opacity: 0.5;
+}
+
+.add-new-article:hover
+{
+    opacity: 1;
+}
