@@ -5,6 +5,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Articles Dashboard</title>
 
+        <!-- google fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
         <!-- general styling and theme -->
         <link rel="stylesheet" href="public\styling\general.css">
         <link rel="stylesheet" href="public\styling\theme.css">
@@ -62,9 +67,80 @@
                         <option value="all-articles">All Articles</option>
                     </select>
                 </section>
-
+                    
                 <section class="articles">
+                    <!-- <div class="table">
+                        <div class="table-head">
+                            <ul class="table-titles row">
+                                <li class="table-title row-item">title</li>
+                                <li class="table-title row-item">author</li>
+                                <li class="table-title row-item">date</li>
+                                <li class="table-title row-item">category</li>
+                                <li class="table-title row-item">edit</li>
+                                <li class="table-title row-item">delete</li>
+                                <li class="table-title row-item">view</li>
+                            </ul>
+                        </div>
+
+                        <div class="table-body">
+                            <ul class="row">
+                                <li class="row-item">article title</li>
+                                <li class="row-item">author name</li>
+                                <li class="row-item">date</li>
+                                <li class="row-item">general</li>
+                                <li class="row-item">edit</li>
+                                <li class="row-item">delete</li>
+                                <li class="row-item">view</li>
+
+                            </ul>
+                        </div>
+                    </div> -->
+
+                    <table>
+                        <thead rules="rows">
+                            <tr>
+                                <th class="article-title">title</th>
+                                <th>author</th>
+                                <th>date</th>
+                                <th>category</th>
+                                <th>edit</th>
+                                <th>delete</th>
+                                <th class="view-article">view</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="article-title">article title</td>
+                                <td>author name</td>
+                                <td>date</td>
+                                <td>general</td>
+                                <td>edit</td>
+                                <td>delete</td>
+                                <td class="view-article">view</td>
+                            </tr>
+                            <tr>
+                                <td class="article-title">article title</td>
+                                <td>author name</td>
+                                <td>date</td>
+                                <td>general</td>
+                                <td>edit</td>
+                                <td>delete</td>
+                                <td class="view-article">view</td>
+                            </tr>
+                            <tr>
+                                <td class="article-title">article title</td>
+                                <td>author name</td>
+                                <td>date</td>
+                                <td>general</td>
+                                <td>edit</td>
+                                <td>delete</td>
+                                <td class="view-article">view</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <button class="load-more">load more</button>
                 </section>
+                <div class="add-new-article">+</div>
             </div>
         </main>
         <footer>
