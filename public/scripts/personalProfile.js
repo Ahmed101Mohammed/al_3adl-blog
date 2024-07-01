@@ -67,15 +67,15 @@ const setProfile = (data) =>
                             <div class="personal-info">
                                 <div class="info name">
                                     <h3 class="info-title">your name</h3>
-                                    <div class="info-data">
+                                    <div class="info-data name">
                                         <input type="text" disabled value="${data.name}">
                                         <button class="edit-btn">Edit</button>
                                     </div>
                                 </div>
                                 <div class="info email">
                                     <h3 class="info-title">email</h3>
-                                    <div class="info-data">
-                                        <input type="text" disabled value="${data.email}">
+                                    <div class="info-data email">
+                                        <input type="email" disabled value="${data.email}">
                                         <button class="edit-btn">Edit</button>
                                     </div>
                                 </div>
@@ -121,6 +121,97 @@ const setPageTitle = (title) =>
     pageTitle.innerText = title;
 }
 
+// 9. edit name behaviour
+const editNameFullBehaviour = () =>
+{
+    let previousName = "";
+    const editName = document.querySelector('.name .edit-btn');
+        editName.addEventListener('click', async() =>
+        {
+            const name = document.querySelector('.name input');
+            const userData = {};
+            if(name.disabled)
+            {
+                previousName = name.value;
+                name.disabled = false;
+                name.focus();
+                editName.textContent = "Save";
+            }
+            else
+            {
+                name.disabled = true;
+                editName.textContent = "Edit";
+                const newName = name.value;
+                userData.name = newName;
+                const userId = localStorage.getItem("userId");
+                const data = await advancedWithRefresh(async() => await updateUserData(userData, userId));
+                console.log(data);
+                if(data.status === SUCCESS)
+                {
+                    setTemporaryMessage("Name updated successfully");
+                }
+                else
+                {
+                    setTemporaryMessage(data.message);
+                    name.value = previousName;
+                }
+            }                
+        });
+}
+
+// 10. edit email behaviour
+const editEmailFullBehaviour = () =>
+{
+    let previousEmail = "";
+    const editEmail = document.querySelector('.email .edit-btn');
+        editEmail.addEventListener('click', async() =>
+        {
+            const email = document.querySelector('.email input');
+            const userData = {};
+            if(email.disabled)
+            {
+                previousEmail = email.value;
+                email.disabled = false;
+                email.focus();
+                editEmail.textContent = "Save";
+            }
+            else
+            {
+                editEmail.textContent = "Edit";
+                const newEmail = email.value;
+                userData.email = newEmail;
+                const userId = localStorage.getItem("userId");
+                const data = await advancedWithRefresh(async() => await updateUserData(userData, userId));
+                if(data.status === SUCCESS)
+                {
+                    setTemporaryMessage("Email updated successfully");
+                }
+                else
+                {
+                    setTemporaryMessage(data.message);
+                    console.log({previousEmail})
+                    email.value = previousEmail;
+                }
+                email.disabled = true;
+            }   
+        });
+}
+
+// 11. temporary message
+const setTemporaryMessage = (message) =>
+{
+    const temporaryMessage = document.querySelector('.temporary-error-message');
+    temporaryMessage.textContent = message;
+    temporaryMessage.style.display = "block";
+
+    setTimeout(() =>
+    {
+        temporaryMessage.style.removeProperty("display");
+        temporaryMessage.textContent = "";
+
+    }, 3000);
+}
+
 // functionlaity running
 const personalProfileIntialize = async() =>
 {
@@ -155,6 +246,11 @@ const personalProfileIntialize = async() =>
         {
             dashboardLinkItemAppearance(true);
         }
+
+        // 6: add event for edit btns
+        editNameFullBehaviour();
+        editEmailFullBehaviour();
+        
         
     }
     catch(e)

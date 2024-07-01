@@ -162,6 +162,25 @@ const logoutAdvanced = async()=>
     }
 }
 
+// advanced api request
+const advancedWithRefresh = async(request)=>
+{
+    const data = await request();
+    if(data.status === FAIL && data.errorType === UNAUTHORIZED)
+    {
+        let data = await getNewAccessToken();
+        if(data.status === SUCCESS)
+        {
+            accessToken = data.data.accessToken;
+        }
+
+        return await request();
+    }
+    else
+    {
+        return data;
+    }
+}
 // get articles from database
 const getArticles = async()=>
 {
@@ -180,6 +199,30 @@ const getArticles = async()=>
     catch(e)
     {
         console.error(`Failed in get articles fetching proccess, because of ${e.message}`);
+        return false;
+    }
+}
+
+// edit user data
+const updateUserData = async (userData, userId) => 
+{
+    try
+    {
+        const response = await fetch(`${baseUrl}/api/users/${userId}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
+                'authorization': `Bearer ${accessToken}`
+            },
+            body: JSON.stringify(userData),
+            credentials: 'include'
+        });
+        const data = await response.json();
+        return data;
+    }
+    catch(e)
+    {
+        console.error(`Failed in update user data fetching proccess, because of ${e.message}`);
         return false;
     }
 }
