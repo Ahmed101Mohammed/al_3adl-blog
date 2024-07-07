@@ -43,7 +43,6 @@ const register = asyncWrapper(
 const sign = asyncWrapper(
     async (req, res, next)=>
     {
-        console.log("start sign")
         const userSignSchema = Joi.object({
             email: Joi.string().email().required(),
             password: Joi.string().pattern(new RegExp('^[a-zA-Z0-9]{3,30}$')).required()
@@ -51,11 +50,8 @@ const sign = asyncWrapper(
         const { email, password } = req.body;
 
         const userSignData = {email, password};
-        console.log({userSignData})
         const val = await userSignSchema.validateAsync(userSignData);
-        console.log({val});
         const user = await User.findOne({email: email});
-        console.log({user});
         if(!user)
         {
             const notFounded = new AppError("NotFoundedData", `no user with ${val.email} email`);
@@ -63,7 +59,6 @@ const sign = asyncWrapper(
         }
 
         const isRightPassword = await bcrypt.compare(val.password, user.password);
-        console.log({isRightPassword});
         if(!isRightPassword)
         {
             const unauthorized = new AppError("Unauthorized", "password is wrong");
@@ -77,7 +72,6 @@ const sign = asyncWrapper(
         await user.save();
 
         res.cookie("jwt", refreshToken, {httpOnly: true, sameSite:"None", secure: true, maxAge: 24 * 60 * 60 * 1000});
-        console.log({cookies: JSON.stringify(req.cookies) });
         res.status(200).json({status: SUCCESS, data: {accessToken, userId: user._id}}).end();
     }
 );
@@ -117,7 +111,6 @@ const refreshTokenHandler = asyncWrapper(
     async (req, res, next)=>
     {
         const cookies = req.cookies;
-        console.log({cookies: JSON.stringify(cookies) });
         if(!cookies?.jwt)
         {
             const unauthorized = new AppError(UNAUTHORIZED, "missed data: refresh jwt");
@@ -132,11 +125,9 @@ const refreshTokenHandler = asyncWrapper(
             return next(unauthorized);
         }
 
-        console.log({user})
         try
         {
             const decoded = jwt.verify(refreshToken, process.env.JWT_SECRET_KEY_REFRESH);
-            console.log({decoded});
             const {id, email, role} = decoded; 
             const accessToken = createJWT(process.env.JWT_SECRET_KEY_ACCESS, {id, email, role}, "2m");
             res.status(200).json({status: SUCCESS, data: { accessToken }}).end();

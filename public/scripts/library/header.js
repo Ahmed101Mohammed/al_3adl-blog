@@ -16,7 +16,7 @@ const userAvatarApearance = (status)=>
     let userAvatar = document.querySelector("header nav a.user-home-page-link");
     if(status)
     {
-        userAvatar.style.display = "inline";
+        userAvatar.style.display = "flex";
     }
     else
     {
@@ -42,7 +42,7 @@ const userAvatarOrSignInWillAppear = async()=>
             userAvatarApearance(true);
             if(userData)
             {
-                setUserAvatarPhoto(userData.avatar36);
+                setUserAvatarPhoto(userData.avatar);
             }
         }
         else

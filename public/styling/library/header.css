@@ -117,4 +117,14 @@ button.sign
 header .sign-link, header .user-home-page-link
 {
     display: none;
+    object-fit: cover;
+    align-items: center;
+    justify-content: center;
+}
+
+header .user-home-page-link img
+{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
 }

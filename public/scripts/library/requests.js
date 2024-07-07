@@ -119,7 +119,6 @@ const registerUser = async (userFullName, userEmail, userPassword) => {
 // logout
 const logout = async()=> 
 {
-    console.log("LOGGING OUT");
     try
     {
         const response = await fetch(`${baseUrl}/api/users/logout`, 
@@ -166,6 +165,7 @@ const logoutAdvanced = async()=>
 const advancedWithRefresh = async(request)=>
 {
     const data = await request();
+    console.log({data});
     if(data.status === FAIL && data.errorType === UNAUTHORIZED)
     {
         let data = await getNewAccessToken();
@@ -217,6 +217,30 @@ const updateUserData = async (userData, userId) =>
             body: JSON.stringify(userData),
             credentials: 'include'
         });
+        const data = await response.json();
+        return data;
+    }
+    catch(e)
+    {
+        console.error(`Failed in update user data fetching proccess, because of ${e.message}`);
+        return false;
+    }
+}
+
+const updateUserDataForm = async (userData, userId) =>
+{
+    try
+    {
+        const response = await fetch(`${baseUrl}/api/users/${userId}`, {
+            method: 'PATCH',
+            headers: {
+                // 'Content-Type': 'multipart/form-data',
+                'authorization': `Bearer ${accessToken}`
+            },
+            body: userData,
+            credentials: 'include'
+        });
+
         const data = await response.json();
         return data;
     }

@@ -57,9 +57,9 @@ const setProfile = (data) =>
 {
     const profile = document.querySelector('.profile');
     profile.innerHTML = `
-        <div class="personal-photo">
+                            <div class="personal-photo">
                                 <div class="photo">
-                                    <img src="uploads/${data.avatar100}" alt="profile image">
+                                   <img src="uploads/${data.avatar}" alt="profile image">
                                 </div>
                                 <button class="upload-btn">Upload Photo</button>
                             </div>
@@ -145,7 +145,6 @@ const editNameFullBehaviour = () =>
                 userData.name = newName;
                 const userId = localStorage.getItem("userId");
                 const data = await advancedWithRefresh(async() => await updateUserData(userData, userId));
-                console.log(data);
                 if(data.status === SUCCESS)
                 {
                     setTemporaryMessage("Name updated successfully");
@@ -189,7 +188,6 @@ const editEmailFullBehaviour = () =>
                 else
                 {
                     setTemporaryMessage(data.message);
-                    console.log({previousEmail})
                     email.value = previousEmail;
                 }
                 email.disabled = true;
@@ -197,7 +195,18 @@ const editEmailFullBehaviour = () =>
         });
 }
 
-// 11. temporary message
+// 11. edit user photo behaviour
+const editUserPhoto = () =>
+{
+    const editUserPhotoElement = document.querySelector('.personal-photo .upload-btn');
+    editUserPhotoElement.addEventListener('click', () =>
+    {
+        const formContainer = document.querySelector('.filter');
+        formContainer.style.display = "flex";
+    });
+}
+
+// 12. temporary message
 const setTemporaryMessage = (message) =>
 {
     const temporaryMessage = document.querySelector('.temporary-error-message');
@@ -250,6 +259,7 @@ const personalProfileIntialize = async() =>
         // 6: add event for edit btns
         editNameFullBehaviour();
         editEmailFullBehaviour();
+        editUserPhoto();
         
         
     }
@@ -290,4 +300,84 @@ logOutItem.addEventListener('click', async() =>
     {
         console.error(e);
     }
+})
+
+const editPhotoContainer = document.querySelector(".filter");
+editPhotoContainer.addEventListener('click', (event) =>
+{
+    if(event.target.classList.contains("filter"))
+    {
+        editPhotoContainer.style.removeProperty("display");
+    }
+})
+
+let acceptedFile = false;
+const uploadPhotoButton = document.querySelector(".filter form button");
+uploadPhotoButton.addEventListener('click', async(event) =>
+{
+    // 1MB in Bytes is 1,048,576
+    event.preventDefault();
+    const uploadPhotoInput = document.querySelector(".filter form input");
+    const file = uploadPhotoInput.files[0];
+
+    const formData = new FormData();
+    formData.append('avatar', file);
+
+    const userId = localStorage.getItem("userId");
+    const data = await advancedWithRefresh(async() => await updateUserDataForm(formData, userId));
+    if(data.status === SUCCESS)
+    {
+        editPhotoContainer.style.removeProperty("display");
+        setTemporaryMessage("Profile photo updated successfully");
+        const getUserDataRes = await advancedWithRefresh(async()=> await getUserPersonalData(userId));
+        const userNewData = getUserDataRes.data.user;
+        const profileImage = document.querySelector(".personal-photo .photo img");
+        const headerImage = document.querySelector(".user-home-page-link img");
+        profileImage.src =  `uploads/${userNewData.avatar}`;
+        headerImage.src =  `uploads/${userNewData.avatar}`;
+    }
+    else
+    {
+        console.error({data});
+    }
+})
+
+const uploadPhotoInput = document.querySelector(".filter form input");
+uploadPhotoInput.addEventListener('change', (event) =>
+{
+    acceptedFile = true;
+    const errorContainer = document.querySelector(".filter .error-message-container");
+    const errorTxt = document.querySelector(".filter .error-message-container .error-message");
+    errorContainer.style.removeProperty("display");
+    errorTxt.textContent = "";
+    const file = event.target.files[0];
+    if(file && file.size > (1 * 1024 * 1024))
+    {
+        errorContainer.style.display = "flex";
+        errorTxt.textContent = "File size should be less than 1 MB";
+        acceptedFile = false;
+    }
+    else if(file)
+    {
+        const img = new Image();
+        img.src = URL.createObjectURL(file);
+        img.onload = () =>
+        {
+            const imgWidth = img.width;
+            const imgHeight = img.height;
+            if(imgWidth !== 100 || imgHeight !== 100)
+            {
+                errorContainer.style.display = "flex";
+                errorTxt.textContent = "Your avatar dimention should be equal 100x100.";
+                acceptedFile = false;
+            }
+        }
+    }
+    else if(!file)
+    {
+        errorContainer.style.display = "flex";
+        errorTxt.textContent = "Please select a file";
+        acceptedFile = false;
+    }
+
 })

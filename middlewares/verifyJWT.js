@@ -40,9 +40,9 @@ const verifyJWT = asyncWrapper(
         }
         catch(e)
         {
-            return next(e)
+            const unauthorized = new AppError(UNAUTHORIZED, "invalid access token");
+            return next(unauthorized)
         }
-
         next();
     }
 );
