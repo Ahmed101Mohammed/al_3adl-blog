@@ -31,11 +31,6 @@ table
     border-spacing: 0px 10px;
 }
 
-tr
-{
-    cursor: pointer;
-}
-
 thead tr
 {
     cursor: default;
@@ -62,6 +57,42 @@ td
     border-right-width: 0px;
 }
 
+td span.edit
+{
+    font-size: 20px;
+    color: #7879F1;
+    cursor: pointer;
+}
+
+td span.edit:hover
+{
+    color: #5d5de2;
+}
+
+td  span.delete
+{
+    font-size: 20px;
+    color: #e8644684;
+    cursor: pointer;
+}
+
+td  span.delete:hover
+{
+    color: #e86446;
+}
+
+
+td span.view 
+{
+    font-size: 20px;
+    color: #87879055;/*Green color*/
+    cursor: pointer;
+}
+
+td span.view:hover
+{
+    color: #7bf45a;
+}
 .article-title
 {
     border-left-width: 1px;
