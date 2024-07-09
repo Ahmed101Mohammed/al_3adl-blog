@@ -28,6 +28,7 @@ app.use(logger);
 app.use("/uploads", express.static(join(__dirname, "uploads")));
 app.use("/", express.static(join(__dirname, "views")));
 app.use("/public", express.static(join(__dirname, "public")));
+app.use("/node_modules", express.static(join(__dirname, "node_modules")));
 // routes
 app.use("/api/users", userRouter);
 app.use("/api/articles",articleRouter);

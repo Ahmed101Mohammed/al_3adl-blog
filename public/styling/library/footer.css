@@ -122,6 +122,7 @@ footer .links-and-catigories li a
     text-transform: capitalize;
     width: max-content;
     display: block;
+    text-decoration: none !important;
 }
 
 footer .news-letter
@@ -252,6 +253,7 @@ footer .references li
 footer .references li a
 {
     color: #414142;
+    text-decoration: none !important;
 }
 
 footer .real-footer
@@ -311,6 +313,10 @@ footer .real-footer ul
     justify-content: flex-end;
 }
 
+footer .real-footer ul li a
+{
+    text-decoration: none !important;
+}
 footer .real-footer ul .v-line
 {
     width: 1px;
