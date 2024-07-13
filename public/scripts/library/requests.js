@@ -165,7 +165,7 @@ const logoutAdvanced = async()=>
 const advancedWithRefresh = async(request)=>
 {
     const data = await request();
-    console.log({data});
+    // console.log({data});
     if(data.status === FAIL && data.errorType === UNAUTHORIZED)
     {
         let data = await getNewAccessToken();
