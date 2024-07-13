@@ -17,9 +17,12 @@
         <link rel="stylesheet" href="public\styling\theme.css">
 
         <!-- library styling -->
+        <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
         <link rel="stylesheet" href="public\styling\library\header.css">
         <link rel="stylesheet" href="public\styling\library\footer.css">
-        <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="public\styling\library\global-classes.css">
+
+        <!-- main style -->
 
         <!-- main style -->
         <link rel="stylesheet" href="public\styling\article-lap.css">
@@ -119,7 +122,9 @@
                         <button class="next btn bg-primary text-light w-100">Next</button>
                     </div>
                 </section>
-               
+            </div>
+            <div class="temporary-error-message">
+                Hi
             </div>
         </main>
         <footer>
@@ -178,7 +183,6 @@
                         </form>
                     </div>
                 </div>
-    
                 <div class="references">
                     <h2>references</h2>
                    <ul>
@@ -205,6 +209,7 @@
                         </ul>
                 </div>
             </div>
+
         </footer>
         <script src="public/scripts/library/globalConstants.js"></script>
         <script src="public/scripts/library/requests.js"></script>
@@ -212,6 +217,7 @@
         <script src="public/scripts/library/header.js"></script>
         <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+        <script src="public/scripts/library/setTemporaryMessage-helper.js"></script>
         <script src="public/scripts/articleLap.js" type="module"></script>
     </body>
 </html>

@@ -94,7 +94,6 @@ nextOrDoneButton.addEventListener("click", async() =>
         const articleCategory = document.querySelector("#article-category").value;
         const date = new Date();
         const userData = await advancedWithRefresh(async() => await getUserPersonalData(localStorage.getItem("userId")));
-        console.log({userData});
         const articleData = {
             body: articleBody,
             title: articleTitle,
@@ -115,10 +114,16 @@ nextOrDoneButton.addEventListener("click", async() =>
         formData.append("cover", articleData.cover);
 
         const data = await advancedWithRefresh(async() => await postArticle(formData));
-
-        
-
-        console.log({articleData});
+        if(data.status === SUCCESS)
+        {
+            setTemporaryMessage("Article created successfully");
+            window.location.href = "article.html?id=" + data.data.article._id;
+        }
+        else
+        {
+            console.error({data});
+            setTemporaryMessage(data.message);
+        }
     }
 })
 

@@ -250,3 +250,26 @@ const updateUserDataForm = async (userData, userId) =>
         return false;
     }
 }
+
+// post an article with form data
+const postArticle = async (articleData) => 
+{
+    try
+    {
+        const response = await fetch(`${baseUrl}/api/articles`, {
+            method: 'POST',
+            headers: {
+                'authorization': `Bearer ${accessToken}`
+            },
+            body: articleData,
+            credentials: 'include'
+        });
+        const data = await response.json();
+        return data;
+    }
+    catch(e)
+    {
+        console.error(`Failed in post article fetching proccess, because of ${e.message}`);
+        return false;
+    }
+}

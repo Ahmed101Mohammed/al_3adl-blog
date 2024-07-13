@@ -34,7 +34,7 @@ const postArticle = asyncWrapper(
             body: Joi.string().min(200).required(),
             author: Joi.string().required(),
             authorId: Joi.required(),
-            category: Joi.string().min(3)
+            category: Joi.string().min(2)
         });
 
         const value = await schema.validateAsync(articleData);
@@ -83,7 +83,7 @@ const updateArticle = asyncWrapper(
             body: Joi.string().min(200),
             author: Joi.string(),
             authorId: Joi.string(),
-            category: Joi.string().min(3),
+            category: Joi.string().min(2),
             liked: Joi.number().min(0),
             disLike: Joi.number().min(0)
         });

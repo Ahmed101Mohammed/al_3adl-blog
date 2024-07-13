@@ -36,7 +36,7 @@ const articleSchema = new mongoose.Schema({
     },
     category: {
         type: String,
-        minLength: [3, "name must be more than 2 chars"],
+        minLength: [2, "name must be more than 2 chars"],
         default: "general"
     },
     liked: {
