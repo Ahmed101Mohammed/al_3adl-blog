@@ -108,7 +108,7 @@ article .article-cover img
 
 .article-body blockquote
 {
-    padding: 32px;
+    padding-left: 32px;
     font-size: 24px;
     color: var(--secondary-color-800);
     font-weight: 400;
