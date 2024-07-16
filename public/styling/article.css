@@ -77,33 +77,36 @@ article .production-details .date
     text-transform: capitalize;
     font-family: "work sans", sans-serif;
 }
-
-/* article content */
-.article-part
+/* article cover */
+article .article-cover img
 {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
+    width: 800px;
+    object-fit: cover;
+    border-radius: 12px;
 }
+/* article content */
 
-.article-part .title
+.article-body h1, h2, h3, h4, h5, h6
 {
     font-family: "work sans", sans-serif;
     font-size: 24px;
     font-weight: 600;
     color: var(--secondary-color-800);
     text-transform: capitalize;
+    margin-bottom: 12px;
 }
 
-.article-paragraph
+.article-body p
 {
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 400;
     color: #3B3C4A;
     font-family: "Source Serif Pro", sans-serif;
+    line-height: 28px;
+    margin-bottom: 24px;
 }
 
-.article-quote
+.article-body blockquote
 {
     padding: 32px;
     font-size: 24px;
@@ -112,4 +115,12 @@ article .production-details .date
     font-style: italic;
     font-family: "Source Serif Pro", sans-serif;
     border-left: 4px solid var(--secondary-color-100);
+    margin-bottom: 24px;
+}
+
+.article-body img 
+{
+    margin: auto;
+    display: block;
+    margin-bottom: 12px;
 }

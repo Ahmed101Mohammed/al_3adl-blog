@@ -1,6 +1,3 @@
-// Library prerequirments:
-// - globalConstants library: const baseUrl = "http://localhost:3000";
-
 // no-posts message appearance
 const noPostsAppearance = (status)=>
 {
@@ -86,6 +83,29 @@ const Article = ({_id ,title, body, author, authorId, cover, category, date, lik
         },
         addSimpleArticlePresentationToDomContainer: function(container) {
             container.insertAdjacentHTML('beforeend', this.createSimpleHTMLPresentation());
+        },
+        createFullArticlePresentation: function() {
+            return `
+                        <div class="article-header">
+                            <div class="main-info">
+                                <p class="category-primary">${category}</p>
+                                <h2 class="title">${title}</h2>
+                            </div>
+                            <div class="production-details">
+                                    <div class="author">
+                                        <img src="public/assets/avatar0.png" alt="author image"/>
+                                        <p class="name">${author}</p>
+                                    </div>
+                                    <p class="date">${months[this.date.getMonth()]} ${this.date.getDate()}, ${this.date.getFullYear()}</p>
+                            </div>
+                        </div>
+                        <div class="article-cover">
+                            <img src="${baseUrl}/uploads/${cover}" alt="article cover">
+                        </div>
+                        <div class="article-body">
+                        
+                        </div>
+            `
         }
 
     }

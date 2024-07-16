@@ -203,6 +203,28 @@ const getArticles = async(page, limit)=>
     }
 }
 
+// get article by id
+const getArticle = async(articleId)=>
+{
+    try
+    {
+        const response = await fetch(`${baseUrl}/api/articles/${articleId}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            credentials: 'include'
+        });
+        const data = await response.json();
+        return data;
+    }
+    catch(e)
+    {
+        console.error(`Failed in get article fetching proccess, because of ${e.message}`);
+        return false;
+    }
+}
+
 // edit user data
 const updateUserData = async (userData, userId) => 
 {
