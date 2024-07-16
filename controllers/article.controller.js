@@ -26,9 +26,10 @@ const postArticle = asyncWrapper(
         const user = await User.findById(userId, {"__v": false, "password": false});
         const author = user.name;
         const authorId = user._id;
+        const authorAvatar = user.avatar;
 
         const { title, body, category} = req.body;
-        const articleData = { title, body, author, authorId,category };
+        const articleData = { title, body, author, authorId, category };
         const schema = Joi.object({
             title: Joi.string().min(7).max(60).required(),
             body: Joi.string().min(200).required(),
@@ -37,12 +38,12 @@ const postArticle = asyncWrapper(
             category: Joi.string().min(2)
         });
 
-        const value = await schema.validateAsync(articleData);
+        let value = await schema.validateAsync(articleData);
+        value.authorAvatar = authorAvatar;
         if(req.file)
         {
             value.cover = req.file.filename;
         }
-        console.log({value})
 
         const newArticle = new Article(value);
         user.publishedArticles.push({articleId: newArticle._id});
@@ -93,11 +94,9 @@ const updateArticle = asyncWrapper(
         {
             value.cover = req.file.filename;
         }
-        console.log({value});
 
         article = await Article.findByIdAndUpdate(articleId, value);
 
-        console.log({article});
         if(!article)
         {
             const notFoundedArticle = new AppError(NOT_FOUNDED_DATA, `there is no article with "${articleId}" id to update`);

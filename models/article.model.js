@@ -1,3 +1,4 @@
+const { required } = require("joi");
 const mongoose = require("mongoose");
 
 const userIdSchema = new mongoose.Schema({
@@ -33,6 +34,10 @@ const articleSchema = new mongoose.Schema({
     cover: {
         type: String,
         default: "article-cover-default.png"
+    },
+    authorAvatar: {
+        type: String,
+        required: [true, "required"]
     },
     category: {
         type: String,

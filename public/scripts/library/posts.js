@@ -22,7 +22,7 @@ const postsSectionAppearance = (status)=>
     const postsSection = document.querySelector('.posts .posts-container');
     if(status)
     {
-        postsSection.style.display = "flex";
+        postsSection.style.display = "grid";
     }    
     else
     {
@@ -45,21 +45,24 @@ const seeMoreButtonAppearance = (status)=>
 }
 
 // article factory
-const Article = (title, body, author, authorId, cover, category, date, liked, disliked)=>
+const Article = ({_id ,title, body, author, authorId, cover, category, date, liked, disliked, authorAvatar})=>
 {
+    let months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
     return {
+        id: _id,
         title,
         body,
         author,
         authorId,
         cover,
         category,
-        date,
+        date : new Date(date),
         liked,
         disliked,
+        authorAvatar,
         createSimpleHTMLPresentation: function() {
             return `
-                <div class="post-card">
+                <div class="post-card" id="${this.id}">
                     <div class="post-cover">
                         <img src="${baseUrl}/uploads/${cover}" alt="post cover" class="cover">
                     </div>
@@ -72,10 +75,10 @@ const Article = (title, body, author, authorId, cover, category, date, liked, di
                         </div>
                         <div class="production-details">
                             <div class="author">
-                                <img src="public/assets/avatar0.png" alt="author personal avatar" class="avatar">
+                                <img src="uploads/${authorAvatar}" alt="author personal avatar" class="avatar">
                                 <p class="name">${author}</p>
                             </div>
-                            <p class="date">${date}</p>
+                            <p class="date">${months[this.date.getMonth()]} ${this.date.getDate()}, ${this.date.getFullYear()}</p>
                         </div>
                     </div>
                 </div>

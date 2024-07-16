@@ -93,13 +93,10 @@ nextOrDoneButton.addEventListener("click", async() =>
         const articleTitle = document.querySelector("#article-title").value;
         const articleCategory = document.querySelector("#article-category").value;
         const date = new Date();
-        const userData = await advancedWithRefresh(async() => await getUserPersonalData(localStorage.getItem("userId")));
         const articleData = {
             body: articleBody,
             title: articleTitle,
             category: articleCategory,
-            author: userData.data.user.name,
-            authorId: userData.data.user._id,
             date: date,
             cover: articleCover
         }
@@ -108,8 +105,6 @@ nextOrDoneButton.addEventListener("click", async() =>
         formData.append("title", articleData.title);
         formData.append("body", articleData.body);
         formData.append("category", articleData.category);
-        formData.append("author", articleData.author);
-        formData.append("authorId", articleData.authorId);
         formData.append("date", articleData.date);
         formData.append("cover", articleData.cover);
 

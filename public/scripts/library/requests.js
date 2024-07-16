@@ -182,7 +182,7 @@ const advancedWithRefresh = async(request)=>
     }
 }
 // get articles from database
-const getArticles = async()=>
+const getArticles = async(page, limit)=>
 {
     try
     {

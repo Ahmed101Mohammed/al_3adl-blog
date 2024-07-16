@@ -11,7 +11,7 @@ const moveToArticle = (id) =>
 // appear articles
 const appearArticles = async()=>
 {
-    const data = await getArticles();
+    const data = await getArticles(page, limit);
     if(data.status === SUCCESS && data.data.articles.length > 0)
     {
         const articles = data.data.articles;
@@ -25,14 +25,11 @@ const appearArticles = async()=>
         else
         {
             seeMoreButtonAppearance(false);
-            seeMoreButtonAppearance(false);
         }
 
         for(let article of articles)
         {
-            const articleUI = new Article(article);
-            console.log({article, articleUI});
-            articleUI.addEventListener('click', ()=> moveToArticle(article._id));
+            const articleUI = Article(article);
             articleUI.addSimpleArticlePresentationToDomContainer(articlesContainer);
         }
     }
@@ -44,6 +41,50 @@ const appearArticles = async()=>
     }
 }
 
-appearArticles();
+
+// event for each article
+let articlesContainer = document.querySelector('.posts-container');
+articlesContainer.addEventListener('click', (event) =>
+{
+    if(event.target.classList.contains('post-card'))
+    {
+        const articleId = event.target.getAttribute('id');
+        moveToArticle(articleId);
+    }
+});
+
+// set the home intro section
+const setTheHomeIntroSection = async()=>
+{
+    const lastArticle = await getArticles(1, 1);
+    if(lastArticle.status === SUCCESS)
+    {
+        const article = lastArticle.data.articles[0];
+        const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+        const articleTitleElement = document.querySelector(".article-summary-card h2.title");
+        const articleCategoryElement = document.querySelector(".article-summary-card p.category-primary");
+        const articleCoverElement = document.querySelector(".intro-img img");
+        const authorAvatarElement = document.querySelector(".article-summary-card .author img");
+        const authorName = document.querySelector(".article-summary-card .author .name");
+        const date = document.querySelector(".article-summary-card .date");
+
+        articleTitleElement.textContent = article.title;
+        articleCategoryElement.textContent = article.category;
+        articleCoverElement.src = "/uploads/" + article.cover;
+        authorAvatarElement.src = "/uploads/" + article.authorAvatar;
+        authorName.textContent = article.author.name;
+        let realDate = new Date(article.date);
+        date.textContent = months[realDate.getMonth()] + " " + realDate.getDate() + ", " + realDate.getFullYear();
+
+        const summaryCard = document.querySelector(".article-summary-card");
+        summaryCard.addEventListener("click", () => moveToArticle(article._id));
+    }
+    else
+    {
+        console.error(lastArticle);
+    }
+}
 // functions run
 userAvatarOrSignInWillAppear();
+appearArticles();
+setTheHomeIntroSection();
