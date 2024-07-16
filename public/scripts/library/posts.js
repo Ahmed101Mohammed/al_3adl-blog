@@ -93,7 +93,7 @@ const Article = ({_id ,title, body, author, authorId, cover, category, date, lik
                             </div>
                             <div class="production-details">
                                     <div class="author">
-                                        <img src="public/assets/avatar0.png" alt="author image"/>
+                                        <img src="/uploads/${authorAvatar}" alt="author image"/>
                                         <p class="name">${author}</p>
                                     </div>
                                     <p class="date">${months[this.date.getMonth()]} ${this.date.getDate()}, ${this.date.getFullYear()}</p>
