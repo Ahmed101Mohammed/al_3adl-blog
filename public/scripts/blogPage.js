@@ -55,7 +55,7 @@ articlesContainer.addEventListener('click', (event) =>
 });
 
 // set the home intro section
-const setTheHomeIntroSection = async()=>
+const setTheBlogIntroSection = async()=>
 {
     const lastArticle = await getArticles(1, 1);
     if(lastArticle.status === SUCCESS)
@@ -88,4 +88,4 @@ const setTheHomeIntroSection = async()=>
 // functions run
 userAvatarOrSignInWillAppear();
 appearArticles();
-setTheHomeIntroSection();
+//setTheBlogIntroSection();
