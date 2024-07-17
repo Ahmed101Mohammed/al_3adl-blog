@@ -19,6 +19,18 @@ const getAllArticles = asyncWrapper(
     }
 )
 
+const getAllArticlesSortedWithLikes = asyncWrapper(
+    async (req, res, next)=>
+    {
+        const sort = req.query.sort? parseInt(req.query.sort) : -1;
+        const limit = req.query.limit? parseInt(req.query.limit):10;
+        const page = req.query.page? parseInt(req.query.page):1;
+        const skip = (page - 1) * limit;
+        const artciles = await Article.find({}, {"__v": false}).sort({"likesNumber": sort}).limit(limit).skip(skip);
+        res.status(200,).json({status:SUCCESS, data: {articles: artciles}}).end();
+    }
+)
+
 const postArticle = asyncWrapper(
     async (req, res, next)=>
     {
@@ -135,6 +147,7 @@ const deleteArticle = asyncWrapper(
 
 module.exports = {
     getAllArticles,
+    getAllArticlesSortedWithLikes,
     postArticle,
     getArticle,
     updateArticle,

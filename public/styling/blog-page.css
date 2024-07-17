@@ -35,6 +35,7 @@
 .most-liked-article
 {
     position: relative;
+    display: none;
 }
 
 .most-liked-article .article-info 
@@ -68,12 +69,17 @@
 
 .most-liked-article .article-info .title
 {
+    width: 720px;
+}
+
+.most-liked-article .article-info .title
+{
     font-size: 36px;
     color: var(--white);
     font-family: "work sans", sans-serif;
     font-weight: 600;
     text-transform: capitalize;
-    width: 720px;
+    cursor: pointer;
 }
 
 .most-liked-article .production-details

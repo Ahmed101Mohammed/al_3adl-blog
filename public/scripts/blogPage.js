@@ -1,6 +1,6 @@
 // constants
-const limit = 9;
-const page = 1;
+let limit = 9;
+let page = 1;
 let articlesInDom = [];
 // function to move to single article page
 const moveToArticle = (id) =>
@@ -11,7 +11,7 @@ const moveToArticle = (id) =>
 // appear articles
 const appearArticles = async()=>
 {
-    const data = await getArticles(page, limit);
+    const data = await getSortedArticles(-1 ,page, limit);
     if(data.status === SUCCESS && data.data.articles.length > 0)
     {
         const articles = data.data.articles;
@@ -54,38 +54,34 @@ articlesContainer.addEventListener('click', (event) =>
     }
 });
 
-// set the home intro section
+// set the blog intro section
 const setTheBlogIntroSection = async()=>
 {
-    const lastArticle = await getArticles(1, 1);
-    if(lastArticle.status === SUCCESS)
-    {
-        const article = lastArticle.data.articles[0];
-        const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-        const articleTitleElement = document.querySelector(".article-summary-card h2.title");
-        const articleCategoryElement = document.querySelector(".article-summary-card p.category-primary");
-        const articleCoverElement = document.querySelector(".intro-img img");
-        const authorAvatarElement = document.querySelector(".article-summary-card .author img");
-        const authorName = document.querySelector(".article-summary-card .author .name");
-        const date = document.querySelector(".article-summary-card .date");
+    const article = articlesInDom[0];
 
-        articleTitleElement.textContent = article.title;
-        articleCategoryElement.textContent = article.category;
-        articleCoverElement.src = "/uploads/" + article.cover;
-        authorAvatarElement.src = "/uploads/" + article.authorAvatar;
-        authorName.textContent = article.author.name;
-        let realDate = new Date(article.date);
-        date.textContent = months[realDate.getMonth()] + " " + realDate.getDate() + ", " + realDate.getFullYear();
+    const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    const mostLikedPostSection = document.querySelector("section.most-liked-article");
+    const articleTitleElement = document.querySelector(".intro-article-card .article-info h3.title a");
+    const articleCategoryElement = document.querySelector(".intro-article-card p.category-primary");
+    const articleCoverElement = document.querySelector(".intro-article-card img");
+    const authorAvatarElement = document.querySelector(".intro-article-card .author img");
+    const authorName = document.querySelector(".intro-article-card .author .name");
+    const date = document.querySelector(".intro-article-card .date");
 
-        const summaryCard = document.querySelector(".article-summary-card");
-        summaryCard.addEventListener("click", () => moveToArticle(article._id));
-    }
-    else
-    {
-        console.error(lastArticle);
-    }
+    articleTitleElement.textContent = article.title;
+    articleTitleElement.href = "/article.html?id=" + article._id;
+    articleCategoryElement.textContent = article.category;
+    articleCoverElement.src = "/uploads/" + article.cover;
+    authorAvatarElement.src = "/uploads/" + article.authorAvatar;
+    authorName.textContent = article.author.name;
+    let realDate = new Date(article.date);
+    date.textContent = months[realDate.getMonth()] + " " + realDate.getDate() + ", " + realDate.getFullYear();
+
+    let coverUrl = await resizeImageWithHeight(`${baseUrl}/uploads/${article.cover}`, 450);
+    console.log({coverUrl});
+    mostLikedPostSection.insertAdjacentHTML('beforeend', `<img src=${coverUrl}/>`);
+    mostLikedPostSection.style.display = "block";
 }
 // functions run
 userAvatarOrSignInWillAppear();
-appearArticles();
-//setTheBlogIntroSection();
+appearArticles().then(() => setTheBlogIntroSection());

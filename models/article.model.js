@@ -44,12 +44,20 @@ const articleSchema = new mongoose.Schema({
         minLength: [2, "name must be more than 2 chars"],
         default: "general"
     },
-    liked: {
+    likedList: {
         type: [userIdSchema]
     },
-    disLiked: {
+    likesNumber: {
+        type: Number,
+        default: 0
+    },
+    disLikedList: {
         type: [userIdSchema]
     },
+    disLikesNumber: {
+        type: Number,
+        default: 0
+    }
 })
 
 const Article = mongoose.model("Article", articleSchema);
