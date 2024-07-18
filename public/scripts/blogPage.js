@@ -2,11 +2,6 @@
 let limit = 9;
 let page = 1;
 let articlesInDom = [];
-// function to move to single article page
-const moveToArticle = (id) =>
-{
-    window.location.href = `article.html?id=${id}`;
-}
 
 // appear articles
 const appearArticles = async()=>
@@ -41,18 +36,6 @@ const appearArticles = async()=>
         seeMoreButtonAppearance(false);
     }
 }
-
-
-// event for each article
-let articlesContainer = document.querySelector('.posts-container');
-articlesContainer.addEventListener('click', (event) =>
-{
-    if(event.target.classList.contains('post-card'))
-    {
-        const articleId = event.target.getAttribute('id');
-        moveToArticle(articleId);
-    }
-});
 
 // set the blog intro section
 const setTheBlogIntroSection = async()=>

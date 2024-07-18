@@ -67,7 +67,7 @@ const Article = ({_id ,title, body, author, authorId, cover, category, date, lik
                         <div class="main-info">
                             <p class="catigory">${category}</p>
                             <h3 class="title">
-                                ${title}
+                                <a href="article.html?id=${this.id}">${title}</a>
                             </h3>
                         </div>
                         <div class="production-details">
