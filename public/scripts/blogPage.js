@@ -48,7 +48,7 @@ const setTheBlogIntroSection = async()=>
     const articleCategoryElement = document.querySelector(".intro-article-card p.category-primary");
     const articleCoverElement = document.querySelector(".intro-article-card img");
     const authorAvatarElement = document.querySelector(".intro-article-card .author img");
-    const authorName = document.querySelector(".intro-article-card .author .name");
+    const authorName = document.querySelector(".intro-article-card .author .name a");
     const date = document.querySelector(".intro-article-card .date");
 
     articleTitleElement.textContent = article.title;
@@ -56,7 +56,8 @@ const setTheBlogIntroSection = async()=>
     articleCategoryElement.textContent = article.category;
     articleCoverElement.src = "/uploads/" + article.cover;
     authorAvatarElement.src = "/uploads/" + article.authorAvatar;
-    authorName.textContent = article.author.name;
+    authorName.textContent = article.author;
+    authorName.href = "/author-page.html?id=" + article.authorId;
     let realDate = new Date(article.date);
     date.textContent = months[realDate.getMonth()] + " " + realDate.getDate() + ", " + realDate.getFullYear();
     

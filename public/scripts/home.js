@@ -49,7 +49,7 @@ const setTheHomeIntroSection = async()=>
         const articleCategoryElement = document.querySelector(".article-summary-card p.category-primary");
         const articleCoverElement = document.querySelector(".intro-img img");
         const authorAvatarElement = document.querySelector(".article-summary-card .author img");
-        const authorName = document.querySelector(".article-summary-card .author .name");
+        const authorName = document.querySelector(".article-summary-card .author .name a");
         const date = document.querySelector(".article-summary-card .date");
 
         articleTitleElement.textContent = article.title;
@@ -57,7 +57,8 @@ const setTheHomeIntroSection = async()=>
         articleCategoryElement.textContent = article.category;
         articleCoverElement.src = "/uploads/" + article.cover;
         authorAvatarElement.src = "/uploads/" + article.authorAvatar;
-        authorName.textContent = article.author.name;
+        authorName.textContent = article.author;
+        authorName.href = "/author-page.html?id=" + article.authorId;
         let realDate = new Date(article.date);
         date.textContent = months[realDate.getMonth()] + " " + realDate.getDate() + ", " + realDate.getFullYear();
     }
