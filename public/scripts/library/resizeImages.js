@@ -1,9 +1,8 @@
-const resizeImageWithHeight = async(imgUrl, height) =>
+const resizeImageWithHeight = (imgUrl, height, container) =>
 {
-    console.log({imgUrl, height});
     const img = new Image();
     img.src = imgUrl;
-    img.onload = async() =>
+    img.onload = () =>
     {
         const originalWidth = img.width;
         const originalHeight = img.height;
@@ -19,8 +18,7 @@ const resizeImageWithHeight = async(imgUrl, height) =>
         canvas.height = height;
         ctx.drawImage(img, leftShifting, topShifting, width, height, 0, 0, width, height);
         const imgUrl = canvas.toDataURL("image/*", 1);
-        console.log({imgUrl});
-        return imgUrl;
+        container.insertAdjacentHTML('beforeend', `<img src="${imgUrl}"/>`);
     }
 
     img.onerror = () =>
@@ -28,3 +26,29 @@ const resizeImageWithHeight = async(imgUrl, height) =>
         return imgUrl;
     }
 }
+
+const resizeImageWithHeightAndFixedWidth = (imgUrl, height, container) =>
+    {
+        const img = new Image();
+        img.src = imgUrl;
+        img.onload = () =>
+        {
+            const originalWidth = img.width;
+            const originalHeight = img.height;
+
+            let topShifting = (originalHeight - height)/2 > 0? (originalHeight - height)/2 : 0;
+    
+            const canvas = document.createElement("canvas");
+            const ctx = canvas.getContext("2d");
+            canvas.width = originalWidth;
+            canvas.height = height;
+            ctx.drawImage(img, 0, topShifting, originalWidth, height, 0, 0, originalWidth, height);
+            const imgUrl = canvas.toDataURL("image/*", 1);
+            container.insertAdjacentHTML('beforeend', `<img src="${imgUrl}"/>`);
+        }
+    
+        img.onerror = () =>
+        {
+            container.insertAdjacentHTML('beforeend', `<img src="${imgUrl}"/>`);
+        }
+    }

@@ -76,10 +76,12 @@ const setTheBlogIntroSection = async()=>
     authorName.textContent = article.author.name;
     let realDate = new Date(article.date);
     date.textContent = months[realDate.getMonth()] + " " + realDate.getDate() + ", " + realDate.getFullYear();
-
-    let coverUrl = await resizeImageWithHeight(`${baseUrl}/uploads/${article.cover}`, 450);
-    console.log({coverUrl});
-    mostLikedPostSection.insertAdjacentHTML('beforeend', `<img src=${coverUrl}/>`);
+    
+    const introArticleCared = document.querySelector(".most-liked-article .intro-article-card");
+    const introImage = introArticleCared.querySelector("img");
+    introImage.remove();
+    resizeImageWithHeightAndFixedWidth(`${baseUrl}/uploads/${article.cover}`, 450, introArticleCared);   
+     
     mostLikedPostSection.style.display = "block";
 }
 // functions run
