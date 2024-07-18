@@ -225,6 +225,27 @@ const getSortedArticles = async(sortType, page, limit)=>
     }
 }
 
+// get articles for user by id
+const getArticlesOfUser = async(userId, page, limit)=>
+    {
+        try
+        {
+            const response = await fetch(`${baseUrl}/api/articles/user/${userId}?page=${page}&limit=${limit}`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                credentials: 'include'
+            });
+            const data = await response.json();
+            return data;
+        }
+        catch(e)
+        {
+            console.error(`Failed in get articles of user with ${userId} id in fetching proccess, because of ${e.message}`);
+            return false;
+        }
+    }
 // get article by id
 const getArticle = async(articleId)=>
 {

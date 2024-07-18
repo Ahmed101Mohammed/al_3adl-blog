@@ -73,7 +73,9 @@ const Article = ({_id ,title, body, author, authorId, cover, category, date, lik
                         <div class="production-details">
                             <div class="author">
                                 <img src="uploads/${authorAvatar}" alt="author personal avatar" class="avatar">
-                                <p class="name">${author}</p>
+                                <p class="name">
+                                    <a href="author-page.html?id=${this.authorId}">${author}</a>
+                                </p>
                             </div>
                             <p class="date">${months[this.date.getMonth()]} ${this.date.getDate()}, ${this.date.getFullYear()}</p>
                         </div>
@@ -106,6 +108,10 @@ const Article = ({_id ,title, body, author, authorId, cover, category, date, lik
                         
                         </div>
             `
+        },
+        encryptAuthorId: function() 
+        {
+            return CryptoJS.AES.encrypt(this.authorId, 'secret key 123');
         }
 
     }

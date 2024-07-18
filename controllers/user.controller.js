@@ -22,14 +22,22 @@ const getUsers = asyncWrapper(
 const getUser = asyncWrapper(
     async (req, res, next)=>
     {
-        if(req.authData.role != ADMIN && req.authData.id != req.params.id)
+        let userId;
+        let user;
+        if(req.authData.role === ADMIN && req.authData.id === req.params.id)
         {
-            const unauthorized = new AppError(UNAUTHORIZED, "you don't have permission to get user data");
-            return next(unauthorized);
+            // const unauthorized = new AppError(UNAUTHORIZED, "you don't have permission to get user data");
+            // return next(unauthorized);
+            userId = req.params.id;
+            user = await User.findOne({_id: userId}, {"__v": false, "password": false, "refreshToken": false});
+        }
+        else
+        {
+            userId = req.authData.id;
+            user = await User.findOne({_id: userId}, {"name":true, "avatar": true, "_id": false});
         }
 
-        const userId = req.params.id;
-        const user = await User.findOne({_id: userId}, {"__v": false, "password": false, "refreshToken": false});
+        
         if(!user)
         {
             const notFoundedUser = new AppError("NotFoundedData", `there is no user with "${userId}" id`);

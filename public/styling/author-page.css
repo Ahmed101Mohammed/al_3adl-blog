@@ -24,6 +24,14 @@ section.author .base-info
     align-items: center;
 }
 
+section.author .base-info img
+{
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
 section.author p.name
 {
     font-size: 20px;
@@ -38,6 +46,7 @@ section.author p.professionality
     font-weight: 400;
     color: #606A75;
     font-family: "work sans", sans-serif;
+    display: none;
 }
 
 section.author p.take-action
@@ -46,6 +55,7 @@ section.author p.take-action
     font-weight: 400;
     font-family: "work sans", sans-serif;
     color: #3B3C4A;
+    display: none;
 }
 
 section.author ul.social-links
@@ -53,6 +63,7 @@ section.author ul.social-links
     display: flex;
     gap: 8px;
     list-style: none;
+    display: none;
 }
 
 ul.social-links li
