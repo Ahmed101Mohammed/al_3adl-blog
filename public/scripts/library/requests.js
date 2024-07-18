@@ -246,6 +246,31 @@ const getArticlesOfUser = async(userId, page, limit)=>
             return false;
         }
     }
+
+
+// get articles for user by id
+const getMyArticles = async(page, limit)=>
+{
+    try
+    {
+        const response = await fetch(`${baseUrl}/api/articles/user?page=${page}&limit=${limit}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'authorization': `Bearer ${accessToken}`
+            },
+            credentials: 'include'
+        });
+        const data = await response.json();
+        return data;
+    }
+    catch(e)
+    {
+        console.error(`Failed in get authonticated user articles fetching proccess, because of ${e.message}`);
+        return false;
+    }
+}
+
 // get article by id
 const getArticle = async(articleId)=>
 {

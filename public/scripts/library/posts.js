@@ -109,9 +109,35 @@ const Article = ({_id ,title, body, author, authorId, cover, category, date, lik
                         </div>
             `
         },
-        encryptAuthorId: function() 
+        createTableRawPresentation: function() 
         {
-            return CryptoJS.AES.encrypt(this.authorId, 'secret key 123');
+            return `
+                        <tr id="${this.id}">
+                            <td class="article-title">${title}</td>
+                            <td>${author}</td>
+                            <td>${months[this.date.getMonth()]} ${this.date.getDate()}, ${this.date.getFullYear()}</td>
+                            <td>${category}</td>
+                            <td>
+                                <a href="article-lap.html?id=${this.id}" class="">
+                                    <span class="material-symbols-outlined edit">
+                                        edit
+                                    </span>
+                                </a>
+                            </td>
+                            <td>
+                                <span class="material-symbols-outlined delete">
+                                delete
+                                </span>
+                            </td>
+                            <td class="view-article">
+                                <a href="article.html?id=${this.id}" class="">
+                                    <span class="material-symbols-outlined view">
+                                    visibility
+                                    </span>
+                                </a>
+                            </td>
+                        </tr>
+                    `;
         }
 
     }
