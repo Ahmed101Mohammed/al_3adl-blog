@@ -93,10 +93,17 @@ td span.view:hover
 {
     color: #7bf45a;
 }
-.article-title
+
+td.article-title
 {
     border-left-width: 1px;
     padding-left: 1.1rem;
+    width: 400px;
+}
+
+td.article-author
+{
+    width: 200px;
 }
 
 .view-article
@@ -107,6 +114,7 @@ td span.view:hover
 
 .load-more
 {
+    display: none;
     width: 100%;
     background-color: transparent;
     border: none;

@@ -19,6 +19,7 @@
         <!-- library styling -->
         <link rel="stylesheet" href="public\styling\library\header.css">
         <link rel="stylesheet" href="public\styling\library\footer.css">
+        <link rel="stylesheet" href="public\styling\library\global-classes.css">
 
         <!-- main style -->
         <link rel="stylesheet" href="public\styling\articles-dashboard.css">
@@ -79,74 +80,17 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td class="article-title">article title</td>
-                                <td>author name</td>
-                                <td>date</td>
-                                <td>general</td>
-                                <td>
-                                    <span class="material-symbols-outlined edit">
-                                    edit
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="material-symbols-outlined delete">
-                                    delete
-                                    </span>
-                                </td>
-                                <td class="view-article">
-                                    <span class="material-symbols-outlined view">
-                                    visibility
-                                    </span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="article-title">article title</td>
-                                <td>author name</td>
-                                <td>date</td>
-                                <td>general</td>
-                                <td>
-                                    <span class="material-symbols-outlined edit">
-                                    edit
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="material-symbols-outlined delete">
-                                    delete
-                                    </span>
-                                </td>
-                                <td class="view-article">
-                                    <span class="material-symbols-outlined view">
-                                    visibility
-                                    </span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="article-title">article title</td>
-                                <td>author name</td>
-                                <td>date</td>
-                                <td>general</td>
-                                <td>
-                                    <span class="material-symbols-outlined edit">
-                                    edit
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="material-symbols-outlined delete">
-                                    delete
-                                    </span>
-                                </td>
-                                <td class="view-article">
-                                    <span class="material-symbols-outlined view">
-                                    visibility
-                                    </span>
-                                </td>
-                            </tr>
+                           <!--  Handeled in the javascript -->
                         </tbody>
                     </table>
                     <button class="load-more">load more</button>
                 </section>
-                <div class="add-new-article">+</div>
+                <a href="article-lap.html">
+                    <div class="add-new-article">+</div>
+                </a>
+            </div>
+            <div class="temporary-error-message">
+                Hi
             </div>
         </main>
         <footer>
@@ -239,6 +183,7 @@
         <script src="public/scripts/library/setConstants.js"></script>
         <script src="public/scripts/library/header.js"></script>
         <script src="public/scripts/library/posts.js"></script>
+        <script src="public/scripts/library/setTemporaryMessage-helper.js"></script>
         <script src="public/scripts/articlesDashboard.js"></script>
     </body>
 </html>

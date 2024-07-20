@@ -96,7 +96,9 @@ const Article = ({_id ,title, body, author, authorId, cover, category, date, lik
                             <div class="production-details">
                                     <div class="author">
                                         <img src="/uploads/${authorAvatar}" alt="author image"/>
-                                        <p class="name">${author}</p>
+                                        <p class="name">
+                                            <a href="author-page.html?id=${this.authorId}">${author}</a>
+                                        </p>
                                     </div>
                                     <p class="date">${months[this.date.getMonth()]} ${this.date.getDate()}, ${this.date.getFullYear()}</p>
                             </div>
@@ -114,7 +116,7 @@ const Article = ({_id ,title, body, author, authorId, cover, category, date, lik
             return `
                         <tr id="${this.id}">
                             <td class="article-title">${title}</td>
-                            <td>${author}</td>
+                            <td class="article-author">${author}</td>
                             <td>${months[this.date.getMonth()]} ${this.date.getDate()}, ${this.date.getFullYear()}</td>
                             <td>${category}</td>
                             <td>

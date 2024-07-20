@@ -293,6 +293,50 @@ const getArticle = async(articleId)=>
     }
 }
 
+// edit article
+const updateArticle = async(articleId, articleData)=>
+{
+    try
+    {
+        const response = await fetch(`${baseUrl}/api/articles/${articleId}`, {
+            method: 'PATCH',
+            headers: {
+                'authorization': `Bearer ${accessToken}`,
+            },
+            credentials: 'include',
+            body: articleData,
+        });
+        const data = await response.json();
+        return data;
+    }
+    catch(e)
+    {
+        console.error(`Failed in updateing article fetching proccess, because of ${e.message}`);
+        return false;
+    }
+}
+// delte article
+const deleteArticle = async(articleId)=>
+{
+    try
+    {
+        const response = await fetch(`${baseUrl}/api/articles/${articleId}`, {
+            method: 'DELETE',
+            headers: {
+                'authorization': `Bearer ${accessToken}`,
+            },
+            credentials: 'include',
+        });
+        const data = await response.json();
+        return data;
+    }
+    catch(e)
+    {
+        console.error(`Failed in deleting article fetching proccess, because of ${e.message}`);
+        return false;
+    }
+}
+
 // edit user data
 const updateUserData = async (userData, userId) => 
 {

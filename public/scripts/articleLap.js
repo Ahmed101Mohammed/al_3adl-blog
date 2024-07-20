@@ -1,3 +1,6 @@
+// article id
+const articleId = window.URL.parse(window.location.href).searchParams.get("id");
+// importing
 import { marked } from "https://cdn.jsdelivr.net/npm/marked/lib/marked.esm.js";
 // set header
 const main = document.querySelector("main");
@@ -11,6 +14,28 @@ userAvatarOrSignInWillAppear()
 let currentStep = 1;
 let validArticleImage = false;
 let validArticleTitle = false;
+let editedArticle;
+let status = "adding";
+
+// set status
+const setStatus = async (articleId) =>
+{
+    if(articleId)
+    {
+        status = "editing";
+        let data = await advancedWithRefresh(async() => await getArticle(articleId));  
+        if(data.status === SUCCESS)
+        {
+            editedArticle = data.data.article;
+        }
+        else
+        {
+            console.error({data});
+            setTemporaryMessage(data.message);
+            return;
+        }
+    } 
+}
 
 // set article content with markdown or html
 const mdContent = document.querySelector(".md-content");
@@ -49,6 +74,38 @@ const articleHeaderPageAppearance = (status) =>
     }
 }
 
+// Intial page for edditing
+const initialEditingPage = () =>
+{
+    if(!editedArticle) return;
+    document.querySelector("#article-title").value = editedArticle.title;
+    document.querySelector("#article-category").value = editedArticle.category;
+    document.querySelector("textarea").value = editedArticle.body;
+    document.querySelector("div.article-cover").style.backgroundImage = `url(/uploads/${editedArticle.cover})`;
+    document.querySelector("div.article-cover span.badge").textContent = categoryValuePresentation(editedArticle.category);
+    document.querySelector("div.article-cover p").remove();
+
+    let step1Circle = document.querySelector("button.step-1");
+    step1Circle.classList.remove("btn-secondary");
+    step1Circle.classList.add("btn-primary");
+
+    let progressBar = document.querySelector(".progress-bar");
+    progressBar.style.width = "50%";
+
+    let previouseButton = document.querySelector(".previouse");
+    previouseButton.classList.remove("d-none");
+
+    nextOrDoneButton.textContent = "Done";
+
+    articleHeaderPageAppearance(true);
+    articleContentPageApearance(false);
+    currentStep = 2;
+    articleContent.scrollTop = 0;
+    validArticleImage = true;
+    validArticleTitle = true;
+}
+setStatus(articleId)
+.then(() => initialEditingPage());
 // functionality of next/done button
 const nextOrDoneButton = document.querySelector(".next");
 nextOrDoneButton.addEventListener("click", async() => 
@@ -88,11 +145,13 @@ nextOrDoneButton.addEventListener("click", async() =>
         {
             return;
         }
+
         const articleBody = document.querySelector("textarea").value;
         const articleCover = document.querySelector("#article-cover").files[0];
         const articleTitle = document.querySelector("#article-title").value;
         const articleCategory = document.querySelector("#article-category").value;
-        const date = new Date();
+        const date = editedArticle ? new Date(editedArticle.date) : new Date();
+        console.log({date});
         const articleData = {
             body: articleBody,
             title: articleTitle,
@@ -108,16 +167,33 @@ nextOrDoneButton.addEventListener("click", async() =>
         formData.append("date", articleData.date);
         formData.append("cover", articleData.cover);
 
-        const data = await advancedWithRefresh(async() => await postArticle(formData));
-        if(data.status === SUCCESS)
+        if(status === "adding")
         {
-            setTemporaryMessage("Article created successfully");
-            window.location.href = "article.html?id=" + data.data.article._id;
+            const data = await advancedWithRefresh(async() => await postArticle(formData));
+            if(data.status === SUCCESS)
+            {
+                setTemporaryMessage("Article created successfully");
+                window.location.href = "article.html?id=" + data.data.article._id;
+            }
+            else
+            {
+                console.error({data});
+                setTemporaryMessage(data.message);
+            }
         }
-        else
+        else if(status == "editing")
         {
-            console.error({data});
-            setTemporaryMessage(data.message);
+            const data = await advancedWithRefresh(async() => await updateArticle(articleId, formData));
+            if(data.status === SUCCESS)
+            {
+                setTemporaryMessage("Article updated successfully");
+                window.location.href = "article.html?id=" + articleId;
+            }
+            else
+            {
+                console.error({data});
+                setTemporaryMessage(data.message);
+            }
         }
     }
 })

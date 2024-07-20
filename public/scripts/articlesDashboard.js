@@ -16,12 +16,33 @@ const init = async() =>
         const articleUI = Article(article);
         articlesContainer.insertAdjacentHTML("beforeend", articleUI.createTableRawPresentation());
     }
+
+    // see more button
+    const seeMoreButton = document.querySelector(".load-more");
+    if(articles.data.articles.length === limit)
+    {
+        seeMoreButton.style.display = "block";
+    }
 }
 
-// Adding new Article.
-const addNewArticle = document.querySelector(".add-new-article");
-addNewArticle.addEventListener("click", () => {
-    window.location.href = "article-lap.html";
+// delete article event
+const table = document.querySelector("tbody");
+table.addEventListener("click", async(event) =>
+{
+    if(event.target.classList.contains("delete"))
+    {
+        const tr = event.target.closest("tr");
+        const id = tr.id;
+        const data = await deleteArticle(id);
+        if(data.status !== SUCCESS)
+        {
+            console.error(data);
+            return;
+        }
+        articlesInDom = articlesInDom.filter((article) => article.id !== id);
+        tr.remove();
+        setTemporaryMessage("Article deleted successfully");
+    }
 })
 
 // runing code:

@@ -7,6 +7,7 @@ const Joi = require('joi');
 const { UNAUTHORIZED, NOT_FOUNDED_DATA } = require("../utils/errorsConstants");
 const User = require("../models/user.model");
 const { USER } = require("../utils/rolesConstants");
+const { title } = require("node:process");
 
 const getAllArticles = asyncWrapper(
     async (req, res, next)=>
@@ -115,6 +116,7 @@ const updateArticle = asyncWrapper(
             return next(unauthorized);
         }
 
+        let reqData = {title: req.body.title, body: req.body.body, category: req.body.category};
         const schema = Joi.object({
             title: Joi.string().min(7).max(60),
             body: Joi.string().min(200),
@@ -122,10 +124,10 @@ const updateArticle = asyncWrapper(
             authorId: Joi.string(),
             category: Joi.string().min(2),
             liked: Joi.number().min(0),
-            disLike: Joi.number().min(0)
+            disLike: Joi.number().min(0),
         });
 
-        const value = await schema.validateAsync(req.body);
+        const value = await schema.validateAsync(reqData);
         if(req.file)
         {
             value.cover = req.file.filename;
