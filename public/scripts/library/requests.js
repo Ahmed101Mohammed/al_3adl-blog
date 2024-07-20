@@ -220,6 +220,31 @@ const getSortedArticles = async(sortType, page, limit)=>
     }
     catch(e)
     {
+        console.error(`Failed in get sorted(by likes) articles fetching proccess, because of ${e.message}`);
+        return false;
+    }
+}
+// get articles sorted
+const getAllArticlesSorted = async(page, limit, sort)=>
+{
+    if(!sort)
+    {
+        return await getArticles(page, limit);
+    }
+    try
+    {
+        const response = await fetch(`${baseUrl}/api/articles/advancedSorted?sortType=${sort.sortType}&sortDirection=${sort.sortDirection}&page=${page}&limit=${limit}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            credentials: 'include',
+        });
+        const data = await response.json();
+        return data;
+    }
+    catch(e)
+    {
         console.error(`Failed in get sorted articles fetching proccess, because of ${e.message}`);
         return false;
     }
@@ -248,7 +273,7 @@ const getArticlesOfUser = async(userId, page, limit)=>
     }
 
 
-// get articles for user by id
+// get My articles
 const getMyArticles = async(page, limit)=>
 {
     try

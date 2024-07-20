@@ -6,7 +6,7 @@ let articlesInDom = [];
 // appear articles
 const appearArticles = async()=>
 {
-    const data = await getArticles(page, limit);
+    const data = await getAllArticlesSorted(page, limit, {sortType: "date", sortDirection: -1});
     if(data.status === SUCCESS && data.data.articles.length > 0)
     {
         const articles = data.data.articles;
@@ -40,7 +40,7 @@ const appearArticles = async()=>
 // set the home intro section
 const setTheHomeIntroSection = async()=>
 {
-    const lastArticle = await getArticles(1, 1);
+    const lastArticle = await getAllArticlesSorted(1, 1, {sortType: "date", sortDirection: -1});
     if(lastArticle.status === SUCCESS)
     {
         const article = lastArticle.data.articles[0];

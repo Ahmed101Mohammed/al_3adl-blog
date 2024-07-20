@@ -20,6 +20,36 @@ const getAllArticles = asyncWrapper(
     }
 )
 
+const getAllArticlesSorted = asyncWrapper(
+    async (req, res, next)=>
+    {
+        const limit = req.query.limit? parseInt(req.query.limit):10;
+        const page = req.query.page? parseInt(req.query.page):1;
+        const skip = (page - 1) * limit;
+
+        if(!req.query.sortType)
+        {
+            const artciles = await Article.find({}, {"__v": false}).limit(limit).skip(skip);
+            res.status(200).json({status:SUCCESS, data: {articles: artciles}}).end();
+            return;
+        }
+
+        const sort = {
+            sortType: req.query.sortType,
+            sortDirection: req.query.sortDirection
+        }
+        const schema = Joi.object({
+            sortType: Joi.string().valid('date', 'likesNumber', 'dislikesNumber').required(),
+            sortDirection: Joi.number().valid(1, -1).required(),
+        })
+
+        const value = await schema.validateAsync(sort);
+        
+        const artciles = await Article.find({}, {"__v": false}).sort({[value.sortType]: value.sortDirection}).limit(limit).skip(skip);
+        res.status(200,).json({status:SUCCESS, data: {articles: artciles}}).end();
+    }
+)
+
 const getAllArticlesSortedWithLikes = asyncWrapper(
     async (req, res, next)=>
     {
@@ -179,5 +209,6 @@ module.exports = {
     updateArticle,
     deleteArticle,
     getAllArticlesOfUser,
-    getAllMyArticles
+    getAllMyArticles,
+    getAllArticlesSorted
 }

@@ -6,7 +6,8 @@ let articlesInDom = [];
 // Intial setub of the page.
 const init = async() => 
 {
-    const articles = await advancedWithRefresh(async() => await getMyArticles(page, limit));
+    const articles = await advancedWithRefresh(async() => await getAllArticlesSorted(page, limit, {sortType: "date", sortDirection: -1}));
+    console.log(articles.data.articles);
     articlesInDom.push(...articles.data.articles);
     // articles container
     const articlesContainer = document.querySelector("tbody");
