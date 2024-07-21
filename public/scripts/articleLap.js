@@ -261,7 +261,7 @@ imageInput.addEventListener("change", (event) =>
     {
         const width = image.naturalWidth;
         const height = image.naturalHeight;
-        if(width !== 1216 && height !== 600)
+        if(width !== 1216 || height !== 600)
         {
             errorContainer.classList.remove("d-none");
             errorMessage.textContent = "Please select an image of 1216 x 600";

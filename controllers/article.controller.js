@@ -69,7 +69,7 @@ const getAllArticlesOfUser = asyncWrapper(
         const limit = req.query.limit? req.query.limit:10;
         const page = req.query.page? req.query.page:1;
         const skip = (page - 1) * limit;
-        const artciles = await Article.find({authorId: userId}, {"__v": false}).limit(limit).skip(skip);
+        const artciles = await Article.find({authorId: userId}, {"__v": false}).sort({"date": -1}).limit(limit).skip(skip);
         res.status(200,).json({status:SUCCESS, data: {articles: artciles}}).end();
     }
 )
