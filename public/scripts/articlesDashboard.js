@@ -2,17 +2,15 @@
 let limit = 20;
 let page = 1;
 let articlesInDom = [];
+let currentSellected = document.querySelector("select").value;
 
-// Intial setub of the page.
-const init = async() => 
+// seturp articles in dom
+const setupArticlesInDom = (articlesList)=>
 {
-    const articles = await advancedWithRefresh(async() => await getAllArticlesSorted(page, limit, {sortType: "date", sortDirection: -1}));
-    console.log(articles.data.articles);
-    articlesInDom.push(...articles.data.articles);
     // articles container
     const articlesContainer = document.querySelector("tbody");
     // adding articles to dom
-    for(let article of articlesInDom)
+    for(let article of articlesList)
     {
         const articleUI = Article(article);
         articlesContainer.insertAdjacentHTML("beforeend", articleUI.createTableRawPresentation());
@@ -20,9 +18,43 @@ const init = async() =>
 
     // see more button
     const seeMoreButton = document.querySelector(".load-more");
-    if(articles.data.articles.length === limit)
+    if(articlesList.length === limit)
     {
         seeMoreButton.style.display = "block";
+    }
+    else
+    {
+        seeMoreButton.style.removeProperty("display");
+    }
+}
+// functionality for my articles
+const setupMyArticles = async()=>
+{
+    const articles = await advancedWithRefresh(async() => await getMyArticles(page, limit));
+    const pureArticles = articles.data.articles;
+    articlesInDom.push(...pureArticles);
+
+    setupArticlesInDom(pureArticles);
+}
+
+const setupAllArticles = async()=>
+{
+    const articles = await advancedWithRefresh(async() => await getAllArticlesSorted(page, limit, {sortType: "date", sortDirection: -1}));
+    const pureArticles = articles.data.articles;
+    articlesInDom.push(...pureArticles);
+
+    setupArticlesInDom(pureArticles);
+}
+// Intial setub of the page.
+const init = async() => 
+{
+    if(currentSellected === "my-articles")
+    {
+        setupMyArticles();
+    }
+    else if(currentSellected === "all-articles")
+    {
+        setupAllArticles();
     }
 }
 
@@ -46,6 +78,24 @@ table.addEventListener("click", async(event) =>
     }
 })
 
+// events
+const select = document.querySelector("select");
+select.addEventListener("change", async() =>
+{
+    currentSellected = select.value;
+    articlesInDom = [];
+    const tbody = document.querySelector("tbody");
+    tbody.innerHTML = "";
+    page = 1;
+    if(currentSellected === "my-articles")
+    {
+        setupMyArticles();
+    }
+    else if(currentSellected === "all-articles")
+    {
+        setupAllArticles();
+    }
+})
 // runing code:
 userAvatarOrSignInWillAppear()
 .then(() => init());
