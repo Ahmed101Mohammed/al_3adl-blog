@@ -16,9 +16,7 @@ const setUpAdminUser = async()=>
     }
     try
     {
-        
         const hashedPassword = await bcrypt.hash(adminPassword, 10);
-        const compare = await bcrypt.compare("ahmedjkhdowndd02", hashedPassword);
         const newUser = new User({name: adminName, email: adminEmail, password: hashedPassword, role: ADMIN});
         await newUser.save();
     }

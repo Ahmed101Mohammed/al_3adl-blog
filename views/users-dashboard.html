@@ -4,16 +4,15 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="icon" href="public/assets/tab-logo.svg">
-        <title>Personal Portfolio</title>
+        <title>Users Dashboard</title>
+        <!-- google icons -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
         <!-- google fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
-        
+
         <!-- general styling and theme -->
         <link rel="stylesheet" href="public\styling\general.css">
         <link rel="stylesheet" href="public\styling\theme.css">
@@ -21,10 +20,10 @@
         <!-- library styling -->
         <link rel="stylesheet" href="public\styling\library\header.css">
         <link rel="stylesheet" href="public\styling\library\footer.css">
+        <link rel="stylesheet" href="public\styling\library\global-classes.css">
 
         <!-- main style -->
-        <link rel="stylesheet" href="public\styling\personal-profile.css">
-
+        <link rel="stylesheet" href="public\styling\articles-dashboard.css">
     </head>
     <body>
         <header>
@@ -42,7 +41,7 @@
                     </li>
                 </ul>
                 <div class="search-sign">
-                    <form action="" class="search">
+                    <form action="post" class="search">
                             <input type="text" placeholder="search">
                             <button type="submit">
                                 <img src="public/assets/search-icon.svg" alt="search icon">
@@ -51,92 +50,38 @@
                     <a href="sign-in.html" class="sign-link">
                         <button class="sign">sign in</button>
                     </a>
-                    <a href="personal-profile.html" class="user-home-page-link">
-                        <img src="public/assets/avatar0.png" alt="user avatar">
+                    <a class="user-home-page-link" href="personal-profile.html">
+                        <!-- Handeled in the javascript -->
+                        <!-- <img src="public/assets/avatar0.png" alt="user avatar"> -->
                     </a>
                 </div>
             </nav>
         </header>
-
         <main>
-            <aside class="secondery-nav">
-                <ul class="secondery-nav-items">
-                    <li class="secondery-nav-item profile-item">
-                        <a class="secondery-nav-link">
-                            <div class="link-details profile-link-container">
-                                <img src="public/assets/profile-page-icon.svg" alt="profile page icon">
-                                <h2>profile</h2>
-                            </div>
-                            <div class="link-go-img">
-                                <img src="public/assets/right-arow-icon.svg" alt="Right arow icon">
-                            </div>
-                        </a>
-                    </li>
-                    <li class="secondery-nav-item dashboard-item">
-                        <a class="secondery-nav-link">
-                            <div class="link-details dashboard-link-container">
-                                <img src="public/assets/dashboard-icon.svg" alt="dashboard icon">
-                                <h2>dashboard</h2>
-                            </div>
-                            <div class="link-go-img">
-                                <img src="public/assets/right-arow-icon.svg" alt="Right arow icon">
-                            </div>
-                        </a>
-                    </li>
-                    <li class="secondery-nav-item logout-item">
-                        <a class="secondery-nav-link">
-                            <div class="link-details logout-link-container">
-                                <img src="public/assets/logout-icon.svg" alt="logout icon">
-                                <h2>logout</h2>
-                            </div>
-                            <div class="link-go-img">
-                                <img src="public/assets/right-arow-icon.svg" alt="Right arow icon">
-                            </div>
-                        </a>
-                    </li>
-                </ul>
-            </aside>
-            <div class="secondery-container">
-                <div class="intro">
-                    <h2 class="page-title"><!--my profile/Now handled with javascript--></h2>
-                    <div class="page-container">
-                        <div class="profile">
-                            <!-- It is now handled in javascript -->
-                            </div>
-                            <div class="filter">
-                                <form action="" class="upload-personal-photo">
-                                    <label for="image_uploads">Choose images to upload (imge)</label>
-                                    <input type="file" name="avatar" accept="image/*">
-                                    <div class="error-message-container">
-                                        <p class="error-message"></p>
-                                    </div>
-                                    <button type="submit">Upload</button>
-                                </form>
-                            </div>
-                        </div>
-                        <div class="dashboard">
-                            <ul>
-                                <li><a href="articles-dashboard.html">
-                                    <img src="public/assets/article-icon.svg" alt="article icon">
-                                    <span>manage articles</span>
-                                </a></li>
-                                <li><a href="users-dashboard.html">
-                                    <img src="public/assets/user-icon.svg" alt="user icon with white color">
-                                    <span>manage users</span>
-                                </a></li>
-                            </ul>
-                        </div>
-                        <div class="loading-page-error">
-                            <p class="loading-page-error-text">loading...</p>
-                        </div>
-                        <div class="temporary-error-message">
-                           
-                        </div>
-                    </div>
-                </div>
+            <div class="main-container">
+                    
+                <section class="articles">
+
+                    <table>
+                        <thead rules="rows">
+                            <tr>
+                                <th class="article-title">name</th>
+                                <th>email</th>
+                                <th>article number</th>
+                                <th>role</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                           <!--  Handeled in the javascript -->
+                        </tbody>
+                    </table>
+                    <button class="load-more">load more</button>
+                </section>
+            </div>
+            <div class="temporary-error-message">
+                Hi
             </div>
         </main>
-
         <footer>
             <div class="secondry-container">
                 <div class="general-info">
@@ -198,8 +143,8 @@
                     <h2>references</h2>
                    <ul>
                        <li>Photo by <a href="https://unsplash.com/@nasa?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">NASA</a> on <a href="https://unsplash.com/photos/photo-of-outer-space-Q1p7bh3SHj8?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a></li>
-                       <li>Page body template by <a href="https://www.figma.com/community/file/1262016806682195017">Sid</a></li>
-                       <li>Page header and footer template by <a href="https://www.figma.com/community/file/1216616090937021365">Shakil Khan and Zelal Hossain</a></li>
+                       <li>Template header and footer by <a href="https://www.figma.com/community/file/1216616090937021365">Shakil Khan and Zelal Hossain</a></li>
+                       <li>Template body by <a href="https://www.figma.com/community/file/1140272887408902677">Iryna Lohush</a></li>
                        <li>Templates are custmized by <a href="https://github.com/Ahmed101Mohammed">Ahmed Al-3adl</a></li>
                    </ul>
                 </div>
@@ -222,10 +167,11 @@
                 </div>
             </div>
         </footer>
-        <script src="public/scripts/library/requests.js"></script>
         <script src="public/scripts/library/globalConstants.js"></script>
+        <script src="public/scripts/library/requests.js"></script>
         <script src="public/scripts/library/setConstants.js"></script>
-        <script src="public/scripts/library/header.js"></script>        
-        <script src="public/scripts/personalProfile.js"></script>
+        <script src="public/scripts/library/header.js"></script>
+        <script src="public/scripts/library/setTemporaryMessage-helper.js"></script>
+        <script src="public/scripts/usersDashboard.js"></script>
     </body>
 </html>
