@@ -83,7 +83,7 @@ const initialEditingPage = () =>
     document.querySelector("textarea").value = editedArticle.body;
     document.querySelector("div.article-cover").style.backgroundImage = `url(/uploads/${editedArticle.cover})`;
     document.querySelector("div.article-cover span.badge").textContent = categoryValuePresentation(editedArticle.category);
-    document.querySelector("div.article-cover p").remove();
+    document.querySelector("div.article-cover p").classList.add("d-none");
 
     let step1Circle = document.querySelector("button.step-1");
     step1Circle.classList.remove("btn-secondary");
@@ -151,7 +151,6 @@ nextOrDoneButton.addEventListener("click", async() =>
         const articleTitle = document.querySelector("#article-title").value;
         const articleCategory = document.querySelector("#article-category").value;
         const date = editedArticle ? new Date(editedArticle.date) : new Date();
-        console.log({date});
         const articleData = {
             body: articleBody,
             title: articleTitle,

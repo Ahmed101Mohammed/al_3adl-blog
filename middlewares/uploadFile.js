@@ -1,6 +1,13 @@
 const {join} = require("node:path");
 const multer = require("multer");
 
+const filterImageName = (name) =>
+{
+    return name.replace(/ /g, "-").replace(/'/g, "-").replace(/\(/g, "-").replace(/\)/g, "-")
+                .replace(/\//g, "-").replace(/\{/g, "-").replace(/\}/g, "-").replace(/\[/g, "-")
+                .replace(/\]/g, "-").replace(/,/g, "-").replace(/:/g, "-").replace(/;/g, "-")
+                .replace(/"/g, "-");
+}
 function fileFilter(req, file, cb)
 {
     const filetype = file.mimetype.split("/")[0];
@@ -21,8 +28,8 @@ const storage = multer.diskStorage({
       cb(null, join(__dirname, "..", "uploads"));
     },
     filename: function (req, file, cb) {
-        const authorId = req.body.authorId || req.params.id;
-        const fileName = `${Date.now()}-${Math.round(Math.random() * 1E9)}-${authorId}-${file.originalname}`;
+        const authorId = req.authData.id;
+        const fileName = `${Date.now()}-${Math.round(Math.random() * 1E9)}-${authorId}-${filterImageName(file.originalname)}`;
         cb(null, fileName);
     }
 })
