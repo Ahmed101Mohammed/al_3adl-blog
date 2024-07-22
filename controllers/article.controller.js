@@ -86,6 +86,16 @@ const getAllMyArticles = asyncWrapper(
     }
 )
 
+const getAllArticlesNumberForUser = asyncWrapper(
+    async (req, res, next)=>
+    {
+        const userId = req.params.id;
+        const articlesNumber = await Article.count({authorId: userId});
+        console.log(articlesNumber);
+        res.status(200,).json({status:SUCCESS, data: {articlesNumber: articlesNumber}}).end();
+    }
+)
+
 const postArticle = asyncWrapper(
     async (req, res, next)=>
     {
@@ -210,5 +220,6 @@ module.exports = {
     deleteArticle,
     getAllArticlesOfUser,
     getAllMyArticles,
-    getAllArticlesSorted
+    getAllArticlesSorted,
+    getAllArticlesNumberForUser
 }
