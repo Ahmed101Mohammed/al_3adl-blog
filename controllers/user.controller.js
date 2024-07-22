@@ -11,10 +11,32 @@ const AppError = require(join(__dirname, "..", "utils", "AppError"))
 const getUsers = asyncWrapper(
     async (req, res, next)=>
     {
-        const limit = req.query.limit? req.query.limit:10;
-        const page = req.query.page? req.query.page:1;
+        const limit = req.query.limit? parseInt(req.query.limit):10;
+        const page = req.query.page? parseInt(req.query.page):1;
         const skip = (page - 1) * limit;
-        const users = await User.find({}, {"__v": false, "password": false, "refreshToken": false}).sort({"role": 1}).limit(limit).skip(skip);
+        const users = await User.aggregate(
+            [
+                {
+                    $project: 
+                    {
+                        publishedArticlesSize: {$size: "$publishedArticles"},
+                        name: 1,
+                        email: 1,
+                        role: 1   
+                    }
+                },
+                {
+                    $sort: {role: 1}
+                },
+                {
+                    $skip: skip
+                },
+                {
+                    $limit: limit
+                }
+            ]
+        )
+        //const users = await User.find({}, {"__v": false, "password": false, "refreshToken": false, $size: "$publishedArticles"}).sort({"role": 1}).limit(limit).skip(skip);
         res.status(200).json({status: SUCCESS, data: {users}}).end();
     }
 );

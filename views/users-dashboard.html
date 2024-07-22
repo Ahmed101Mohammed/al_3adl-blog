@@ -23,7 +23,7 @@
         <link rel="stylesheet" href="public\styling\library\global-classes.css">
 
         <!-- main style -->
-        <link rel="stylesheet" href="public\styling\articles-dashboard.css">
+        <link rel="stylesheet" href="public\styling\users-dashboard.css">
     </head>
     <body>
         <header>
@@ -65,7 +65,7 @@
                     <table>
                         <thead rules="rows">
                             <tr>
-                                <th class="article-title">name</th>
+                                <th>name</th>
                                 <th>email</th>
                                 <th>article number</th>
                                 <th>role</th>
@@ -73,6 +73,18 @@
                         </thead>
                         <tbody>
                            <!--  Handeled in the javascript -->
+                            <tr id="${user.id}">
+                                <td class="user-name">Ahmed El-3sal</td>
+                                <td class="user-email">ahmed-coco@moco.goco</td>
+                                <td class="user-articles-number">100</td>
+                                <td class="user-role">
+                                    <select name="role" id="">
+                                        <option value="admin">admin</option>
+                                        <option value="manager">maneger</option>
+                                        <option value="user" selected>user</option>
+                                    </select>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <button class="load-more">load more</button>

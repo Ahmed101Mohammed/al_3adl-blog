@@ -1,3 +1,24 @@
+// advanced api request
+const advancedWithRefresh = async(request)=>
+{
+    const data = await request();
+    // console.log({data});
+    if(data.status === FAIL && data.errorType === UNAUTHORIZED)
+    {
+        let data = await getNewAccessToken();
+        if(data.status === SUCCESS)
+        {
+            accessToken = data.data.accessToken;
+        }
+
+        return await request();
+    }
+    else
+    {
+        return data;
+    }
+}
+
 // get accessToken using refresh request
 const getNewAccessToken = async() =>
 {
@@ -19,47 +40,6 @@ const getNewAccessToken = async() =>
         console.error(`Failed in get new access token fetching proccess, because of ${e.message}`);
         return false;
     }
-}
-
-// get user request / using userId
-const getUserPersonalData = async (userId)=>
-    {
-        try
-        {
-            const response = await fetch(`${baseUrl}/api/users/${userId}`, {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'authorization': `Bearer ${accessToken}`
-                },
-                credentials: 'include'
-            });
-            const data = await response.json();
-            return data;
-        }
-        catch(e)
-        {
-            console.error(`Failed in get user personal data fetching proccess, because of ${e.message}`);
-            return false;
-        }
-    }
-const getUserPersonalDataAdvanced = async(userId)=>
-{
-    const data = await getUserPersonalData(userId);
-    if(data.status === FAIL && data.errorType === UNAUTHORIZED)
-    {
-        let data = await getNewAccessToken();
-        if(data.status === SUCCESS)
-        {
-            accessToken = data.data.accessToken;
-        }
-        return await getUserPersonalData(userId);
-    }
-    else
-    {
-        return data;
-    }
-
 }
 
 // sign in
@@ -85,33 +65,6 @@ const signUser = async (userEmail, userPassword) => {
     catch(e)
     {
         console.error(`Failed in sign in fetching proccess, because of ${e.message}`);
-        return false;
-    }
-}
-
-// sign up
-const registerUser = async (userFullName, userEmail, userPassword) => {
-    try
-    {
-        const response = await fetch(`${baseUrl}/api/users/register`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                name: userFullName,
-                email: userEmail,
-                password: userPassword
-            }),
-            credentials: 'include'
-        })
-    
-        const data = await response.json();
-        return data;
-    }
-    catch(e)
-    {
-        console.error(`Failed in sign up fetching proccess, because of ${e.message}`);
         return false;
     }
 }
@@ -161,26 +114,29 @@ const logoutAdvanced = async()=>
     }
 }
 
-// advanced api request
-const advancedWithRefresh = async(request)=>
+// post an article with form data
+const postArticle = async (articleData) => 
 {
-    const data = await request();
-    // console.log({data});
-    if(data.status === FAIL && data.errorType === UNAUTHORIZED)
+    try
     {
-        let data = await getNewAccessToken();
-        if(data.status === SUCCESS)
-        {
-            accessToken = data.data.accessToken;
-        }
-
-        return await request();
-    }
-    else
-    {
+        const response = await fetch(`${baseUrl}/api/articles`, {
+            method: 'POST',
+            headers: {
+                'authorization': `Bearer ${accessToken}`
+            },
+            body: articleData,
+            credentials: 'include'
+        });
+        const data = await response.json();
         return data;
     }
+    catch(e)
+    {
+        console.error(`Failed in post article fetching proccess, because of ${e.message}`);
+        return false;
+    }
 }
+
 // get articles from database
 const getArticles = async(page, limit)=>
 {
@@ -224,6 +180,7 @@ const getSortedArticles = async(sortType, page, limit)=>
         return false;
     }
 }
+
 // get articles sorted
 const getAllArticlesSorted = async(page, limit, sort)=>
 {
@@ -340,6 +297,7 @@ const updateArticle = async(articleId, articleData)=>
         return false;
     }
 }
+
 // delte article
 const deleteArticle = async(articleId)=>
 {
@@ -360,6 +318,98 @@ const deleteArticle = async(articleId)=>
         console.error(`Failed in deleting article fetching proccess, because of ${e.message}`);
         return false;
     }
+}
+
+// sign up
+const registerUser = async (userFullName, userEmail, userPassword) => 
+{
+    try
+    {
+        const response = await fetch(`${baseUrl}/api/users/register`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                name: userFullName,
+                email: userEmail,
+                password: userPassword
+            }),
+            credentials: 'include'
+        })
+    
+        const data = await response.json();
+        return data;
+    }
+    catch(e)
+    {
+        console.error(`Failed in sign up fetching proccess, because of ${e.message}`);
+        return false;
+    }
+}
+// get all users request
+const getAllusers = async (page, limit) =>
+{
+    try
+    {
+        const respond = await fetch(`${baseUrl}/api/users?page=${page}&limit=${limit}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'authorization': `Bearer ${accessToken}`
+            },
+            credentials: 'include'
+        });
+
+        const data = await respond.json();
+        return data;
+    }
+    catch(e)
+    {
+        console.error(`Failed in get all users fetching proccess, because of ${e.message}`);
+        return false;
+    }
+}
+
+// get user request / using userId
+const getUserPersonalData = async (userId)=>
+{
+    try
+    {
+        const response = await fetch(`${baseUrl}/api/users/${userId}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'authorization': `Bearer ${accessToken}`
+            },
+            credentials: 'include'
+        });
+        const data = await response.json();
+        return data;
+    }
+    catch(e)
+    {
+        console.error(`Failed in get user personal data fetching proccess, because of ${e.message}`);
+        return false;
+    }
+}
+const getUserPersonalDataAdvanced = async(userId)=>
+{
+    const data = await getUserPersonalData(userId);
+    if(data.status === FAIL && data.errorType === UNAUTHORIZED)
+    {
+        let data = await getNewAccessToken();
+        if(data.status === SUCCESS)
+        {
+            accessToken = data.data.accessToken;
+        }
+        return await getUserPersonalData(userId);
+    }
+    else
+    {
+        return data;
+    }
+
 }
 
 // edit user data
@@ -386,6 +436,7 @@ const updateUserData = async (userData, userId) =>
     }
 }
 
+// Update request for user photo
 const updateUserDataForm = async (userData, userId) =>
 {
     try
@@ -406,29 +457,6 @@ const updateUserDataForm = async (userData, userId) =>
     catch(e)
     {
         console.error(`Failed in update user data fetching proccess, because of ${e.message}`);
-        return false;
-    }
-}
-
-// post an article with form data
-const postArticle = async (articleData) => 
-{
-    try
-    {
-        const response = await fetch(`${baseUrl}/api/articles`, {
-            method: 'POST',
-            headers: {
-                'authorization': `Bearer ${accessToken}`
-            },
-            body: articleData,
-            credentials: 'include'
-        });
-        const data = await response.json();
-        return data;
-    }
-    catch(e)
-    {
-        console.error(`Failed in post article fetching proccess, because of ${e.message}`);
         return false;
     }
 }
