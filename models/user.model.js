@@ -1,7 +1,7 @@
 const { join } = require("node:path")
 const Joi = require("joi");
 const mongoose = require("mongoose");
-const { ADMIN, USER, MANIGER } = require(join(__dirname, "..", "utils", "rolesConstants"));
+const { ADMIN, USER, MANAGER } = require(join(__dirname, "..", "utils", "rolesConstants"));
 
 const articleIdSchema = new mongoose.Schema({
     articleId: {
@@ -42,7 +42,7 @@ const userSchema = new mongoose.Schema({
     },
     role: {
         type: String,
-        enum: [ADMIN, USER, MANIGER],
+        enum: [ADMIN, USER, MANAGER],
         default: USER
     },
     avatar: {

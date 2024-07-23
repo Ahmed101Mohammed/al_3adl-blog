@@ -5,7 +5,7 @@ const User = require("../models/user.model");
 const { SUCCESS } = require(join(__dirname, "..", "utils", "httpRespondStatus"));
 const bcrypt = require("bcrypt");
 const { ADMIN } = require("../utils/rolesConstants");
-const { UNAUTHORIZED } = require("../utils/errorsConstants");
+const { UNAUTHORIZED, PERMISSION_ERROR } = require("../utils/errorsConstants");
 const AppError = require(join(__dirname, "..", "utils", "AppError"))
 
 const getUsers = asyncWrapper(
@@ -90,14 +90,14 @@ const updateUser = asyncWrapper(
         const userId = req.params.id;
         if(req.authData.role != ADMIN && userId != req.authData.id)
         {
-            const unauthorized = new AppError(UNAUTHORIZED, "you don't have permission to modify user data");
-            return next(unauthorized);
+            const permissionError = new AppError(PERMISSION_ERROR, "you don't have permission to modify user data");
+            return next(permissionError);
         }
         const updateDataSchema = Joi.object({
             name: Joi.string().min(5),
             email: Joi.string().email(),
             password: Joi.string().pattern(new RegExp('^[a-zA-Z0-9]{3,30}$')),
-            role: Joi.string().valid('user', 'maniger', 'admin')
+            role: Joi.string().valid('user', 'manager', 'admin')
         })
 
         const userData = { name, email, password, role };
@@ -115,9 +115,17 @@ const updateUser = asyncWrapper(
         }
 
         console.log({updateUser: val});
-        if(req.authData.role != ADMIN)
+        if(req.authData.role != ADMIN && val.role)
         {
             val.role = undefined;
+            const permissionError = new AppError(PERMISSION_ERROR, "you don't have permission to modify user role");
+            return next(permissionError);
+        }
+
+        if(val.role === ADMIN)
+        {
+            const permissionError = new AppError(PERMISSION_ERROR, "you don't have permission to modify to admin role");
+            return next(permissionError);
         }
 
         const user = await User.findByIdAndUpdate(userId, val, {"__v": false, "password": false});

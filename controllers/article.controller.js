@@ -202,7 +202,7 @@ const deleteArticle = asyncWrapper(
             const unauthorized = new AppError(UNAUTHORIZED, "you don't have permission to modify this article");
             return next(unauthorized);
         }
-
+        
         await Article.findByIdAndDelete(articleId);
         const user = await User.findById(req.authData.id, {"__v":false, "password":false});
         user.publishedArticles = user.publishedArticles.filter((e)=> !(e.articleId == articleId));

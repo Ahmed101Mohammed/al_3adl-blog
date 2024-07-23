@@ -30,8 +30,8 @@ const setUsersInDom = async(users) =>
                                 <td class="user-articles-number">${user.publishedArticlesSize}</td>
                                 <td class="user-role">
                                     <select name="role" id="">
-                                        <option value="admin">admin</option>
-                                        <option value="manager">maneger</option>
+                                        <option value="admin" disabled>admin</option>
+                                        <option value="manager">manager</option>
                                         <option value="user" selected>user</option>
                                     </select>
                                 </td>
@@ -77,6 +77,29 @@ const init = async()=>
     }
 }
 
+// events
+const tbody = document.querySelector("tbody");
+tbody.addEventListener("change", async(event)=>
+{
+    const select = event.target;
+    if(select.nodeName !== "SELECT")
+    {
+        return;
+    }
+
+    const tr = select.closest("tr");
+    const id = tr.id.slice(8);
+    console.log({id});
+    const data = await advancedWithRefresh(async() => await updateUserData({role: select.value}, id));
+    if(data.status !== SUCCESS)
+    {
+        setTemporaryMessage(data.message);
+    }
+    else
+    {
+        setTemporaryMessage("User updated successfully");
+    }
+})
 
 // running code
 userAvatarOrSignInWillAppear()
