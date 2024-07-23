@@ -70,6 +70,19 @@ const getUser = asyncWrapper(
     }
 );
 
+const getMyData = asyncWrapper(
+    async (req, res, next)=>
+    {
+        const userId = req.authData.id;
+        const user = await User.findOne({_id: userId}, {"__v": false, "password": false, "refreshToken": false});
+        if(!user)
+        {
+            const notFoundedUser = new AppError("NotFoundedData", `there is no user with "${userId}" id`);
+            return next(notFoundedUser);
+        }
+        res.status(200).json({status: SUCCESS, data: {user}}).end();
+    }
+)
 const updateUser = asyncWrapper(
     async (req, res, next)=>
     {
@@ -141,6 +154,7 @@ const deleteUser = asyncWrapper(
 module.exports = {
     getUsers,
     getUser,
+    getMyData,
     updateUser,
     deleteUser
 }

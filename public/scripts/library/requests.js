@@ -412,6 +412,29 @@ const getUserPersonalDataAdvanced = async(userId)=>
 
 }
 
+// get My data
+const getMyData = async()=>
+{
+    try
+    {
+        let respond = await fetch(`${baseUrl}/api/users/me`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'authorization': `Bearer ${accessToken}`
+            },
+            credentials: 'include'
+        });
+        let data = await respond.json();
+        return data;
+    }
+    catch(e)
+    {
+        console.error(`Failed in get my data fetching proccess, because of ${e.message}`);
+        return false;
+    }
+}
+
 // edit user data
 const updateUserData = async (userData, userId) => 
 {

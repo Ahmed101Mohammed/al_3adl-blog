@@ -62,7 +62,7 @@ td.user-articles-number
 
 .load-more
 {
-    display: block;
+    display: none;
     width: 100%;
     background-color: transparent;
     border: none;
