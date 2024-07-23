@@ -1,5 +1,6 @@
 const Joi = require("joi");
 const { join } = require("node:path");
+const fs = require("node:fs");
 const asyncWrapper = require(join(__dirname, "..", "middlewares", "asyncWrapper"));
 const User = require("../models/user.model");
 const { SUCCESS } = require(join(__dirname, "..", "utils", "httpRespondStatus"));
@@ -7,6 +8,7 @@ const bcrypt = require("bcrypt");
 const { ADMIN } = require("../utils/rolesConstants");
 const { UNAUTHORIZED, PERMISSION_ERROR } = require("../utils/errorsConstants");
 const AppError = require(join(__dirname, "..", "utils", "AppError"))
+const removeImageFromDB = require(join(__dirname, "..", "utils", "removeImageFromDB"));
 
 const getUsers = asyncWrapper(
     async (req, res, next)=>
@@ -102,19 +104,43 @@ const updateUser = asyncWrapper(
 
         const userData = { name, email, password, role };
 
-        const val = await updateDataSchema.validateAsync(userData);
+        let val; 
+        try
+        {
+            val = await updateDataSchema.validateAsync(userData);
+        }
+        catch(e)
+        {
+            if(req.file)
+            {
+                let fileName = req.file.filename;
+                let filePath = join(__dirname, "..", "uploads", fileName);
+                removeImageFromDB(filePath);
+            }
+
+            const validationError = new AppError("ValidationError", e.message);
+            return next(validationError);
+        }
 
         if(password)
         {
             val.password = bcrypt.hash(password, 10);
         }
 
+        const user = await User.findOne({_id: userId});
+        if(!user)
+        {
+            const notFoundedUser = new AppError("NotFoundedData", `there no user with '${userId}' id`);
+            return next(notFoundedUser);
+        }
+
         if(req.file)
         {
+            let fileName = user.avatar;
+            removeImageFromDB(fileName);
             val.avatar = req.file.filename;
         }
 
-        console.log({updateUser: val});
         if(req.authData.role != ADMIN && val.role)
         {
             val.role = undefined;
@@ -128,13 +154,7 @@ const updateUser = asyncWrapper(
             return next(permissionError);
         }
 
-        const user = await User.findByIdAndUpdate(userId, val, {"__v": false, "password": false});
-        if(!user)
-        {
-            const notFoundedUser = new AppError("NotFoundedData", `there no user with '${userId}' id`);
-            return next(notFoundedUser);
-        }
-
+        await User.findByIdAndUpdate(userId, val, {"__v": false, "password": false});
         res.status(200).json({status: SUCCESS, data: { user: null }});
     }
 );
