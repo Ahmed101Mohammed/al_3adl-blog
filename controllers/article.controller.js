@@ -7,7 +7,8 @@ const Joi = require('joi');
 const { UNAUTHORIZED, NOT_FOUNDED_DATA } = require("../utils/errorsConstants");
 const User = require("../models/user.model");
 const { USER } = require("../utils/rolesConstants");
-const { title } = require("node:process");
+const removeImageFromDB = require("../utils/removeImageFromDB");
+// const { title } = require("node:process");
 
 const getAllArticles = asyncWrapper(
     async (req, res, next)=>
@@ -115,13 +116,32 @@ const postArticle = asyncWrapper(
             category: Joi.string().min(2)
         });
 
-        let value = await schema.validateAsync(articleData);
-        value.authorAvatar = authorAvatar;
+        let value;
+        try
+        {
+            value = await schema.validateAsync(articleData);
+            value.authorAvatar = authorAvatar;
+        }
+        catch(e)
+        {
+            if(req.file)
+            {
+                removeImageFromDB(req.file.filename);
+            }
+            const validationError = new AppError("ValidationError", e.message);
+            return next(validationError);
+        }
+
         if(req.file)
         {
             value.cover = req.file.filename;
         }
-
+        else
+        {
+            const notFoundedCover = new AppError(NOT_FOUNDED_DATA, "article cover is required");
+            return next(notFoundedCover);
+        }
+        
         const newArticle = new Article(value);
         user.publishedArticles.push({articleId: newArticle._id});
         await newArticle.save();
@@ -167,20 +187,34 @@ const updateArticle = asyncWrapper(
             disLike: Joi.number().min(0),
         });
 
-        const value = await schema.validateAsync(reqData);
-        if(req.file)
+        let value;
+        try
         {
-            value.cover = req.file.filename;
+            value = await schema.validateAsync(reqData);
+        }
+        catch(e)
+        {
+            if(req.file)
+            {
+                removeImageFromDB(req.file.filename);
+            }
+            const validationError = new AppError("ValidationError", e.message);
+            return next(validationError);
         }
 
-        article = await Article.findByIdAndUpdate(articleId, value);
-
-        if(!article)
+        const artcile = await Article.findById(articleId);
+        if(!artcile)
         {
             const notFoundedArticle = new AppError(NOT_FOUNDED_DATA, `there is no article with "${articleId}" id to update`);
             return next(notFoundedArticle);
         }
+        if(req.file)
+        {
+            removeImageFromDB(artcile.cover);
+            value.cover = req.file.filename;
+        }
 
+        await Article.findByIdAndUpdate(articleId, value);
         res.status(200).json({status: SUCCESS, data: null}).end();
     }
 )

@@ -85,6 +85,7 @@ const getMyData = asyncWrapper(
         res.status(200).json({status: SUCCESS, data: {user}}).end();
     }
 )
+
 const updateUser = asyncWrapper(
     async (req, res, next)=>
     {
@@ -95,6 +96,7 @@ const updateUser = asyncWrapper(
             const permissionError = new AppError(PERMISSION_ERROR, "you don't have permission to modify user data");
             return next(permissionError);
         }
+
         const updateDataSchema = Joi.object({
             name: Joi.string().min(5),
             email: Joi.string().email(),
@@ -114,8 +116,8 @@ const updateUser = asyncWrapper(
             if(req.file)
             {
                 let fileName = req.file.filename;
-                let filePath = join(__dirname, "..", "uploads", fileName);
-                removeImageFromDB(filePath);
+                console.log("fileName: ", fileName);
+                removeImageFromDB(fileName);
             }
 
             const validationError = new AppError("ValidationError", e.message);
@@ -137,6 +139,7 @@ const updateUser = asyncWrapper(
         if(req.file)
         {
             let fileName = user.avatar;
+            console.log("fileName: ", fileName);
             removeImageFromDB(fileName);
             val.avatar = req.file.filename;
         }

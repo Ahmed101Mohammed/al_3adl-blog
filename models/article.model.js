@@ -12,7 +12,8 @@ const articleSchema = new mongoose.Schema({
         type: String,
         require: [true, "required"],
         minLength: [7, "must be more than 6 chars"],
-        maxLength: [60, "must be lest than 61 chars"]
+        maxLength: [60, "must be lest than 61 chars"],
+        unique: true
     },
     body: {
         type: String,
