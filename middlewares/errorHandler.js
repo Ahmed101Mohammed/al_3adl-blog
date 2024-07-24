@@ -1,12 +1,19 @@
 const { join } = require("node:path");
 const { ERROR, FAIL } = require(join(__dirname, "..", "utils", "httpRespondStatus"));
 const { UNAUTHORIZED, DUBLICATED_DATA, NOT_FOUNDED_DATA, VALIDATION_ERROR, PERMISSION_ERROR } = require(join("..", "utils", "errorsConstants"))
+const removeImageFromDB = require(join(__dirname, "..", "utils", "removeImageFromDB"));
 const errorHandler = (err, req, res, next)=>
 {
     console.log(`Error Logger: name:${err.name} message:${err.message}`);
     const errName = err.name;
     const errMessage = err.message;
 
+    if(req.file)
+    {
+        let fileName = req.file.filename;
+        console.log("fileName: ", fileName);
+        removeImageFromDB(fileName);
+    }
     switch(errName)
     {
         case UNAUTHORIZED:

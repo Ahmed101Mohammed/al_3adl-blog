@@ -97,6 +97,21 @@ const getAllArticlesNumberForUser = asyncWrapper(
     }
 )
 
+const getArticle = asyncWrapper(
+    async (req, res, next)=>
+    {
+        const articleId = req.params.id;
+        const article = await Article.findOne({_id: articleId}, {"__v": false});
+        if(!article)
+        {
+            const notFoundedArticle = new AppError("NotFoundedData", `there is no article with "${articleId}" id`);
+            return next(notFoundedArticle);
+        }
+
+        res.status(200).json({status: SUCCESS, data: {article}}).end();
+    }
+)
+
 const postArticle = asyncWrapper(
     async (req, res, next)=>
     {
@@ -116,21 +131,8 @@ const postArticle = asyncWrapper(
             category: Joi.string().min(2)
         });
 
-        let value;
-        try
-        {
-            value = await schema.validateAsync(articleData);
-            value.authorAvatar = authorAvatar;
-        }
-        catch(e)
-        {
-            if(req.file)
-            {
-                removeImageFromDB(req.file.filename);
-            }
-            const validationError = new AppError("ValidationError", e.message);
-            return next(validationError);
-        }
+        let value = await schema.validateAsync(articleData);
+        value.authorAvatar = authorAvatar;
 
         if(req.file)
         {
@@ -141,27 +143,14 @@ const postArticle = asyncWrapper(
             const notFoundedCover = new AppError(NOT_FOUNDED_DATA, "article cover is required");
             return next(notFoundedCover);
         }
-        
+
         const newArticle = new Article(value);
         user.publishedArticles.push({articleId: newArticle._id});
+        
         await newArticle.save();
         await user.save();
+
         res.status(201).json({status: SUCCESS, data: {article: newArticle}});
-    }
-)
-
-const getArticle = asyncWrapper(
-    async (req, res, next)=>
-    {
-        const articleId = req.params.id;
-        const article = await Article.findOne({_id: articleId}, {"__v": false});
-        if(!article)
-        {
-            const notFoundedArticle = new AppError("NotFoundedData", `there is no article with "${articleId}" id`);
-            return next(notFoundedArticle);
-        }
-
-        res.status(200).json({status: SUCCESS, data: {article}}).end();
     }
 )
 
@@ -187,20 +176,7 @@ const updateArticle = asyncWrapper(
             disLike: Joi.number().min(0),
         });
 
-        let value;
-        try
-        {
-            value = await schema.validateAsync(reqData);
-        }
-        catch(e)
-        {
-            if(req.file)
-            {
-                removeImageFromDB(req.file.filename);
-            }
-            const validationError = new AppError("ValidationError", e.message);
-            return next(validationError);
-        }
+        let value = await schema.validateAsync(reqData);
 
         const artcile = await Article.findById(articleId);
         if(!artcile)
@@ -210,11 +186,12 @@ const updateArticle = asyncWrapper(
         }
         if(req.file)
         {
-            removeImageFromDB(artcile.cover);
             value.cover = req.file.filename;
         }
 
         await Article.findByIdAndUpdate(articleId, value);
+        removeImageFromDB(artcile.cover);
+
         res.status(200).json({status: SUCCESS, data: null}).end();
     }
 )

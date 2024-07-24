@@ -10,7 +10,7 @@ const userRouter = require(join(__dirname, "routes", "user.route"));
 const cookieParser = require("cookie-parser");
 const verifyJWT = require("./middlewares/verifyJWT");
 const setUpAdminUser = require("./utils/setUpAdminUser");
-
+const { NOT_FOUNDED_DATA } = require("./utils/errorsConstants");
 // app
 const app = express();
 

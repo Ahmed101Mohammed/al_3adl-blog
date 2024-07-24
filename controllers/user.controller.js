@@ -106,24 +106,8 @@ const updateUser = asyncWrapper(
 
         const userData = { name, email, password, role };
 
-        let val; 
-        try
-        {
-            val = await updateDataSchema.validateAsync(userData);
-        }
-        catch(e)
-        {
-            if(req.file)
-            {
-                let fileName = req.file.filename;
-                console.log("fileName: ", fileName);
-                removeImageFromDB(fileName);
-            }
-
-            const validationError = new AppError("ValidationError", e.message);
-            return next(validationError);
-        }
-
+        let val = await updateDataSchema.validateAsync(userData);
+        
         if(password)
         {
             val.password = bcrypt.hash(password, 10);
@@ -138,9 +122,6 @@ const updateUser = asyncWrapper(
 
         if(req.file)
         {
-            let fileName = user.avatar;
-            console.log("fileName: ", fileName);
-            removeImageFromDB(fileName);
             val.avatar = req.file.filename;
         }
 
@@ -158,6 +139,8 @@ const updateUser = asyncWrapper(
         }
 
         await User.findByIdAndUpdate(userId, val, {"__v": false, "password": false});
+        let fileName = user.avatar;
+        removeImageFromDB(fileName);
         res.status(200).json({status: SUCCESS, data: { user: null }});
     }
 );

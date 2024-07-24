@@ -1,4 +1,3 @@
-const { required } = require("joi");
 const mongoose = require("mongoose");
 
 const userIdSchema = new mongoose.Schema({
@@ -13,7 +12,7 @@ const articleSchema = new mongoose.Schema({
         require: [true, "required"],
         minLength: [7, "must be more than 6 chars"],
         maxLength: [60, "must be lest than 61 chars"],
-        unique: true
+        unique: [true, "article already exists"]
     },
     body: {
         type: String,
