@@ -8,7 +8,6 @@ const setAccessToken = async() =>
     }
     else
     {
-        console.error(data);
         if(data.status === FAIL && data.errorType === UNAUTHORIZED)
         {
             localStorage.clear();
@@ -27,10 +26,8 @@ const setUserDataConstant = async()=>
     }
     else
     {
-        console.error(data);
         if(data.status === FAIL && data.errorType === UNAUTHORIZED)
         {
-            console.log("UNAUTHORIZED");
             localStorage.clear();
         }
     }

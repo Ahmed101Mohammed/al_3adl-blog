@@ -14,7 +14,7 @@ if(!userId)
 const intialPageIntro = (article)=>
 {
 
-    const userData = {avatar: article.authorAvatar, name: article.author};
+    const userData = {avatar: article.author.avatar, name: article.author.name};
     const userImageElement = document.querySelector(".author img");
     const userNameElement = document.querySelector(".author p.name");
 
@@ -25,7 +25,7 @@ const intialPageIntro = (article)=>
 // generate leatest articles by user id
 const setleatestArticles = async ()=>
 {
-    const respond = await advancedWithRefresh(async()=> await getArticlesOfUser(userId, page, limit));
+    const respond = await getArticlesOfUser(userId, page, limit);
 
     if(respond.status !== SUCCESS)
     {

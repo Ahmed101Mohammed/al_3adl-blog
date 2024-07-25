@@ -89,7 +89,6 @@ tbody.addEventListener("change", async(event)=>
 
     const tr = select.closest("tr");
     const id = tr.id.slice(8);
-    console.log({id});
     const data = await advancedWithRefresh(async() => await updateUserData({role: select.value}, id));
     if(data.status !== SUCCESS)
     {

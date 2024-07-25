@@ -56,9 +56,9 @@ const setTheHomeIntroSection = async()=>
         articleTitleElement.href = "/article.html?id=" + article._id;
         articleCategoryElement.textContent = article.category;
         articleCoverElement.src = "/uploads/" + article.cover;
-        authorAvatarElement.src = "/uploads/" + article.authorAvatar;
-        authorName.textContent = article.author;
-        authorName.href = "/author-page.html?id=" + article.authorId;
+        authorAvatarElement.src = "/uploads/" + article.author.avatar;
+        authorName.textContent = article.author.name;
+        authorName.href = "/author-page.html?id=" + article.author.authorId;
         let realDate = new Date(article.date);
         date.textContent = months[realDate.getMonth()] + " " + realDate.getDate() + ", " + realDate.getFullYear();
     }

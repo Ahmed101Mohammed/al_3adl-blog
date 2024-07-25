@@ -42,39 +42,39 @@ const seeMoreButtonAppearance = (status)=>
 }
 
 // article factory
-const Article = ({_id ,title, body, author, authorId, cover, category, date, liked, disliked, authorAvatar})=>
+const Article = ({_id ,title, body, author, cover, category, date, disLikesNumber, likesNumber})=>
 {
     let months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
     return {
         id: _id,
         title,
         body,
-        author,
-        authorId,
+        author: author.name,
+        authorId: author.authorId,
         cover,
         category,
         date : new Date(date),
-        liked,
-        disliked,
-        authorAvatar,
+        liked: likesNumber,
+        disliked: disLikesNumber,
+        authorAvatar: author.avatar,
         createSimpleHTMLPresentation: function() {
             return `
                 <div class="post-card" id="${this.id}">
                     <div class="post-cover">
-                        <img src="${baseUrl}/uploads/${cover}" alt="post cover" class="cover">
+                        <img src="${baseUrl}/uploads/${this.cover}" alt="post cover" class="cover">
                     </div>
                     <div class="info">
                         <div class="main-info">
-                            <p class="catigory">${category}</p>
+                            <p class="catigory">${this.category}</p>
                             <h3 class="title">
-                                <a href="article.html?id=${this.id}">${title}</a>
+                                <a href="article.html?id=${this.id}">${this.title}</a>
                             </h3>
                         </div>
                         <div class="production-details">
                             <div class="author">
-                                <img src="uploads/${authorAvatar}" alt="author personal avatar" class="avatar">
+                                <img src="uploads/${this.authorAvatar}" alt="author personal avatar" class="avatar">
                                 <p class="name">
-                                    <a href="author-page.html?id=${this.authorId}">${author}</a>
+                                    <a href="author-page.html?id=${this.authorId}">${this.author}</a>
                                 </p>
                             </div>
                             <p class="date">${months[this.date.getMonth()]} ${this.date.getDate()}, ${this.date.getFullYear()}</p>
@@ -90,21 +90,21 @@ const Article = ({_id ,title, body, author, authorId, cover, category, date, lik
             return `
                         <div class="article-header">
                             <div class="main-info">
-                                <p class="category-primary">${category}</p>
-                                <h2 class="title">${title}</h2>
+                                <p class="category-primary">${this.category}</p>
+                                <h2 class="title">${this.title}</h2>
                             </div>
                             <div class="production-details">
                                     <div class="author">
-                                        <img src="/uploads/${authorAvatar}" alt="author image"/>
+                                        <img src="/uploads/${this.authorAvatar}" alt="author image"/>
                                         <p class="name">
-                                            <a href="author-page.html?id=${this.authorId}">${author}</a>
+                                            <a href="author-page.html?id=${this.authorId}">${this.author}</a>
                                         </p>
                                     </div>
                                     <p class="date">${months[this.date.getMonth()]} ${this.date.getDate()}, ${this.date.getFullYear()}</p>
                             </div>
                         </div>
                         <div class="article-cover">
-                            <img src="${baseUrl}/uploads/${cover}" alt="article cover">
+                            <img src="${baseUrl}/uploads/${this.cover}" alt="article cover">
                         </div>
                         <div class="article-body">
                         
@@ -115,8 +115,8 @@ const Article = ({_id ,title, body, author, authorId, cover, category, date, lik
         {
             return `
                         <tr id="${this.id}">
-                            <td class="article-title">${title}</td>
-                            <td class="article-author">${author}</td>
+                            <td class="article-title">${this.title}</td>
+                            <td class="article-author">${this.author}</td>
                             <td>${months[this.date.getMonth()]} ${this.date.getDate()}, ${this.date.getFullYear()}</td>
                             <td>${category}</td>
                             <td>

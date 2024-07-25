@@ -6,7 +6,7 @@ let articlesInDom = [];
 // appear articles
 const appearArticles = async()=>
 {
-    const data = await getSortedArticles(-1 ,page, limit);
+    const data = await getAllArticlesSorted(page, limit, {sortType: "likesNumber", sortDirection: -1});
     if(data.status === SUCCESS && data.data.articles.length > 0)
     {
         const articles = data.data.articles;
@@ -55,9 +55,9 @@ const setTheBlogIntroSection = async()=>
     articleTitleElement.href = "/article.html?id=" + article._id;
     articleCategoryElement.textContent = article.category;
     articleCoverElement.src = "/uploads/" + article.cover;
-    authorAvatarElement.src = "/uploads/" + article.authorAvatar;
-    authorName.textContent = article.author;
-    authorName.href = "/author-page.html?id=" + article.authorId;
+    authorAvatarElement.src = "/uploads/" + article.author.avatar;
+    authorName.textContent = article.author.name;
+    authorName.href = "/author-page.html?id=" + article.author.authorId;
     let realDate = new Date(article.date);
     date.textContent = months[realDate.getMonth()] + " " + realDate.getDate() + ", " + realDate.getFullYear();
     

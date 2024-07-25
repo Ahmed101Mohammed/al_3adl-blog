@@ -23,10 +23,6 @@ const articleSchema = new mongoose.Schema({
         type: Date,
         default: Date.now()
     },
-    author: {
-        type: String,
-        require: [true, "required"]
-    },
     authorId: {
         type: mongoose.Types.ObjectId,
         require: [true, "required"]
@@ -34,10 +30,6 @@ const articleSchema = new mongoose.Schema({
     cover: {
         type: String,
         default: "article-cover-default.png"
-    },
-    authorAvatar: {
-        type: String,
-        required: [true, "required"]
     },
     category: {
         type: String,
@@ -61,5 +53,4 @@ const articleSchema = new mongoose.Schema({
 })
 
 const Article = mongoose.model("Article", articleSchema);
-
 module.exports = Article;

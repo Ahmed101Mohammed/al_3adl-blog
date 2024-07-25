@@ -8,6 +8,7 @@ const { UNAUTHORIZED, NOT_FOUNDED_DATA } = require("../utils/errorsConstants");
 const User = require("../models/user.model");
 const { USER } = require("../utils/rolesConstants");
 const removeImageFromDB = require("../utils/removeImageFromDB");
+const { default: mongoose } = require("mongoose");
 // const { title } = require("node:process");
 
 const getAllArticles = asyncWrapper(
@@ -30,7 +31,45 @@ const getAllArticlesSorted = asyncWrapper(
 
         if(!req.query.sortType)
         {
-            const artciles = await Article.find({}, {"__v": false}).limit(limit).skip(skip);
+            const artciles = await Article.aggregate(
+                [
+                    {
+                        $limit: parseInt(limit)
+                    },
+                    {
+                        $skip: parseInt(skip)
+                    },
+                    {
+                        $lookup: {
+                            from: "users",
+                            localField: "authorId",
+                            foreignField: "_id",
+                            as: "author"
+                        }
+                    },
+                    {
+                        $unwind: "$author"
+                    },
+                    {
+                        $project: {
+                            title: 1,
+                            body: 1,
+                            _id: 1,
+                            category: 1,
+                            date: 1,
+                            cover: 1,
+                            likesNumber: 1,
+                            disLikesNumber: 1,
+                            author: {
+                                name: "$author.name",
+                                avatar: "$author.avatar",
+                                authorId: "$author._id"
+                            }
+                        }
+                    },
+                ]
+            ) 
+            // const artciles = await Article.find({}, {"__v": false}).limit(limit).skip(skip);
             res.status(200).json({status:SUCCESS, data: {articles: artciles}}).end();
             return;
         }
@@ -45,9 +84,51 @@ const getAllArticlesSorted = asyncWrapper(
         })
 
         const value = await schema.validateAsync(sort);
-        
-        const artciles = await Article.find({}, {"__v": false}).sort({[value.sortType]: value.sortDirection}).limit(limit).skip(skip);
-        res.status(200,).json({status:SUCCESS, data: {articles: artciles}}).end();
+        const articles = await Article.aggregate(
+            [
+                {
+                    $sort: {[value.sortType]: value.sortDirection}
+                },
+                {
+                    $limit: parseInt(limit)
+                },
+                {
+                    $skip: parseInt(skip)
+                },
+                {
+                    $lookup: {
+                        from: "users",
+                        localField: "authorId",
+                        foreignField: "_id",
+                        as: "author"
+                    }
+                },
+                {
+                    $unwind: "$author"
+                },
+                {
+                    $project: {
+                        title: 1,
+                        body: 1,
+                        _id: 1,
+                        category: 1,
+                        date: 1,
+                        cover: 1,
+                        likesNumber: 1,
+                        disLikesNumber: 1,
+                        author: {
+                            name: "$author.name",
+                            avatar: "$author.avatar",
+                            authorId: "$author._id"
+                        }
+                    }
+                },
+            ]
+        );
+        console.log("get All Articles Sorted");
+        console.log(articles);
+        // const artciles = await Article.find({}, {"__v": false}).sort({[value.sortType]: value.sortDirection}).limit(limit).skip(skip);
+        res.status(200,).json({status:SUCCESS, data: {articles: articles}}).end();
     }
 )
 
@@ -66,11 +147,55 @@ const getAllArticlesSortedWithLikes = asyncWrapper(
 const getAllArticlesOfUser = asyncWrapper(
     async (req, res, next)=>
     {
-        const userId = req.params.id;
+        
         const limit = req.query.limit? req.query.limit:10;
         const page = req.query.page? req.query.page:1;
         const skip = (page - 1) * limit;
-        const artciles = await Article.find({authorId: userId}, {"__v": false}).sort({"date": -1}).limit(limit).skip(skip);
+        const artciles = await Article.aggregate(
+            [
+                {
+                    $match: {authorId: new mongoose.Types.ObjectId(req.params.id)}
+                },
+                {
+                    $sort: {"date": -1}
+                },
+                {
+                    $limit: parseInt(limit)
+                },
+                {
+                    $skip: parseInt(skip)
+                },
+                {
+                    $lookup: {
+                        from: "users",
+                        localField: "authorId",
+                        foreignField: "_id",
+                        as: "author"
+                    }
+                },
+                {
+                    $unwind: "$author"
+                },
+                {
+                    $project: {
+                        title: 1,
+                        body: 1,
+                        _id: 1,
+                        category: 1,
+                        date: 1,
+                        cover: 1,
+                        likesNumber: 1,
+                        disLikesNumber: 1,
+                        author: {
+                            name: "$author.name",
+                            avatar: "$author.avatar",
+                            authorId: "$author._id"
+                        }
+                    }
+                },
+            ]
+        );
+        //const artciles = await Article.find({authorId: userId}, {"__v": false}).sort({"date": -1}).limit(limit).skip(skip);
         res.status(200,).json({status:SUCCESS, data: {articles: artciles}}).end();
     }
 )
@@ -82,7 +207,48 @@ const getAllMyArticles = asyncWrapper(
         const limit = req.query.limit? req.query.limit:10;
         const page = req.query.page? req.query.page:1;
         const skip = (page - 1) * limit;
-        const artciles = await Article.find({authorId: userId}, {"__v": false}).sort({"date": -1}).limit(limit).skip(skip);
+        const artciles = await Article.aggregate(
+            [
+                {
+                    $match: {authorId: new mongoose.Types.ObjectId(userId)}
+                },
+                {
+                    $sort: {"date": -1}
+                },
+                {
+                    $limit: parseInt(limit)
+                },
+                {
+                    $skip: parseInt(skip)
+                },
+                {
+                    $lookup: {
+                        from: "users",
+                        localField: "authorId",
+                        foreignField: "_id",
+                        as: "author"
+                    }
+                },
+                {
+                    $unwind: "$author"
+                },
+                {
+                    $project: {
+                        title: 1,
+                        _id: 1,
+                        category: 1,
+                        date: 1,
+                        likesNumber: 1,
+                        disLikesNumber: 1,
+                        author: {
+                            name: "$author.name",
+                            authorId: "$author._id"
+                        }
+                    }
+                }
+            ]
+        )
+        //const artciles = await Article.find({authorId: userId}, {"__v": false}).sort({"date": -1}).limit(limit).skip(skip);
         res.status(200,).json({status:SUCCESS, data: {articles: artciles}}).end();
     }
 )
@@ -101,14 +267,50 @@ const getArticle = asyncWrapper(
     async (req, res, next)=>
     {
         const articleId = req.params.id;
-        const article = await Article.findOne({_id: articleId}, {"__v": false});
+        const article = await Article.aggregate(
+            [
+                {
+                    $match: {_id: new mongoose.Types.ObjectId(articleId)}
+                },
+                {
+                    $lookup: {
+                        from: "users",
+                        localField: "authorId",
+                        foreignField: "_id",
+                        as: "author"
+                    }
+                },
+                {
+                    $unwind: "$author"
+                },
+                {
+                    $project: {
+                        title: 1,
+                        body: 1,
+                        _id: 1,
+                        category: 1,
+                        date: 1,
+                        cover: 1,
+                        likesNumber: 1,
+                        disLikesNumber: 1,
+                        author: {
+                            name: "$author.name",
+                            avatar: "$author.avatar",
+                            authorId: "$author._id"
+                        }
+                    }
+                },
+            ]
+        );
+        console.log("get article",article);
+        // const article = await Article.findOne({_id: articleId}, {"__v": false});
         if(!article)
         {
             const notFoundedArticle = new AppError("NotFoundedData", `there is no article with "${articleId}" id`);
             return next(notFoundedArticle);
         }
 
-        res.status(200).json({status: SUCCESS, data: {article}}).end();
+        res.status(200).json({status: SUCCESS, data: {article: article[0]}}).end();
     }
 )
 
