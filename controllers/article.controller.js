@@ -125,9 +125,6 @@ const getAllArticlesSorted = asyncWrapper(
                 },
             ]
         );
-        console.log("get All Articles Sorted");
-        console.log(articles);
-        // const artciles = await Article.find({}, {"__v": false}).sort({[value.sortType]: value.sortDirection}).limit(limit).skip(skip);
         res.status(200,).json({status:SUCCESS, data: {articles: articles}}).end();
     }
 )
@@ -248,7 +245,6 @@ const getAllMyArticles = asyncWrapper(
                 }
             ]
         )
-        //const artciles = await Article.find({authorId: userId}, {"__v": false}).sort({"date": -1}).limit(limit).skip(skip);
         res.status(200,).json({status:SUCCESS, data: {articles: artciles}}).end();
     }
 )
@@ -258,7 +254,6 @@ const getAllArticlesNumberForUser = asyncWrapper(
     {
         const userId = req.params.id;
         const articlesNumber = await Article.count({authorId: userId});
-        console.log(articlesNumber);
         res.status(200,).json({status:SUCCESS, data: {articlesNumber: articlesNumber}}).end();
     }
 )
@@ -302,8 +297,6 @@ const getArticle = asyncWrapper(
                 },
             ]
         );
-        console.log("get article",article);
-        // const article = await Article.findOne({_id: articleId}, {"__v": false});
         if(!article)
         {
             const notFoundedArticle = new AppError("NotFoundedData", `there is no article with "${articleId}" id`);
@@ -392,7 +385,10 @@ const updateArticle = asyncWrapper(
         }
 
         await Article.findByIdAndUpdate(articleId, value);
-        removeImageFromDB(artcile.cover);
+        if(req.file)
+        {
+            removeImageFromDB(artcile.cover);
+        }
 
         res.status(200).json({status: SUCCESS, data: null}).end();
     }
@@ -415,11 +411,19 @@ const deleteArticle = asyncWrapper(
             const unauthorized = new AppError(UNAUTHORIZED, "you don't have permission to modify this article");
             return next(unauthorized);
         }
+
+        const artcile = await Article.findById(articleId);
+        if(!artcile)
+        {
+            const notFoundedArticle = new AppError(NOT_FOUNDED_DATA, `there is no article with "${articleId}" id to delete`);
+            return next(notFoundedArticle);
+        }
         
         await Article.findByIdAndDelete(articleId);
         const user = await User.findById(req.authData.id, {"__v":false, "password":false});
         user.publishedArticles = user.publishedArticles.filter((e)=> !(e.articleId == articleId));
         await user.save();
+        removeImageFromDB(artcile.cover);
         res.status(200).json({status: SUCCESS, data: null});
     }
 )

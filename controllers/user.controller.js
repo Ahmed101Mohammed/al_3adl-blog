@@ -139,8 +139,11 @@ const updateUser = asyncWrapper(
         }
 
         await User.findByIdAndUpdate(userId, val, {"__v": false, "password": false});
-        let fileName = user.avatar;
-        removeImageFromDB(fileName);
+        if(req.file)
+        {
+            let fileName = user.avatar;
+            removeImageFromDB(fileName);
+        }
         res.status(200).json({status: SUCCESS, data: { user: null }});
     }
 );
@@ -154,12 +157,14 @@ const deleteUser = asyncWrapper(
             const unauthorized = new AppError(UNAUTHORIZED, "you don't have permission to delete user");
             return next(unauthorized);
         }
-        const user = await User.findByIdAndDelete({_id: userId}, {"__v": false, "password": false});
+        const user = await User.findById(userId);
         if(!user)
         {
-            const notFoundedUser = new AppError("NotFoundedData", `there no use with '${userId}' id, to deleted`);
+            const notFoundedUser = new AppError("NotFoundedData", `there no user with '${userId}' id, to deleted`);
             return next(notFoundedUser);
         }
+        await User.findByIdAndDelete({_id: userId}, {"__v": false, "password": false});
+        removeImageFromDB(user.avatar);
 
         res.status(200).json({status: SUCCESS, data: {user: null }}).end();
     }
