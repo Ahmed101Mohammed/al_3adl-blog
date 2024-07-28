@@ -19,7 +19,7 @@ const setAccessToken = async() =>
 const setUserDataConstant = async()=>
 {
     const userId = localStorage.getItem("userId");
-    let data = await getUserPersonalDataAdvanced(userId);
+    let data = await advancedWithRefresh(async() => await getMyData(userId));
     if(data.status == SUCCESS)
     {
         userData = data.data.user;

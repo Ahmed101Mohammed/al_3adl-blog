@@ -290,7 +290,7 @@ logOutItem.addEventListener('click', async() =>
 {
     try
     {
-        const data = await logoutAdvanced();
+        const data = await advancedWithRefresh(async() => await logout());
         if(data.status === SUCCESS)
         {
             window.location.href = "sign-in.html";
@@ -329,7 +329,7 @@ uploadPhotoButton.addEventListener('click', async(event) =>
     {
         editPhotoContainer.style.removeProperty("display");
         setTemporaryMessage("Profile photo updated successfully");
-        const getUserDataRes = await advancedWithRefresh(async()=> await getUserPersonalData(userId));
+        const getUserDataRes = await advancedWithRefresh(async()=> await getMyData(userId));
         const userNewData = getUserDataRes.data.user;
         const profileImage = document.querySelector(".personal-photo .photo img");
         const headerImage = document.querySelector(".user-home-page-link img");

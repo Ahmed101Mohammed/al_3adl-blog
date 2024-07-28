@@ -95,25 +95,6 @@ const logout = async()=>
     }
 }
 
-const logoutAdvanced = async()=>
-{
-    const data = await logout();
-    if(data.status === FAIL && data.errorType === UNAUTHORIZED)
-    {
-        let data = await getNewAccessToken();
-        if(data.status === SUCCESS)
-        {
-            accessToken = data.data.accessToken;
-        }
-
-        return await logout();
-    }
-    else
-    {
-        return data;
-    }
-}
-
 // post an article with form data
 const postArticle = async (articleData) => 
 {
@@ -133,50 +114,6 @@ const postArticle = async (articleData) =>
     catch(e)
     {
         console.error(`Failed in post article fetching proccess, because of ${e.message}`);
-        return false;
-    }
-}
-
-// get articles from database
-const getArticles = async(page, limit)=>
-{
-    try
-    {
-        const response = await fetch(`${baseUrl}/api/articles?page=${page}&limit=${limit}`, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            credentials: 'include'
-        });
-        const data = await response.json();
-        return data;
-    }
-    catch(e)
-    {
-        console.error(`Failed in get articles fetching proccess, because of ${e.message}`);
-        return false;
-    }
-}
-
-// get articles sorted
-const getSortedArticles = async(sortType, page, limit)=>
-{
-    try
-    {
-        const response = await fetch(`${baseUrl}/api/articles/sorted?sort=${sortType}&page=${page}&limit=${limit}`, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            credentials: 'include'
-        });
-        const data = await response.json();
-        return data;
-    }
-    catch(e)
-    {
-        console.error(`Failed in get sorted(by likes) articles fetching proccess, because of ${e.message}`);
         return false;
     }
 }
@@ -371,7 +308,7 @@ const getAllusers = async (page, limit) =>
     }
 }
 
-// get user request / using userId
+// get user request / using userId // {It not used but may I need in future}
 const getUserPersonalData = async (userId)=>
 {
     try
@@ -392,24 +329,6 @@ const getUserPersonalData = async (userId)=>
         console.error(`Failed in get user personal data fetching proccess, because of ${e.message}`);
         return false;
     }
-}
-const getUserPersonalDataAdvanced = async(userId)=>
-{
-    const data = await getUserPersonalData(userId);
-    if(data.status === FAIL && data.errorType === UNAUTHORIZED)
-    {
-        let data = await getNewAccessToken();
-        if(data.status === SUCCESS)
-        {
-            accessToken = data.data.accessToken;
-        }
-        return await getUserPersonalData(userId);
-    }
-    else
-    {
-        return data;
-    }
-
 }
 
 // get My data

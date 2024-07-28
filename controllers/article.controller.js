@@ -10,17 +10,6 @@ const { USER } = require("../utils/rolesConstants");
 const removeImageFromDB = require("../utils/removeImageFromDB");
 const { default: mongoose } = require("mongoose");
 
-const getAllArticles = asyncWrapper(
-    async (req, res, next)=>
-    {
-        const limit = req.query.limit? req.query.limit:10;
-        const page = req.query.page? req.query.page:1;
-        const skip = (page - 1) * limit;
-        const artciles = await Article.find({}, {"__v": false}).limit(limit).skip(skip);
-        res.status(200,).json({status:SUCCESS, data: {articles: artciles}}).end();
-    }
-)
-
 const getAllArticlesSorted = asyncWrapper(
     async (req, res, next)=>
     {
@@ -127,18 +116,6 @@ const getAllArticlesSorted = asyncWrapper(
     }
 )
 
-const getAllArticlesSortedWithLikes = asyncWrapper(
-    async (req, res, next)=>
-    {
-        const sort = req.query.sort? parseInt(req.query.sort) : -1;
-        const limit = req.query.limit? parseInt(req.query.limit):10;
-        const page = req.query.page? parseInt(req.query.page):1;
-        const skip = (page - 1) * limit;
-        const artciles = await Article.find({}, {"__v": false}).sort({"likesNumber": sort}).limit(limit).skip(skip);
-        res.status(200,).json({status:SUCCESS, data: {articles: artciles}}).end();
-    }
-)
-
 const getAllArticlesOfUser = asyncWrapper(
     async (req, res, next)=>
     {
@@ -190,7 +167,6 @@ const getAllArticlesOfUser = asyncWrapper(
                 },
             ]
         );
-        //const artciles = await Article.find({authorId: userId}, {"__v": false}).sort({"date": -1}).limit(limit).skip(skip);
         res.status(200,).json({status:SUCCESS, data: {articles: artciles}}).end();
     }
 )
@@ -244,15 +220,6 @@ const getAllMyArticles = asyncWrapper(
             ]
         )
         res.status(200,).json({status:SUCCESS, data: {articles: artciles}}).end();
-    }
-)
-
-const getAllArticlesNumberForUser = asyncWrapper(
-    async (req, res, next)=>
-    {
-        const userId = req.params.id;
-        const articlesNumber = await Article.count({authorId: userId});
-        res.status(200,).json({status:SUCCESS, data: {articlesNumber: articlesNumber}}).end();
     }
 )
 
@@ -438,14 +405,11 @@ const deleteArticle = asyncWrapper(
 )
 
 module.exports = {
-    getAllArticles,
-    getAllArticlesSortedWithLikes,
-    postArticle,
+    postArticle, // *
     getArticle,
     updateArticle,
     deleteArticle,
     getAllArticlesOfUser,
     getAllMyArticles,
-    getAllArticlesSorted,
-    getAllArticlesNumberForUser
+    getAllArticlesSorted
 }
