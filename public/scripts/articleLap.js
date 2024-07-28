@@ -83,6 +83,7 @@ const initialEditingPage = () =>
     document.querySelector("div.article-cover").style.backgroundImage = `url(/uploads/${editedArticle.cover})`;
     document.querySelector("div.article-cover span.badge").textContent = categoryValuePresentation(editedArticle.category);
     document.querySelector("div.article-cover p").classList.add("d-none");
+    document.querySelector("h2.article-title").textContent = editedArticle.title;
 
     let step1Circle = document.querySelector("button.step-1");
     step1Circle.classList.remove("btn-secondary");
