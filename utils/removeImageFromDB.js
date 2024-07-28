@@ -7,6 +7,10 @@ const removeImageFromDB = (imageName)=>
     {
         return false;
     }
+    else if(imageName === "person.png")
+    {
+        return true;
+    }
 
     fs.unlink(join(__dirname, "..", "uploads", imageName), (err)=>
     {
