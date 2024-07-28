@@ -41,12 +41,15 @@ app.use("*", (req, res)=>
 // error handler middleware
 app.use(errorHandler)
 
-// listen to server
-app.listen(process.env.PORT, ()=>
+// connect to DB
+connectToDB()
+.then(()=>
 {
-    console.log(`Server runing at port ${process.env.PORT}`);
-    connectToDB();
-    setUpAdminUser()
-    .then(()=>{console.log("Success setub the admin user.")})
-    .catch((e)=>{console.error(`Failed to setub the admin user, because of ${e.message}`)});
+    app.listen(process.env.PORT, ()=>
+    {
+        console.log(`Server runing at port ${process.env.PORT}`);
+        setUpAdminUser()
+        .then(()=>{console.log("Success setub the admin user.")})
+        .catch((e)=>{console.error(`Failed to setub the admin user, because of ${e.message}`)});
+    });
 })

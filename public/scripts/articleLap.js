@@ -30,7 +30,6 @@ const setStatus = async (articleId) =>
         }
         else
         {
-            console.error({data});
             setTemporaryMessage(data.message);
             return;
         }
@@ -176,7 +175,6 @@ nextOrDoneButton.addEventListener("click", async() =>
             }
             else
             {
-                console.error({data});
                 setTemporaryMessage(data.message);
             }
         }
@@ -190,7 +188,6 @@ nextOrDoneButton.addEventListener("click", async() =>
             }
             else
             {
-                console.error({data});
                 setTemporaryMessage(data.message);
             }
         }

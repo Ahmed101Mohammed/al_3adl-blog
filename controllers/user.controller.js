@@ -38,7 +38,6 @@ const getUsers = asyncWrapper(
                 }
             ]
         )
-        //const users = await User.find({}, {"__v": false, "password": false, "refreshToken": false, $size: "$publishedArticles"}).sort({"role": 1}).limit(limit).skip(skip);
         res.status(200).json({status: SUCCESS, data: {users}}).end();
     }
 );
@@ -50,8 +49,6 @@ const getUser = asyncWrapper(
         let user;
         if(req.authData.role === ADMIN && req.authData.id === req.params.id)
         {
-            // const unauthorized = new AppError(UNAUTHORIZED, "you don't have permission to get user data");
-            // return next(unauthorized);
             userId = req.params.id;
             user = await User.findOne({_id: userId}, {"__v": false, "password": false, "refreshToken": false});
         }
@@ -118,6 +115,16 @@ const updateUser = asyncWrapper(
         {
             const notFoundedUser = new AppError("NotFoundedData", `there no user with '${userId}' id`);
             return next(notFoundedUser);
+        }
+
+        if(val.email)
+        {
+            const oldUser = await User.findOne({email: val.email}, {"_id": true});
+            if(oldUser && oldUser._id != userId)
+            {
+                const dublicatedData = new AppError("DublicatedData", `user with ${val.email} is already exist`);
+                return next(dublicatedData);
+            }
         }
 
         if(req.file)

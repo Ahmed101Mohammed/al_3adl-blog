@@ -4,12 +4,11 @@ const Article = require(join(__dirname, "..", "models", "article.model"));
 const { SUCCESS } = require(join(__dirname, "..", "utils", "httpRespondStatus"));
 const AppError = require(join(__dirname, "..", "utils", "AppError"));
 const Joi = require('joi');
-const { UNAUTHORIZED, NOT_FOUNDED_DATA } = require("../utils/errorsConstants");
+const { UNAUTHORIZED, NOT_FOUNDED_DATA, DUBLICATED_DATA } = require("../utils/errorsConstants");
 const User = require("../models/user.model");
 const { USER } = require("../utils/rolesConstants");
 const removeImageFromDB = require("../utils/removeImageFromDB");
 const { default: mongoose } = require("mongoose");
-// const { title } = require("node:process");
 
 const getAllArticles = asyncWrapper(
     async (req, res, next)=>
@@ -69,7 +68,6 @@ const getAllArticlesSorted = asyncWrapper(
                     },
                 ]
             ) 
-            // const artciles = await Article.find({}, {"__v": false}).limit(limit).skip(skip);
             res.status(200).json({status:SUCCESS, data: {articles: artciles}}).end();
             return;
         }
@@ -379,6 +377,17 @@ const updateArticle = asyncWrapper(
             const notFoundedArticle = new AppError(NOT_FOUNDED_DATA, `there is no article with "${articleId}" id to update`);
             return next(notFoundedArticle);
         }
+
+        if(value.title)
+        {
+            const articleWithSameTitle = await Article.findOne({title: value.title}, {_id: true});
+            if(articleWithSameTitle && articleWithSameTitle._id != articleId)
+            {
+                const dublicatedTitle = new AppError(DUBLICATED_DATA, `there is already an article with "${value.title}" title`);
+                return next(dublicatedTitle);
+            }
+        }
+
         if(req.file)
         {
             value.cover = req.file.filename;
