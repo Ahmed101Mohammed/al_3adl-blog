@@ -38,7 +38,7 @@ const userAvatarOrSignInWillAppear = async()=>
         if(accessToken)
         {
             signInButtonAppearance(false);
-            await setUserDataConstant(localStorage.getItem("userId"));
+            await setUserDataConstant();
             userAvatarApearance(true);
             if(userData)
             {

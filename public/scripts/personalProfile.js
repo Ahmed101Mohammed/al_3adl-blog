@@ -143,7 +143,16 @@ const editNameFullBehaviour = () =>
                 editName.textContent = "Edit";
                 const newName = name.value;
                 userData.name = newName;
-                const userId = localStorage.getItem("userId");
+                const myData = await advancedWithRefresh(async() => await getMyData());
+                let userId;
+                if(myData.status === SUCCESS)
+                {
+                    userId = myData.data.user._id;
+                }
+                else
+                {
+                    setTemporaryMessage("Something went wrong, please try again later: I suggest that you don't have access to Internet, or you are not signed.");
+                }
                 const data = await advancedWithRefresh(async() => await updateUserData(userData, userId));
                 if(data.status === SUCCESS)
                 {
@@ -179,7 +188,16 @@ const editEmailFullBehaviour = () =>
                 editEmail.textContent = "Edit";
                 const newEmail = email.value;
                 userData.email = newEmail;
-                const userId = localStorage.getItem("userId");
+                const myData = await advancedWithRefresh(async() => await getMyData());
+                let userId;
+                if(myData.status === SUCCESS)
+                {
+                    userId = myData.data.user._id;
+                }
+                else
+                {
+                    setTemporaryMessage("Something went wrong, please try again later: I suggest that you don't have access to Internet, or you are not signed.");
+                }
                 const data = await advancedWithRefresh(async() => await updateUserData(userData, userId));
                 if(data.status === SUCCESS)
                 {
@@ -323,7 +341,16 @@ uploadPhotoButton.addEventListener('click', async(event) =>
     const formData = new FormData();
     formData.append('avatar', file);
 
-    const userId = localStorage.getItem("userId");
+    const myData = await advancedWithRefresh(async() => await getMyData());
+    let userId;
+    if(myData.status === SUCCESS)
+    {
+        userId = myData.data.user._id;
+    }
+    else
+    {
+        setTemporaryMessage("Something went wrong, please try again later: I suggest that you don't have access to Internet, or you are not signed.");
+    }
     const data = await advancedWithRefresh(async() => await updateUserDataForm(formData, userId));
     if(data.status === SUCCESS)
     {

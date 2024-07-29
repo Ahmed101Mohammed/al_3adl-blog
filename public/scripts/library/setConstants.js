@@ -4,31 +4,16 @@ const setAccessToken = async() =>
     let data = await getNewAccessToken();
     if(data.status == SUCCESS)
     {
-        accessToken = data.data.accessToken;
-    }
-    else
-    {
-        if(data.status === FAIL && data.errorType === UNAUTHORIZED)
-        {
-            localStorage.clear();
-        }
+        accessToken = data.data.accessToken; // Global variable
     }
 }
 
 // set user data contant / using get user request
 const setUserDataConstant = async()=>
 {
-    const userId = localStorage.getItem("userId");
-    let data = await advancedWithRefresh(async() => await getMyData(userId));
+    let data = await advancedWithRefresh(async() => await getMyData());
     if(data.status == SUCCESS)
     {
-        userData = data.data.user;
-    }
-    else
-    {
-        if(data.status === FAIL && data.errorType === UNAUTHORIZED)
-        {
-            localStorage.clear();
-        }
+        userData = data.data.user; // Global variable
     }
 }

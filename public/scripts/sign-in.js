@@ -10,7 +10,6 @@ submitButton.addEventListener('click', (event) => {
     signUser(email, password).then((data) => {
         if(data.status === SUCCESS)
         {
-            window.localStorage.setItem("userId", data.data.userId);
             window.location.href = 'index.html';
         }
         else
