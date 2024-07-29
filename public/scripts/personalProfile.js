@@ -114,6 +114,20 @@ const dashboardPageAppearance = (status) =>
     }
 }
 
+// 7.1 dashboard userDashboard linke appearance
+const adminPanelAppearance = (status)=>
+{
+    const adminPanel = document.querySelector("#admin-panel");
+    if(status)
+    {
+        adminPanel.style.removeProperty("display");
+    }
+    else
+    {
+        adminPanel.style.display = "none";
+    }
+}
+
 // 8. set page title
 const setPageTitle = (title) =>
 {
@@ -269,9 +283,13 @@ const personalProfileIntialize = async() =>
         setPageTitle("My Profile");
 
         // 5: appear dashboard  link item
-        if(userData.role === "admin")
+        if(userData.role === "admin" || userData.role === "manager")
         {
             dashboardLinkItemAppearance(true);
+            if(userData.role === "maneger")
+            {
+                adminPanelAppearance(false);
+            }
         }
 
         // 6: add event for edit btns

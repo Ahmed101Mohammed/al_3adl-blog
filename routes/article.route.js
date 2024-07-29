@@ -1,6 +1,6 @@
 const { join } = require("node:path");
 const verifyJWT = require("../middlewares/verifyJWT");
-const { ADMIN } = require("../utils/rolesConstants");
+const { ADMIN, MANAGER } = require("../utils/rolesConstants");
 const { postArticle, getArticle, 
         updateArticle, deleteArticle, 
         getAllArticlesOfUser, getAllMyArticles, getAllArticlesSorted, 
@@ -9,7 +9,7 @@ const router = require("express").Router();
 const upload = require(join(__dirname, "..", "middlewares", "uploadFile"));
 const authorized = require("../middlewares/authorized");
 router.route("/")
-    .post(verifyJWT, authorized(ADMIN), upload.single("cover"),postArticle)
+    .post(verifyJWT, authorized(ADMIN, MANAGER), upload.single("cover"),postArticle)
 
 router.route("/advancedSorted")
     .get(getAllArticlesSorted);
@@ -21,7 +21,7 @@ router.route("/user/:id")
 
 router.route("/:id")
     .get(getArticle)
-    .patch(verifyJWT, authorized(ADMIN), upload.single("cover"), updateArticle)
+    .patch(verifyJWT, authorized(ADMIN, MANAGER), upload.single("cover"), updateArticle)
     .delete(verifyJWT, deleteArticle);
 
 module.exports = router;

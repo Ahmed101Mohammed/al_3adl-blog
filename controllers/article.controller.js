@@ -6,7 +6,7 @@ const AppError = require(join(__dirname, "..", "utils", "AppError"));
 const Joi = require('joi');
 const { UNAUTHORIZED, NOT_FOUNDED_DATA, DUBLICATED_DATA } = require("../utils/errorsConstants");
 const User = require("../models/user.model");
-const { USER } = require("../utils/rolesConstants");
+const { USER, ADMIN } = require("../utils/rolesConstants");
 const removeImageFromDB = require("../utils/removeImageFromDB");
 const { default: mongoose } = require("mongoose");
 
@@ -276,23 +276,28 @@ const postArticle = asyncWrapper(
     async (req, res, next)=>
     {
         const userId = req.authData.id;
+        const role = req.authData.role;
+        if(role === USER || !role)
+        {
+            console.log("User role for posting an article: ", role, req.authData.email);
+            const unauthorized = new AppError(UNAUTHORIZED, "you don't have permission to post an article");
+            return next(unauthorized);
+        } 
+
+
         const user = await User.findById(userId, {"__v": false, "password": false});
-        const author = user.name;
         const authorId = user._id;
-        const authorAvatar = user.avatar;
 
         const { title, body, category} = req.body;
-        const articleData = { title, body, author, authorId, category };
+        const articleData = { title, body, authorId, category };
         const schema = Joi.object({
             title: Joi.string().min(7).max(60).required(),
             body: Joi.string().min(200).required(),
-            author: Joi.string().required(),
             authorId: Joi.required(),
             category: Joi.string().min(2)
         });
 
         let value = await schema.validateAsync(articleData);
-        value.authorAvatar = authorAvatar;
 
         if(req.file)
         {
@@ -381,18 +386,12 @@ const deleteArticle = asyncWrapper(
             return next(notFoundedData);
         }
 
-        const authorId = req.authData.id;
-        if(!(article.authorId == authorId) && (req.role === USER))
+        const userId = req.authData.id;
+        const authorRole = await User.findById(article.authorId, {"role": 1});
+        if(!(article.authorId == userId) && (req.authData.role !== ADMIN) || (authorRole.role === ADMIN))
         {
             const unauthorized = new AppError(UNAUTHORIZED, "you don't have permission to modify this article");
             return next(unauthorized);
-        }
-
-        const artcile = await Article.findById(articleId);
-        if(!artcile)
-        {
-            const notFoundedArticle = new AppError(NOT_FOUNDED_DATA, `there is no article with "${articleId}" id to delete`);
-            return next(notFoundedArticle);
         }
         
         await Article.findByIdAndDelete(articleId);
@@ -405,7 +404,7 @@ const deleteArticle = asyncWrapper(
 )
 
 module.exports = {
-    postArticle, // *
+    postArticle,
     getArticle,
     updateArticle,
     deleteArticle,

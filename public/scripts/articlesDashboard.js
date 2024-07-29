@@ -69,7 +69,7 @@ table.addEventListener("click", async(event) =>
         const data = await deleteArticle(id);
         if(data.status !== SUCCESS)
         {
-            console.error(data);
+            setTemporaryMessage(data.message);
             return;
         }
         articlesInDom = articlesInDom.filter((article) => article.id !== id);

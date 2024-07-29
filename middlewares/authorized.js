@@ -7,7 +7,8 @@ const authorized = (...roles)=>
         {
             if(!(roles.includes(req.authData.role)))
             {
-                const unauthorized = new AppError(UNAUTHORIZED, "you don't have authorization to access this resource");
+                const unauthorized = new AppError(UNAUTHORIZED, 
+                                        "you don't have authorization to access this resource, as a " + req.authData.role);
                 return next(unauthorized);
             }
 
