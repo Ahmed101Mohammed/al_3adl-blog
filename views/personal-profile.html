@@ -42,17 +42,18 @@
                     </li>
                 </ul>
                 <div class="search-sign">
-                    <form action="" class="search">
-                            <input type="text" placeholder="search">
-                            <button type="submit">
+                    <form action="post" class="search">
+                            <input type="text" id="search" name="search" placeholder="search">
+                            <label for="search" type="submit">
                                 <img src="public/assets/search-icon.svg" alt="search icon">
-                            </button>
+                            </label>
                     </form>
                     <a href="sign-in.html" class="sign-link">
                         <button class="sign">sign in</button>
                     </a>
-                    <a href="personal-profile.html" class="user-home-page-link">
-                        <img src="public/assets/avatar0.png" alt="user avatar">
+                    <a class="user-home-page-link" href="personal-profile.html">
+                        <!-- Handeled in the javascript -->
+                        <!-- <img src="public/assets/avatar0.png" alt="user avatar"> -->
                     </a>
                 </div>
             </nav>
@@ -106,7 +107,7 @@
                             <div class="filter">
                                 <form action="" class="upload-personal-photo">
                                     <label for="image_uploads">Choose images to upload (imge)</label>
-                                    <input type="file" name="avatar" accept="image/*">
+                                    <input type="file" id="image_uploads" name="avatar" accept="image/*">
                                     <div class="error-message-container">
                                         <p class="error-message"></p>
                                     </div>
@@ -183,7 +184,7 @@
                         </div>
                         <form action="post">
                             <fieldset>
-                                <input type="email" placeholder="Your Email">
+                                <input type="email" id="subscribe" name="subscribe" placeholder="Your Email">
                                 <label for="subscribe" hidden>Enter your email</label>
                                 <label for="subscribe" class="email-icon">
                                     <img src="public/assets/email-icon.svg" alt="email icon: is a square with a reverse triangle on the top.">
@@ -198,9 +199,8 @@
                     <h2>references</h2>
                    <ul>
                        <li>Photo by <a href="https://unsplash.com/@nasa?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">NASA</a> on <a href="https://unsplash.com/photos/photo-of-outer-space-Q1p7bh3SHj8?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a></li>
-                       <li>Page body template by <a href="https://www.figma.com/community/file/1262016806682195017">Sid</a></li>
-                       <li>Page header and footer template by <a href="https://www.figma.com/community/file/1216616090937021365">Shakil Khan and Zelal Hossain</a></li>
-                       <li>Templates are custmized by <a href="https://github.com/Ahmed101Mohammed">Ahmed Al-3adl</a></li>
+                       <li>Template by <a href="https://www.figma.com/community/file/1216616090937021365">Shakil Khan and Zelal Hossain</a></li>
+                       <li>Template is custmized by <a href="https://github.com/Ahmed101Mohammed">Ahmed Al-3adl</a></li>
                    </ul>
                 </div>
     

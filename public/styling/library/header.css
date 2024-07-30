@@ -87,7 +87,7 @@ header nav ul li a
     width: 114px;
 }
 
-.search button
+.search label
 {
     border: none;
     outline: none;
@@ -100,13 +100,13 @@ header nav ul li a
     justify-content: center;
 }
 
-.search button img
+.search label img
 {
     width: 16px;
     height: 16px;
 }
 
-button.sign
+label.sign
 {
     font-size: 16px;
     font-family: "Work Sans", sans-serif;

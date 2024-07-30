@@ -68,14 +68,14 @@ const setProfile = (data) =>
                                 <div class="info name">
                                     <h3 class="info-title">your name</h3>
                                     <div class="info-data name">
-                                        <input type="text" disabled value="${data.name}">
+                                        <input type="text" autocomplete="name" id="name" name="name" disabled value="${data.name}">
                                         <button class="edit-btn">Edit</button>
                                     </div>
                                 </div>
                                 <div class="info email">
                                     <h3 class="info-title">email</h3>
                                     <div class="info-data email">
-                                        <input type="email" disabled value="${data.email}">
+                                        <input type="email" autocomplete="email" id="email" name="email" disabled value="${data.email}">
                                         <button class="edit-btn">Edit</button>
                                     </div>
                                 </div>

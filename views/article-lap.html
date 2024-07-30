@@ -45,10 +45,10 @@
                 </ul>
                 <div class="search-sign">
                     <form action="post" class="search">
-                            <input type="text" placeholder="search">
-                            <button type="submit">
+                            <input type="text" id="search" name="search" placeholder="search">
+                            <label for="search" type="submit">
                                 <img src="public/assets/search-icon.svg" alt="search icon">
-                            </button>
+                            </label>
                     </form>
                     <a href="sign-in.html" class="sign-link">
                         <button class="sign">sign in</button>
@@ -74,7 +74,7 @@
                 <section class="article-process w-100 d-flex flex-column gap-2  bg-body-tertiary p-4 position-relative">
                     <h2 class="text-left">Your article <span>content</span>:</h2>
                     <div class="article-content row min-vh-100 mb-5 " style="max-height: 100dvh;">
-                        <textarea class="md-content col bg-black text-light p-2 overflow-y-auto" style="max-height: 100dvh;">Write your article content with Markdown language, or HTML</textarea>
+                        <textarea class="md-content col bg-black text-light p-2 overflow-y-auto" id="article-content" name="article-content" style="max-height: 100dvh;">Write your article content with Markdown language, or HTML</textarea>
                         <div class="preview col bg-white p-2 overflow-y-auto" style="max-height: 100dvh;">Here is the previow of your article</div>
                     </div>
                     <div class="article-header d-none">
@@ -168,7 +168,7 @@
                         </div>
                         <form action="post">
                             <fieldset>
-                                <input type="email" placeholder="Your Email">
+                                <input type="email" id="subscribe" name="subscribe" placeholder="Your Email">
                                 <label for="subscribe" hidden>Enter your email</label>
                                 <label for="subscribe" class="email-icon">
                                     <img src="public/assets/email-icon.svg" alt="email icon: is a square with a reverse triangle on the top.">
@@ -178,6 +178,7 @@
                         </form>
                     </div>
                 </div>
+    
                 <div class="references">
                     <h2>references</h2>
                    <ul>
@@ -204,7 +205,6 @@
                         </ul>
                 </div>
             </div>
-
         </footer>
         <script src="public/scripts/library/globalConstants.js"></script>
         <script src="public/scripts/library/requests.js"></script>
