@@ -5,7 +5,7 @@ const { getUsers, getUser, updateUser, deleteUser, getMyData } = require(join(__
 const verifyJWT = require("../middlewares/verifyJWT");
 const authorized = require("../middlewares/authorized");
 const upload = require(join(__dirname, "..", "middlewares", "uploadFile"));
-const {ADMIN, MANIGER} = require("../utils/rolesConstants");
+const {ADMIN} = require("../utils/rolesConstants");
 router
     .post("/register", register)
     .post("/sign", sign)
@@ -14,7 +14,7 @@ router
     .get("/me", verifyJWT, getMyData);
 
 router.route("/")
-    .get(verifyJWT, authorized(ADMIN, MANIGER),getUsers)
+    .get(verifyJWT, authorized(ADMIN),getUsers)
 
 router.route("/:id")
     .get(verifyJWT, getUser)

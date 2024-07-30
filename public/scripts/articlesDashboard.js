@@ -4,6 +4,18 @@ let page = 1;
 let articlesInDom = [];
 let currentSellected = document.querySelector("select").value;
 
+
+// detect valid options for aspecific role:
+const selectOptions = ()=>
+{
+    if(userData.role != "admin")
+    {
+        const allArticles = document.querySelector("option[value='all-articles']");
+        allArticles.remove();
+        currentSellected = document.querySelector("select").value;
+    }
+}
+
 // seturp articles in dom
 const setupArticlesInDom = (articlesList)=>
 {
@@ -98,4 +110,5 @@ select.addEventListener("change", async() =>
 })
 // runing code:
 userAvatarOrSignInWillAppear()
+.then(() => selectOptions())
 .then(() => init());

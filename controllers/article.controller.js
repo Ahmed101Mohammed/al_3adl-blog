@@ -390,7 +390,7 @@ const deleteArticle = asyncWrapper(
         const authorRole = await User.findById(article.authorId, {"role": 1});
         if(!(article.authorId == userId) && (req.authData.role !== ADMIN) || (authorRole.role === ADMIN))
         {
-            const unauthorized = new AppError(UNAUTHORIZED, "you don't have permission to modify this article");
+            const unauthorized = new AppError(UNAUTHORIZED, "you don't have permission to delete this article");
             return next(unauthorized);
         }
         
@@ -398,7 +398,7 @@ const deleteArticle = asyncWrapper(
         const user = await User.findById(req.authData.id, {"__v":false, "password":false});
         user.publishedArticles = user.publishedArticles.filter((e)=> !(e.articleId == articleId));
         await user.save();
-        removeImageFromDB(artcile.cover);
+        removeImageFromDB(article.cover);
         res.status(200).json({status: SUCCESS, data: null});
     }
 )

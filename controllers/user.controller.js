@@ -145,12 +145,18 @@ const updateUser = asyncWrapper(
             return next(permissionError);
         }
 
+        if(val.role)
+        {
+            val.refreshToken = "";
+        }
+
         await User.findByIdAndUpdate(userId, val, {"__v": false, "password": false});
         if(req.file)
         {
             let fileName = user.avatar;
             removeImageFromDB(fileName);
         }
+        
         res.status(200).json({status: SUCCESS, data: { user: null }});
     }
 );

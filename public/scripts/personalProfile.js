@@ -285,8 +285,9 @@ const personalProfileIntialize = async() =>
         // 5: appear dashboard  link item
         if(userData.role === "admin" || userData.role === "manager")
         {
+            
             dashboardLinkItemAppearance(true);
-            if(userData.role === "maneger")
+            if(userData.role === "manager")
             {
                 adminPanelAppearance(false);
             }
