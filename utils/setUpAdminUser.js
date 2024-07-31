@@ -9,7 +9,7 @@ const setUpAdminUser = async()=>
     const adminEmail = process.env.ADMIN_EMAIL;
     const adminPassword = process.env.ADMIN_PASSWORD;
     const adminName = process.env.ADMIN_NAME;
-    const adminUser = await User.findOne({email:adminEmail}, {"__v": false, "password": false});
+    const adminUser = await User.findOne({role: ADMIN}, {"__v": false, "password": false});
     if(adminUser)
     {
         return;

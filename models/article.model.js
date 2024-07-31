@@ -39,16 +39,8 @@ const articleSchema = new mongoose.Schema({
     likedList: {
         type: [userIdSchema]
     },
-    likesNumber: {
-        type: Number,
-        default: 0
-    },
     disLikedList: {
         type: [userIdSchema]
-    },
-    disLikesNumber: {
-        type: Number,
-        default: 0
     }
 })
 

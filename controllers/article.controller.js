@@ -403,6 +403,24 @@ const deleteArticle = asyncWrapper(
     }
 )
 
+// const removeFieldsFromSchema = asyncWrapper(
+//     async()=>
+//     {
+//         const updateSchema = await Article.updateMany(
+//             {},
+//             {
+//                 $unset: {
+//                     authorAvatar: "",
+//                     author: ""
+//                 },
+//             },
+//             {multi: true}
+//         )
+
+//         console.log("Updaed Schema successfull", updateSchema);
+//     }
+// )
+
 module.exports = {
     postArticle,
     getArticle,
@@ -410,5 +428,6 @@ module.exports = {
     deleteArticle,
     getAllArticlesOfUser,
     getAllMyArticles,
-    getAllArticlesSorted
+    getAllArticlesSorted,
+    // removeFieldsFromSchema
 }
