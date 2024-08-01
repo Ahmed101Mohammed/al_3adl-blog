@@ -8,7 +8,7 @@ header
     flex-direction: column;
     gap: 20px;
 
-    @media (max-width: 375px) 
+    @media (max-width: 1218px) 
     {
         width: 100%;
         padding: 32px 20px;    
@@ -39,9 +39,13 @@ header
                 font-size: 24px;
                 font-weight: 600;
                 font-family: "Work Sans", sans-serif;
-                @media (max-width: 375px) 
+                @media (max-width:448px) 
                 {
                     display: none;    
+                }
+                @media (max-width: 1024px) 
+                {
+                    display: none;
                 }
                 span
                 {
@@ -59,7 +63,12 @@ header
             margin: 0px 21px 0px 118px;
             list-style: none;
 
-            @media (max-width: 375px)
+            @media (max-width: 448px)
+            {
+                margin: 0px 20px 0px 20px;
+                padding: 6px 20px;
+            }
+            @media (max-width: 1024px) 
             {
                 margin: 0px 20px 0px 20px;
                 padding: 6px 20px;
@@ -88,7 +97,7 @@ header
                         color: black;
                     }
 
-                    @media (max-width: 375px) 
+                    @media (max-width: 448px) 
                     {
                         display: block;    
                     }
@@ -96,7 +105,7 @@ header
 
                 span.nav-text
                 {
-                    @media (max-width: 375px) 
+                    @media (max-width: 448px) 
                     {
                         display: none;    
                     }
@@ -119,7 +128,7 @@ header
                 gap: 12px;
                 align-items: center;
 
-                @media (max-width: 375px)
+                @media (max-width: 601px)
                 {
                     display: none;
                 }
@@ -189,7 +198,7 @@ header
         align-items: center;
         gap:0px;
 
-        @media (max-width: 375px)
+        @media (max-width: 601px)
         {
             display: flex;
         }
@@ -232,11 +241,4 @@ header .sign-link, header .user-home-page-link
     object-fit: cover;
     align-items: center;
     justify-content: center;
-}
-
-header .user-home-page-link img
-{
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
 }

@@ -403,23 +403,26 @@ const deleteArticle = asyncWrapper(
     }
 )
 
-// const removeFieldsFromSchema = asyncWrapper(
-//     async()=>
+// const removeFieldsFromSchema =  async()=>
 //     {
-//         const updateSchema = await Article.updateMany(
-//             {},
-//             {
-//                 $unset: {
-//                     authorAvatar: "",
-//                     author: ""
-//                 },
-//             },
-//             {multi: true}
-//         )
-
-//         console.log("Updaed Schema successfull", updateSchema);
-//     }
-// )
+//         try
+//         {
+//             const updateSchema = await Article.updateMany(
+//                 {},
+//                 {
+//                     $unset: {
+//                         "liked": 1,
+//                         "disLiked": 1
+//                     }
+//                 }
+//             )
+//             console.log("Updaed Schema successfull", updateSchema);
+//         }
+//         catch(err)
+//         {
+//             console.log(err);
+//         }
+//}
 
 module.exports = {
     postArticle,
