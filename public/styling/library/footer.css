@@ -9,7 +9,10 @@ footer {
 footer .secondry-container {
   display: flex;
   flex-direction: column;
+  justify-content: normal;
+  align-items: normal;
   gap: 64px;
+  flex-wrap: nowrap;
   width: 1216px;
   margin: auto;
 }
@@ -22,9 +25,11 @@ footer .secondry-container {
 }
 footer .secondry-container .general-info {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: row;
   justify-content: space-between;
+  align-items: normal;
   gap: 20px;
+  flex-wrap: wrap;
 }
 @media (max-width: 768px) {
   footer .secondry-container .general-info {
@@ -34,7 +39,10 @@ footer .secondry-container .general-info {
 footer .secondry-container .general-info .about {
   display: flex;
   flex-direction: column;
+  justify-content: normal;
+  align-items: normal;
   gap: 24px;
+  flex-wrap: nowrap;
   width: 330px;
   margin-bottom: 25px;
 }
@@ -46,44 +54,82 @@ footer .secondry-container .general-info .about {
 footer .secondry-container .general-info .about .about-content {
   display: flex;
   flex-direction: column;
+  justify-content: normal;
+  align-items: normal;
   gap: 12px;
+  flex-wrap: nowrap;
 }
 footer .secondry-container .general-info .about .about-content h2 {
   font-family: "Plus Jakarta Sans", sans-serif;
   font-size: 18px;
   font-weight: 600;
   text-transform: capitalize;
+  text-align: left;
+  color: initial;
   margin: 0px;
+}
+@media (max-width: 768px) {
+  footer .secondry-container .general-info .about .about-content h2 {
+    font-size: 15px;
+  }
 }
 footer .secondry-container .general-info .about .about-content p {
   font-family: "Plus Jakarta Sans", sans-serif;
   font-size: 16px;
   font-weight: 400;
+  text-transform: none;
+  text-align: left;
   color: #696A75;
   margin: 0px;
+}
+@media (max-width: 768px) {
+  footer .secondry-container .general-info .about .about-content p {
+    font-size: 14px;
+  }
 }
 footer .secondry-container .general-info .about .contact-data {
   display: flex;
   flex-direction: column;
+  justify-content: normal;
+  align-items: normal;
   gap: 4px;
+  flex-wrap: nowrap;
 }
 footer .secondry-container .general-info .about .contact-data p {
   font-family: "Plus Jakarta Sans", sans-serif;
   font-size: 16px;
   font-weight: 400;
+  text-transform: none;
+  text-align: left;
   color: #3B3C4A;
   margin: 0px;
   width: max-content;
 }
+@media (max-width: 768px) {
+  footer .secondry-container .general-info .about .contact-data p {
+    font-size: 14px;
+  }
+}
 footer .secondry-container .general-info .about .contact-data p span {
-  color: var(--secondary-color-800);
-  font-weight: 600;
+  font-family: inherit;
   font-size: 18px;
+  font-weight: 600;
   text-transform: capitalize;
+  text-align: left;
+  color: var(--secondary-color-800);
+}
+@media (max-width: 768px) {
+  footer .secondry-container .general-info .about .contact-data p span {
+    font-size: 15px;
+  }
 }
 footer .secondry-container .general-info .links-and-catigories {
   display: flex;
+  flex-direction: row;
+  justify-content: normal;
+  align-items: normal;
   gap: 80px;
+  flex-wrap: nowrap;
   margin-bottom: 25px;
 }
 @media (max-width: 768px) {
@@ -94,20 +140,33 @@ footer .secondry-container .general-info .links-and-catigories {
 footer .secondry-container .general-info .links-and-catigories .quick-links, footer .secondry-container .general-info .links-and-catigories .catigory {
   display: flex;
   flex-direction: column;
+  justify-content: normal;
+  align-items: normal;
   gap: 24px;
+  flex-wrap: nowrap;
 }
 footer .secondry-container .general-info .links-and-catigories .quick-links h2, footer .secondry-container .general-info .links-and-catigories .catigory h2 {
   font-family: "Plus Jakarta Sans", sans-serif;
   font-size: 18px;
   font-weight: 600;
   text-transform: capitalize;
+  text-align: left;
+  color: initial;
   margin: 0px;
   width: max-content;
+}
+@media (max-width: 768px) {
+  footer .secondry-container .general-info .links-and-catigories .quick-links h2, footer .secondry-container .general-info .links-and-catigories .catigory h2 {
+    font-size: 15px;
+  }
 }
 footer .secondry-container .general-info .links-and-catigories .quick-links ul, footer .secondry-container .general-info .links-and-catigories .catigory ul {
   display: flex;
   flex-direction: column;
+  justify-content: normal;
+  align-items: normal;
   gap: 8px;
+  flex-wrap: nowrap;
   list-style: none;
   margin: 0px;
   padding: 0px;
@@ -116,20 +175,28 @@ footer .secondry-container .general-info .links-and-catigories .quick-links ul l
   font-family: "Plus Jakarta Sans", sans-serif;
   font-size: 16px;
   font-weight: 400;
-  color: #3B3C4A;
   text-transform: capitalize;
+  text-align: left;
+  color: #3B3C4A;
   width: max-content;
   display: block;
   text-decoration: none !important;
 }
+@media (max-width: 768px) {
+  footer .secondry-container .general-info .links-and-catigories .quick-links ul li a, footer .secondry-container .general-info .links-and-catigories .catigory ul li a {
+    font-size: 14px;
+  }
+}
 footer .secondry-container .general-info .news-letter {
   display: flex;
   flex-direction: column;
+  justify-content: normal;
+  align-items: center;
   gap: 30px;
+  flex-wrap: nowrap;
   padding: 32px;
   border-radius: 12px;
   background-color: var(--white);
-  align-items: center;
   margin-bottom: 25px;
 }
 @media (max-width: 768px) {
@@ -140,61 +207,90 @@ footer .secondry-container .general-info .news-letter {
 footer .secondry-container .general-info .news-letter .news-letter-intro {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  width: fit-content;
+  justify-content: normal;
   align-items: center;
+  gap: 8px;
+  flex-wrap: nowrap;
+  width: fit-content;
 }
 footer .secondry-container .general-info .news-letter .news-letter-intro h2 {
   font-family: "work sans", sans-serif;
   font-size: 20px;
   font-weight: 600;
   text-transform: capitalize;
+  text-align: left;
+  color: var(--secondary-color-800);
   margin: 0px;
   width: max-content;
-  color: var(--secondary-color-800);
+}
+@media (max-width: 768px) {
+  footer .secondry-container .general-info .news-letter .news-letter-intro h2 {
+    font-size: 18px;
+  }
 }
 footer .secondry-container .general-info .news-letter .news-letter-intro p {
   font-family: "work sans", sans-serif;
   font-size: 16px;
   font-weight: 400;
+  text-transform: none;
+  text-align: left;
   color: #696A75;
   margin: 0px;
   width: max-content;
 }
+@media (max-width: 768px) {
+  footer .secondry-container .general-info .news-letter .news-letter-intro p {
+    font-size: 14px;
+  }
+}
 footer .secondry-container .general-info .news-letter form {
   display: flex;
   flex-direction: column;
+  justify-content: normal;
+  align-items: normal;
   gap: 8px;
+  flex-wrap: nowrap;
 }
 footer .secondry-container .general-info .news-letter form fieldset {
   border: none;
   padding: 12px 16px;
   display: flex;
+  flex-direction: row;
   justify-content: center;
+  align-items: normal;
   gap: 10px;
+  flex-wrap: nowrap;
   border-radius: 6px;
   border: 1px solid #DCDDDF;
 }
 footer .secondry-container .general-info .news-letter form fieldset input {
-  font-size: 16px;
   font-family: "work sans", sans-serif;
+  font-size: 16px;
   font-weight: 400;
+  text-transform: none;
+  text-align: left;
   color: #97989F;
   border: none;
   outline: none;
 }
 footer .secondry-container .general-info .news-letter form fieldset label.email-icon {
   display: flex;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
+  gap: 0px;
+  flex-wrap: nowrap;
   padding: 3.12px 1.25px;
 }
 footer .secondry-container .general-info .news-letter form button {
   padding: 12px 20px;
   background-color: var(--primary-color);
-  color: var(--white);
+  font-family: inherit;
   font-size: 16px;
   font-weight: 500;
+  text-transform: none;
+  text-align: center;
+  color: var(--white);
   border: none;
   outline: none;
   cursor: pointer;
@@ -202,16 +298,27 @@ footer .secondry-container .general-info .news-letter form button {
 footer .secondry-container .references {
   display: flex;
   flex-direction: column;
-  grid: 12px;
+  justify-content: normal;
+  align-items: normal;
+  gap: 12px;
+  flex-wrap: nowrap;
   border-top: 1px solid #DCDDDF;
   padding: 32px 0px;
 }
 footer .secondry-container .references h2 {
   margin: 0px;
-  text-transform: capitalize;
   font-family: "Plus Jakarta Sans", sans-serif;
   font-size: 18px;
   font-weight: 600;
+  text-transform: capitalize;
+  text-align: left;
+  color: initial;
+  margin-bottom: 12px;
+}
+@media (max-width: 768px) {
+  footer .secondry-container .references h2 {
+    font-size: 15px;
+  }
 }
 footer .secondry-container .references ul {
   list-style: none;
@@ -219,13 +326,24 @@ footer .secondry-container .references ul {
   padding: 5px;
   display: flex;
   flex-direction: column;
+  justify-content: normal;
+  align-items: normal;
   gap: 2px;
+  flex-wrap: nowrap;
 }
 footer .secondry-container .references ul li {
   font-family: "work sans", sans-serif;
   font-size: 16px;
   font-weight: 400;
+  text-transform: none;
+  text-align: left;
   color: #696A75;
+  margin-bottom: 10px;
+}
+@media (max-width: 768px) {
+  footer .secondry-container .references ul li {
+    font-size: 14px;
+  }
 }
 footer .secondry-container .references ul li a {
   color: #414142;
@@ -234,16 +352,24 @@ footer .secondry-container .references ul li a {
 footer .secondry-container .real-footer {
   padding: 32px 0px;
   display: flex;
-  gap: 64px;
-  align-items: center;
-  border-top: 1px solid #DCDDDF;
+  flex-direction: row;
   justify-content: space-between;
+  align-items: center;
+  gap: 64px;
   flex-wrap: wrap;
+  border-top: 1px solid #DCDDDF;
+}
+@media (max-width: 768px) {
+  footer .secondry-container .real-footer {
+    gap: 20px;
+  }
 }
 footer .secondry-container .real-footer .copywrite {
   display: flex;
-  gap: 10px;
+  flex-direction: row;
+  justify-content: normal;
   align-items: center;
+  gap: 10px;
   flex-wrap: wrap;
 }
 footer .secondry-container .real-footer .copywrite img {
@@ -253,7 +379,10 @@ footer .secondry-container .real-footer .copywrite img {
 footer .secondry-container .real-footer .copywrite .copywrite-text {
   display: flex;
   flex-direction: column;
+  justify-content: normal;
+  align-items: normal;
   gap: 2px;
+  flex-wrap: nowrap;
 }
 footer .secondry-container .real-footer .copywrite .copywrite-text h2 {
   margin: 0px;
@@ -267,15 +396,22 @@ footer .secondry-container .real-footer .copywrite .copywrite-text p {
 }
 footer .secondry-container .real-footer ul {
   display: flex;
-  gap: 10px;
+  flex-direction: row;
+  justify-content: flex-end;
   align-items: center;
+  gap: 10px;
+  flex-wrap: nowrap;
   list-style: none;
   margin: 0px;
   padding: 0px;
-  justify-content: flex-end;
 }
 footer .secondry-container .real-footer ul li a {
   text-decoration: none !important;
+}
+@media (max-width: 768px) {
+  footer .secondry-container .real-footer ul li a {
+    font-size: 14px;
+  }
 }
 footer .secondry-container .real-footer ul .v-line {
   width: 1px;
