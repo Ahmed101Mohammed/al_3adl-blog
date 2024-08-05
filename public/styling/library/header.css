@@ -1,3 +1,16 @@
+:export {
+  primary-color: #4B6BFB;
+  secondary-color-400: #97989F;
+  secondary-color-100: #E8E8EA;
+  secondary-color-800: #181A2A;
+  secondary-color-500: #181A2A;
+  white: #FFFFFF;
+  medium-tablet-width: 768px;
+  large-mobile-width: 448px;
+  bold-font: 600;
+  normal-font: 400;
+}
+
 /* header */
 header {
   width: 1218px;
@@ -5,7 +18,10 @@ header {
   padding: 32px 0px;
   display: flex;
   flex-direction: column;
+  justify-content: normal;
+  align-items: normal;
   gap: 20px;
+  flex-wrap: nowrap;
 }
 @media (max-width: 1218px) {
   header {
@@ -15,24 +31,32 @@ header {
 }
 header nav {
   display: flex;
-  align-items: center;
+  flex-direction: row;
   justify-content: space-between;
+  align-items: center;
+  gap: 0px;
+  flex-wrap: nowrap;
 }
 header nav .logo {
   display: flex;
-  gap: 9px;
+  flex-direction: row;
+  justify-content: normal;
   align-items: center;
+  gap: 9px;
+  flex-wrap: nowrap;
 }
 header nav .logo img {
   width: 36px;
   height: 36px;
 }
 header nav .logo h1 {
-  text-transform: capitalize;
-  margin: 0px;
+  font-family: "Work Sans", sans-serif;
   font-size: 24px;
   font-weight: 600;
-  font-family: "Work Sans", sans-serif;
+  text-transform: capitalize;
+  text-align: left;
+  color: initial;
+  margin: 0px;
 }
 @media (max-width: 448px) {
   header nav .logo h1 {
@@ -50,8 +74,11 @@ header nav .logo h1 span {
 header nav ul {
   padding: 6px 116px;
   display: flex;
-  gap: 40px;
+  flex-direction: row;
+  justify-content: normal;
   align-items: center;
+  gap: 40px;
+  flex-wrap: nowrap;
   margin: 0px 21px 0px 118px;
   list-style: none;
 }
@@ -68,15 +95,21 @@ header nav ul {
   }
 }
 header nav ul li a {
-  color: var(--secondary-color-600);
-  text-transform: capitalize;
+  font-family: inherit;
   font-size: 16px;
+  font-weight: 400;
+  text-transform: capitalize;
+  text-align: left;
+  color: #181A2A;
   display: block;
   width: max-content;
   text-decoration: none !important;
   display: flex;
+  flex-direction: row;
+  justify-content: normal;
   align-items: center;
   gap: 2px;
+  flex-wrap: nowrap;
 }
 header nav ul li a span.material-symbols-outlined {
   font-size: 30px;
@@ -99,16 +132,22 @@ header nav ul li a span.material-symbols-outlined:hover {
 }
 header nav .search-sign {
   display: flex;
-  gap: 40px;
+  flex-direction: row;
+  justify-content: normal;
   align-items: center;
+  gap: 40px;
+  flex-wrap: nowrap;
 }
 header nav .search-sign .search {
   background-color: #F4F4F5;
   padding: 8px 10px 8px 16px;
   border-radius: 5px;
   display: flex;
-  gap: 12px;
+  flex-direction: row;
+  justify-content: normal;
   align-items: center;
+  gap: 12px;
+  flex-wrap: nowrap;
 }
 @media (max-width: 601px) {
   header nav .search-sign .search {
@@ -119,8 +158,12 @@ header nav .search-sign .search input {
   border: none;
   outline: none;
   background-color: #F4F4F5;
-  font-size: 14px;
   font-family: "Inter", sans-serif;
+  font-size: 14px;
+  font-weight: normal;
+  text-transform: none;
+  text-align: left;
+  color: initial;
   width: 114px;
 }
 header nav .search-sign .search label {
@@ -131,23 +174,34 @@ header nav .search-sign .search label {
   height: 16px;
   cursor: pointer;
   display: flex;
-  align-items: center;
+  flex-direction: row;
   justify-content: center;
+  align-items: center;
+  gap: 0px;
+  flex-wrap: nowrap;
 }
 header nav .search-sign .search label img {
   width: 16px;
   height: 16px;
 }
+header nav .search-sign .sign-link, header nav .search-sign .user-home-page-link {
+  display: none;
+  object-fit: cover;
+  align-items: center;
+  justify-content: center;
+}
 header nav .search-sign .sign-link button.sign {
-  font-size: 16px;
   font-family: "Work Sans", sans-serif;
+  font-size: 16px;
+  font-weight: normal;
   text-transform: capitalize;
+  text-align: left;
+  color: #FFFFFF;
   border: none;
   border-radius: 6px;
   cursor: pointer;
   padding: 5px;
   background-color: var(--primary-color);
-  color: var(--white);
 }
 header nav .search-sign .user-home-page-link img {
   width: 40px;
@@ -182,19 +236,15 @@ header form.mobile-search label {
   width: auto;
   cursor: pointer;
   display: flex;
-  align-items: center;
+  flex-direction: row;
   justify-content: center;
+  align-items: center;
+  gap: 0px;
+  flex-wrap: nowrap;
 }
 header form.mobile-search label img {
   width: auto;
   height: 30px;
-}
-
-header .sign-link, header .user-home-page-link {
-  display: none;
-  object-fit: cover;
-  align-items: center;
-  justify-content: center;
 }
 
 /*# sourceMappingURL=header.css.map */

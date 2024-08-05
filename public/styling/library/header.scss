@@ -1,12 +1,13 @@
+@use 'mixins';
+@use 'vars';
+
 /* header */
 header
 {
     width: 1218px;
     margin: auto;
     padding: 32px 0px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+    @include mixins.flex-column(normal, normal, 20px, nowrap);
 
     @media (max-width: 1218px) 
     {
@@ -16,15 +17,11 @@ header
 
     nav
     {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
+        @include mixins.flex-row(space-between, center, 0px, nowrap);
 
         .logo
         {
-            display: flex;
-            gap: 9px;
-            align-items: center;
+            @include mixins.flex-row(normal, center, 9px, nowrap);
 
             img
             {
@@ -34,12 +31,9 @@ header
 
             h1
             {
-                text-transform: capitalize;
+                @include mixins.font("Work Sans", 24px, vars.$bold-font, capitalize, left, initial, sans-serif);
                 margin: 0px;
-                font-size: 24px;
-                font-weight: 600;
-                font-family: "Work Sans", sans-serif;
-                @media (max-width:448px) 
+                @media (max-width:vars.$large-mobile-width) 
                 {
                     display: none;    
                 }
@@ -57,13 +51,11 @@ header
         ul
         {
             padding: 6px 116px;
-            display: flex;
-            gap: 40px;
-            align-items: center;
+            @include mixins.flex-row(normal, center, 40px, nowrap);
             margin: 0px 21px 0px 118px;
             list-style: none;
 
-            @media (max-width: 448px)
+            @media (max-width: vars.$large-mobile-width)
             {
                 margin: 0px 20px 0px 20px;
                 padding: 6px 20px;
@@ -76,18 +68,15 @@ header
 
             li a
             {
-                color: var(--secondary-color-600);
-                text-transform: capitalize;
-                font-size: 16px;
+                @include mixins.font(inherit, 16px, vars.$normal-font, capitalize, left, vars.$secondary-color-500, inherit);
                 display: block;
                 width: max-content;
                 text-decoration: none !important;
-                display: flex;
-                align-items: center;
-                gap: 2px;
+                @include mixins.flex-row(normal, center, 2px, nowrap);
 
                 span.material-symbols-outlined
                 {
+                    
                     font-size: 30px;
                     color: #80808080;
                     transition-duration: 0.6s;
@@ -97,7 +86,7 @@ header
                         color: black;
                     }
 
-                    @media (max-width: 448px) 
+                    @media (max-width: vars.$large-mobile-width) 
                     {
                         display: block;    
                     }
@@ -105,7 +94,7 @@ header
 
                 span.nav-text
                 {
-                    @media (max-width: 448px) 
+                    @media (max-width: vars.$large-mobile-width) 
                     {
                         display: none;    
                     }
@@ -115,18 +104,14 @@ header
 
         .search-sign
         {
-            display: flex;
-            gap: 40px;
-            align-items: center;
+            @include mixins.flex-row(normal, center, 40px, nowrap);
 
             .search
             {
                 background-color: #F4F4F5;
                 padding: 8px 10px 8px 16px;
                 border-radius: 5px;
-                display: flex;
-                gap: 12px;
-                align-items: center;
+                @include mixins.flex-row(normal, center, 12px, nowrap);
 
                 @media (max-width: 601px)
                 {
@@ -138,8 +123,7 @@ header
                     border: none;
                     outline: none;
                     background-color: #F4F4F5;
-                    font-size: 14px;
-                    font-family: "Inter", sans-serif;   
+                    @include mixins.font("Inter", 14px, normal, none, left, initial, sans-serif);
                     width: 114px;
                 }
 
@@ -151,9 +135,7 @@ header
                     width: 16px;
                     height: 16px;
                     cursor: pointer;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
+                    @include mixins.flex-row(center, center, 0px, nowrap);
 
                     img
                     {
@@ -163,19 +145,24 @@ header
                 }
             }
 
+            .sign-link, .user-home-page-link
+            {
+                display: none;
+                object-fit: cover;
+                align-items: center;
+                justify-content: center;
+            }
+
             .sign-link
             {
                 button.sign
                 {
-                    font-size: 16px;
-                    font-family: "Work Sans", sans-serif;
-                    text-transform: capitalize;
+                    @include mixins.font("Work Sans", 16px, normal, capitalize, left, vars.$white, sans-serif);
                     border: none;
                     border-radius: 6px;
                     cursor: pointer;
                     padding: 5px;
                     background-color: var(--primary-color);
-                    color: var(--white);
                 }
             }
 
@@ -188,6 +175,7 @@ header
                     border-radius: 50%;
                 }
             }
+
         }
     }
 
@@ -222,9 +210,7 @@ header
             min-height: 36px;
             width: auto;
             cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            @include mixins.flex-row(center, center, 0px, nowrap);
             img
             {
                 width: auto;
@@ -235,10 +221,3 @@ header
 }
 
 
-header .sign-link, header .user-home-page-link
-{
-    display: none;
-    object-fit: cover;
-    align-items: center;
-    justify-content: center;
-}
