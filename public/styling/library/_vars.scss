@@ -1,0 +1,27 @@
+// fonts colors
+$primary-color: #4B6BFB;
+$secondary-color-400: #97989F;
+$secondary-color-100: #E8E8EA;
+$secondary-color-800: #181A2A;
+$secondary-color-500: #181A2A;
+$white: #FFFFFF;
+
+// screen sizes:
+$medium-tablet-width: 768px;
+
+// font weights
+$bold-font: 600;
+$normal-font: 400;
+
+:export
+{
+    primary-color: $primary-color;
+    secondary-color-400: $secondary-color-400;
+    secondary-color-100: $secondary-color-100;
+    secondary-color-800: $secondary-color-800;
+    secondary-color-500: $secondary-color-500;
+    white: $white;
+    medium-tablet-width: $medium-tablet-width;
+    bold-font: $bold-font;
+    normal-font: $normal-font;
+}

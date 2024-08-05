@@ -1,15 +1,12 @@
 @use 'mixins';
-
-$medium-tablet-width: 768px;
-$bold-font: 600;
-$normal-font: 400;
+@use 'vars';
 
 /* footer */
 footer
 {
     margin-top: 100px;
     background-color: #F6F6F7;
-    border: 1px solid var(--secondary-color-100);
+    border: 1px solid vars.$secondary-color-100;
     padding-top: 64px;
     width: 100%;
 
@@ -30,7 +27,7 @@ footer
         {
             @include mixins.flex-row(space-between, normal, 20px, wrap);
 
-            @media (max-width: $medium-tablet-width) 
+            @media (max-width: vars.$medium-tablet-width) 
             {
                 justify-content: center;    
             }
@@ -41,7 +38,7 @@ footer
                 width: 330px;
                 margin-bottom: 25px;
 
-                @media (max-width: $medium-tablet-width) 
+                @media (max-width: vars.$medium-tablet-width) 
                 {
                     order: 1;    
                 }
@@ -52,10 +49,10 @@ footer
 
                     h2
                     {
-                        @include mixins.font("Plus Jakarta Sans", 18px, $bold-font, capitalize, left, initial, sans-serif);
+                        @include mixins.font("Plus Jakarta Sans", 18px, vars.$bold-font, capitalize, left, initial, sans-serif);
                         margin: 0px;
 
-                        @media (max-width: $medium-tablet-width) 
+                        @media (max-width: vars.$medium-tablet-width) 
                         {
                             font-size: 15px;    
                         }
@@ -63,10 +60,10 @@ footer
 
                     p
                     {
-                        @include mixins.font("Plus Jakarta Sans", 16px, $normal-font, none, left, #696A75, sans-serif);
+                        @include mixins.font("Plus Jakarta Sans", 16px, vars.$normal-font, none, left, #696A75, sans-serif);
                         margin: 0px;
 
-                        @media (max-width: $medium-tablet-width) 
+                        @media (max-width: vars.$medium-tablet-width) 
                         {
                             font-size: 14px;    
                         }
@@ -79,20 +76,20 @@ footer
 
                     p
                     {
-                        @include mixins.font("Plus Jakarta Sans", 16px, $normal-font, none, left, #3B3C4A, sans-serif);
+                        @include mixins.font("Plus Jakarta Sans", 16px, vars.$normal-font, none, left, #3B3C4A, sans-serif);
                         margin: 0px;
                         width: max-content;
 
-                        @media (max-width: $medium-tablet-width) 
+                        @media (max-width: vars.$medium-tablet-width) 
                         {
                             font-size: 14px;    
                         }
 
                         span
                         {
-                            @include mixins.font(inherit, 18px, $bold-font, capitalize, left, var(--secondary-color-800), inherit);
+                            @include mixins.font(inherit, 18px, vars.$bold-font, capitalize, left, vars.$secondary-color-800, inherit);
 
-                            @media (max-width: $medium-tablet-width) 
+                            @media (max-width: vars.$medium-tablet-width) 
                             {
                                 font-size: 15px;    
                             }
@@ -106,7 +103,7 @@ footer
                 @include mixins.flex-row(normal, normal, 80px, nowrap);
                 margin-bottom: 25px;
 
-                @media (max-width: $medium-tablet-width) 
+                @media (max-width: vars.$medium-tablet-width) 
                 {
                     order: 3;    
                 }
@@ -117,11 +114,11 @@ footer
 
                     h2
                     {
-                        @include mixins.font("Plus Jakarta Sans", 18px, $bold-font, capitalize, left, initial, sans-serif);
+                        @include mixins.font("Plus Jakarta Sans", 18px, vars.$bold-font, capitalize, left, initial, sans-serif);
                         margin: 0px;
                         width: max-content;
 
-                        @media (max-width: $medium-tablet-width) 
+                        @media (max-width: vars.$medium-tablet-width) 
                         {
                             font-size: 15px;    
                         }
@@ -136,12 +133,12 @@ footer
 
                         li a
                         {
-                            @include mixins.font("Plus Jakarta Sans", 16px, $normal-font, capitalize, left, #3B3C4A, sans-serif);
+                            @include mixins.font("Plus Jakarta Sans", 16px, vars.$normal-font, capitalize, left, #3B3C4A, sans-serif);
                             width: max-content;
                             display: block;
                             text-decoration: none !important;
 
-                            @media (max-width: $medium-tablet-width) 
+                            @media (max-width: vars.$medium-tablet-width) 
                             {
                                 font-size: 14px;    
                             }
@@ -155,10 +152,10 @@ footer
                 @include mixins.flex-column(normal, center, 30px, nowrap);
                 padding: 32px;
                 border-radius: 12px;
-                background-color: var(--white);
+                background-color: vars.$white;
                 margin-bottom: 25px;
 
-                @media (max-width: $medium-tablet-width) 
+                @media (max-width: vars.$medium-tablet-width) 
                 {
                     order: 2;    
                 }
@@ -170,11 +167,11 @@ footer
 
                     h2
                     {
-                        @include mixins.font("work sans", 20px, $bold-font, capitalize, left, var(--secondary-color-800), sans-serif);
+                        @include mixins.font("work sans", 20px, vars.$bold-font, capitalize, left, vars.$secondary-color-800, sans-serif);
                         margin: 0px;
                         width: max-content;
 
-                        @media (max-width: $medium-tablet-width) 
+                        @media (max-width: vars.$medium-tablet-width) 
                         {
                             font-size: 18px;    
                         }
@@ -182,11 +179,11 @@ footer
 
                     p
                     {
-                        @include mixins.font("work sans", 16px, $normal-font, none, left, #696A75, sans-serif);
+                        @include mixins.font("work sans", 16px, vars.$normal-font, none, left, #696A75, sans-serif);
                         margin: 0px;
                         width: max-content;
 
-                        @media (max-width: $medium-tablet-width) 
+                        @media (max-width: vars.$medium-tablet-width) 
                         {
                             font-size: 14px;    
                         }
@@ -207,7 +204,7 @@ footer
 
                         input
                         {
-                            @include mixins.font("work sans", 16px, $normal-font, none, left, #97989F, sans-serif);
+                            @include mixins.font("work sans", 16px, vars.$normal-font, none, left, #97989F, sans-serif);
                             border: none;
                             outline: none;
                         }
@@ -222,8 +219,8 @@ footer
                     button
                     {
                         padding: 12px 20px;
-                        background-color: var(--primary-color);
-                        @include mixins.font(inherit, 16px, 500, none, center, var(--white), inherit);
+                        background-color: vars.$primary-color;
+                        @include mixins.font(inherit, 16px, 500, none, center, vars.$white, inherit);
                         border: none;
                         outline: none;
                         cursor: pointer;
@@ -241,10 +238,10 @@ footer
             h2
             {
                 margin: 0px;
-                @include mixins.font("Plus Jakarta Sans", 18px, $bold-font, capitalize, left, initial, sans-serif);
+                @include mixins.font("Plus Jakarta Sans", 18px, vars.$bold-font, capitalize, left, initial, sans-serif);
                 margin-bottom: 12px;
 
-                @media (max-width: $medium-tablet-width) 
+                @media (max-width: vars.$medium-tablet-width) 
                 {
                     font-size: 15px;    
                 }
@@ -259,10 +256,10 @@ footer
 
                 li
                 {
-                    @include mixins.font("work sans", 16px, $normal-font, none, left, #696A75, sans-serif);
+                    @include mixins.font("work sans", 16px, vars.$normal-font, none, left, #696A75, sans-serif);
                     margin-bottom: 10px;
 
-                    @media (max-width: $medium-tablet-width) 
+                    @media (max-width: vars.$medium-tablet-width) 
                     {
                         font-size: 14px;    
                     }
@@ -282,7 +279,7 @@ footer
             @include mixins.flex-row(space-between, center, 64px, wrap);
             border-top: 1px solid #DCDDDF;
 
-            @media (max-width: $medium-tablet-width) 
+            @media (max-width: vars.$medium-tablet-width) 
             {
                 gap: 20px;    
             }
@@ -308,7 +305,7 @@ footer
 
                         span
                         {
-                            font-weight: $normal-font;
+                            font-weight: vars.$normal-font;
                         }
                     }
 
@@ -330,7 +327,7 @@ footer
                 {
                     text-decoration: none !important;
 
-                    @media (max-width: $medium-tablet-width)
+                    @media (max-width: vars.$medium-tablet-width)
                     {
                         font-size: 14px;    
                     }
@@ -340,7 +337,7 @@ footer
                 {
                     width: 1px;
                     height: 24px;
-                    background-color: var(--secondary-color-100);
+                    background-color: vars.$secondary-color-100;
                 }
             }
         }

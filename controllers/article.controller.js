@@ -9,6 +9,7 @@ const User = require("../models/user.model");
 const { USER, ADMIN } = require("../utils/rolesConstants");
 const removeImageFromDB = require("../utils/removeImageFromDB");
 const { default: mongoose } = require("mongoose");
+const multer = require("multer");
 
 const getAllArticlesSorted = asyncWrapper(
     async (req, res, next)=>
@@ -407,22 +408,35 @@ const deleteArticle = asyncWrapper(
 //     {
 //         try
 //         {
+//             if (mongoose.connection.readyState !== 1) {
+//                 console.log('MongoDB connection is not ready.');
+//                 return;
+//             }
+
 //             const updateSchema = await Article.updateMany(
-//                 {},
+//                 {}, // This matches all documents in the collection
 //                 {
 //                     $unset: {
-//                         "liked": 1,
-//                         "disLiked": 1
+//                         liked: "",
+//                         disLiked: "",
+//                         likesNumber: "",
+//                         disLikesNumber: "",
+//                         authorAvatar: "",
+//                         author: ""
 //                     }
+//                 },
+//                 {
+//                     multi: true,
+//                     w: "majority"
 //                 }
-//             )
+//             );
 //             console.log("Updaed Schema successfull", updateSchema);
 //         }
 //         catch(err)
 //         {
 //             console.log(err);
 //         }
-//}
+// }
 
 module.exports = {
     postArticle,
@@ -432,5 +446,5 @@ module.exports = {
     getAllArticlesOfUser,
     getAllMyArticles,
     getAllArticlesSorted,
-    // removeFieldsFromSchema
+    //removeFieldsFromSchema
 }

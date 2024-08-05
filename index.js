@@ -11,7 +11,8 @@ const cookieParser = require("cookie-parser");
 const verifyJWT = require("./middlewares/verifyJWT");
 const setUpAdminUser = require("./utils/setUpAdminUser");
 const { NOT_FOUNDED_DATA } = require("./utils/errorsConstants");
-//const { removeFieldsFromSchema } = require("./controllers/article.controller");
+// const { removeFieldsFromSchema } = require("./controllers/article.controller");
+
 // app
 const app = express();
 
@@ -46,7 +47,7 @@ app.use(errorHandler)
 connectToDB()
 .then(async()=>
 {
-    //await removeFieldsFromSchema()
+    // await removeFieldsFromSchema()
     app.listen(process.env.PORT, ()=>
     {
         console.log(`Server runing at port ${process.env.PORT}`);

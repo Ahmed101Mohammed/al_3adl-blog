@@ -1,8 +1,20 @@
+:export {
+  primary-color: #4B6BFB;
+  secondary-color-400: #97989F;
+  secondary-color-100: #E8E8EA;
+  secondary-color-800: #181A2A;
+  secondary-color-500: #181A2A;
+  white: #FFFFFF;
+  medium-tablet-width: 768px;
+  bold-font: 600;
+  normal-font: 400;
+}
+
 /* footer */
 footer {
   margin-top: 100px;
   background-color: #F6F6F7;
-  border: 1px solid var(--secondary-color-100);
+  border: 1px solid #E8E8EA;
   padding-top: 64px;
   width: 100%;
 }
@@ -116,7 +128,7 @@ footer .secondry-container .general-info .about .contact-data p span {
   font-weight: 600;
   text-transform: capitalize;
   text-align: left;
-  color: var(--secondary-color-800);
+  color: #181A2A;
 }
 @media (max-width: 768px) {
   footer .secondry-container .general-info .about .contact-data p span {
@@ -196,7 +208,7 @@ footer .secondry-container .general-info .news-letter {
   flex-wrap: nowrap;
   padding: 32px;
   border-radius: 12px;
-  background-color: var(--white);
+  background-color: #FFFFFF;
   margin-bottom: 25px;
 }
 @media (max-width: 768px) {
@@ -219,7 +231,7 @@ footer .secondry-container .general-info .news-letter .news-letter-intro h2 {
   font-weight: 600;
   text-transform: capitalize;
   text-align: left;
-  color: var(--secondary-color-800);
+  color: #181A2A;
   margin: 0px;
   width: max-content;
 }
@@ -284,13 +296,13 @@ footer .secondry-container .general-info .news-letter form fieldset label.email-
 }
 footer .secondry-container .general-info .news-letter form button {
   padding: 12px 20px;
-  background-color: var(--primary-color);
+  background-color: #4B6BFB;
   font-family: inherit;
   font-size: 16px;
   font-weight: 500;
   text-transform: none;
   text-align: center;
-  color: var(--white);
+  color: #FFFFFF;
   border: none;
   outline: none;
   cursor: pointer;
@@ -416,7 +428,7 @@ footer .secondry-container .real-footer ul li a {
 footer .secondry-container .real-footer ul .v-line {
   width: 1px;
   height: 24px;
-  background-color: var(--secondary-color-100);
+  background-color: #E8E8EA;
 }
 
 /*# sourceMappingURL=footer.css.map */
