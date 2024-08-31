@@ -23,15 +23,13 @@
   background-color: var(--white);
   border-radius: 12px;
 }
-
-.article-summary-card .info {
+.intro .article-summary-card .info {
   display: flex;
   flex-direction: column;
   gap: 16px;
   width: 518px;
 }
-
-.article-summary-card .info .catigory {
+.intro .article-summary-card .info .category-primary {
   background-color: var(--primary-color);
   color: var(--white);
   text-transform: capitalize;
@@ -41,32 +39,32 @@
   border-radius: 6px;
   width: fit-content;
 }
-
-.article-summary-card .info .title {
+.intro .article-summary-card .info .title {
   font-size: 36px;
   font-weight: 600;
   color: var(--secondary-color-500);
 }
-
-.production-details {
+.intro .article-summary-card .production-details {
   display: flex;
   gap: 20px;
   align-items: center;
 }
-
-.production-details .author {
+.intro .article-summary-card .author {
   display: flex;
   gap: 12px;
   align-items: center;
 }
-
-.production-details .author .name {
+.intro .article-summary-card .author img {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+}
+.intro .article-summary-card .author .name {
   color: var(--secondary-color-400);
   font-weight: 500;
   font-size: 16px;
 }
-
-.production-details .date {
+.intro .article-summary-card .date {
   color: var(--secondary-color-400);
   font-weight: 400;
   font-size: 16px;
