@@ -26,6 +26,14 @@ main
     gap: 80px;
 }
 
+@media (max-width: 1216px) 
+{
+    .main-container
+    {
+        width: 100%;
+        gap: 30px;
+    }    
+}
 /* links */
 a
 {
