@@ -7,11 +7,14 @@ $secondary-color-500: #181A2A;
 $white: #FFFFFF;
 
 // screen sizes:
+$large-tablet-width: 1024px;
 $medium-tablet-width: 768px;
+$small-tablet-width: 601px;
 $large-mobile-width: 448px;
 
 // font weights
 $bold-font: 600;
+$medium-font: 500;
 $normal-font: 400;
 
 :export
@@ -30,5 +33,6 @@ $normal-font: 400;
 
     // font weights
     bold-font: $bold-font;
+    medium-font: $medium-font;
     normal-font: $normal-font;
 }

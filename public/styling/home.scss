@@ -5,21 +5,19 @@
 {
     padding-bottom: 64px;
     position: relative;
-    @media (max-width: 1024px) 
+    @media (max-width: vars.$large-tablet-width) 
     {
-        display: flex;
-        justify-content: center;
+        @include mixins.flex-row(center, normal, 0px, nowrap);
         padding: 0px;
     }
 
     .intro-img
     {
-        width: 100%;
-        height: 600px;
+        @include mixins.size(100%, 600px);
         background-color: #1416246f;
         border-radius: 12px;
         overflow: hidden;
-        @media (max-width: 1024px) 
+        @media (max-width: vars.$large-tablet-width) 
         {
             display: none;
         }
@@ -27,18 +25,14 @@
 
     .article-summary-card
     {
-        display: flex;
-        flex-direction: column;
-        gap: 24px;
+        @include mixins.flex-column(normal, normal, 24px, nowrap);
+        @include mixins.position(absolute, auto, auto, 0px, 64px);
         padding: 40px;
         width: fit-content;
         box-shadow: 0px 12px 24px -6px #181a2a2e;
-        position: absolute;
-        left: 64px;
-        bottom: 0px;
         background-color: vars.$white;
         border-radius: 12px;
-        @media (max-width: 1024px) 
+        @media (max-width: vars.$large-tablet-width) 
         {
             position: static;
             box-shadow: 0px 0px 24px -6px rgba(24, 26, 42, 0.1803921569);
@@ -46,22 +40,16 @@
 
         .info
         {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
+            @include mixins.flex-column(normal, normal, 16px, nowrap);
             width: 518px;
-            @media (max-width: 601px) 
+            @media (max-width: vars.$small-tablet-width) 
             {
                 width: fit-content;
             }
 
             .category
             {
-                background-color: vars.$primary-color;
-                color: vars.$white;
-                text-transform: capitalize;
-                font-size: 14px;
-                font-weight: 500;
+                @include mixins.font(inherit, 14px, vars.$medium-font, capitalize, left, vars.$white, inherit);
                 padding: 4px 10px;
                 border-radius: 6px;
                 width: fit-content;
@@ -69,10 +57,8 @@
 
             .title
             {
-                font-size: 36px;
-                font-weight: 600;
-                color: vars.$secondary-color-500;
-                @media (max-width: 601px) 
+                @include mixins.font(inherit, 36px, vars.$bold-font, none, left, vars.$secondary-color-500, inherit);
+                @media (max-width: vars.$small-tablet-width) 
                 {
                     font-size: 26px;
                 }
@@ -81,44 +67,33 @@
 
         .production-details
         {
-            display: flex;
-            gap: 20px;
-            align-items: center;
+            @include mixins.flex-row(normal, center, 20px, nowrap);
             @media (max-width: 360px)
             {
-                align-items: flex-start;
-                gap: 12px;
+                @include mixins.flex-row(normal, flex-start, 12px, wrap);
             }
 
             .author
             {
-                display: flex;
-                gap: 12px;
-                align-items: center;
-
+                @include mixins.flex-row(normal, center, 12px, nowrap);
                 img
                 {
                     border-radius: 50%;
-                    width: 50px;
-                    height: 50px;
-                    @media (max-width: 601px) 
+                    @include mixins.size(50px, 50px);
+                    @media (max-width: vars.$small-tablet-width) 
                     {
                         display: none;
                     }
                 }
                 .name
                 {
-                    color: vars.$secondary-color-400;
-                    font-weight: 500;
-                    font-size: 16px;
+                    @include mixins.font(inherit, 16px, vars.$medium-font, none, left, vars.$secondary-color-400, inherit);
                 }
             }
 
             .date
             {
-                color: vars.$secondary-color-400;
-                font-weight: 400;
-                font-size: 16px;
+                @include mixins.font(inherit, 16px, vars.$normal-font, none, left, vars.$secondary-color-400, inherit);
             }
         }
     }
