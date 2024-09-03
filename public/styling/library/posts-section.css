@@ -3,6 +3,8 @@
   display: flex;
   flex-direction: column;
   gap: 32px;
+  width: 100%;
+  padding: 0px 20px;
 }
 .posts .title {
   font-size: 24px;
@@ -25,6 +27,17 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
   display: none;
+  justify-content: center;
+}
+@media (max-width: 1280px) {
+  .posts .posts-container {
+    grid-template-columns: repeat(2, auto);
+  }
+}
+@media (max-width: 768px) {
+  .posts .posts-container {
+    grid-template-columns: auto;
+  }
 }
 .posts .posts-container .post-card {
   display: flex;
@@ -41,10 +54,25 @@
   width: 360px;
   border-radius: 7px;
 }
+@media (min-width: 768px) and (max-width: 850px) {
+  .posts .posts-container .post-card .post-cover img {
+    width: 100%;
+  }
+}
+@media (max-width: 414px) {
+  .posts .posts-container .post-card .post-cover img {
+    width: 100%;
+  }
+}
 .posts .posts-container .post-card .info {
   display: flex;
   flex-direction: column;
   gap: 20px;
+}
+@media (max-width: 390px) {
+  .posts .posts-container .post-card .info {
+    gap: 8px;
+  }
 }
 .posts .posts-container .post-card .info .main-info {
   display: flex;
@@ -71,10 +99,20 @@
   gap: 20px;
   align-items: center;
 }
+@media (max-width: 390px) {
+  .posts .posts-container .post-card .info .production-details {
+    gap: 6px;
+  }
+}
 .posts .posts-container .post-card .info .production-details .author {
   display: flex;
   gap: 12px;
   align-items: center;
+}
+@media (max-width: 390px) {
+  .posts .posts-container .post-card .info .production-details .author {
+    gap: 8px;
+  }
 }
 .posts .posts-container .post-card .info .production-details .author img {
   width: 36px;
@@ -87,10 +125,20 @@
   font-weight: 500;
   font-size: 16px;
 }
+@media (max-width: 390px) {
+  .posts .posts-container .post-card .info .production-details .author .name {
+    font-size: 13px;
+  }
+}
 .posts .posts-container .post-card .info .production-details .date {
   color: var(--secondary-color-400);
   font-weight: 400;
   font-size: 16px;
+}
+@media (max-width: 390px) {
+  .posts .posts-container .post-card .info .production-details .date {
+    font-size: 13px;
+  }
 }
 .posts .all-posts {
   display: none;
