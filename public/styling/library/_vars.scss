@@ -1,10 +1,10 @@
 // colors
-$primary-color: #4B6BFB;
-$secondary-color-400: #97989F;
-$secondary-color-100: #E8E8EA;
-$secondary-color-800: #181A2A;
-$secondary-color-500: #181A2A;
-$white: #FFFFFF;
+$primary-color: #4b6bfb;
+$secondary-color-400: #97989f;
+$secondary-color-100: #e8e8ea;
+$secondary-color-800: #181a2a;
+$secondary-color-500: #181a2a;
+$white: #ffffff;
 
 // screen sizes:
 $large-tablet-width: 1024px;
@@ -17,22 +17,21 @@ $bold-font: 600;
 $medium-font: 500;
 $normal-font: 400;
 
-:export
-{
-    // colors
-    primary-color: $primary-color;
-    secondary-color-400: $secondary-color-400;
-    secondary-color-100: $secondary-color-100;
-    secondary-color-800: $secondary-color-800;
-    secondary-color-500: $secondary-color-500;
-    white: $white;
+:export {
+  // colors
+  primary-color: $primary-color;
+  secondary-color-400: $secondary-color-400;
+  secondary-color-100: $secondary-color-100;
+  secondary-color-800: $secondary-color-800;
+  secondary-color-500: $secondary-color-500;
+  white: $white;
 
-    // screen sizes:
-    medium-tablet-width: $medium-tablet-width;
-    large-mobile-width: $large-mobile-width;
+  // screen sizes:
+  medium-tablet-width: $medium-tablet-width;
+  large-mobile-width: $large-mobile-width;
 
-    // font weights
-    bold-font: $bold-font;
-    medium-font: $medium-font;
-    normal-font: $normal-font;
+  // font weights
+  bold-font: $bold-font;
+  medium-font: $medium-font;
+  normal-font: $normal-font;
 }
