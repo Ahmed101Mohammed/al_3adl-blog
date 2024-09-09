@@ -1,189 +1,147 @@
 /* theme */
-:root
-{
-    --black: #2F2F2F;
-    --primary: #6358DC;
+:root {
+  --black: #2f2f2f;
+  --primary: #6358dc;
 }
+
 /* general */
-body, html
-{
-    width: 100%;
-    height: 100%;
-    background-color: #E5E5E5;
+body,
+html {
+  width: 100%;
+  height: 100%;
+  background-color: #e5e5e5;
 }
 
-body
-{
-    display: flex;
-    gap: 238.86px;
-    align-items: center;
-    justify-content: center;
+body {
+  display: flex;
+  gap: 238.86px;
+  align-items: center;
+  justify-content: center;
+  /* log form */
+}
+body form.sign {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 20px 30px;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+  width: 600px;
+}
+body form.sign h2.welcome {
+  font-size: 36px;
+  font-weight: 500;
+  color: var(--secondary-color-800);
+  font-family: "Poppins", sans-serif;
+  color: var(--black);
+}
+body form.sign h2.welcome span {
+  color: var(--primary);
+  font-weight: bolder;
+  display: block;
+  font-size: 46px;
+}
+body form.sign fieldset.fast-sign {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+body form.sign fieldset.fast-sign .login-method {
+  padding: 7px 20px;
+  background-color: #fff;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.11);
+}
+body form.sign fieldset.fast-sign .login-method .method-ui {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+}
+body form.sign .separation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 1px;
+  background-color: #dcdddf;
+}
+body form.sign .separation span {
+  display: block;
+  background-color: #fff;
+  width: fit-content;
+  padding: 0px 35px;
+}
+body form.sign .normal-log {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+body form.sign .normal-log .input {
+  width: 100%;
+  background-color: #ececec;
+  border-radius: 8px;
+  padding: 10px 23px;
+  display: flex;
+  align-items: flex-end;
+  gap: 30px;
+}
+body form.sign .normal-log .input .input-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: flex-start;
+  width: 100%;
+}
+body form.sign .normal-log .input .input-field .field-label {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--black);
+  font-family: "Poppins", sans-serif;
+}
+body form.sign .normal-log .input .input-field input {
+  font-size: 16px;
+  font-weight: bold;
+  font-family: "Poppins", sans-serif;
+  color: var(--black) !important;
+  background-color: transparent !important;
+  width: 100%;
+  padding-left: 5px;
+}
+body form.sign .normal-log .input .input-field input:focus {
+  background-color: #fff !important;
+}
+body form.sign .normal-log .final-action {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+}
+body form.sign .normal-log .final-action button {
+  padding: 15px;
+  border-radius: 8px;
+  background-color: var(--primary);
+  font-size: 16px;
+  color: #fff;
+  font-weight: 500;
+  font-family: "Poppins", sans-serif;
+  width: 100%;
+}
+body form.sign .normal-log .final-action span {
+  font-size: 16px;
+  font-weight: 400;
+  font-family: "Poppins", sans-serif;
+  color: black;
+}
+body form.sign .normal-log .final-action span a {
+  color: var(--primary);
+}
+body form.sign .normal-log .error-message {
+  color: red;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: "Poppins", sans-serif;
+  text-align: center;
 }
 
-/* log form */
-form.sign
-{
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-    background-color: #FFF;
-    border-radius: 8px;
-    padding: 20px 30px;    
-    box-shadow: 0px 0px 4px rgb(0 0 0 / 10%);
-    width: 600px;
-}
-
-h2.welcome
-{
-    font-size: 36px;
-    font-weight: 500;
-    color: var(--secondary-color-800);
-    font-family: "Poppins", sans-serif;
-    color: var(--black);
-}
-
-h2.welcome span
-{
-    color: var(--primary);
-    font-weight: bolder;
-    display: block;
-    font-size: 46px;
-}
-
-fieldset.fast-sign
-{
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.login-method
-{
-    padding: 7px 20px;
-    background-color: #FFF;
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.11);
-}
-
-.method-ui
-{
-    display: flex;
-    gap: 20px;
-    align-items: center;
-    justify-content: center;
-}
-
-.separation
-{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 1px;
-    background-color: #DCDDDF;
-}
-
-.separation span
-{
-    display: block;
-    background-color: #FFF;
-    width: fit-content;
-    padding: 0px 35px;
-}
-
-.normal-log
-{
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.normal-log .full-name img
-{
-    width: 30px;
-    height: 30px;
-}
-.normal-log .input
-{
-    width: 100%;
-    background-color: #ECECEC;
-    border-radius: 8px;
-    padding: 10px 23px;
-    display: flex;
-    align-items: flex-end;
-    gap: 30px;
-}
-
-.input-field
-{
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    align-items: flex-start;
-    width: 100%;
-}
-
-.field-label
-{
-    font-size: 12px;
-    font-weight: 400;
-    color: var(--black);
-    font-family: "Poppins", sans-serif;
-}
-
-input
-{
-    font-size: 16px;
-    font-weight: bold;
-    font-family: "Poppins", sans-serif;
-    color: var(--black)!important;
-    background-color: transparent !important;
-    width: 100%;
-    padding-left: 5px;
-}
-
-input:focus
-{
-    background-color: #FFF !important;
-}
-
-.final-action
-{
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    align-items: center;
-}
-
-.final-action button
-{
-    padding: 15px;
-    border-radius: 8px;
-    background-color: var(--primary);
-    font-size: 16px;
-    color: #FFF;
-    font-weight: 500;
-    font-family: "Poppins", sans-serif;
-    width: 100%;
-}
-
-.final-action span
-{
-    font-size: 16px;
-    font-weight: 400;
-    font-family: "Poppins", sans-serif;
-    color: black;
-}
-
-.final-action span a
-{
-    color: var(--primary)
-}
-
-.error-message
-{
-    color: red;
-    font-size: 12px;
-    font-weight: 400;
-    font-family: "Poppins", sans-serif;
-    text-align: center;
-}
+/*# sourceMappingURL=sign-in.css.map */
