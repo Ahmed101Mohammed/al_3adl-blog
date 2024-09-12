@@ -9,7 +9,13 @@ main .main-container {
   display: flex;
   flex-direction: column;
   gap: 80px;
+  align-items: center;
   /* article */
+}
+@media (max-width: 810px) {
+  main .main-container {
+    width: 100%;
+  }
 }
 main .main-container article {
   display: flex;
@@ -18,6 +24,11 @@ main .main-container article {
   /* article header */
   /* article cover */
   /* article content */
+}
+@media (max-width: 1024px) {
+  main .main-container article {
+    padding: 0px 20px;
+  }
 }
 main .main-container article .article-header {
   display: flex;
@@ -29,12 +40,34 @@ main .main-container article .article-header .main-info {
   flex-direction: column;
   gap: 16px;
 }
+@media (max-width: 601px) {
+  main .main-container article .article-header .main-info .category-primary {
+    font-size: 14px;
+    padding: 4px 8px;
+  }
+}
+@media (max-width: 414px) {
+  main .main-container article .article-header .main-info .category-primary {
+    font-size: 12px;
+    padding: 2px 5px;
+  }
+}
 main .main-container article .article-header .main-info .title {
   font-size: 36px;
   font-weight: 600;
   color: var(--secondary-color-800);
   text-transform: capitalize;
   font-family: "work sans", sans-serif;
+}
+@media (max-width: 601px) {
+  main .main-container article .article-header .main-info .title {
+    font-size: 28px;
+  }
+}
+@media (max-width: 414px) {
+  main .main-container article .article-header .main-info .title {
+    font-size: 22px;
+  }
 }
 main .main-container article .article-header .production-details {
   display: flex;
@@ -59,6 +92,11 @@ main .main-container article .article-header .production-details .author .name {
   text-transform: capitalize;
   font-family: "work sans", sans-serif;
 }
+@media (max-width: 360px) {
+  main .main-container article .article-header .production-details .author .name {
+    font-size: 13px;
+  }
+}
 main .main-container article .article-header .production-details .date {
   font-size: 14px;
   font-weight: 400;
@@ -66,8 +104,13 @@ main .main-container article .article-header .production-details .date {
   text-transform: capitalize;
   font-family: "work sans", sans-serif;
 }
+@media (max-width: 360px) {
+  main .main-container article .article-header .production-details .date {
+    font-size: 12px;
+  }
+}
 main .main-container article .article-cover img {
-  width: 800px;
+  width: 100%;
   object-fit: cover;
   border-radius: 12px;
 }
@@ -79,6 +122,21 @@ main .main-container article .article-body h1, main .main-container article .art
   text-transform: capitalize;
   margin-bottom: 12px;
 }
+@media (max-width: 601px) {
+  main .main-container article .article-body h1, main .main-container article .article-body h2, main .main-container article .article-body h3, main .main-container article .article-body h4, main .main-container article .article-body h5, main .main-container article .article-body h6 {
+    font-size: 22px;
+  }
+}
+@media (max-width: 414px) {
+  main .main-container article .article-body h1, main .main-container article .article-body h2, main .main-container article .article-body h3, main .main-container article .article-body h4, main .main-container article .article-body h5, main .main-container article .article-body h6 {
+    font-size: 20px;
+  }
+}
+@media (max-width: 375px) {
+  main .main-container article .article-body h1, main .main-container article .article-body h2, main .main-container article .article-body h3, main .main-container article .article-body h4, main .main-container article .article-body h5, main .main-container article .article-body h6 {
+    font-size: 18px;
+  }
+}
 main .main-container article .article-body p {
   font-size: 18px;
   font-weight: 400;
@@ -86,6 +144,21 @@ main .main-container article .article-body p {
   font-family: "Source Serif Pro", sans-serif;
   line-height: 28px;
   margin-bottom: 24px;
+}
+@media (max-width: 601px) {
+  main .main-container article .article-body p {
+    font-size: 17px;
+  }
+}
+@media (max-width: 414px) {
+  main .main-container article .article-body p {
+    font-size: 16px;
+  }
+}
+@media (max-width: 375px) {
+  main .main-container article .article-body p {
+    font-size: 14px;
+  }
 }
 main .main-container article .article-body blockquote {
   padding-left: 32px;
@@ -96,6 +169,21 @@ main .main-container article .article-body blockquote {
   font-family: "Source Serif Pro", sans-serif;
   border-left: 4px solid var(--secondary-color-100);
   margin-bottom: 24px;
+}
+@media (max-width: 601px) {
+  main .main-container article .article-body blockquote {
+    font-size: 22px;
+  }
+}
+@media (max-width: 414px) {
+  main .main-container article .article-body blockquote {
+    font-size: 20px;
+  }
+}
+@media (max-width: 375px) {
+  main .main-container article .article-body blockquote {
+    font-size: 18px;
+  }
 }
 main .main-container article .article-body img {
   margin: auto;
