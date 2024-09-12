@@ -1,13 +1,21 @@
 :export {
-  primary-color: #4B6BFB;
-  secondary-color-400: #97989F;
-  secondary-color-100: #E8E8EA;
-  secondary-color-800: #181A2A;
-  secondary-color-500: #181A2A;
-  white: #FFFFFF;
+  primary-color: #4b6bfb;
+  secondary-color-400: #97989f;
+  secondary-color-100: #e8e8ea;
+  secondary-color-800: #181a2a;
+  secondary-color-500: #181a2a;
+  white: #ffffff;
+  small-descktop-width: 1280px;
+  large-tablet-width: 1024px;
   medium-tablet-width: 768px;
+  small-tablet-width: 601px;
   large-mobile-width: 448px;
+  large-mobile-width-x: 414px;
+  medium-mobile-width: 390px;
+  small-mobile-width-xs: 375px;
+  bolder-font: 800;
   bold-font: 600;
+  medium-font: 500;
   normal-font: 400;
 }
 
@@ -23,7 +31,7 @@ header {
   gap: 20px;
   flex-wrap: nowrap;
 }
-@media (max-width: 1218px) {
+@media (max-width: 1280px) {
   header {
     width: 100%;
     padding: 32px 20px;
@@ -100,7 +108,7 @@ header nav ul li a {
   font-weight: 400;
   text-transform: capitalize;
   text-align: left;
-  color: #181A2A;
+  color: #181a2a;
   display: block;
   width: max-content;
   text-decoration: none !important;
@@ -196,7 +204,7 @@ header nav .search-sign .sign-link button.sign {
   font-weight: normal;
   text-transform: capitalize;
   text-align: left;
-  color: #FFFFFF;
+  color: #ffffff;
   border: none;
   border-radius: 6px;
   cursor: pointer;

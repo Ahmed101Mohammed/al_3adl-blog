@@ -10,8 +10,9 @@
   medium-tablet-width: 768px;
   small-tablet-width: 601px;
   large-mobile-width: 448px;
-  large-mobile-width-x: 448px;
+  large-mobile-width-x: 414px;
   medium-mobile-width: 390px;
+  small-mobile-width-xs: 375px;
   bolder-font: 800;
   bold-font: 600;
   medium-font: 500;
@@ -92,7 +93,7 @@
     width: 100%;
   }
 }
-@media (max-width: 448px) {
+@media (max-width: 414px) {
   .posts .posts-container .post-card .post-cover img {
     width: 100%;
   }

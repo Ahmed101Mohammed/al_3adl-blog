@@ -1,3 +1,6 @@
+@use './library/mixins';
+@use './library/vars';
+
 .main-container
 {
     gap: 48px;
@@ -5,31 +8,16 @@
     /* page title section */
     .page-title
     {
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-        align-items: center;
+        @include mixins.flex-column(normal, center, 8px, nowrap);
         padding: 16px 0px;
-
-        h2, p
-        {
-            font-style: "work sans", sans-serif;
-            text-transform: capitalize;
-            text-align: center;
-        }
 
         h2
         {
-            font-size: 30px;
-            font-weight: 600;
-            color: var(--secondary-color-800);
+            @include mixins.font("work sans", 30px, vars.$bold-font, capitalize, center, vars.$secondary-color-800, sans-serif);
         }
-
         p
         {
-            font-size: 16px;
-            font-weight: 400;
-            color: #3B3C4A;
+            @include mixins.font("work sans", 16px, vars.$normal-font, capitalize, center, #3B3C4A, sans-serif);
         }
     }
 
@@ -44,24 +32,21 @@
             .article-cover-most-liked
             {
                 width: 100%;
-                @media (max-width: 601px)
+                @media (max-width: vars.$small-tablet-width)
                 {
                     display: none;    
                 }
             }
             .article-info 
             {
-                display: flex;
-                flex-direction: column;
-                gap: 24px;
-                position: absolute;
-                bottom: 0px;
+                @include mixins.flex-column(normal, normal, 24px, nowrap);
+                @include mixins.position(absolute, auto, auto, 0px, auto);
                 padding: 40px;
-                @media (max-width: 768px)
+                @media (max-width: vars.$large-tablet-width)
                 {
                     width: 100%;
                 }
-                @media (max-width: 601px) 
+                @media (max-width: vars.$small-tablet-width) 
                 {
                     position: static;
                     padding: 20px;
@@ -70,29 +55,22 @@
                 }
                 .main-info
                 {
-                    display: flex;
-                    flex-direction: column;
-                    gap: 16px;
-
+                    @include mixins.flex-column(normal, normal, 16px, nowrap);
                     .title
                     {
-                        font-size: 36px;
-                        color: var(--white);
-                        font-family: "work sans", sans-serif;
-                        font-weight: 600;
-                        text-transform: capitalize;
+                        @include mixins.font("work sans", 36px, vars.$bold-font, capitalize, left, vars.$white, sans-serif);
                         cursor: pointer;
                         width: 720px;
-                        @media (max-width: 768px)
+                        @media (max-width: vars.$medium-tablet-width)
                         {
                             width: 100%;
                         }
-                        @media (max-width: 601px) 
+                        @media (max-width: vars.$small-tablet-width) 
                         {
                             width: 100%;
                             font-size: 24px;
                         }
-                        @media (max-width: 414px)
+                        @media (max-width: vars.$large-mobile-width-x)
                         {
                             width: 100%;
                             font-size: 20px;
@@ -100,56 +78,39 @@
 
                         a
                         {
-                            width: 100%;
-                            text-wrap: nowrap;
-                            overflow: hidden;
-                            text-overflow: ellipsis;
-                            display: block;
+                            @include mixins.threeDotsTextOverflow(100%, inline-block);
                         }
                     }
                 }
 
                 .production-details
                 {
-                    display: flex;
-                    gap: 20px;
-                    align-items: center;
-
+                    @include mixins.flex-row(normal, center, 20px, nowrap);
                     .author
                     {
-                        display: flex;
-                        align-items: center;
-                        gap: 12px;
-
+                        @include mixins.flex-row(normal, center, 12px, nowrap);
                         img
                         {
-                            width: 50px;
-                            height: 50px;
+                            @include mixins.size(50px, 50px);
                             border-radius: 50%;
-                            @media (max-width: 601px) 
+                            @media (max-width: vars.$small-tablet-width) 
                             {
-                                width: 40px;
-                                height: 40px;    
+                                @include mixins.size(40px, 40px);    
                             }
-                            @media (max-width: 375px) 
+                            @media (max-width: vars.$small-mobile-width-xs) 
                             {
-                                width: 30px;
-                                height: 30px;    
+                                @include mixins.size(30px, 30px);
                             }
                         }
 
                         .name
                         {
-                            font-size: 16px;
-                            font-weight: 500;
-                            color: var(--white);
-                            text-transform: capitalize;
-                            font-family: "work sans", sans-serif;
-                            @media (max-width: 601px) 
+                            @include mixins.font("work sans", 16px, vars.$medium-font, capitalize, left, vars.$white, sans-serif);
+                            @media (max-width: vars.$small-tablet-width) 
                             {
                                 font-size: 14px;
                             }
-                            @media (max-width: 414px) 
+                            @media (max-width: vars.$large-mobile-width-x) 
                             {
                                 font-size: 13px;    
                             }
@@ -158,16 +119,12 @@
 
                     .date
                     {
-                        font-size: 16px;
-                        font-weight: 400;
-                        color: var(--white);
-                        text-transform: capitalize;
-                        font-family: "work sans", sans-serif;
-                        @media (max-width: 601px) 
+                        @include mixins.font("work sans", 16px, vars.$normal-font, capitalize, left, vars.$white, sans-serif);
+                        @media (max-width: vars.$small-tablet-width) 
                         {
                             font-size: 14px;
                         }
-                        @media (max-width: 414px) 
+                        @media (max-width: vars.$large-mobile-width-x) 
                         {
                             font-size: 13px;    
                         }
