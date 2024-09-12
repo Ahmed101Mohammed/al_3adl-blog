@@ -12,8 +12,9 @@ $large-tablet-width: 1024px;
 $medium-tablet-width: 768px;
 $small-tablet-width: 601px;
 $large-mobile-width: 448px;
-$large-mobile-width-x: 448px;
+$large-mobile-width-x: 414px;
 $medium-mobile-width: 390px;
+$small-mobile-width-xs: 375px;
 
 // font weights
 $bolder-font: 800;
@@ -38,7 +39,7 @@ $normal-font: 400;
   large-mobile-width: $large-mobile-width;
   large-mobile-width-x: $large-mobile-width-x;
   medium-mobile-width: $medium-mobile-width;
-
+  small-mobile-width-xs: $small-mobile-width-xs;
   // font weights
   bolder-font: $bolder-font;
   bold-font: $bold-font;

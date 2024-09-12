@@ -65,9 +65,27 @@ const setTheBlogIntroSection = async()=>
     const introImage = introArticleCared.querySelector("img");
     introImage.remove();
     resizeImageWithHeightAndFixedWidth(`${baseUrl}/uploads/${article.cover}`, 450, introArticleCared);   
-     
+    
     mostLikedPostSection.style.display = "block";
 }
+
+// set classes of most blog liked cover
+const setClassesOfMostBlogLikedCover = async()=>
+{
+    setTimeout(()=>
+    {
+        const container = document.querySelector(".intro-article-card");
+        const cover = container.querySelectorAll("img")[1];
+        cover.classList.add("article-cover-most-liked");
+        cover.setAttribute("alt", "cover for most liked article in al-3adl blog"); 
+    }, 500)   
+}
 // functions run
-userAvatarOrSignInWillAppear();
-appearArticles().then(() => setTheBlogIntroSection());
+const runPage = async ()=>
+{
+    userAvatarOrSignInWillAppear();
+    await appearArticles();
+    await setTheBlogIntroSection();
+    await setClassesOfMostBlogLikedCover();
+}
+runPage();

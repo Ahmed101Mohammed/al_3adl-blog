@@ -64,3 +64,12 @@
     bottom: $bottom;
     left: $left;
 }
+
+@mixin threeDotsTextOverflow($width: 100%, $display: inline-block)
+{
+    width: $width;
+    text-wrap: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: $display;
+}

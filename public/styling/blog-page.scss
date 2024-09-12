@@ -1,0 +1,138 @@
+@use './library/mixins';
+@use './library/vars';
+
+.main-container
+{
+    gap: 48px;
+
+    /* page title section */
+    .page-title
+    {
+        @include mixins.flex-column(normal, center, 8px, nowrap);
+        padding: 16px 0px;
+
+        h2
+        {
+            @include mixins.font("work sans", 30px, vars.$bold-font, capitalize, center, vars.$secondary-color-800, sans-serif);
+        }
+        p
+        {
+            @include mixins.font("work sans", 16px, vars.$normal-font, capitalize, center, #3B3C4A, sans-serif);
+        }
+    }
+
+    /* most liked article section */
+    .most-liked-article
+    {
+        position: relative;
+        display: none;
+
+        .intro-article-card
+        {
+            .article-cover-most-liked
+            {
+                width: 100%;
+                @media (max-width: vars.$small-tablet-width)
+                {
+                    display: none;    
+                }
+            }
+            .article-info 
+            {
+                @include mixins.flex-column(normal, normal, 24px, nowrap);
+                @include mixins.position(absolute, auto, auto, 0px, auto);
+                padding: 40px;
+                @media (max-width: vars.$large-tablet-width)
+                {
+                    width: 100%;
+                }
+                @media (max-width: vars.$small-tablet-width) 
+                {
+                    position: static;
+                    padding: 20px;
+                    gap: 12px;
+                    background-color: #b1b1b1;    
+                }
+                .main-info
+                {
+                    @include mixins.flex-column(normal, normal, 16px, nowrap);
+                    .title
+                    {
+                        @include mixins.font("work sans", 36px, vars.$bold-font, capitalize, left, vars.$white, sans-serif);
+                        cursor: pointer;
+                        width: 720px;
+                        @media (max-width: vars.$medium-tablet-width)
+                        {
+                            width: 100%;
+                        }
+                        @media (max-width: vars.$small-tablet-width) 
+                        {
+                            width: 100%;
+                            font-size: 24px;
+                        }
+                        @media (max-width: vars.$large-mobile-width-x)
+                        {
+                            width: 100%;
+                            font-size: 20px;
+                        }
+
+                        a
+                        {
+                            @include mixins.threeDotsTextOverflow(100%, inline-block);
+                        }
+                    }
+                }
+
+                .production-details
+                {
+                    @include mixins.flex-row(normal, center, 20px, nowrap);
+                    .author
+                    {
+                        @include mixins.flex-row(normal, center, 12px, nowrap);
+                        img
+                        {
+                            @include mixins.size(50px, 50px);
+                            border-radius: 50%;
+                            @media (max-width: vars.$small-tablet-width) 
+                            {
+                                @include mixins.size(40px, 40px);    
+                            }
+                            @media (max-width: vars.$small-mobile-width-xs) 
+                            {
+                                @include mixins.size(30px, 30px);
+                            }
+                        }
+
+                        .name
+                        {
+                            @include mixins.font("work sans", 16px, vars.$medium-font, capitalize, left, vars.$white, sans-serif);
+                            @media (max-width: vars.$small-tablet-width) 
+                            {
+                                font-size: 14px;
+                            }
+                            @media (max-width: vars.$large-mobile-width-x) 
+                            {
+                                font-size: 13px;    
+                            }
+                        } 
+                    }
+
+                    .date
+                    {
+                        @include mixins.font("work sans", 16px, vars.$normal-font, capitalize, left, vars.$white, sans-serif);
+                        @media (max-width: vars.$small-tablet-width) 
+                        {
+                            font-size: 14px;
+                        }
+                        @media (max-width: vars.$large-mobile-width-x) 
+                        {
+                            font-size: 13px;    
+                        }
+                    }
+                }
+
+
+            }
+        }
+    }
+}
