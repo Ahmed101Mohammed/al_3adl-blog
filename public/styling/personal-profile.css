@@ -1,9 +1,23 @@
 /* main */
+.display-grid-main {
+  display: grid;
+}
+@media (max-width: 414px) {
+  .display-grid-main {
+    display: block;
+  }
+}
+
 main {
   display: none; /*grid*/
   grid-template-columns: auto 1fr;
   /* aside */
   /* pages container */
+}
+@media (max-width: 414px) {
+  main {
+    padding-top: 0px;
+  }
 }
 main aside {
   display: flex;
@@ -11,11 +25,25 @@ main aside {
   padding: 37.5px;
   height: 100%;
 }
+@media (max-width: 414px) {
+  main aside {
+    padding: 10px;
+    width: 100%;
+  }
+}
 main aside .secondery-nav-items {
   display: flex;
   flex-direction: column;
   gap: 40px;
   list-style: none;
+}
+@media (max-width: 414px) {
+  main aside .secondery-nav-items {
+    width: 100%;
+    flex-direction: row;
+    gap: 0px;
+    justify-content: space-evenly;
+  }
 }
 main aside .secondery-nav-items .secondery-nav-item {
   cursor: pointer;
@@ -26,6 +54,11 @@ main aside .secondery-nav-items .secondery-nav-item .secondery-nav-link {
   justify-content: space-between;
   align-items: center;
   padding: 5px;
+}
+@media (max-width: 414px) {
+  main aside .secondery-nav-items .secondery-nav-item .secondery-nav-link {
+    width: fit-content;
+  }
 }
 main aside .secondery-nav-items .secondery-nav-item .secondery-nav-link .link-details {
   display: flex;
@@ -39,6 +72,16 @@ main aside .secondery-nav-items .secondery-nav-item .secondery-nav-link .link-de
   font-weight: 500;
   color: #9197B3;
 }
+@media (max-width: 414px) {
+  main aside .secondery-nav-items .secondery-nav-item .secondery-nav-link .link-details h2 {
+    display: none;
+  }
+}
+@media (max-width: 414px) {
+  main aside .secondery-nav-items .secondery-nav-item .secondery-nav-link .link-go-img {
+    display: none;
+  }
+}
 main aside .secondery-nav-items .dashboard-item {
   display: none;
 }
@@ -49,6 +92,16 @@ main .secondery-container {
   align-items: self-start;
   height: 100dvh;
 }
+@media (max-width: 414px) {
+  main .secondery-container {
+    padding: 10px;
+  }
+}
+@media (max-width: 414px) {
+  main .secondery-container {
+    width: 100%;
+  }
+}
 main .secondery-container .intro {
   width: 90%;
   display: flex;
@@ -58,6 +111,13 @@ main .secondery-container .intro {
   border-radius: 10px;
   max-height: 190px;
   padding: 16px;
+}
+@media (max-width: 414px) {
+  main .secondery-container .intro {
+    padding: 10px;
+    gap: 10px;
+    width: 100%;
+  }
 }
 main .secondery-container .intro h2 {
   text-transform: capitalize;
@@ -86,11 +146,22 @@ main .secondery-container .intro .page-container .profile {
   border-radius: 10px;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.15);
 }
+@media (max-width: 390px) {
+  main .secondery-container .intro .page-container .profile {
+    padding: 10px;
+  }
+}
 main .secondery-container .intro .page-container .profile .personal-photo {
   display: flex;
   gap: 133px;
   align-items: center;
   justify-content: space-between;
+}
+@media (max-width: 414px) {
+  main .secondery-container .intro .page-container .profile .personal-photo {
+    gap: 0px;
+    justify-content: space-between;
+  }
 }
 main .secondery-container .intro .page-container .profile .personal-photo .photo {
   width: 100px;
@@ -101,6 +172,12 @@ main .secondery-container .intro .page-container .profile .personal-photo .photo
   display: flex;
   justify-content: center;
   align-items: center;
+}
+@media (max-width: 414px) {
+  main .secondery-container .intro .page-container .profile .personal-photo .photo {
+    width: 64px;
+    height: 64px;
+  }
 }
 main .secondery-container .intro .page-container .profile .personal-photo .photo img {
   border-radius: 50%;
@@ -128,6 +205,11 @@ main .secondery-container .intro .page-container .profile .personal-info {
   align-items: center;
   box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
 }
+@media (max-width: 390px) {
+  main .secondery-container .intro .page-container .profile .personal-info {
+    padding: 10px 10px;
+  }
+}
 main .secondery-container .intro .page-container .profile .personal-info .info {
   display: flex;
   flex-direction: column;
@@ -140,9 +222,19 @@ main .secondery-container .intro .page-container .profile .personal-info .info h
   font-family: "Outfit", sans-serif;
   text-transform: capitalize;
 }
+@media (max-width: 375px) {
+  main .secondery-container .intro .page-container .profile .personal-info .info h3 {
+    font-size: 10px;
+  }
+}
 main .secondery-container .intro .page-container .profile .personal-info .info .info-data {
   display: flex;
   gap: 238px;
+}
+@media (max-width: 414px) {
+  main .secondery-container .intro .page-container .profile .personal-info .info .info-data {
+    gap: 10px;
+  }
 }
 main .secondery-container .intro .page-container .profile .personal-info .info .info-data input {
   width: 200px;
@@ -152,6 +244,11 @@ main .secondery-container .intro .page-container .profile .personal-info .info .
   color: #1F1F1F;
   background-color: transparent;
   padding: 5px;
+}
+@media (max-width: 375px) {
+  main .secondery-container .intro .page-container .profile .personal-info .info .info-data input {
+    font-size: 12px;
+  }
 }
 main .secondery-container .intro .page-container .profile .personal-info .info .info-data .edit-btn {
   padding: 5px 16px;
@@ -231,6 +328,11 @@ main .secondery-container .intro .page-container .dashboard {
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.15);
   width: 100%;
 }
+@media (max-width: 375px) {
+  main .secondery-container .intro .page-container .dashboard {
+    padding: 10px;
+  }
+}
 main .secondery-container .intro .page-container .dashboard ul {
   list-style: none;
   padding: 0px;
@@ -253,6 +355,18 @@ main .secondery-container .intro .page-container .dashboard ul a {
   border-radius: 10px;
   padding: 16px;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.15);
+}
+@media (max-width: 375px) {
+  main .secondery-container .intro .page-container .dashboard ul a {
+    padding: 10px;
+    font-size: 12px;
+  }
+}
+@media (max-width: 375px) {
+  main .secondery-container .intro .page-container .dashboard ul a img {
+    width: 16px;
+    height: 16px;
+  }
 }
 main .secondery-container .intro .page-container .temporary-error-message {
   width: fit-content;
