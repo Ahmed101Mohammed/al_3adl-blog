@@ -1,3 +1,6 @@
+@use './library/mixins';
+@use './library/vars';
+
 /* main */
 main
 {
@@ -8,45 +11,35 @@ main
     {
         width: 800px;
         margin: auto;
-        display: flex;
-        flex-direction: column;
-        gap: 80px;
-        align-items: center;
+        @include mixins.flex-column(normal, center, 80px, nowrap);
         @media (max-width: 810px) 
         {
-            width: 100%;    
+            width: 100%;
+            gap: 40px;    
         }
         /* article */
         article
         {
-            display: flex;
-            flex-direction: column;
-            gap: 32px;
-            @media (max-width: 1024px) 
+            @include mixins.flex-column(normal, normal, 32px, nowrap);
+            @media (max-width: vars.$large-tablet-width) 
             {
                 padding: 0px 20px;    
             }
             /* article header */
             .article-header
             {
-                display: flex;
-                flex-direction: column;
-                gap: 20px;
-
+                @include mixins.flex-column(normal, normal, 20px, nowrap);
                 .main-info
                 {
-                    display: flex;
-                    flex-direction: column;
-                    gap: 16px;
-
+                    @include mixins.flex-column(normal, normal, 16px, nowrap);
                     .category-primary
                     {
-                        @media (max-width: 601px) 
+                        @media (max-width: vars.$small-tablet-width) 
                         {
                             font-size: 14px;
                             padding: 4px 8px;    
                         }
-                        @media (max-width: 414px) 
+                        @media (max-width: vars.$large-mobile-width-x) 
                         {
                             font-size: 12px;
                             padding: 2px 5px;    
@@ -54,16 +47,12 @@ main
                     }
                     .title
                     {
-                        font-size: 36px;
-                        font-weight: 600;
-                        color: var(--secondary-color-800);
-                        text-transform: capitalize;
-                        font-family: "work sans", sans-serif;
-                        @media (max-width: 601px) 
+                        @include mixins.font("work sans", 36px, vars.$bold-font, capitalize, left, vars.$secondary-color-800, sans-serif);
+                        @media (max-width: vars.$small-tablet-width) 
                         {
                             font-size: 28px;    
                         }
-                        @media (max-width: 414px) 
+                        @media (max-width: vars.$large-mobile-width-x) 
                         {
                             font-size: 22px;    
                         }
@@ -72,32 +61,21 @@ main
 
                 .production-details
                 {
-                    display: flex;
-                    gap: 24px;
-                    align-items: center;
-
+                    @include mixins.flex-row(normal, center, 24px, nowrap);
                     .author
                     {
-                        display: flex;
-                        align-items: center;
-                        gap: 8px;
-
+                        @include mixins.flex-row(normal, center, 8px, nowrap);
                         img
                         {
-                            width: 36px;
-                            height: 36px;
+                            @include mixins.size(40px, 40px);
                             border-radius: 50%;
                             object-fit: cover;
                         }
 
                         .name
                         {
-                            font-size: 14px;
-                            font-weight: 500;
-                            color: #696A75;
-                            text-transform: capitalize;
-                            font-family: "work sans", sans-serif;
-                            @media (max-width: 360px) 
+                            @include mixins.font("work sans", 14px, vars.$medium-font, capitalize, left, #696A75, sans-serif);
+                            @media (max-width: vars.$small-mobile-width) 
                             {
                                 font-size: 13px;    
                             }
@@ -106,12 +84,8 @@ main
 
                     .date
                     {
-                        font-size: 14px;
-                        font-weight: 400;
-                        color: #696A75;
-                        text-transform: capitalize;
-                        font-family: "work sans", sans-serif;
-                        @media (max-width: 360px) 
+                        @include mixins.font("work sans", 14px, vars.$normal-font, capitalize, left, #696A75, sans-serif);
+                        @media (max-width: vars.$small-mobile-width) 
                         {
                             font-size: 12px;    
                         }
@@ -132,21 +106,17 @@ main
             {
                 h1, h2, h3, h4, h5, h6
                 {
-                    font-family: "work sans", sans-serif;
-                    font-size: 24px;
-                    font-weight: 600;
-                    color: var(--secondary-color-800);
-                    text-transform: capitalize;
+                    @include mixins.font("work sans", 24px, vars.$bold-font, capitalize, left, vars.$secondary-color-800, sans-serif);
                     margin-bottom: 12px;
-                    @media (max-width: 601px) 
+                    @media (max-width: vars.$small-tablet-width) 
                     {
                         font-size: 22px;    
                     }
-                    @media (max-width: 414px) 
+                    @media (max-width: vars.$large-mobile-width-x) 
                     {
                         font-size: 20px;   
                     }
-                    @media (max-width: 375px)
+                    @media (max-width: vars.$small-mobile-width-xs)
                     {
                         font-size: 18px;
                     }
@@ -155,21 +125,18 @@ main
 
                 p
                 {
-                    font-size: 18px;
-                    font-weight: 400;
-                    color: #3B3C4A;
-                    font-family: "Source Serif Pro", sans-serif;
+                    @include mixins.font("Source Serif Pro", 18px, vars.$normal-font, none, left, #3B3C4A, sans-serif);
                     line-height: 28px;
                     margin-bottom: 24px;
-                    @media (max-width: 601px) 
+                    @media (max-width: vars.$small-tablet-width) 
                     {
                         font-size: 17px;    
                     }
-                    @media (max-width: 414px) 
+                    @media (max-width: vars.$large-mobile-width-x) 
                     {
                         font-size: 16px;   
                     }
-                    @media (max-width: 375px)
+                    @media (max-width: vars.$small-mobile-width-xs)
                     {
                         font-size: 14px;
                     }
@@ -177,23 +144,20 @@ main
 
                 blockquote
                 {
+                    @include mixins.font("Source Serif Pro", 24px, vars.$normal-font, none, left, vars.$secondary-color-800, sans-serif);
                     padding-left: 32px;
-                    font-size: 24px;
-                    color: var(--secondary-color-800);
-                    font-weight: 400;
                     font-style: italic;
-                    font-family: "Source Serif Pro", sans-serif;
-                    border-left: 4px solid var(--secondary-color-100);
+                    border-left: 4px solid vars.$secondary-color-100;
                     margin-bottom: 24px;
-                    @media (max-width: 601px) 
+                    @media (max-width: vars.$small-tablet-width) 
                     {
                         font-size: 22px;    
                     }
-                    @media (max-width: 414px) 
+                    @media (max-width: vars.$large-mobile-width-x) 
                     {
                         font-size: 20px;   
                     }
-                    @media (max-width: 375px)
+                    @media (max-width: vars.$small-mobile-width-xs)
                     {
                         font-size: 18px;
                     }
