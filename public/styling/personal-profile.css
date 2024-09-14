@@ -1,353 +1,289 @@
 /* main */
-main
-{
-    display: none; /*grid*/
-    grid-template-columns: auto 1fr;
+main {
+  display: none; /*grid*/
+  grid-template-columns: auto 1fr;
+  /* aside */
+  /* pages container */
+}
+main aside {
+  display: flex;
+  justify-content: center;
+  padding: 37.5px;
+  height: 100%;
+}
+main aside .secondery-nav-items {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  list-style: none;
+}
+main aside .secondery-nav-items .secondery-nav-item {
+  cursor: pointer;
+}
+main aside .secondery-nav-items .secondery-nav-item .secondery-nav-link {
+  display: flex;
+  width: 220px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+}
+main aside .secondery-nav-items .secondery-nav-item .secondery-nav-link .link-details {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+main aside .secondery-nav-items .secondery-nav-item .secondery-nav-link .link-details h2 {
+  text-transform: capitalize;
+  font-family: "Outfit", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: #9197B3;
+}
+main aside .secondery-nav-items .dashboard-item {
+  display: none;
+}
+main .secondery-container {
+  display: flex;
+  justify-content: center;
+  padding: 24px;
+  align-items: self-start;
+  height: 100dvh;
+}
+main .secondery-container .intro {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+  background-color: var(--primary-color);
+  border-radius: 10px;
+  max-height: 190px;
+  padding: 16px;
+}
+main .secondery-container .intro h2 {
+  text-transform: capitalize;
+  font-family: "Outfit", sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  color: #FFFFFF;
+}
+main .secondery-container .intro .page-container {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  gap: 24px;
+  /* profile page */
+  /* upload-personal-photo form */
+  /* dashboard page */
+  /* temporary error message */
+  /* error page */
+}
+main .secondery-container .intro .page-container .profile {
+  padding: 30px;
+  display: none;
+  flex-direction: column;
+  gap: 24px;
+  background-color: var(--white);
+  border-radius: 10px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.15);
+}
+main .secondery-container .intro .page-container .profile .personal-photo {
+  display: flex;
+  gap: 133px;
+  align-items: center;
+  justify-content: space-between;
+}
+main .secondery-container .intro .page-container .profile .personal-photo .photo {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.15);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+main .secondery-container .intro .page-container .profile .personal-photo .photo img {
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
+}
+main .secondery-container .intro .page-container .profile .personal-photo .upload-btn {
+  height: fit-content;
+  width: fit-content;
+  padding: 5px 16px;
+  border-radius: 100px;
+  background-color: #F0EFFA;
+  font-family: "Outfit", sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  color: #1F1F1F;
+}
+main .secondery-container .intro .page-container .profile .personal-info {
+  display: flex;
+  flex-direction: column;
+  gap: 19px;
+  border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  padding: 18px 16px;
+  align-items: center;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
+}
+main .secondery-container .intro .page-container .profile .personal-info .info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+main .secondery-container .intro .page-container .profile .personal-info .info h3 {
+  color: rgba(31, 31, 31, 0.7843137255);
+  font-size: 12px;
+  font-weight: 500;
+  font-family: "Outfit", sans-serif;
+  text-transform: capitalize;
+}
+main .secondery-container .intro .page-container .profile .personal-info .info .info-data {
+  display: flex;
+  gap: 238px;
+}
+main .secondery-container .intro .page-container .profile .personal-info .info .info-data input {
+  width: 200px;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: "Outfit", sans-serif;
+  color: #1F1F1F;
+  background-color: transparent;
+  padding: 5px;
+}
+main .secondery-container .intro .page-container .profile .personal-info .info .info-data .edit-btn {
+  padding: 5px 16px;
+  border-radius: 73px;
+  background-color: #F0EFFA;
+  font-family: "Outfit", sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  color: #1F1F1F;
+}
+main .secondery-container .intro .page-container .filter {
+  background-color: rgba(31, 31, 31, 0.7254901961);
+  padding: 24px;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 100;
+  width: 100%;
+  height: 100%;
+}
+main .secondery-container .intro .page-container .filter .upload-personal-photo {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  background-color: var(--white);
+  border-radius: 10px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.15);
+  padding: 24px;
+  z-index: 100;
+}
+main .secondery-container .intro .page-container .filter .upload-personal-photo input {
+  width: 100%;
+  background-color: #ECECEC;
+  border-radius: 8px;
+  padding: 10px 23px;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  font-family: "Outfit", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: #1F1F1F;
+}
+main .secondery-container .intro .page-container .filter .upload-personal-photo .error-message-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  display: none;
+}
+main .secondery-container .intro .page-container .filter .upload-personal-photo .error-message-container .error-message {
+  color: #e86446;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: "Outfit", sans-serif;
+}
+main .secondery-container .intro .page-container .filter .upload-personal-photo button {
+  padding: 10px 16px;
+  border-radius: 73px;
+  background-color: #F0EFFA;
+  font-family: "Outfit", sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  color: #1F1F1F;
+}
+main .secondery-container .intro .page-container .dashboard {
+  display: none;
+  padding: 30px;
+  flex-direction: column;
+  gap: 24px;
+  background-color: var(--white);
+  border-radius: 10px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.15);
+  width: 100%;
+}
+main .secondery-container .intro .page-container .dashboard ul {
+  list-style: none;
+  padding: 0px;
+  margin: 0px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+main .secondery-container .intro .page-container .dashboard ul a {
+  cursor: pointer;
+  color: #1F1F1F;
+  font-size: 16px;
+  font-weight: 500;
+  font-family: "Outfit", sans-serif;
+  text-transform: capitalize;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background-color: #F0EFFA;
+  border-radius: 10px;
+  padding: 16px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.15);
+}
+main .secondery-container .intro .page-container .temporary-error-message {
+  width: fit-content;
+  height: fit-content;
+  padding: 10px 20px;
+  border-radius: 100px;
+  background-color: #e86446;
+  font-family: "Outfit", sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  display: none;
+}
+main .secondery-container .intro .page-container .loading-page-error {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  color: #696A75;
+  font-size: 16px;
+  font-weight: 500;
+  font-family: "Outfit", sans-serif;
+  background-color: #F0EFFA;
+  border-radius: 10px;
+  padding: 24px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.15);
+  margin-top: 70px;
 }
 
-/* aside */
-aside
-{
-    display: flex;
-    justify-content: center;
-    padding: 37.5px;
-    height: 100%;
-}
-
-aside .secondery-nav-items
-{
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
-    list-style: none;
-}
-
-aside .secondery-nav-item
-{
-    cursor: pointer;
-}
-
-aside .dashboard-item
-{
-    display: none;
-}
-
-aside .secondery-nav-link
-{
-    display: flex;
-    width: 220px;
-    justify-content: space-between;
-    align-items: center;
-    padding: 5px;
-}
-
-aside .link-details
-{
-    display: flex;
-    align-items: center;
-    gap: 14px;
-}
-
-aside h2
-{
-    text-transform: capitalize;
-    font-family: "Outfit", sans-serif;
-    font-size: 16px;
-    font-weight: 500;
-    color: #9197B3;
-}
-
-/* pages container */
-.secondery-container
-{
-    display: flex;
-    justify-content: center;
-    padding: 24px;
-    align-items: self-start;
-    height: 100dvh;
-}
-
-.secondery-container .intro
-{
-    width: 90%;
-    display: flex;
-    flex-direction: column;
-    gap: 64px;
-    background-color: var(--primary-color);
-    border-radius: 10px;
-    max-height: 190px;
-    padding: 16px;
-}
-
-.secondery-container .intro h2
-{
-    text-transform: capitalize;
-    font-family: "Outfit", sans-serif;
-    font-size: 12px;
-    font-weight: 500;
-    color: #FFFFFF;
-}
-
-.page-container
-{
-    display: flex;
-    width: 100%;
-    justify-content: center;
-    gap: 24px;
-}
-
-/* profile page */
-.profile
-{
-    padding: 30px;
-    display: none;
-    flex-direction: column;
-    gap: 24px;
-    background-color: var(--white);
-    border-radius: 10px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.15);
-}
-
-.personal-photo
-{
-    display: flex;
-    gap: 133px;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.photo
-{
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    object-fit: cover;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.15);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.photo img
-{
-    border-radius: 50%;
-    width: 100%;
-    height: 100%;
-}
-
-.personal-photo .upload-btn
-{
-    height: fit-content;
-    width: fit-content;
-    padding: 5px 16px;
-    border-radius: 100px;
-    background-color: #F0EFFA;
-    font-family:  "Outfit", sans-serif;
-    font-size: 10px;
-    font-weight: 500;
-    color: #1F1F1F;   
-}
-
-.personal-info
-{
-    display: flex;
-    flex-direction: column;
-    gap: 19px;
-    border-radius: 5px;
-    border: 1px solid rgba(0, 0, 0, 0.15);
-    padding: 18px 16px;
-    align-items: center;
-    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.10);
-}
-
-.info
-{
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-}
-
-.info h3
-{
-    color: #1f1f1fc8;
-    font-size: 12px;
-    font-weight: 500;
-    font-family: "Outfit", sans-serif;
-    text-transform: capitalize;
-}
-
-.info .info-data
-{
-    display: flex;
-    gap: 238px;
-}
-
-.info-data input
-{
-    width: 200px;
-    font-size: 14px;
-    font-weight: 500;
-    font-family: "Outfit", sans-serif;
-    color: #1F1F1F;
-    background-color: transparent;
-    padding: 5px;
-}
-
-.info-data .edit-btn
-{
-    padding: 5px 16px;
-    border-radius: 73px;
-    background-color: #F0EFFA;
-    font-family:  "Outfit", sans-serif;
-    font-size: 10px;
-    font-weight: 500;
-    color: #1F1F1F;
-}
-
-/* error page */
-.loading-page-error
-{
-    display: none;
-    justify-content: center;
-    align-items: center;
-    gap: 24px;
-    color: #696A75;
-    font-size: 16px;
-    font-weight: 500;
-    font-family: "Outfit", sans-serif;
-    background-color: #F0EFFA;
-    border-radius: 10px;
-    padding: 24px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.15);
-    margin-top: 70px;
-}
-
-/* dashboard page */
-.dashboard
-{
-    display: none;
-    padding: 30px;
-    flex-direction: column;
-    gap: 24px;
-    background-color: var(--white);
-    border-radius: 10px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.15);
-}
-
-.dashboard ul
-{
-    list-style: none;
-    padding: 0px;
-    margin: 0px;
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-}
-
-.dashboard ul a
-{
-    cursor: pointer;
-    color: #1F1F1F;
-    font-size: 16px;
-    font-weight: 500;
-    font-family: "Outfit", sans-serif;
-    text-transform: capitalize;
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    background-color: #F0EFFA;
-    border-radius: 10px;
-    padding: 16px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.15);
-}
-
-/* temporary error message */
-.temporary-error-message
-{
-    width: fit-content;
-    height: fit-content;
-    padding: 10px 20px;
-    border-radius: 100px;
-    background-color: #e86446;
-    font-family: "Outfit", sans-serif;
-    font-size: 12px;
-    font-weight: 600;
-    position: fixed;
-    bottom: 30px;
-    left: 50%;
-    transform: translateX(-50%);
-    color: white;
-    display: none;
-}
-
-/* upload-personal-photo form */
-.filter
-{
-    background-color: #1f1f1fb9;
-    padding: 24px;
-    display: none;
-    justify-content: center;
-    align-items: center;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 100;
-    width: 100%;
-    height: 100%;
-}
-
-.upload-personal-photo
-{
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-    background-color: var(--white);
-    border-radius: 10px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.15);
-    padding: 24px;
-    z-index: 100;
-}
-
-.upload-personal-photo input
-{
-    width: 100%;
-    background-color: #ECECEC;
-    border-radius: 8px;
-    padding: 10px 23px;
-    display: flex;
-    align-items: center;
-    gap: 30px;
-    font-family: "Outfit", sans-serif;
-    font-size: 16px;
-    font-weight: 500;
-    color: #1F1F1F;
-}
-
-.upload-personal-photo .error-message-container
-{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    display: none;
-}
-
-.upload-personal-photo .error-message-container .error-message
-{
-    color: #e86446;
-    font-size: 13px;
-    font-weight: 600;
-    font-family: "Outfit", sans-serif;
-}
-
-.upload-personal-photo button
-{
-    padding: 10px 16px;
-    border-radius: 73px;
-    background-color: #F0EFFA;
-    font-family:  "Outfit", sans-serif;
-    font-size: 10px;
-    font-weight: 500;
-    color: #1F1F1F;
-}
+/*# sourceMappingURL=personal-profile.css.map */
