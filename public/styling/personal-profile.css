@@ -2,7 +2,7 @@
 .display-grid-main {
   display: grid;
 }
-@media (max-width: 414px) {
+@media (max-width: 601px) {
   .display-grid-main {
     display: block;
   }
@@ -14,7 +14,7 @@ main {
   /* aside */
   /* pages container */
 }
-@media (max-width: 414px) {
+@media (max-width: 601px) {
   main {
     padding-top: 0px;
   }
@@ -25,7 +25,13 @@ main aside {
   padding: 37.5px;
   height: 100%;
 }
-@media (max-width: 414px) {
+@media (max-width: 1024px) {
+  main aside {
+    padding: 10px;
+    box-shadow: aliceblue 0.6px 0px 1px 1px;
+  }
+}
+@media (max-width: 601px) {
   main aside {
     padding: 10px;
     width: 100%;
@@ -37,7 +43,7 @@ main aside .secondery-nav-items {
   gap: 40px;
   list-style: none;
 }
-@media (max-width: 414px) {
+@media (max-width: 601px) {
   main aside .secondery-nav-items {
     width: 100%;
     flex-direction: row;
@@ -55,7 +61,7 @@ main aside .secondery-nav-items .secondery-nav-item .secondery-nav-link {
   align-items: center;
   padding: 5px;
 }
-@media (max-width: 414px) {
+@media (max-width: 1024px) {
   main aside .secondery-nav-items .secondery-nav-item .secondery-nav-link {
     width: fit-content;
   }
@@ -72,12 +78,17 @@ main aside .secondery-nav-items .secondery-nav-item .secondery-nav-link .link-de
   font-weight: 500;
   color: #9197B3;
 }
-@media (max-width: 414px) {
+@media (max-width: 1024px) {
   main aside .secondery-nav-items .secondery-nav-item .secondery-nav-link .link-details h2 {
     display: none;
   }
 }
 @media (max-width: 414px) {
+  main aside .secondery-nav-items .secondery-nav-item .secondery-nav-link .link-details h2 {
+    display: none;
+  }
+}
+@media (max-width: 1024px) {
   main aside .secondery-nav-items .secondery-nav-item .secondery-nav-link .link-go-img {
     display: none;
   }
@@ -112,7 +123,7 @@ main .secondery-container .intro {
   max-height: 190px;
   padding: 16px;
 }
-@media (max-width: 414px) {
+@media (max-width: 768px) {
   main .secondery-container .intro {
     padding: 10px;
     gap: 10px;
@@ -157,7 +168,7 @@ main .secondery-container .intro .page-container .profile .personal-photo {
   align-items: center;
   justify-content: space-between;
 }
-@media (max-width: 414px) {
+@media (max-width: 601px) {
   main .secondery-container .intro .page-container .profile .personal-photo {
     gap: 0px;
     justify-content: space-between;
@@ -173,7 +184,7 @@ main .secondery-container .intro .page-container .profile .personal-photo .photo
   justify-content: center;
   align-items: center;
 }
-@media (max-width: 414px) {
+@media (max-width: 601px) {
   main .secondery-container .intro .page-container .profile .personal-photo .photo {
     width: 64px;
     height: 64px;
@@ -231,7 +242,12 @@ main .secondery-container .intro .page-container .profile .personal-info .info .
   display: flex;
   gap: 238px;
 }
-@media (max-width: 414px) {
+@media (max-width: 768px) {
+  main .secondery-container .intro .page-container .profile .personal-info .info .info-data {
+    gap: 100px;
+  }
+}
+@media (max-width: 601px) {
   main .secondery-container .intro .page-container .profile .personal-info .info .info-data {
     gap: 10px;
   }
