@@ -1,3 +1,24 @@
+:export {
+  primary-color: #4b6bfb;
+  secondary-color-400: #97989f;
+  secondary-color-100: #e8e8ea;
+  secondary-color-800: #181a2a;
+  secondary-color-500: #181a2a;
+  white: #ffffff;
+  small-descktop-width: 1280px;
+  large-tablet-width: 1024px;
+  medium-tablet-width: 768px;
+  small-tablet-width: 601px;
+  large-mobile-width: 448px;
+  large-mobile-width-x: 414px;
+  medium-mobile-width: 390px;
+  small-mobile-width-xs: 375px;
+  bolder-font: 800;
+  bold-font: 600;
+  medium-font: 500;
+  normal-font: 400;
+}
+
 /* main */
 .display-grid-main {
   display: grid;
@@ -21,7 +42,11 @@ main {
 }
 main aside {
   display: flex;
+  flex-direction: row;
   justify-content: center;
+  align-items: normal;
+  gap: 0px;
+  flex-wrap: nowrap;
   padding: 37.5px;
   height: 100%;
 }
@@ -40,15 +65,21 @@ main aside {
 main aside .secondery-nav-items {
   display: flex;
   flex-direction: column;
+  justify-content: normal;
+  align-items: normal;
   gap: 40px;
+  flex-wrap: nowrap;
   list-style: none;
 }
 @media (max-width: 601px) {
   main aside .secondery-nav-items {
-    width: 100%;
+    display: flex;
     flex-direction: row;
-    gap: 0px;
     justify-content: space-evenly;
+    align-items: normal;
+    gap: 0px;
+    flex-wrap: nowrap;
+    width: 100%;
   }
 }
 main aside .secondery-nav-items .secondery-nav-item {
@@ -56,9 +87,12 @@ main aside .secondery-nav-items .secondery-nav-item {
 }
 main aside .secondery-nav-items .secondery-nav-item .secondery-nav-link {
   display: flex;
-  width: 220px;
+  flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  gap: 0px;
+  flex-wrap: nowrap;
+  width: 220px;
   padding: 5px;
 }
 @media (max-width: 1024px) {
@@ -68,14 +102,18 @@ main aside .secondery-nav-items .secondery-nav-item .secondery-nav-link {
 }
 main aside .secondery-nav-items .secondery-nav-item .secondery-nav-link .link-details {
   display: flex;
+  flex-direction: row;
+  justify-content: normal;
   align-items: center;
   gap: 14px;
+  flex-wrap: nowrap;
 }
 main aside .secondery-nav-items .secondery-nav-item .secondery-nav-link .link-details h2 {
-  text-transform: capitalize;
   font-family: "Outfit", sans-serif;
   font-size: 16px;
   font-weight: 500;
+  text-transform: capitalize;
+  text-align: left;
   color: #9197B3;
 }
 @media (max-width: 1024px) {
@@ -98,9 +136,12 @@ main aside .secondery-nav-items .dashboard-item {
 }
 main .secondery-container {
   display: flex;
+  flex-direction: row;
   justify-content: center;
-  padding: 24px;
   align-items: self-start;
+  gap: 0px;
+  flex-wrap: nowrap;
+  padding: 24px;
   height: 100dvh;
 }
 @media (max-width: 414px) {
@@ -114,11 +155,14 @@ main .secondery-container {
   }
 }
 main .secondery-container .intro {
-  width: 90%;
   display: flex;
   flex-direction: column;
+  justify-content: normal;
+  align-items: normal;
   gap: 64px;
-  background-color: var(--primary-color);
+  flex-wrap: nowrap;
+  width: 90%;
+  background-color: #4b6bfb;
   border-radius: 10px;
   max-height: 190px;
   padding: 16px;
@@ -131,17 +175,21 @@ main .secondery-container .intro {
   }
 }
 main .secondery-container .intro h2 {
-  text-transform: capitalize;
   font-family: "Outfit", sans-serif;
   font-size: 12px;
   font-weight: 500;
-  color: #FFFFFF;
+  text-transform: capitalize;
+  text-align: left;
+  color: #ffffff;
 }
 main .secondery-container .intro .page-container {
   display: flex;
-  width: 100%;
+  flex-direction: row;
   justify-content: center;
+  align-items: normal;
   gap: 24px;
+  flex-wrap: nowrap;
+  width: 100%;
   /* profile page */
   /* upload-personal-photo form */
   /* dashboard page */
@@ -149,11 +197,15 @@ main .secondery-container .intro .page-container {
   /* error page */
 }
 main .secondery-container .intro .page-container .profile {
+  display: flex;
+  flex-direction: column;
+  justify-content: normal;
+  align-items: normal;
+  gap: 24px;
+  flex-wrap: nowrap;
   padding: 30px;
   display: none;
-  flex-direction: column;
-  gap: 24px;
-  background-color: var(--white);
+  background-color: #ffffff;
   border-radius: 10px;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.15);
 }
@@ -164,9 +216,11 @@ main .secondery-container .intro .page-container .profile {
 }
 main .secondery-container .intro .page-container .profile .personal-photo {
   display: flex;
-  gap: 133px;
-  align-items: center;
+  flex-direction: row;
   justify-content: space-between;
+  align-items: center;
+  gap: 133px;
+  flex-wrap: nowrap;
 }
 @media (max-width: 601px) {
   main .secondery-container .intro .page-container .profile .personal-photo {
@@ -175,14 +229,17 @@ main .secondery-container .intro .page-container .profile .personal-photo {
   }
 }
 main .secondery-container .intro .page-container .profile .personal-photo .photo {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 0px;
+  flex-wrap: nowrap;
   width: 100px;
   height: 100px;
   border-radius: 50%;
   object-fit: cover;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.15);
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 @media (max-width: 601px) {
   main .secondery-container .intro .page-container .profile .personal-photo .photo {
@@ -191,29 +248,33 @@ main .secondery-container .intro .page-container .profile .personal-photo .photo
   }
 }
 main .secondery-container .intro .page-container .profile .personal-photo .photo img {
-  border-radius: 50%;
   width: 100%;
   height: 100%;
+  border-radius: 50%;
 }
 main .secondery-container .intro .page-container .profile .personal-photo .upload-btn {
-  height: fit-content;
   width: fit-content;
-  padding: 5px 16px;
-  border-radius: 100px;
-  background-color: #F0EFFA;
+  height: fit-content;
   font-family: "Outfit", sans-serif;
   font-size: 10px;
   font-weight: 500;
+  text-transform: none;
+  text-align: left;
   color: #1F1F1F;
+  padding: 5px 16px;
+  border-radius: 100px;
+  background-color: #F0EFFA;
 }
 main .secondery-container .intro .page-container .profile .personal-info {
   display: flex;
   flex-direction: column;
+  justify-content: normal;
+  align-items: center;
   gap: 19px;
+  flex-wrap: nowrap;
   border-radius: 5px;
   border: 1px solid rgba(0, 0, 0, 0.15);
   padding: 18px 16px;
-  align-items: center;
   box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
 }
 @media (max-width: 390px) {
@@ -224,14 +285,18 @@ main .secondery-container .intro .page-container .profile .personal-info {
 main .secondery-container .intro .page-container .profile .personal-info .info {
   display: flex;
   flex-direction: column;
+  justify-content: normal;
+  align-items: normal;
   gap: 6px;
+  flex-wrap: nowrap;
 }
 main .secondery-container .intro .page-container .profile .personal-info .info h3 {
-  color: rgba(31, 31, 31, 0.7843137255);
+  font-family: "Outfit", sans-serif;
   font-size: 12px;
   font-weight: 500;
-  font-family: "Outfit", sans-serif;
   text-transform: capitalize;
+  text-align: left;
+  color: rgba(31, 31, 31, 0.7843137255);
 }
 @media (max-width: 375px) {
   main .secondery-container .intro .page-container .profile .personal-info .info h3 {
@@ -240,7 +305,11 @@ main .secondery-container .intro .page-container .profile .personal-info .info h
 }
 main .secondery-container .intro .page-container .profile .personal-info .info .info-data {
   display: flex;
+  flex-direction: row;
+  justify-content: normal;
+  align-items: normal;
   gap: 238px;
+  flex-wrap: nowrap;
 }
 @media (max-width: 768px) {
   main .secondery-container .intro .page-container .profile .personal-info .info .info-data {
@@ -253,11 +322,13 @@ main .secondery-container .intro .page-container .profile .personal-info .info .
   }
 }
 main .secondery-container .intro .page-container .profile .personal-info .info .info-data input {
-  width: 200px;
+  font-family: "Outfit", sans-serif;
   font-size: 14px;
   font-weight: 500;
-  font-family: "Outfit", sans-serif;
+  text-transform: none;
+  text-align: left;
   color: #1F1F1F;
+  width: 200px;
   background-color: transparent;
   padding: 5px;
 }
@@ -267,79 +338,100 @@ main .secondery-container .intro .page-container .profile .personal-info .info .
   }
 }
 main .secondery-container .intro .page-container .profile .personal-info .info .info-data .edit-btn {
-  padding: 5px 16px;
-  border-radius: 73px;
-  background-color: #F0EFFA;
   font-family: "Outfit", sans-serif;
   font-size: 10px;
   font-weight: 500;
+  text-transform: none;
+  text-align: left;
   color: #1F1F1F;
+  padding: 5px 16px;
+  border-radius: 73px;
+  background-color: #F0EFFA;
 }
 main .secondery-container .intro .page-container .filter {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
   background-color: rgba(31, 31, 31, 0.7254901961);
   padding: 24px;
   display: none;
   justify-content: center;
   align-items: center;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
   z-index: 100;
-  width: 100%;
-  height: 100%;
 }
 main .secondery-container .intro .page-container .filter .upload-personal-photo {
   display: flex;
   flex-direction: column;
+  justify-content: normal;
+  align-items: normal;
   gap: 24px;
-  background-color: var(--white);
+  flex-wrap: nowrap;
+  background-color: #ffffff;
   border-radius: 10px;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.15);
   padding: 24px;
   z-index: 100;
 }
 main .secondery-container .intro .page-container .filter .upload-personal-photo input {
+  display: flex;
+  flex-direction: row;
+  justify-content: normal;
+  align-items: center;
+  gap: 30px;
+  flex-wrap: nowrap;
+  font-family: "Outfit", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  text-transform: none;
+  text-align: left;
+  color: #1F1F1F;
   width: 100%;
   background-color: #ECECEC;
   border-radius: 8px;
   padding: 10px 23px;
-  display: flex;
-  align-items: center;
-  gap: 30px;
-  font-family: "Outfit", sans-serif;
-  font-size: 16px;
-  font-weight: 500;
-  color: #1F1F1F;
 }
 main .secondery-container .intro .page-container .filter .upload-personal-photo .error-message-container {
   display: flex;
-  align-items: center;
+  flex-direction: row;
   justify-content: center;
+  align-items: center;
+  gap: 0px;
+  flex-wrap: nowrap;
   display: none;
 }
 main .secondery-container .intro .page-container .filter .upload-personal-photo .error-message-container .error-message {
-  color: #e86446;
+  font-family: "Outfit", sans-serif;
   font-size: 13px;
   font-weight: 600;
-  font-family: "Outfit", sans-serif;
+  text-transform: none;
+  text-align: left;
+  color: #e86446;
 }
 main .secondery-container .intro .page-container .filter .upload-personal-photo button {
-  padding: 10px 16px;
-  border-radius: 73px;
-  background-color: #F0EFFA;
   font-family: "Outfit", sans-serif;
   font-size: 10px;
   font-weight: 500;
+  text-transform: none;
+  text-align: center;
   color: #1F1F1F;
+  padding: 10px 16px;
+  border-radius: 73px;
+  background-color: #F0EFFA;
 }
 main .secondery-container .intro .page-container .dashboard {
+  display: flex;
+  flex-direction: column;
+  justify-content: normal;
+  align-items: normal;
+  gap: 24px;
+  flex-wrap: nowrap;
   display: none;
   padding: 30px;
-  flex-direction: column;
-  gap: 24px;
-  background-color: var(--white);
+  background-color: #ffffff;
   border-radius: 10px;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.15);
   width: 100%;
@@ -350,23 +442,30 @@ main .secondery-container .intro .page-container .dashboard {
   }
 }
 main .secondery-container .intro .page-container .dashboard ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: normal;
+  align-items: normal;
+  gap: 24px;
+  flex-wrap: nowrap;
   list-style: none;
   padding: 0px;
   margin: 0px;
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
 }
 main .secondery-container .intro .page-container .dashboard ul a {
-  cursor: pointer;
-  color: #1F1F1F;
-  font-size: 16px;
-  font-weight: 500;
-  font-family: "Outfit", sans-serif;
-  text-transform: capitalize;
   display: flex;
+  flex-direction: row;
+  justify-content: normal;
   align-items: center;
   gap: 16px;
+  flex-wrap: nowrap;
+  font-family: "Outfit", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  text-transform: capitalize;
+  text-align: left;
+  color: #1F1F1F;
+  cursor: pointer;
   background-color: #F0EFFA;
   border-radius: 10px;
   padding: 16px;
@@ -387,28 +486,34 @@ main .secondery-container .intro .page-container .dashboard ul a {
 main .secondery-container .intro .page-container .temporary-error-message {
   width: fit-content;
   height: fit-content;
-  padding: 10px 20px;
-  border-radius: 100px;
-  background-color: #e86446;
+  position: fixed;
+  top: auto;
+  right: auto;
+  bottom: 30px;
+  left: 50%;
   font-family: "Outfit", sans-serif;
   font-size: 12px;
   font-weight: 600;
-  position: fixed;
-  bottom: 30px;
-  left: 50%;
+  text-transform: none;
+  text-align: left;
+  color: #ffffff;
+  padding: 10px 20px;
+  border-radius: 100px;
+  background-color: #e86446;
   transform: translateX(-50%);
-  color: white;
   display: none;
 }
 main .secondery-container .intro .page-container .loading-page-error {
+  font-family: "Outfit", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  text-transform: none;
+  text-align: left;
+  color: #696A75;
   display: none;
   justify-content: center;
   align-items: center;
   gap: 24px;
-  color: #696A75;
-  font-size: 16px;
-  font-weight: 500;
-  font-family: "Outfit", sans-serif;
   background-color: #F0EFFA;
   border-radius: 10px;
   padding: 24px;
