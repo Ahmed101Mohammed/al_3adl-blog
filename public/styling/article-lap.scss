@@ -1,0 +1,53 @@
+/* main container */
+.main-container
+{
+    gap: 5px;
+
+    .article-content
+    {
+        /* article content preview */
+        .preview
+        {
+            h1, h2, h3, h4, h5, h6
+            {
+                font-family: "work sans", sans-serif;
+                font-size: 24px;
+                font-weight: 600;
+                color: var(--secondary-color-800);
+                text-transform: capitalize;
+                margin-bottom: 12px;
+            }
+    
+            p
+            {
+                font-size: 18px;
+                font-weight: 400;
+                color: #3B3C4A;
+                font-family: "Source Serif Pro", sans-serif;
+                line-height: 28px;
+                margin-bottom: 24px;
+            }
+
+            blockquote
+            {
+                padding-left: 32px;
+                font-size: 24px;
+                color: var(--secondary-color-800);
+                font-weight: 400;
+                font-style: italic;
+                font-family: "Source Serif Pro", sans-serif;
+                border-left: 4px solid var(--secondary-color-100);
+                margin-bottom: 24px;
+            }
+
+            img 
+            {
+                margin: auto;
+                display: block;
+                margin-bottom: 12px;
+                max-width: 100%;
+            }
+        }
+
+    }
+}
