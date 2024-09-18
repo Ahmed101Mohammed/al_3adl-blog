@@ -1,6 +1,9 @@
+@use './library/mixins';
+@use './library/vars';
+
 .main-container
 {
-    @media (max-width: 1280px) 
+    @media (max-width: vars.$small-descktop-width) 
     {
         padding: 0px 15px;
         gap: 15px;    
@@ -8,14 +11,11 @@
     /* filter section */
     .filter
     {
-        display: flex;
-        gap: 15px;
-        align-items: center;
+        @include mixins.flex-row(normal, center, 15px, nowrap);
 
         select
         {
-            width: 200px;
-            height: 38px;
+            @include mixins.size(200px, 38px);
             background-color: transparent;
             border-radius: 7px;
             border: 1px #E5E5E5 solid;
@@ -28,9 +28,7 @@
     /* article table */
     section.articles
     {
-        display: flex;
-        flex-direction: column;
-        gap: 2.1rem;
+        @include mixins.flex-column(normal, normal, 2.1rem, nowrap);
         overflow: auto;
 
         table
@@ -45,14 +43,10 @@
 
             th,td
             {
-                text-align: left;
+                @include mixins.font("work sans", 13px, vars.$normal-font, capitalize, left, initial, sans-serif);
                 padding: 1.1rem 0rem;
-                text-transform: capitalize;
-                font-weight: 400;
-                font-size: 13px;
-                font-family: "work sans", sans-serif;
 
-                @media (max-width: 768px)
+                @media (max-width: vars.$medium-tablet-width)
                 {
                     font-size: 11px;    
                 }
@@ -61,7 +55,7 @@
             th
             {
                 color: #878790;
-                @media (max-width: 1024px) 
+                @media (max-width: vars.$large-tablet-width) 
                 {
                     text-align: center;    
                 }
@@ -72,13 +66,13 @@
                 border: 1px #E9EFF4 solid;
                 border-left-width: 0px;
                 border-right-width: 0px;
-                @media (max-width: 1024px) 
+                @media (max-width: vars.$large-tablet-width) 
                 {
                     text-align: center;
                     padding: 5px;    
                 }
 
-                @media (max-width: 768px)
+                @media (max-width: vars.$medium-tablet-width)
                 {
                     padding: 3px;
                 }
@@ -121,18 +115,15 @@
 
             td.article-title
             {
+                @include mixins.threeDotsTextOverflow(400px);
                 border-left-width: 1px;
                 padding-left: 1.1rem;
-                max-width: 400px;
-                text-wrap: nowrap;
-                overflow: hidden;
-                text-overflow: ellipsis;
-                @media (max-width: 1024px)
+                @media (max-width: vars.$large-tablet-width)
                 {
                     max-width: 250px;
                 }
 
-                @media (max-width: 768px)
+                @media (max-width: vars.$medium-tablet-width)
                 {
                     max-width: 150px;
                     padding-left: 4px;
@@ -141,12 +132,9 @@
 
             td.article-author
             {
-                max-width: 150px;
-                text-wrap: nowrap;
-                overflow: hidden;
-                text-overflow: ellipsis;
+                @include mixins.threeDotsTextOverflow(150px);
 
-                @media (max-width: 768px)
+                @media (max-width: vars.$medium-tablet-width)
                 {
                     max-width: 100px;
                 }
@@ -156,7 +144,7 @@
             {
                 border-right-width: 1px;
                 padding-right: 1.1rem;
-                @media (max-width: 768px)
+                @media (max-width: vars.$medium-tablet-width)
                 {
                     padding-right: 4px;
                 }
@@ -166,18 +154,13 @@
 
         .load-more
         {
+            @include mixins.font("work sans", 14px, vars.$medium-font, capitalize, center, #7879F1, sans-serif);
             display: none;
             width: 100%;
             background-color: transparent;
             border: none;
-            color: #7879F1;
-            font-weight: 500;
-            font-size: 14px;
-            font-family: "work sans", sans-serif;
             cursor: pointer;
             padding: 10px 0px;
-            text-align: center;
-            text-transform: capitalize;
             border-top: 1px #E9EFF4 solid;
         }
     }
@@ -185,20 +168,15 @@
     /* add new article bottun */
     .add-new-article
     {
-        width: 38px;
-        height: 38px;
+        @include mixins.flex-row(center, center, 0px, nowrap);
+        @include mixins.position(fixed, auto, 20px, 20px, auto);
+        @include mixins.size(38px, 38px);
         background-color: #7879F1;
         border-radius: 7px;
         border: none;
         cursor: pointer;
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
 
-        color: white;
+        color: vars.$white;
         font-size: 20px;
         opacity: 0.5;
         &:hover

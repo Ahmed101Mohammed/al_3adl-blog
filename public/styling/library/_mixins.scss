@@ -65,7 +65,7 @@
     left: $left;
 }
 
-@mixin threeDotsTextOverflow($width: 100%, $display: inline-block)
+@mixin threeDotsTextOverflow($width: 100%)
 {
     max-width: $width;
     text-wrap: nowrap;
