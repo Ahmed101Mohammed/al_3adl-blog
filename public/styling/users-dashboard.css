@@ -1,16 +1,44 @@
+:export {
+  primary-color: #4b6bfb;
+  secondary-color-400: #97989f;
+  secondary-color-100: #e8e8ea;
+  secondary-color-800: #181a2a;
+  secondary-color-500: #181a2a;
+  white: #ffffff;
+  small-descktop-width: 1280px;
+  large-tablet-width: 1024px;
+  medium-tablet-width: 768px;
+  small-tablet-width: 601px;
+  large-mobile-width: 448px;
+  large-mobile-width-x: 414px;
+  medium-mobile-width: 390px;
+  small-mobile-width-xs: 375px;
+  bolder-font: 800;
+  bold-font: 600;
+  medium-font: 500;
+  normal-font: 400;
+}
+
 /* article table */
-section.articles {
+@media (max-width: 1280px) {
+  .main-container {
+    padding: 15px;
+  }
+}
+.main-container section.articles {
   display: flex;
   flex-direction: column;
   gap: 2.1rem;
+  overflow: auto;
 }
-section.articles table {
+.main-container section.articles table {
   border-spacing: 0px 10px;
+  min-width: 650px;
 }
-section.articles table thead tr {
+.main-container section.articles table thead tr {
   cursor: default;
 }
-section.articles table th, section.articles table td {
+.main-container section.articles table th, .main-container section.articles table td {
   text-align: left;
   padding: 1.1rem 0rem;
   text-transform: capitalize;
@@ -18,30 +46,59 @@ section.articles table th, section.articles table td {
   font-size: 13px;
   font-family: "work sans", sans-serif;
 }
-section.articles table th {
+@media (max-width: 768px) {
+  .main-container section.articles table th, .main-container section.articles table td {
+    font-size: 12px;
+    padding: 0.2rem 5px;
+    text-align: center;
+  }
+}
+.main-container section.articles table th {
   color: #878790;
 }
-section.articles table td {
+.main-container section.articles table td {
   border: 1px #E9EFF4 solid;
   border-left-width: 0px;
   border-right-width: 0px;
 }
-section.articles table td.user-name {
+.main-container section.articles table td.user-name {
+  max-width: 400px;
+  text-wrap: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   border-left-width: 1px;
   padding-left: 1.1rem;
-  width: 400px;
 }
-section.articles table td.user-email {
-  width: 400px;
+@media (max-width: 768px) {
+  .main-container section.articles table td.user-name {
+    max-width: 300px;
+    text-wrap: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 }
-section.articles table td.user-role {
+.main-container section.articles table td.user-email {
+  max-width: 400px;
+  text-wrap: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+@media (max-width: 768px) {
+  .main-container section.articles table td.user-email {
+    max-width: 300px;
+    text-wrap: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+.main-container section.articles table td.user-role {
   border-right-width: 1px;
   padding-right: 1.1rem;
 }
-section.articles table td.user-articles-number {
+.main-container section.articles table td.user-articles-number {
   width: 250px;
 }
-section.articles .load-more {
+.main-container section.articles .load-more {
   display: none;
   width: 100%;
   background-color: transparent;
