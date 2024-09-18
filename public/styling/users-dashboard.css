@@ -1,78 +1,60 @@
 /* article table */
-section.articles
-{
-    display: flex;
-    flex-direction: column;
-    gap: 2.1rem;
+section.articles {
+  display: flex;
+  flex-direction: column;
+  gap: 2.1rem;
+}
+section.articles table {
+  border-spacing: 0px 10px;
+}
+section.articles table thead tr {
+  cursor: default;
+}
+section.articles table th, section.articles table td {
+  text-align: left;
+  padding: 1.1rem 0rem;
+  text-transform: capitalize;
+  font-weight: 400;
+  font-size: 13px;
+  font-family: "work sans", sans-serif;
+}
+section.articles table th {
+  color: #878790;
+}
+section.articles table td {
+  border: 1px #E9EFF4 solid;
+  border-left-width: 0px;
+  border-right-width: 0px;
+}
+section.articles table td.user-name {
+  border-left-width: 1px;
+  padding-left: 1.1rem;
+  width: 400px;
+}
+section.articles table td.user-email {
+  width: 400px;
+}
+section.articles table td.user-role {
+  border-right-width: 1px;
+  padding-right: 1.1rem;
+}
+section.articles table td.user-articles-number {
+  width: 250px;
+}
+section.articles .load-more {
+  display: none;
+  width: 100%;
+  background-color: transparent;
+  border: none;
+  color: #7879F1;
+  font-weight: 500;
+  font-size: 14px;
+  font-family: "work sans", sans-serif;
+  cursor: pointer;
+  padding: 10px 0px;
+  text-align: center;
+  text-transform: capitalize;
+  border-top: 1px #E9EFF4 solid;
 }
 
-table
-{
-    border-spacing: 0px 10px;
-}
-
-thead tr
-{
-    cursor: default;
-}
-th,td
-{
-    text-align: left;
-    padding: 1.1rem 0rem;
-    text-transform: capitalize;
-    font-weight: 400;
-    font-size: 13px;
-    font-family: "work sans", sans-serif;
-}
-
-th
-{
-    color: #878790;
-}
-
-td
-{
-    border: 1px #E9EFF4 solid;
-    border-left-width: 0px;
-    border-right-width: 0px;
-}
-
-td.user-name
-{
-    border-left-width: 1px;
-    padding-left: 1.1rem;
-    width: 400px;
-}
-
-td.user-email
-{
-    width: 400px;
-}
-
-td.user-role
-{
-    border-right-width: 1px;
-    padding-right: 1.1rem;
-}
-
-td.user-articles-number
-{
-    width: 250px;
-}
-
-.load-more
-{
-    display: none;
-    width: 100%;
-    background-color: transparent;
-    border: none;
-    color: #7879F1;
-    font-weight: 500;
-    font-size: 14px;
-    font-family: "work sans", sans-serif;
-    cursor: pointer;
-    padding: 10px 0px;
-    text-align: center;
-    text-transform: capitalize;
-    border-top: 1px #E9EFF4 solid;
-}
+/*# sourceMappingURL=users-dashboard.css.map */
