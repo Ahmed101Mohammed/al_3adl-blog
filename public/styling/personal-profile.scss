@@ -1,0 +1,384 @@
+@use './library/mixins';
+@use './library/vars';
+
+/* main */
+.display-grid-main
+{
+    display: grid;
+    @media (max-width: vars.$small-tablet-width) 
+    {
+        display: block;    
+    }
+}
+main
+{
+    display: none; /*grid*/
+    grid-template-columns: auto 1fr;
+    @media (max-width: vars.$small-tablet-width) 
+    {
+        padding-top: 0px;  
+    }
+
+    /* aside */
+    aside
+    {
+        @include mixins.flex-row(center, normal, 0px, nowrap);
+        padding: 37.5px;
+        height: 100%;
+        @media (max-width: vars.$large-tablet-width) 
+        {
+            padding: 10px;  
+            box-shadow: aliceblue 0.6px 0px 1px 1px;  
+        }
+        @media (max-width: vars.$small-tablet-width) 
+        {
+            padding: 10px;
+            width: 100%;    
+        }
+
+        .secondery-nav-items
+        {
+            @include mixins.flex-column(normal, normal, 40px, nowrap);
+            list-style: none;
+            @media (max-width: vars.$small-tablet-width) 
+            {
+                @include mixins.flex-row(space-evenly, normal, 0px, nowrap); 
+                width: 100%; 
+            }
+
+            .secondery-nav-item
+            {
+                cursor: pointer;
+
+                .secondery-nav-link
+                {
+                    @include mixins.flex-row(space-between, center, 0px, nowrap);
+                    width: 220px;
+                    padding: 5px;
+                    @media (max-width: vars.$large-tablet-width) 
+                    {
+                        width: fit-content;    
+                    }
+                    .link-details
+                    {
+                        @include mixins.flex-row(normal, center, 14px, nowrap);
+                        h2
+                        {
+                            @include mixins.font("Outfit", 16px, vars.$medium-font, capitalize, left, #9197B3, sans-serif);
+                            @media (max-width: vars.$large-tablet-width) 
+                            {
+                                display: none;    
+                            }
+                            @media (max-width: vars.$large-mobile-width-x) 
+                            {
+                                display: none;    
+                            }
+                        }
+                    }
+
+                    .link-go-img
+                    {
+                        @media (max-width: vars.$large-tablet-width) 
+                        {
+                            display: none;    
+                        }
+                    }
+                }
+            }
+
+            .dashboard-item
+            {
+                display: none;
+            }
+        }
+    }
+
+    /* pages container */
+    .secondery-container
+    {
+        @include mixins.flex-row(center, self-start, 0px, nowrap);
+        padding: 24px;
+        height: 100dvh;
+        @media (max-width: vars.$large-mobile-width-x)
+        {
+            padding: 10px;    
+        }
+        @media (max-width: vars.$large-mobile-width-x) 
+        {
+            width: 100%;    
+        }
+        .intro
+        {
+            @include mixins.flex-column(normal, normal, 64px, nowrap);
+            width: 90%;
+            
+            background-color: vars.$primary-color;
+            border-radius: 10px;
+            max-height: 190px;
+            padding: 16px;
+            @media (max-width: vars.$medium-tablet-width)
+            {
+                padding: 10px;
+                gap: 10px;
+                width: 100%;    
+            }
+
+            h2
+            {
+                @include mixins.font("Outfit", 12px, vars.$medium-font, capitalize, left, vars.$white, sans-serif);
+            }
+
+            .page-container
+            {
+                @include mixins.flex-row(center, normal, 24px, nowrap);
+                width: 100%;
+                
+                /* profile page */
+                .profile
+                {
+                    @include mixins.flex-column(normal, normal, 24px, nowrap);
+                    padding: 30px;
+                    display: none;
+                    background-color: vars.$white;
+                    border-radius: 10px;
+                    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.15);
+                    @media (max-width: vars.$medium-mobile-width)
+                    {
+                        padding: 10px;    
+                    }
+                    .personal-photo
+                    {
+                        @include mixins.flex-row(space-between, center, 133px, nowrap);
+                        @media (max-width: vars.$small-tablet-width)
+                        {
+                            gap: 0px;
+                            justify-content: space-between;    
+                        }
+
+                        .photo
+                        {
+                            @include mixins.flex-row(center, center, 0px, nowrap);
+                            @include mixins.size(100px, 100px);
+                            border-radius: 50%;
+                            object-fit: cover;
+                            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.15);
+                            
+                            @media (max-width: vars.$small-tablet-width)
+                            {
+                                @include mixins.size(64px, 64px);
+                            }
+
+                            img
+                            {
+                                @include mixins.size(100%, 100%);
+                                border-radius: 50%;
+                            }
+                        }
+
+                        .upload-btn
+                        {
+                            @include mixins.size(fit-content, fit-content);
+                            @include mixins.font("Outfit", 10px, vars.$medium-font, none, left, #1F1F1F, sans-serif);
+                            padding: 5px 16px;
+                            border-radius: 100px;
+                            background-color: #F0EFFA;
+                        }
+                    }
+
+                    .personal-info
+                    {
+                        @include mixins.flex-column(normal, center, 19px, nowrap);
+                        border-radius: 5px;
+                        border: 1px solid rgba(0, 0, 0, 0.15);
+                        padding: 18px 16px;
+                        
+                        box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.10);
+                        @media (max-width: vars.$medium-mobile-width) 
+                        {
+                            padding: 10px 10px;    
+                        }
+                        .info
+                        {
+                            @include mixins.flex-column(normal, normal, 6px, nowrap);
+                            
+                            h3
+                            {
+                                @include mixins.font("Outfit", 12px, vars.$medium-font, capitalize, left, #1f1f1fc8, sans-serif);
+                                @media (max-width: vars.$small-mobile-width-xs) 
+                                {
+                                    font-size: 10px;    
+                                }
+                            }
+
+                            .info-data
+                            {
+                                @include mixins.flex-row(normal, normal, 238px, nowrap);
+                                @media (max-width: vars.$medium-tablet-width)
+                                {
+                                    gap: 100px;    
+                                }
+                                @media (max-width: vars.$small-tablet-width)
+                                {
+                                    gap: 10px;    
+                                }
+
+                                input
+                                {
+                                    @include mixins.font("Outfit", 14px, vars.$medium-font, none, left, #1F1F1F, sans-serif);
+                                    width: 200px;
+                                    background-color: transparent;
+                                    padding: 5px;
+                                    @media (max-width: vars.$small-mobile-width-xs)
+                                    {
+                                        font-size: 12px;    
+                                    }
+                                }
+
+                                .edit-btn
+                                {
+                                    @include mixins.font("Outfit", 10px, vars.$medium-font, none, left, #1F1F1F, sans-serif);
+                                    padding: 5px 16px;
+                                    border-radius: 73px;
+                                    background-color: #F0EFFA;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                /* upload-personal-photo form */
+                .filter
+                {
+                    @include mixins.size(100%, 100%);
+                    @include mixins.position(fixed, 0px, 0px, 0px, 0px);
+                    background-color: #1f1f1fb9;
+                    padding: 24px;
+                    display: none;
+                    justify-content: center;
+                    align-items: center;
+                    z-index: 100;
+                    .upload-personal-photo
+                    {
+                        @include mixins.flex-column(normal, normal, 24px, nowrap);
+                        background-color: vars.$white;
+                        border-radius: 10px;
+                        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.15);
+                        padding: 24px;
+                        z-index: 100;
+
+                        input
+                        {
+                            @include mixins.flex-row(normal, center, 30px, nowrap);
+                            @include mixins.font("Outfit", 16px, vars.$medium-font, none, left, #1F1F1F, sans-serif);
+                            width: 100%;
+                            background-color: #ECECEC;
+                            border-radius: 8px;
+                            padding: 10px 23px;
+                            
+                        }
+
+                        .error-message-container
+                        {
+                            @include mixins.flex-row(center, center, 0px, nowrap);
+                            display: none;
+
+                            .error-message
+                            {
+                                @include mixins.font("Outfit", 13px, vars.$bold-font, none, left, #e86446, sans-serif);
+                            }
+                        }
+                        
+                        button
+                        {
+                            @include mixins.font("Outfit", 10px, vars.$medium-font, none, center, #1F1F1F, sans-serif);
+                            padding: 10px 16px;
+                            border-radius: 73px;
+                            background-color: #F0EFFA;
+                        }
+                    }
+                }
+
+                /* dashboard page */
+                .dashboard
+                {
+                    @include mixins.flex-column(normal, normal, 24px, nowrap);
+                    display: none;
+                    padding: 30px;
+                    background-color: vars.$white;
+                    border-radius: 10px;
+                    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.15);
+                    width: 100%;
+                    @media (max-width: vars.$small-mobile-width-xs)
+                    {
+                        padding: 10px;    
+                    }
+
+                    ul
+                    {
+                        @include mixins.flex-column(normal, normal, 24px, nowrap);
+                        list-style: none;
+                        padding: 0px;
+                        margin: 0px;
+                        // display: flex;
+                        // flex-direction: column;
+                        // gap: 24px;
+                       
+                        a
+                        {
+                            @include mixins.flex-row(normal, center, 16px, nowrap);
+                            @include mixins.font("Outfit", 16px, vars.$medium-font, capitalize, left, #1F1F1F, sans-serif);
+                            cursor: pointer;
+                            
+                            background-color: #F0EFFA;
+                            border-radius: 10px;
+                            padding: 16px;
+                            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.15);
+                            @media (max-width: vars.$small-mobile-width-xs)
+                            {
+                                padding: 10px;
+                                font-size: 12px;
+                            }
+
+                            img
+                            {
+                                @media (max-width: vars.$small-mobile-width-xs)
+                                {
+                                    @include mixins.size(16px, 16px);   
+                                }
+                            }
+                        }
+                    }
+                }
+
+                /* temporary error message */
+                .temporary-error-message
+                {
+                    @include mixins.size(fit-content, fit-content);
+                    @include mixins.position(fixed, auto, auto, 30px, 50%);
+                    @include mixins.font("Outfit", 12px, vars.$bold-font, none, left, vars.$white, sans-serif);
+                    padding: 10px 20px;
+                    border-radius: 100px;
+                    background-color: #e86446;
+                    transform: translateX(-50%);
+                    display: none;
+                }
+
+                /* error page */
+                .loading-page-error
+                {
+                    @include mixins.font("Outfit", 16px, vars.$medium-font, none, left, #696A75, sans-serif);
+                    display: none;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 24px;
+                    background-color: #F0EFFA;
+                    border-radius: 10px;
+                    padding: 24px;
+                    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.15);
+                    margin-top: 70px;
+                }
+
+            }
+        }
+    }
+}
