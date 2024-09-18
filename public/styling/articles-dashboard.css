@@ -1,10 +1,20 @@
-/* filter section */
-.filter {
+.main-container {
+  /* filter section */
+  /* article table */
+  /* add new article bottun */
+}
+@media (max-width: 1280px) {
+  .main-container {
+    padding: 0px 15px;
+    gap: 15px;
+  }
+}
+.main-container .filter {
   display: flex;
   gap: 15px;
   align-items: center;
 }
-.filter select {
+.main-container .filter select {
   width: 200px;
   height: 38px;
   background-color: transparent;
@@ -14,20 +24,20 @@
   cursor: pointer;
   color: #7879F1;
 }
-
-/* article table */
-section.articles {
+.main-container section.articles {
   display: flex;
   flex-direction: column;
   gap: 2.1rem;
+  overflow: auto;
 }
-section.articles table {
+.main-container section.articles table {
   border-spacing: 0px 10px;
+  min-width: 500px;
 }
-section.articles table thead tr {
+.main-container section.articles table thead tr {
   cursor: default;
 }
-section.articles table th, section.articles table td {
+.main-container section.articles table th, .main-container section.articles table td {
   text-align: left;
   padding: 1.1rem 0rem;
   text-transform: capitalize;
@@ -35,51 +45,99 @@ section.articles table th, section.articles table td {
   font-size: 13px;
   font-family: "work sans", sans-serif;
 }
-section.articles table th {
+@media (max-width: 768px) {
+  .main-container section.articles table th, .main-container section.articles table td {
+    font-size: 11px;
+  }
+}
+.main-container section.articles table th {
   color: #878790;
 }
-section.articles table td {
+@media (max-width: 1024px) {
+  .main-container section.articles table th {
+    text-align: center;
+  }
+}
+.main-container section.articles table td {
   border: 1px #E9EFF4 solid;
   border-left-width: 0px;
   border-right-width: 0px;
 }
-section.articles table td span.edit {
+@media (max-width: 1024px) {
+  .main-container section.articles table td {
+    text-align: center;
+    padding: 5px;
+  }
+}
+@media (max-width: 768px) {
+  .main-container section.articles table td {
+    padding: 3px;
+  }
+}
+.main-container section.articles table td span.edit {
   font-size: 20px;
   color: #7879F1;
   cursor: pointer;
 }
-section.articles table td span.edit:hover {
+.main-container section.articles table td span.edit:hover {
   color: #5d5de2;
 }
-section.articles table td span.delete {
+.main-container section.articles table td span.delete {
   font-size: 20px;
   color: rgba(232, 100, 70, 0.5176470588);
   cursor: pointer;
 }
-section.articles table td span.delete:hover {
+.main-container section.articles table td span.delete:hover {
   color: #e86446;
 }
-section.articles table td span.view {
+.main-container section.articles table td span.view {
   font-size: 20px;
   color: rgba(135, 135, 144, 0.3333333333); /*Green color*/
   cursor: pointer;
 }
-section.articles table td span.view:hover {
+.main-container section.articles table td span.view:hover {
   color: #7bf45a;
 }
-section.articles table td.article-title {
+.main-container section.articles table td.article-title {
   border-left-width: 1px;
   padding-left: 1.1rem;
-  width: 400px;
+  max-width: 400px;
+  text-wrap: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
-section.articles table td.article-author {
-  width: 200px;
+@media (max-width: 1024px) {
+  .main-container section.articles table td.article-title {
+    max-width: 250px;
+  }
 }
-section.articles table td.view-article {
+@media (max-width: 768px) {
+  .main-container section.articles table td.article-title {
+    max-width: 150px;
+    padding-left: 4px;
+  }
+}
+.main-container section.articles table td.article-author {
+  max-width: 150px;
+  text-wrap: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+@media (max-width: 768px) {
+  .main-container section.articles table td.article-author {
+    max-width: 100px;
+  }
+}
+.main-container section.articles table td.view-article {
   border-right-width: 1px;
   padding-right: 1.1rem;
 }
-section.articles .load-more {
+@media (max-width: 768px) {
+  .main-container section.articles table td.view-article {
+    padding-right: 4px;
+  }
+}
+.main-container section.articles .load-more {
   display: none;
   width: 100%;
   background-color: transparent;
@@ -94,9 +152,7 @@ section.articles .load-more {
   text-transform: capitalize;
   border-top: 1px #E9EFF4 solid;
 }
-
-/* add new article bottun */
-.add-new-article {
+.main-container .add-new-article {
   width: 38px;
   height: 38px;
   background-color: #7879F1;
@@ -113,7 +169,7 @@ section.articles .load-more {
   font-size: 20px;
   opacity: 0.5;
 }
-.add-new-article:hover {
+.main-container .add-new-article:hover {
   opacity: 1;
 }
 
