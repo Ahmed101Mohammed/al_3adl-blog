@@ -1,10 +1,13 @@
+@use './library/mixins';
+@use './library/vars';
+
 /* main container */
 .main-container
 {
     gap: 5px;
     .article-content
     {
-        @media (max-width: 601px) 
+        @media (max-width: vars.$small-tablet-width) 
         {
             display: block;
             max-height: 100dvh;
@@ -13,7 +16,7 @@
         // article textarea
         textarea
         {
-            @media (max-width: 601px)
+            @media (max-width: vars.$small-tablet-width)
             {
                 display: block;
                 height: 50dvh;
@@ -23,7 +26,7 @@
         /* article content preview */
         .preview
         {
-            @media (max-width: 601px)
+            @media (max-width: vars.$small-tablet-width)
             {
                 height: 50dvh;
                 max-height: 50dvh;    
@@ -31,32 +34,21 @@
 
             h1, h2, h3, h4, h5, h6
             {
-                font-family: "work sans", sans-serif;
-                font-size: 24px;
-                font-weight: 600;
-                color: var(--secondary-color-800);
-                text-transform: capitalize;
+                @include mixins.font("work sans", 24px, vars.$bold-font, capitalize, left, vars.$secondary-color-800, sans-serif);
                 margin-bottom: 12px;
             }
     
             p
             {
-                font-size: 18px;
-                font-weight: 400;
-                color: #3B3C4A;
-                font-family: "Source Serif Pro", sans-serif;
+                @include mixins.font("Source Serif Pro", 18px, vars.$normal-font, none, left, #3B3C4A, sans-serif);
                 line-height: 28px;
                 margin-bottom: 24px;
             }
             blockquote
             {
+                @include mixins.font("Source Serif Pro", 24px, vars.$normal-font, none, left, #3B3C4A, sans-serif);
                 padding-left: 32px;
-                font-size: 24px;
-                color: var(--secondary-color-800);
-                font-weight: 400;
                 font-style: italic;
-                font-family: "Source Serif Pro", sans-serif;
-                border-left: 4px solid var(--secondary-color-100);
                 margin-bottom: 24px;
             }
 
@@ -70,11 +62,11 @@
 
             h1, h2, h3, h4, h5, h6, p, a, li, code, blockquote
             {
-                @media (max-width: 1024px)
+                @media (max-width: vars.$large-tablet-width)
                 {
                     font-size: 16px;    
                 }
-                @media (max-width: 414px) 
+                @media (max-width: vars.$large-mobile-width-x) 
                 {
                     font-size: 13px;    
                 }
