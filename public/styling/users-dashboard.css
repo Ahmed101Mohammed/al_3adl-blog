@@ -28,7 +28,10 @@
 .main-container section.articles {
   display: flex;
   flex-direction: column;
+  justify-content: normal;
+  align-items: normal;
   gap: 2.1rem;
+  flex-wrap: nowrap;
   overflow: auto;
 }
 .main-container section.articles table {
@@ -39,12 +42,13 @@
   cursor: default;
 }
 .main-container section.articles table th, .main-container section.articles table td {
-  text-align: left;
-  padding: 1.1rem 0rem;
-  text-transform: capitalize;
-  font-weight: 400;
-  font-size: 13px;
   font-family: "work sans", sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  text-transform: capitalize;
+  text-align: left;
+  color: initial;
+  padding: 1.1rem 0rem;
 }
 @media (max-width: 768px) {
   .main-container section.articles table th, .main-container section.articles table td {
@@ -99,18 +103,18 @@
   width: 250px;
 }
 .main-container section.articles .load-more {
+  font-family: "work sans", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: capitalize;
+  text-align: center;
+  color: #7879F1;
   display: none;
   width: 100%;
   background-color: transparent;
   border: none;
-  color: #7879F1;
-  font-weight: 500;
-  font-size: 14px;
-  font-family: "work sans", sans-serif;
   cursor: pointer;
   padding: 10px 0px;
-  text-align: center;
-  text-transform: capitalize;
   border-top: 1px #E9EFF4 solid;
 }
 

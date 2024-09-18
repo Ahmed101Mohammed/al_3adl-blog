@@ -4,16 +4,14 @@
 /* article table */
 .main-container
 {
-    @media (max-width: 1280px) 
+    @media (max-width: vars.$small-descktop-width) 
     {
         padding: 15px     
     }
 
     section.articles
     {
-        display: flex;
-        flex-direction: column;
-        gap: 2.1rem;
+        @include mixins.flex-column(normal, normal, 2.1rem, nowrap);
         overflow: auto;
 
         table
@@ -28,13 +26,9 @@
 
             th,td
             {
-                text-align: left;
+                @include mixins.font("work sans", 13px, vars.$normal-font, capitalize, left, initial, sans-serif);
                 padding: 1.1rem 0rem;
-                text-transform: capitalize;
-                font-weight: 400;
-                font-size: 13px;
-                font-family: "work sans", sans-serif;
-                @media (max-width: 768px) 
+                @media (max-width: vars.$medium-tablet-width) 
                 {
                     font-size: 12px;
                     padding: 0.2rem 5px;
@@ -59,7 +53,7 @@
                 @include mixins.threeDotsTextOverflow(400px);
                 border-left-width: 1px;
                 padding-left: 1.1rem;
-                @media (max-width: 768px)
+                @media (max-width: vars.$medium-tablet-width)
                 {
                     @include mixins.threeDotsTextOverflow(300px);
                 }
@@ -68,7 +62,7 @@
             td.user-email
             {
                 @include mixins.threeDotsTextOverflow(400px);
-                @media (max-width: 768px)
+                @media (max-width: vars.$medium-tablet-width)
                 {
                     @include mixins.threeDotsTextOverflow(300px);
                 }
@@ -88,18 +82,13 @@
 
         .load-more
         {
+            @include mixins.font("work sans", 14px, vars.$medium-font, capitalize, center, #7879F1, sans-serif);
             display: none;
             width: 100%;
             background-color: transparent;
             border: none;
-            color: #7879F1;
-            font-weight: 500;
-            font-size: 14px;
-            font-family: "work sans", sans-serif;
             cursor: pointer;
             padding: 10px 0px;
-            text-align: center;
-            text-transform: capitalize;
             border-top: 1px #E9EFF4 solid;
         }
     }
