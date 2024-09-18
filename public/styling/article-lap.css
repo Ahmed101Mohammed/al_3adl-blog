@@ -5,6 +5,26 @@
 .main-container .article-content {
   /* article content preview */
 }
+@media (max-width: 601px) {
+  .main-container .article-content {
+    display: block;
+    max-height: 100dvh;
+    min-height: 100dvh;
+  }
+}
+@media (max-width: 601px) {
+  .main-container .article-content textarea {
+    display: block;
+    height: 50dvh;
+    max-height: 50dvh;
+  }
+}
+@media (max-width: 601px) {
+  .main-container .article-content .preview {
+    height: 50dvh;
+    max-height: 50dvh;
+  }
+}
 .main-container .article-content .preview h1, .main-container .article-content .preview h2, .main-container .article-content .preview h3, .main-container .article-content .preview h4, .main-container .article-content .preview h5, .main-container .article-content .preview h6 {
   font-family: "work sans", sans-serif;
   font-size: 24px;
@@ -36,6 +56,16 @@
   display: block;
   margin-bottom: 12px;
   max-width: 100%;
+}
+@media (max-width: 1024px) {
+  .main-container .article-content .preview h1, .main-container .article-content .preview h2, .main-container .article-content .preview h3, .main-container .article-content .preview h4, .main-container .article-content .preview h5, .main-container .article-content .preview h6, .main-container .article-content .preview p, .main-container .article-content .preview a, .main-container .article-content .preview li, .main-container .article-content .preview code, .main-container .article-content .preview blockquote {
+    font-size: 16px;
+  }
+}
+@media (max-width: 414px) {
+  .main-container .article-content .preview h1, .main-container .article-content .preview h2, .main-container .article-content .preview h3, .main-container .article-content .preview h4, .main-container .article-content .preview h5, .main-container .article-content .preview h6, .main-container .article-content .preview p, .main-container .article-content .preview a, .main-container .article-content .preview li, .main-container .article-content .preview code, .main-container .article-content .preview blockquote {
+    font-size: 13px;
+  }
 }
 
 /*# sourceMappingURL=article-lap.css.map */
