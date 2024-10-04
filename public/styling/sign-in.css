@@ -19,6 +19,29 @@ body {
   justify-content: center;
   /* log form */
 }
+@media (max-width: 601px) {
+  body {
+    padding: 20px;
+  }
+}
+@media (max-width: 1280px) {
+  body {
+    gap: 30px;
+  }
+}
+@media (max-width: 1024px) {
+  body .security-img {
+    display: none;
+  }
+}
+@media (max-width: 1280px) {
+  body .security-img {
+    width: 50%;
+  }
+}
+body .security-img img {
+  width: 100%;
+}
 body form.sign {
   display: flex;
   flex-direction: column;
@@ -29,6 +52,12 @@ body form.sign {
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
   width: 600px;
 }
+@media (max-width: 414px) {
+  body form.sign {
+    padding: 10px 15px;
+    gap: 20px;
+  }
+}
 body form.sign h2.welcome {
   font-size: 36px;
   font-weight: 500;
@@ -36,11 +65,31 @@ body form.sign h2.welcome {
   font-family: "Poppins", sans-serif;
   color: var(--black);
 }
+@media (max-width: 414px) {
+  body form.sign h2.welcome {
+    font-size: 20px;
+  }
+}
+@media (max-width: 601px) {
+  body form.sign h2.welcome {
+    font-size: 25px;
+  }
+}
 body form.sign h2.welcome span {
   color: var(--primary);
   font-weight: bolder;
   display: block;
   font-size: 46px;
+}
+@media (max-width: 414px) {
+  body form.sign h2.welcome span {
+    font-size: 24px;
+  }
+}
+@media (max-width: 601px) {
+  body form.sign h2.welcome span {
+    font-size: 30px;
+  }
 }
 body form.sign fieldset.fast-sign {
   display: flex;
@@ -57,6 +106,12 @@ body form.sign fieldset.fast-sign .login-method .method-ui {
   gap: 20px;
   align-items: center;
   justify-content: center;
+}
+@media (max-width: 414px) {
+  body form.sign fieldset.fast-sign .login-method .method-ui img {
+    width: 25px;
+    height: 25px;
+  }
 }
 body form.sign .separation {
   display: flex;
@@ -85,6 +140,18 @@ body form.sign .normal-log .input {
   display: flex;
   align-items: flex-end;
   gap: 30px;
+}
+@media (max-width: 414px) {
+  body form.sign .normal-log .input {
+    gap: 10px;
+    padding: 10px 10px;
+  }
+}
+@media (max-width: 414px) {
+  body form.sign .normal-log .input img {
+    width: 20px;
+    margin-bottom: 2px;
+  }
 }
 body form.sign .normal-log .input .input-field {
   display: flex;
@@ -132,6 +199,16 @@ body form.sign .normal-log .final-action span {
   font-weight: 400;
   font-family: "Poppins", sans-serif;
   color: black;
+}
+@media (max-width: 414px) {
+  body form.sign .normal-log .final-action span {
+    font-size: 12px;
+  }
+}
+@media (max-width: 601px) {
+  body form.sign .normal-log .final-action span {
+    font-size: 14px;
+  }
 }
 body form.sign .normal-log .final-action span a {
   color: var(--primary);
