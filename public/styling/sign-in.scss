@@ -1,3 +1,6 @@
+@use './library/mixins';
+@use './library/vars';
+
 /* theme */
 :root {
   --black: #2f2f2f;
@@ -6,33 +9,26 @@
 /* general */
 body,
 html {
-  width: 100%;
-  height: 100%;
+  @include mixins.size(100%, 100%);
   background-color: #e5e5e5;
 }
 
 body {
-  display: flex;
-  gap: 238.86px;
-  align-items: center;
-  justify-content: center;
-  @media (max-width: 601px) 
-  {
-    padding: 20px;  
-  }
+  @include mixins.flex-row(center, center, 238px, nowrap);
+  padding: 20px;
 
-  @media (max-width: 1280px)
+  @media (max-width: vars.$small-descktop-width)
   {
     gap: 30px;
   }
   .security-img
   {
-    @media (max-width: 1024px) 
+    @media (max-width: vars.$large-tablet-width) 
     {
       display: none;  
     }
 
-    @media (max-width: 1280px)
+    @media (max-width: vars.$small-descktop-width)
     {
       width: 50%;
     }
@@ -44,46 +40,38 @@ body {
   }
   /* log form */
   form.sign {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-    background-color: #fff;
+    @include mixins.flex-column(normal, normal, 24px, nowrap);
+    background-color:vars.$white;
     border-radius: 8px;
     padding: 20px 30px;
     box-shadow: 0px 0px 4px rgb(0 0 0 / 10%);
     width: 600px;
-    @media (max-width: 414px) 
+    @media (max-width: vars.$large-mobile-width-x) 
     {
       padding: 10px 15px;
       gap: 20px;  
     }
 
     h2.welcome {
-      font-size: 36px;
-      font-weight: 500;
-      color: var(--secondary-color-800);
-      font-family: "Poppins", sans-serif;
-      color: var(--black);
-      @media (max-width: 414px)
+      @include mixins.font("Poppins", 36px, vars.$medium-font, none, left, vars.$secondary-color-800, sans-serif);
+      @media (max-width: vars.$large-mobile-width-x)
       {
         font-size: 20px;  
       }
-      @media (max-width: 601px)
+      @media (max-width: vars.$small-tablet-width)
       {
         font-size: 25px;  
       }
 
       span {
-        color: var(--primary);
-        font-weight: bolder;
+        @include mixins.font(inherit, 46px, vars.$bolder-font, none, left, var(--primary), inherit);
         display: block;
-        font-size: 46px;
-        @media (max-width: 414px) 
+        @media (max-width: vars.$large-mobile-width-x) 
         {
           font-size: 24px;  
         }
 
-        @media (max-width: 601px)
+        @media (max-width: vars.$small-tablet-width)
         {
           font-size: 30px;  
         }
@@ -91,27 +79,21 @@ body {
     }
 
     fieldset.fast-sign {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
+      @include mixins.flex-column(normal, normal, 15px, nowrap);
 
       .login-method {
         padding: 7px 20px;
-        background-color: #fff;
+        background-color:vars.$white;
         box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.11);
 
         .method-ui {
-          display: flex;
-          gap: 20px;
-          align-items: center;
-          justify-content: center;
+          @include mixins.flex-row(center, center, 20px, nowrap);
 
           img 
           {
-            @media (max-width: 414px)
+            @media (max-width: vars.$large-mobile-width-x)
             {
-              width: 25px;
-              height: 25px;  
+              @include mixins.size(25px, 25px);
             }
           }
         }
@@ -119,105 +101,80 @@ body {
     }
 
     .separation {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
-      height: 1px;
+      @include mixins.flex-row(center, center, 0px, nowrap);
+      @include mixins.size(100%, 1px);
       background-color: #dcdddf;
 
       span {
         display: block;
-        background-color: #fff;
+        background-color:vars.$white;
         width: fit-content;
         padding: 0px 35px;
       }
     }
 
     .normal-log {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-
+      @include mixins.flex-column(normal, normal, 15px, nowrap);
       .input {
+        @include mixins.flex-row(normal, flex-end, 30px, nowrap);
         width: 100%;
         background-color: #ececec;
         border-radius: 8px;
         padding: 10px 23px;
-        display: flex;
-        align-items: flex-end;
-        gap: 30px;
-        @media (max-width: 414px) 
+        @media (max-width: vars.$large-mobile-width-x) 
         {
           gap: 10px;  
           padding: 10px 10px;
         }
 
         img {
-          @media (max-width: 414px) 
+          @media (max-width: vars.$large-mobile-width-x) 
           {
             width: 20px;
             margin-bottom: 2px;
           }
         }
         .input-field {
-          display: flex;
-          flex-direction: column;
-          gap: 4px;
-          align-items: flex-start;
+          @include mixins.flex-column(normal, flex-start, 4px, nowrap);
           width: 100%;
 
           .field-label {
-            font-size: 12px;
-            font-weight: 400;
-            color: var(--black);
-            font-family: "Poppins", sans-serif;
+            @include mixins.font("Poppins", 12px, vars.$normal-font, none, left, var(--black), sans-serif);
           }
 
           input {
-            font-size: 16px;
-            font-weight: bold;
-            font-family: "Poppins", sans-serif;
-            color: var(--black) !important;
+            @include mixins.font("Poppins", 16px, vars.$bold-font, none, left, var(--black), sans-serif);
             background-color: transparent !important;
             width: 100%;
             padding-left: 5px;
 
             &:focus {
-              background-color: #fff !important;
+              background-color:vars.$white !important;
             }
           }
         }
       }
 
       .final-action {
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
-        align-items: center;
+        @include mixins.flex-column(normal, center, 15px, nowrap);
 
         button {
+          @include mixins.font("Poppins", 16px, vars.$medium-font, none, center, vars.$white, sans-serif);
           padding: 15px;
           border-radius: 8px;
           background-color: var(--primary);
-          font-size: 16px;
-          color: #fff;
-          font-weight: 500;
-          font-family: "Poppins", sans-serif;
           width: 100%;
         }
 
         span {
-          font-size: 16px;
-          font-weight: 400;
-          font-family: "Poppins", sans-serif;
+          @include mixins.font("Poppins", 16px, vars.$normal-font, none, left, var(--black), sans-serif);
           color: black;
-          @media (max-width: 414px)
+          @media (max-width: vars.$large-mobile-width-x)
           {
             font-size: 12px;  
           }
 
-          @media (max-width: 601px)
+          @media (max-width: vars.$small-tablet-width)
           {
             font-size: 14px;  
           }
@@ -228,11 +185,7 @@ body {
       }
 
       .error-message {
-        color: red;
-        font-size: 12px;
-        font-weight: 400;
-        font-family: "Poppins", sans-serif;
-        text-align: center;
+        @include mixins.font("Poppins", 12px, vars.$normal-font, none, center, red, sans-serif);
       }
     }
   }

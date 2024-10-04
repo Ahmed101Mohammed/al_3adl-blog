@@ -1,3 +1,24 @@
+:export {
+  primary-color: #4b6bfb;
+  secondary-color-400: #97989f;
+  secondary-color-100: #e8e8ea;
+  secondary-color-800: #181a2a;
+  secondary-color-500: #181a2a;
+  white: #ffffff;
+  small-descktop-width: 1280px;
+  large-tablet-width: 1024px;
+  medium-tablet-width: 768px;
+  small-tablet-width: 601px;
+  large-mobile-width: 448px;
+  large-mobile-width-x: 414px;
+  medium-mobile-width: 390px;
+  small-mobile-width-xs: 375px;
+  bolder-font: 800;
+  bold-font: 600;
+  medium-font: 500;
+  normal-font: 400;
+}
+
 /* theme */
 :root {
   --black: #2f2f2f;
@@ -14,15 +35,13 @@ html {
 
 body {
   display: flex;
-  gap: 238.86px;
-  align-items: center;
+  flex-direction: row;
   justify-content: center;
+  align-items: center;
+  gap: 238px;
+  flex-wrap: nowrap;
+  padding: 20px;
   /* log form */
-}
-@media (max-width: 601px) {
-  body {
-    padding: 20px;
-  }
 }
 @media (max-width: 1280px) {
   body {
@@ -45,8 +64,11 @@ body .security-img img {
 body form.sign {
   display: flex;
   flex-direction: column;
+  justify-content: normal;
+  align-items: normal;
   gap: 24px;
-  background-color: #fff;
+  flex-wrap: nowrap;
+  background-color: #ffffff;
   border-radius: 8px;
   padding: 20px 30px;
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
@@ -59,11 +81,12 @@ body form.sign {
   }
 }
 body form.sign h2.welcome {
+  font-family: "Poppins", sans-serif;
   font-size: 36px;
   font-weight: 500;
-  color: var(--secondary-color-800);
-  font-family: "Poppins", sans-serif;
-  color: var(--black);
+  text-transform: none;
+  text-align: left;
+  color: #181a2a;
 }
 @media (max-width: 414px) {
   body form.sign h2.welcome {
@@ -76,10 +99,13 @@ body form.sign h2.welcome {
   }
 }
 body form.sign h2.welcome span {
-  color: var(--primary);
-  font-weight: bolder;
-  display: block;
+  font-family: inherit;
   font-size: 46px;
+  font-weight: 800;
+  text-transform: none;
+  text-align: left;
+  color: var(--primary);
+  display: block;
 }
 @media (max-width: 414px) {
   body form.sign h2.welcome span {
@@ -94,18 +120,23 @@ body form.sign h2.welcome span {
 body form.sign fieldset.fast-sign {
   display: flex;
   flex-direction: column;
+  justify-content: normal;
+  align-items: normal;
   gap: 15px;
+  flex-wrap: nowrap;
 }
 body form.sign fieldset.fast-sign .login-method {
   padding: 7px 20px;
-  background-color: #fff;
+  background-color: #ffffff;
   box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.11);
 }
 body form.sign fieldset.fast-sign .login-method .method-ui {
   display: flex;
-  gap: 20px;
-  align-items: center;
+  flex-direction: row;
   justify-content: center;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: nowrap;
 }
 @media (max-width: 414px) {
   body form.sign fieldset.fast-sign .login-method .method-ui img {
@@ -115,31 +146,40 @@ body form.sign fieldset.fast-sign .login-method .method-ui {
 }
 body form.sign .separation {
   display: flex;
-  align-items: center;
+  flex-direction: row;
   justify-content: center;
+  align-items: center;
+  gap: 0px;
+  flex-wrap: nowrap;
   width: 100%;
   height: 1px;
   background-color: #dcdddf;
 }
 body form.sign .separation span {
   display: block;
-  background-color: #fff;
+  background-color: #ffffff;
   width: fit-content;
   padding: 0px 35px;
 }
 body form.sign .normal-log {
   display: flex;
   flex-direction: column;
+  justify-content: normal;
+  align-items: normal;
   gap: 15px;
+  flex-wrap: nowrap;
 }
 body form.sign .normal-log .input {
+  display: flex;
+  flex-direction: row;
+  justify-content: normal;
+  align-items: flex-end;
+  gap: 30px;
+  flex-wrap: nowrap;
   width: 100%;
   background-color: #ececec;
   border-radius: 8px;
   padding: 10px 23px;
-  display: flex;
-  align-items: flex-end;
-  gap: 30px;
 }
 @media (max-width: 414px) {
   body form.sign .normal-log .input {
@@ -156,48 +196,61 @@ body form.sign .normal-log .input {
 body form.sign .normal-log .input .input-field {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  justify-content: normal;
   align-items: flex-start;
+  gap: 4px;
+  flex-wrap: nowrap;
   width: 100%;
 }
 body form.sign .normal-log .input .input-field .field-label {
+  font-family: "Poppins", sans-serif;
   font-size: 12px;
   font-weight: 400;
+  text-transform: none;
+  text-align: left;
   color: var(--black);
-  font-family: "Poppins", sans-serif;
 }
 body form.sign .normal-log .input .input-field input {
-  font-size: 16px;
-  font-weight: bold;
   font-family: "Poppins", sans-serif;
-  color: var(--black) !important;
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: none;
+  text-align: left;
+  color: var(--black);
   background-color: transparent !important;
   width: 100%;
   padding-left: 5px;
 }
 body form.sign .normal-log .input .input-field input:focus {
-  background-color: #fff !important;
+  background-color: #ffffff !important;
 }
 body form.sign .normal-log .final-action {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  justify-content: normal;
   align-items: center;
+  gap: 15px;
+  flex-wrap: nowrap;
 }
 body form.sign .normal-log .final-action button {
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  text-transform: none;
+  text-align: center;
+  color: #ffffff;
   padding: 15px;
   border-radius: 8px;
   background-color: var(--primary);
-  font-size: 16px;
-  color: #fff;
-  font-weight: 500;
-  font-family: "Poppins", sans-serif;
   width: 100%;
 }
 body form.sign .normal-log .final-action span {
+  font-family: "Poppins", sans-serif;
   font-size: 16px;
   font-weight: 400;
-  font-family: "Poppins", sans-serif;
+  text-transform: none;
+  text-align: left;
+  color: var(--black);
   color: black;
 }
 @media (max-width: 414px) {
@@ -214,11 +267,12 @@ body form.sign .normal-log .final-action span a {
   color: var(--primary);
 }
 body form.sign .normal-log .error-message {
-  color: red;
+  font-family: "Poppins", sans-serif;
   font-size: 12px;
   font-weight: 400;
-  font-family: "Poppins", sans-serif;
+  text-transform: none;
   text-align: center;
+  color: red;
 }
 
 /*# sourceMappingURL=sign-in.css.map */
