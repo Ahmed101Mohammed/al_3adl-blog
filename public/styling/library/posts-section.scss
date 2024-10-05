@@ -10,14 +10,14 @@
 
     .title
     {
-        @include mixins.font(inherit, 24px, 800, none, left, vars.$secondary-color-800, inherit);
+        @include mixins.font(inherit, 24px, vars.$bolder-font, none, left, vars.$secondary-color-800, inherit);
         overflow: hidden;
     }
 
     .no-posts
     {
         @include mixins.flex-row(center, center, 12px, nowrap);
-        @include mixins.font(inherit, 16px, 500, none, left, #696A75, inherit);
+        @include mixins.font(inherit, 16px, vars.$medium-font, none, left, #696A75, inherit);
         display: none;
     }
 
@@ -28,11 +28,11 @@
         gap: 20px;
         justify-content: center;
         display: none;
-        @media (max-width: 1280px) 
+        @media (max-width: vars.$small-descktop-width) 
         {
             grid-template-columns: repeat(2, auto);    
         }
-        @media (max-width: 768px) 
+        @media (max-width: vars.$medium-tablet-width) 
         {
             grid-template-columns: auto;
         }
@@ -50,11 +50,11 @@
             {
                 width: 360px;
                 border-radius: 7px;
-                @media (min-width: 768px) and ( max-width: 850px)
+                @media (min-width: vars.$medium-tablet-width) and ( max-width: 850px)
                 {
                     width: 100%;
                 }
-                @media (max-width: 414px) 
+                @media (max-width: vars.$large-mobile-width-x) 
                 {
                     width: 100%;    
                 }
@@ -63,7 +63,7 @@
             .info
             {
                 @include mixins.flex-column(normal, normal, 20px, nowrap);
-                @media (max-width: 390px) 
+                @media (max-width: vars.$medium-mobile-width) 
                 {
                     gap: 8px;    
                 }
@@ -72,7 +72,7 @@
                     @include mixins.flex-column(normal, normal, 16px, nowrap);
                     .catigory
                     {
-                        @include mixins.font("work sans", 14px, 500, none, left, vars.$primary-color, sans-serif);
+                        @include mixins.font("work sans", 14px, vars.$medium-font, none, left, vars.$primary-color, sans-serif);
                         background-color: #4b6bfb0c;
                         width: fit-content;
                         padding: 4px 10px;
@@ -80,7 +80,7 @@
 
                     .title
                     {
-                        @include mixins.font(inherit, 16px, 600, none, left, vars.$secondary-color-500, inherit);
+                        @include mixins.font(inherit, 16px, vars.$bold-font, none, left, vars.$secondary-color-500, inherit);
                         height: 57.5px;
                     }
                 }
@@ -88,7 +88,7 @@
                 .production-details
                 {
                     @include mixins.flex-row(normal, center, 20px, nowrap);
-                    @media (max-width: 390px) 
+                    @media (max-width: vars.$medium-mobile-width) 
                     {
                         gap: 6px;
                     }
@@ -96,7 +96,7 @@
                     .author
                     {
                         @include mixins.flex-row(normal, center, 12px, nowrap);
-                        @media (max-width: 390px) 
+                        @media (max-width: vars.$medium-mobile-width) 
                         {
                             gap: 8px;    
                         }
@@ -110,8 +110,8 @@
 
                         .name
                         {
-                            @include mixins.font(inherit, 16px, 500, none, left, vars.$secondary-color-400, inherit);
-                            @media (max-width: 390px) 
+                            @include mixins.font(inherit, 16px, vars.$medium-font, none, left, vars.$secondary-color-400, inherit);
+                            @media (max-width: vars.$medium-mobile-width) 
                             {
                                 font-size: 13px;    
                             }
@@ -120,8 +120,8 @@
 
                     .date
                     {
-                        @include mixins.font(inherit, 16px, 400, none, left, vars.$secondary-color-400, inherit);
-                        @media (max-width: 390px) 
+                        @include mixins.font(inherit, 16px, vars.$normal-font, none, left, vars.$secondary-color-400, inherit);
+                        @media (max-width: vars.$medium-mobile-width) 
                         {
                             font-size: 13px;    
                         }
@@ -142,7 +142,7 @@
             padding: 12px 20px;
             border-radius: 6px;
             border: 1px solid #696a754d;
-            @include mixins.font(inherit, 16px, 400, none, center, #696A75, inherit);
+            @include mixins.font(inherit, 16px, vars.$normal-font, none, center, #696A75, inherit);
             cursor: pointer;
             outline: none;
             background-color: vars.$white;

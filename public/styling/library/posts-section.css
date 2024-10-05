@@ -1,12 +1,19 @@
 :export {
-  primary-color: #4B6BFB;
-  secondary-color-400: #97989F;
-  secondary-color-100: #E8E8EA;
-  secondary-color-800: #181A2A;
-  secondary-color-500: #181A2A;
-  white: #FFFFFF;
+  primary-color: #4b6bfb;
+  secondary-color-400: #97989f;
+  secondary-color-100: #e8e8ea;
+  secondary-color-800: #181a2a;
+  secondary-color-500: #181a2a;
+  white: #ffffff;
+  small-descktop-width: 1280px;
+  large-tablet-width: 1024px;
   medium-tablet-width: 768px;
+  small-tablet-width: 601px;
   large-mobile-width: 448px;
+  large-mobile-width-x: 414px;
+  medium-mobile-width: 390px;
+  small-mobile-width-xs: 375px;
+  bolder-font: 800;
   bold-font: 600;
   medium-font: 500;
   normal-font: 400;
@@ -29,7 +36,7 @@
   font-weight: 800;
   text-transform: none;
   text-align: left;
-  color: #181A2A;
+  color: #181a2a;
   overflow: hidden;
 }
 .posts .no-posts {
@@ -73,8 +80,8 @@
   flex-wrap: nowrap;
   border-radius: 12px;
   padding: 16px;
-  background-color: #FFFFFF;
-  border: 1px solid #E8E8EA;
+  background-color: #ffffff;
+  border: 1px solid #e8e8ea;
   cursor: pointer;
 }
 .posts .posts-container .post-card .post-cover img {
@@ -118,7 +125,7 @@
   font-weight: 500;
   text-transform: none;
   text-align: left;
-  color: #4B6BFB;
+  color: #4b6bfb;
   background-color: rgba(75, 107, 251, 0.0470588235);
   width: fit-content;
   padding: 4px 10px;
@@ -129,7 +136,7 @@
   font-weight: 600;
   text-transform: none;
   text-align: left;
-  color: #181A2A;
+  color: #181a2a;
   height: 57.5px;
 }
 .posts .posts-container .post-card .info .production-details {
@@ -170,7 +177,7 @@
   font-weight: 500;
   text-transform: none;
   text-align: left;
-  color: #97989F;
+  color: #97989f;
 }
 @media (max-width: 390px) {
   .posts .posts-container .post-card .info .production-details .author .name {
@@ -183,7 +190,7 @@
   font-weight: 400;
   text-transform: none;
   text-align: left;
-  color: #97989F;
+  color: #97989f;
 }
 @media (max-width: 390px) {
   .posts .posts-container .post-card .info .production-details .date {
@@ -207,7 +214,7 @@
   color: #696A75;
   cursor: pointer;
   outline: none;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
 }
 
 /*# sourceMappingURL=posts-section.css.map */

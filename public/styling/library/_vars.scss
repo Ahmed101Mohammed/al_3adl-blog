@@ -7,12 +7,18 @@ $secondary-color-500: #181a2a;
 $white: #ffffff;
 
 // screen sizes:
+$small-descktop-width: 1280px;
 $large-tablet-width: 1024px;
 $medium-tablet-width: 768px;
 $small-tablet-width: 601px;
 $large-mobile-width: 448px;
+$large-mobile-width-x: 414px;
+$medium-mobile-width: 390px;
+$small-mobile-width-xs: 375px;
+$small-mobile-width: 360px;
 
 // font weights
+$bolder-font: 800;
 $bold-font: 600;
 $medium-font: 500;
 $normal-font: 400;
@@ -27,10 +33,16 @@ $normal-font: 400;
   white: $white;
 
   // screen sizes:
+  small-descktop-width: $small-descktop-width;
+  large-tablet-width: $large-tablet-width;
   medium-tablet-width: $medium-tablet-width;
+  small-tablet-width: $small-tablet-width;
   large-mobile-width: $large-mobile-width;
-
+  large-mobile-width-x: $large-mobile-width-x;
+  medium-mobile-width: $medium-mobile-width;
+  small-mobile-width-xs: $small-mobile-width-xs;
   // font weights
+  bolder-font: $bolder-font;
   bold-font: $bold-font;
   medium-font: $medium-font;
   normal-font: $normal-font;

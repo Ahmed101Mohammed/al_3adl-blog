@@ -1,134 +1,241 @@
+:export {
+  primary-color: #4b6bfb;
+  secondary-color-400: #97989f;
+  secondary-color-100: #e8e8ea;
+  secondary-color-800: #181a2a;
+  secondary-color-500: #181a2a;
+  white: #ffffff;
+  small-descktop-width: 1280px;
+  large-tablet-width: 1024px;
+  medium-tablet-width: 768px;
+  small-tablet-width: 601px;
+  large-mobile-width: 448px;
+  large-mobile-width-x: 414px;
+  medium-mobile-width: 390px;
+  small-mobile-width-xs: 375px;
+  bolder-font: 800;
+  bold-font: 600;
+  medium-font: 500;
+  normal-font: 400;
+}
+
 /* main */
-main
-{
+main {
+  width: 100%;
+  padding-top: 28px;
+}
+main .main-container {
+  width: 800px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: normal;
+  align-items: center;
+  gap: 80px;
+  flex-wrap: nowrap;
+  /* article */
+}
+@media (max-width: 810px) {
+  main .main-container {
     width: 100%;
-    padding-top: 28px;
+    gap: 40px;
+  }
 }
-
-.main-container
-{
-    width: 800px;
-    margin: auto;
-    display: flex;
-    flex-direction: column;
-    gap: 80px;
+main .main-container article {
+  display: flex;
+  flex-direction: column;
+  justify-content: normal;
+  align-items: normal;
+  gap: 32px;
+  flex-wrap: nowrap;
+  /* article header */
+  /* article cover */
+  /* article content */
 }
-
-/* article */
-article
-{
-    display: flex;
-    flex-direction: column;
-    gap: 32px;
+@media (max-width: 1024px) {
+  main .main-container article {
+    padding: 0px 20px;
+  }
 }
-
-/* article header */
-article .article-header
-{
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+main .main-container article .article-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: normal;
+  align-items: normal;
+  gap: 20px;
+  flex-wrap: nowrap;
 }
-
-article .main-info
-{
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
+main .main-container article .article-header .main-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: normal;
+  align-items: normal;
+  gap: 16px;
+  flex-wrap: nowrap;
 }
-
-article .main-info .title
-{
-    font-size: 36px;
-    font-weight: 600;
-    color: var(--secondary-color-800);
-    text-transform: capitalize;
-    font-family: "work sans", sans-serif;
-}
-
-article .production-details
-{
-    display: flex;
-    gap: 24px;
-    align-items: center;
-}
-
-article .production-details .author
-{
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-article .production-details .author img
-{
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    object-fit: cover;
-}
-
-article .production-details .name
-{
+@media (max-width: 601px) {
+  main .main-container article .article-header .main-info .category-primary {
     font-size: 14px;
-    font-weight: 500;
-    color: #696A75;
-    text-transform: capitalize;
-    font-family: "work sans", sans-serif;
+    padding: 4px 8px;
+  }
 }
-
-article .production-details .date
-{
-    font-size: 14px;
-    font-weight: 400;
-    color: #696A75;
-    text-transform: capitalize;
-    font-family: "work sans", sans-serif;
+@media (max-width: 414px) {
+  main .main-container article .article-header .main-info .category-primary {
+    font-size: 12px;
+    padding: 2px 5px;
+  }
 }
-/* article cover */
-article .article-cover img
-{
-    width: 800px;
-    object-fit: cover;
-    border-radius: 12px;
+main .main-container article .article-header .main-info .title {
+  font-family: "work sans", sans-serif;
+  font-size: 36px;
+  font-weight: 600;
+  text-transform: capitalize;
+  text-align: left;
+  color: #181a2a;
 }
-/* article content */
-
-.article-body h1, h2, h3, h4, h5, h6
-{
-    font-family: "work sans", sans-serif;
-    font-size: 24px;
-    font-weight: 600;
-    color: var(--secondary-color-800);
-    text-transform: capitalize;
-    margin-bottom: 12px;
+@media (max-width: 601px) {
+  main .main-container article .article-header .main-info .title {
+    font-size: 28px;
+  }
 }
-
-.article-body p
-{
+@media (max-width: 414px) {
+  main .main-container article .article-header .main-info .title {
+    font-size: 22px;
+  }
+}
+main .main-container article .article-header .production-details {
+  display: flex;
+  flex-direction: row;
+  justify-content: normal;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: nowrap;
+}
+main .main-container article .article-header .production-details .author {
+  display: flex;
+  flex-direction: row;
+  justify-content: normal;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: nowrap;
+}
+main .main-container article .article-header .production-details .author img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+main .main-container article .article-header .production-details .author .name {
+  font-family: "work sans", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: capitalize;
+  text-align: left;
+  color: #696A75;
+}
+@media (max-width: 360px) {
+  main .main-container article .article-header .production-details .author .name {
+    font-size: 13px;
+  }
+}
+main .main-container article .article-header .production-details .date {
+  font-family: "work sans", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  text-transform: capitalize;
+  text-align: left;
+  color: #696A75;
+}
+@media (max-width: 360px) {
+  main .main-container article .article-header .production-details .date {
+    font-size: 12px;
+  }
+}
+main .main-container article .article-cover img {
+  width: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+}
+main .main-container article .article-body h1, main .main-container article .article-body h2, main .main-container article .article-body h3, main .main-container article .article-body h4, main .main-container article .article-body h5, main .main-container article .article-body h6 {
+  font-family: "work sans", sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  text-transform: capitalize;
+  text-align: left;
+  color: #181a2a;
+  margin-bottom: 12px;
+}
+@media (max-width: 601px) {
+  main .main-container article .article-body h1, main .main-container article .article-body h2, main .main-container article .article-body h3, main .main-container article .article-body h4, main .main-container article .article-body h5, main .main-container article .article-body h6 {
+    font-size: 22px;
+  }
+}
+@media (max-width: 414px) {
+  main .main-container article .article-body h1, main .main-container article .article-body h2, main .main-container article .article-body h3, main .main-container article .article-body h4, main .main-container article .article-body h5, main .main-container article .article-body h6 {
+    font-size: 20px;
+  }
+}
+@media (max-width: 375px) {
+  main .main-container article .article-body h1, main .main-container article .article-body h2, main .main-container article .article-body h3, main .main-container article .article-body h4, main .main-container article .article-body h5, main .main-container article .article-body h6 {
     font-size: 18px;
-    font-weight: 400;
-    color: #3B3C4A;
-    font-family: "Source Serif Pro", sans-serif;
-    line-height: 28px;
-    margin-bottom: 24px;
+  }
+}
+main .main-container article .article-body p {
+  font-family: "Source Serif Pro", sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  text-transform: none;
+  text-align: left;
+  color: #3B3C4A;
+  line-height: 28px;
+  margin-bottom: 24px;
+}
+@media (max-width: 601px) {
+  main .main-container article .article-body p {
+    font-size: 17px;
+  }
+}
+@media (max-width: 414px) {
+  main .main-container article .article-body p {
+    font-size: 16px;
+  }
+}
+@media (max-width: 375px) {
+  main .main-container article .article-body p {
+    font-size: 14px;
+  }
+}
+main .main-container article .article-body blockquote {
+  font-family: "Source Serif Pro", sans-serif;
+  font-size: 24px;
+  font-weight: 400;
+  text-transform: none;
+  text-align: left;
+  color: #181a2a;
+  padding-left: 32px;
+  font-style: italic;
+  border-left: 4px solid #e8e8ea;
+  margin-bottom: 24px;
+}
+@media (max-width: 601px) {
+  main .main-container article .article-body blockquote {
+    font-size: 22px;
+  }
+}
+@media (max-width: 414px) {
+  main .main-container article .article-body blockquote {
+    font-size: 20px;
+  }
+}
+@media (max-width: 375px) {
+  main .main-container article .article-body blockquote {
+    font-size: 18px;
+  }
+}
+main .main-container article .article-body img {
+  margin: auto;
+  display: block;
+  margin-bottom: 12px;
 }
 
-.article-body blockquote
-{
-    padding-left: 32px;
-    font-size: 24px;
-    color: var(--secondary-color-800);
-    font-weight: 400;
-    font-style: italic;
-    font-family: "Source Serif Pro", sans-serif;
-    border-left: 4px solid var(--secondary-color-100);
-    margin-bottom: 24px;
-}
-
-.article-body img 
-{
-    margin: auto;
-    display: block;
-    margin-bottom: 12px;
-}
+/*# sourceMappingURL=article.css.map */

@@ -9,7 +9,7 @@ header
     padding: 32px 0px;
     @include mixins.flex-column(normal, normal, 20px, nowrap);
 
-    @media (max-width: 1218px) 
+    @media (max-width: vars.$small-descktop-width) 
     {
         width: 100%;
         padding: 32px 20px;    

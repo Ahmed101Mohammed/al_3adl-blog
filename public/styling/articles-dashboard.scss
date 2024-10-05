@@ -1,0 +1,187 @@
+@use './library/mixins';
+@use './library/vars';
+
+.main-container
+{
+    @media (max-width: vars.$small-descktop-width) 
+    {
+        padding: 0px 15px;
+        gap: 15px;    
+    }
+    /* filter section */
+    .filter
+    {
+        @include mixins.flex-row(normal, center, 15px, nowrap);
+
+        select
+        {
+            @include mixins.size(200px, 38px);
+            background-color: transparent;
+            border-radius: 7px;
+            border: 1px #E5E5E5 solid;
+            padding: 11px 16px;
+            cursor: pointer;
+            color: #7879F1;
+        }
+    }
+
+    /* article table */
+    section.articles
+    {
+        @include mixins.flex-column(normal, normal, 2.1rem, nowrap);
+        overflow: auto;
+
+        table
+        {
+            border-spacing: 0px 10px;
+            min-width: 500px;
+
+            thead tr
+            {
+                cursor: default;
+            }
+
+            th,td
+            {
+                @include mixins.font("work sans", 13px, vars.$normal-font, capitalize, left, initial, sans-serif);
+                padding: 1.1rem 0rem;
+
+                @media (max-width: vars.$medium-tablet-width)
+                {
+                    font-size: 11px;    
+                }
+            }
+
+            th
+            {
+                color: #878790;
+                @media (max-width: vars.$large-tablet-width) 
+                {
+                    text-align: center;    
+                }
+            }
+
+            td
+            {
+                border: 1px #E9EFF4 solid;
+                border-left-width: 0px;
+                border-right-width: 0px;
+                @media (max-width: vars.$large-tablet-width) 
+                {
+                    text-align: center;
+                    padding: 5px;    
+                }
+
+                @media (max-width: vars.$medium-tablet-width)
+                {
+                    padding: 3px;
+                }
+
+                span.edit
+                {
+                    font-size: 20px;
+                    color: #7879F1;
+                    cursor: pointer;
+                    &:hover
+                    {
+                        color: #5d5de2;
+                    }
+                }
+
+                span.delete
+                {
+                    font-size: 20px;
+                    color: #e8644684;
+                    cursor: pointer;
+
+                    &:hover
+                    {
+                        color: #e86446;
+                    }
+                }
+
+                span.view 
+                {
+                    font-size: 20px;
+                    color: #87879055;/*Green color*/
+                    cursor: pointer;
+
+                    &:hover
+                    {
+                        color: #7bf45a;
+                    }
+                }
+            }
+
+            td.article-title
+            {
+                @include mixins.threeDotsTextOverflow(400px);
+                border-left-width: 1px;
+                padding-left: 1.1rem;
+                @media (max-width: vars.$large-tablet-width)
+                {
+                    max-width: 250px;
+                }
+
+                @media (max-width: vars.$medium-tablet-width)
+                {
+                    max-width: 150px;
+                    padding-left: 4px;
+                }
+            }
+
+            td.article-author
+            {
+                @include mixins.threeDotsTextOverflow(150px);
+
+                @media (max-width: vars.$medium-tablet-width)
+                {
+                    max-width: 100px;
+                }
+            }
+
+            td.view-article
+            {
+                border-right-width: 1px;
+                padding-right: 1.1rem;
+                @media (max-width: vars.$medium-tablet-width)
+                {
+                    padding-right: 4px;
+                }
+            }
+
+        }
+
+        .load-more
+        {
+            @include mixins.font("work sans", 14px, vars.$medium-font, capitalize, center, #7879F1, sans-serif);
+            display: none;
+            width: 100%;
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 10px 0px;
+            border-top: 1px #E9EFF4 solid;
+        }
+    }
+
+    /* add new article bottun */
+    .add-new-article
+    {
+        @include mixins.flex-row(center, center, 0px, nowrap);
+        @include mixins.position(fixed, auto, 20px, 20px, auto);
+        @include mixins.size(38px, 38px);
+        background-color: #7879F1;
+        border-radius: 7px;
+        border: none;
+        cursor: pointer;
+
+        color: vars.$white;
+        font-size: 20px;
+        opacity: 0.5;
+        &:hover
+        {
+            opacity: 1;
+        }
+    }
+}

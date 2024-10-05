@@ -77,10 +77,15 @@ const articleHeaderPageAppearance = (status) =>
 const initialEditingPage = () =>
 {
     if(!editedArticle) return;
+    
     document.querySelector("#article-title").value = editedArticle.title;
     document.querySelector("#article-category").value = editedArticle.category;
     document.querySelector("textarea").value = editedArticle.body;
-    document.querySelector("div.article-cover").style.backgroundImage = `url(/uploads/${editedArticle.cover})`;
+    const articleCover = document.querySelector("div.article-cover");
+    articleCover.style.backgroundImage = `url(/uploads/${editedArticle.cover})`;
+    articleCover.style.backgroundSize = "cover";
+    articleCover.style.backgroundPosition = "center";
+    articleCover.style.backgroundRepeat = "no-repeat";
     document.querySelector("div.article-cover span.badge").textContent = categoryValuePresentation(editedArticle.category);
     document.querySelector("div.article-cover p").classList.add("d-none");
     document.querySelector("h2.article-title").textContent = editedArticle.title;
@@ -103,6 +108,13 @@ const initialEditingPage = () =>
     articleContent.scrollTop = 0;
     validArticleImage = true;
     validArticleTitle = true;
+
+    const setHightOfCover = ()=>
+    {
+        articleCover.style.height = (((articleCover.clientWidth*600)/1216) + "px");
+    }
+
+    setTimeout(setHightOfCover, 500);
 }
 setStatus(articleId)
 .then(() => initialEditingPage());
@@ -137,6 +149,8 @@ nextOrDoneButton.addEventListener("click", async() =>
         articleContentPageApearance(false);
         articleHeaderPageAppearance(true);
         currentStep = 2;
+        const articleCover = document.querySelector(".article-cover");
+        articleCover.style.height = (((articleCover.clientWidth*600)/1216) + "px");
         document.querySelector("html").scrollTop = 0;
     }
     else if(currentStep === 2)
@@ -284,7 +298,11 @@ imageInput.addEventListener("change", (event) =>
         return;
     }
 })
-
+const articleCover = document.querySelector(".article-cover");
+window.addEventListener("resize", ()=>
+{
+    articleCover.style.height = (((articleCover.clientWidth*600)/1216) + "px");
+})
 
 // title handler
 const titleInput = document.querySelector("#article-title");

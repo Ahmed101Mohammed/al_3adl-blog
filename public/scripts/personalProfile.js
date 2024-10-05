@@ -5,7 +5,7 @@ const mainPageAppearance = (status) =>
     const pageContent = document.querySelector('main');
     if(status)
     {
-        pageContent.style.display = "grid";
+        pageContent.classList.add('display-grid-main');
     }
     else
     {

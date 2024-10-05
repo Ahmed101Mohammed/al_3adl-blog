@@ -16,7 +16,7 @@ footer
         width: 1216px;
         margin: auto;
 
-        @media (max-width: 1216px) 
+        @media (max-width: vars.$small-descktop-width)
         {
             width: 100%;
             padding: 0px 30px; 
