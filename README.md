@@ -1,75 +1,74 @@
-# al_3adl-blog
+# Al-3adl Blog
 
-Welcome to the **al_3adl-blog**! This is a full-stack project designed with several exciting features:
+Welcome to the **Al-3adl Blog**! This full-stack project offers a modern and flexible platform for collaborative blogging with several exciting features:
 
-- **Multi-Author Blogging**: Our platform enables multiple authors to write and publish blogs, fostering collaboration and diverse perspectives in the tech community.
+- **Multi-Author Support**: Enable multiple authors to contribute, fostering collaboration and diverse insights within the tech community.
   
-- **Open Source Project**: We believe in the power of community! This project is open source, allowing others to customize and create their own unique blogging experience.
+- **Open Source**: We embrace the open-source ethos! Developers are welcome to customize and build upon the project, creating their own unique blogging experiences.
 
-- **Contribution Opportunities**: We invite developers from all backgrounds to contribute to the project. Your skills and creativity can help us enhance and expand this platform.
+- **Contribution Opportunities**: Developers from all backgrounds can contribute to this project, enriching their skill sets while helping us enhance the platform.
 
-- **Security Testing**: For security enthusiasts, this project serves as a playground! Feel free to fork the project, add your data, and test its security. We encourage you to create issues for any vulnerabilities you discover, helping us make the platform stronger together.
+- **Security Playground**: Security professionals are encouraged to fork the project, add their own data, and test its security. We invite you to create issues for any vulnerabilities you discover to improve the platform together.
 
-Join us on this exciting journey to build a vibrant blogging community!
+## Project Overview
 
-## Description:
-### What al_3adl blog project do:
-This blog web application helps:
-- To create articles and post them to the world, now it just help you to post the recent 9 articles you wrote, but don't worry all of your articles are saved until the new release is coming with support for the **More Articles** button.
-- Other developer to create their own custome and more powerfull one, with complete feature, for personal or trading reasons.
-- Other developer to contribute in open source project, to enhance thier skills, and rish their rusome, and surly improve the project.
-- Security people to test their skills for dicovering and hacks apps, by their own data by taking their own forks from this main project.
+### What the Al-3adl Blog Does
+The **Al-3adl Blog** web application enables:
+- **Article Management**: Authors can create, manage, and post articles. The current version supports up to 9 articles, with future releases planned to support more through a 'Load More' feature.
+- **Community Building**: The platform supports multi-user functionality. Users can be promoted to authors or managers, empowering them to increase blog productivity.
+- **Developer Customization**: Developers can fork the project, add new features, or use it as a foundation to create a more powerful personal or commercial blog.
+- **Open-Source Contribution**: Developers can contribute to this open-source project, enhancing their skills and improving the platform.
+- **Security Testing**: Security enthusiasts can test their skills by identifying vulnerabilities through their fork of the project.
 
-### Technologies used to build this project:
-I build this project with:
-- **HTML**: to build the structure of the front-end part.
-- **CSS**: to styling the structure of the front-end part.
-- **Bootstrap**: to create complex pages styling with more easy and fast way, and get a most ready responsive page.
-- **SCSS**: to enhance the CSS code of the project, and create standard of styling code, and process. [Convert CSS to SCSS -> Make the SCSS code responsive -> Use mixins and vars to enhance the SCSS code].
-- **JavaScript**: to build the front-end functionality, and treate with the back-end.
-- **Node.js**: for practicing resones, and build the core of the back-end.
-- **Express**: To enhance node.js code.
-- **Cloud MongoDB**: To get 500 mg free space, with easy user experiance to do CRUD operations, and easy treating with denormalized DataBase model.
-- **JWT**: To secure the routes of the app.
-- There are other packeges the project depend on for encryption, adn cookies parser and so on, you can see all of them by following this path from the project main page in github: ***Insights***->***Dependency graph***
+### Technologies Used
+This project is built using:
+- **HTML**: To structure the front-end.
+- **CSS**: For front-end styling.
+- **Bootstrap**: For fast, responsive, and complex page layouts.
+- **SCSS**: For more maintainable and scalable CSS, using variables and mixins to ensure responsiveness.
+- **JavaScript**: To add interactivity and connect the front-end with the back-end.
+- **Node.js**: Provides the back-end server logic.
+- **Express.js**: Simplifies the development of Node.js applications.
+- **MongoDB (Cloud)**: For managing application data with a free 500MB space and an easy-to-use interface.
+- **JWT (JSON Web Token)**: For securing application routes.
+- **Other Dependencies**: For features like encryption, cookies, and more (see the project's dependency graph under **Insights -> Dependency graph**).
 
-### Challenges I faced during building this project:
-This is my firest full-stack project that I build to the release, and most of it is challenged for me, most challengies I mate are:
-1. How to save images, in the project.
-2. How to process images, to recise it as I need.
-3. Improve the project logice to minimize the use of the project: I achieve this by follow the flow of the date during doing multi operations in the project, I find that images for deleted artiles or updated or still in DB, and this is high consuming, so I improve all logics that trates with images, directly and indirectly.
-4. At some phase I needed to create some complex request that include joining with mongoDB and this was a good new challenge that increased my experienc about MongoDB.
+### Challenges Faced
+As my first full-stack project, I encountered a few key challenges:
+1. **Image Handling**: Figuring out how to store and manage images efficiently.
+2. **Image Processing**: Resizing images appropriately.
+3. **Optimizing Logic**: Reducing data consumption by ensuring images linked to deleted or updated articles are also removed from the database.
+4. **Complex MongoDB Queries**: Learning how to create complex queries involving joins was both a challenge and a learning experience.
 
-### Features and upgrades I hope to build in the future:
-- When will are more than 9 articles in the project DB, the project will appear with just 9 articles and a **More** button, that should have a functionality to generate more articles, I did not create this functionality in this version and I witch to add in the next one.
-- Build the functionality of the **Weekly Newsletter** form.
-- Enable links for each category of articles.
-- Adding likes and dislikes features, and comments.
-- Using more dependencies can treat with images to low it's size in memory with saving the quality in some good appearance fot the user.
-- Create a button for support, and apply payment method, directly to MongoDB, to increase the space for the future articles. *In real I want to do that just for practicing in creating a payment feature.*
-- Replace the front-end part with some js front-end framework.
-- Migrate the project from **JavaScript** to **TypeScript**.
+### Future Features & Enhancements
+- **More Articles Button**: Add functionality to load more than 9 articles.
+- **Weekly Newsletter**: Develop a form and backend logic for weekly newsletters.
+- **Category Links**: Enable links for each article category.
+- **Likes, Dislikes, and Comments**: Add interaction features for users.
+- **Image Optimization**: Use additional packages to optimize image storage while maintaining quality.
+- **Support Button**: Integrate payment options, mainly as a practice for implementing payment features.
+- **Front-End Framework**: Migrate the front-end to a JavaScript framework.
+- **TypeScript Migration**: Migrate the project from JavaScript to TypeScript for improved maintainability.
 
 ## Installing & Set up & Running:
-### Installing & Set up & Running locally on your device:
-#### Installing:
+### Installing:
 1. Open your terminal, and go to the directory you want to install the project on.
 2. Copy the following line, and paste it into your terminal:
 ```
 git clone https://github.com/Ahmed101Mohammed/al_3adl-blog.git
 ```
 This should installed the project on your project.
-#### Set up:
-In the last step from **Installing** you allready installed the app, now we work to set up the project:
+### Set up:
+In the last step from **Installing** you already installed the app, now we work to set up the project:
 1. Go inside the project folder by past the following line in your terminal:
 ```
 cd al_3adl-blog
 ```
-2. Install all packeges that the project dependent on, by paste the following line in your termminal:
+2. Install all packages that the project is dependent on, by pasting the following line in your terminal:
 ```
 npm install
 ```
-3. For some address isues you can run this line:
+3. For some address issues you can run this line:
 ```
 npm audit fix
 ```
@@ -85,8 +84,8 @@ ADMIN_EMAIL=(replace by yours)
 ADMIN_PASSWORD=(replace by yours)
 ADMIN_NAME=(replace by yours)
 ```
-#### Running:
-In the previouse phases you installed and set up the app, now you will run it:
+### Running:
+In the previous phases you installed and set up the app, now you will run it:
 1. Paste this line in your terminal in the root of the project folder:
 ```
 npm run dev
@@ -98,5 +97,54 @@ npm run dev
 
 3. Open your favorite browser and paste the following link on it:
 ```
-http://localhost:3000/index.html
+http://localhost:3000/
 ```
+## How to use the app:
+You can follow one of the following videos according to your favorite language:
+- English:
+- Arabic:
+
+## Credits
+- My brother, [Ibrahim Mohammed Al-3adl](https://github.com/Ibrahim-Shabori), enhanced the SCSS code for the **Sign-in** and **Sign-up** pages. You can connect with him on [LinkedIn](https://www.linkedin.com/in/ibrahimshabori/).
+
+## How to Contribute to This Project
+To contribute to this project, please follow these steps:
+
+1. Create a fork of the project and clone all branches.
+2. Clone the development branch to your local device.
+3. Create a new branch for your update, following a naming pattern similar to these examples:
+   - `enhancing-index-page-code`
+   - `new-feature-likes-and-dislikes`
+   - `fix-access-token-logic`
+4. Make your updates with meaningful commit messages. (Try to follow the existing code style as closely as possible.)
+5. Push your updates to your fork.
+6. Create an issue with details about the problem you want to address. It should contain at minimum:
+   - A description of the problem you are trying to solve.
+   - The benefits that will result from this update.
+   - Your proposed solution to the problem.
+7. Make a detailed pull request, referencing the issue you are addressing. Include comprehensive information about what you changed in both the front-end and back-end.
+8. Please note that my response may not be immediate, as I check for updates in this repository on Fridays. You can expect to follow up on your request weekly for a response.
+
+
+## MIT License:
+MIT License
+
+Copyright (c) 2024 Ahmed Mohamed 3adl
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
