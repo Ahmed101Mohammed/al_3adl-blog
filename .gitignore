@@ -7,7 +7,8 @@ yarn-error.log*
 lerna-debug.log*
 .pnpm-debug.log*
 .vscode
-/uploads
+/uploads/*
+!uploads/person.png
 notes.txt
 
 # Diagnostic reports (https://nodejs.org/api/report.html)
