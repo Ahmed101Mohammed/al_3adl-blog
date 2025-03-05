@@ -389,7 +389,7 @@ const deleteArticle = asyncWrapper(
 
         const userId = req.authData.id;
         const authorRole = await User.findById(article.authorId, {"role": 1});
-        if(!(article.authorId == userId) && (req.authData.role !== ADMIN) || (authorRole.role === ADMIN))
+        if(!(article.authorId == userId) && (req.authData.role !== ADMIN))
         {
             const unauthorized = new AppError(UNAUTHORIZED, "you don't have permission to delete this article");
             return next(unauthorized);

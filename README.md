@@ -101,8 +101,8 @@ http://localhost:3000/
 ```
 ## How to use the app:
 You can follow one of the following videos according to your favorite language:
-- English:
-- Arabic:
+- [English]()
+- [Arabic](https://youtu.be/zRVuHgMps7g)
 
 ## Credits
 - My brother, [Ibrahim Mohammed Al-3adl](https://github.com/Ibrahim-Shabori), enhanced the SCSS code for the **Sign-in** and **Sign-up** pages. You can connect with him on [LinkedIn](https://www.linkedin.com/in/ibrahimshabori/).
