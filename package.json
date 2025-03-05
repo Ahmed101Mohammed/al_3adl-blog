@@ -1,6 +1,6 @@
 {
   "name": "al_3adl-blog",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A personal blog project, to share my knowladge and experiences, in tech, learning, and any thing I interested with.",
   "main": "index.js",
   "scripts": {
